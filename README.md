@@ -28,7 +28,7 @@ pip install -r requirements.txt
 
 
 ## Usage
-Download the [data](https://drive.google.com/file/d/1VJbWlmcKRVei8rXbBtkjL0Ja_S2tvctp/view?usp=sharing) into `/path/to/data`. Then you can run the attack as follows:
+We randomly sample 1,000 images from ImageNet validate set, in which each image is from one category and can be correctly classified by the adopted models. Download the [data](https://drive.google.com/file/d/1VJbWlmcKRVei8rXbBtkjL0Ja_S2tvctp/view?usp=sharing) into `/path/to/data`. Then you can run the attack as follows:
 
 ```
 python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 --attack mifgsm --model=resnet18
