@@ -1,0 +1,6 @@
+{
+  "type": "defense",
+  "container":"floydhub/pytorch:0.2.0-py2.11",
+  "container_gpu": "floydhub/pytorch:0.2.0-gpu-py2.11",
+  "entry_point": "run_defense.sh"
+}
