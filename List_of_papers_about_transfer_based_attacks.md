@@ -274,7 +274,7 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 
 
 + [Diversifying the High-level Features for better Adversarial Transferability](https://arxiv.org/abs/2304.10136) (BMVC 2023)
-	
+
 	Zhiyuan Wang, Zeliang Zhang, Siyuan Liang, Xiaosen Wang
 
 
@@ -334,12 +334,12 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 
 
 + [Making Substitute Models More Bayesian Can Enhance Transferability of Adversarial Examples](https://openreview.net/forum?id=bjPPypbLre) (ICLR 2023)
-	
+
 	Qizhang Li, Yiwen Guo, Wangmeng Zuo, Hao Chen
 
 
 + [Common Knowledge Learning for Generating Transferable Adversarial Examples](https://arxiv.org/abs/2307.00274) (arXiv preprint arXiv:2307.00274, 2023)
-	
+
 	Ruijie Yang, Yuanfang Guo, Junfu Wang, Jiantao Zhou, Yunhong Wang
 
 
