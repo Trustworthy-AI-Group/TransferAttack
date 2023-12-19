@@ -8,6 +8,8 @@ TransferAttack is a pytorch framework to boost the adversarial transferability f
 
 ![Overview](./figs/overview.png)
 
+We also release a list of papers about transfer-based attacks [here](https://xiaosenwang.com/transfer_based_attack_papers.html).
+
 ### Why TransferAttack
 
 There are a lot of reasons for TransferAttack, such as:
@@ -261,7 +263,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 ## Evaluation
 
-**Note**: The defaut surrogate model is ResNet-18. For [YAILA](#yaila), we adopt ResNet-50 as the surrogate model. For [PNA-PatchOUt](#pna), [SAPR](#sapr), [TGR](#tgr), we adopt ViT as the surrogate model.
+**Note**: We adopt $\epsilon=16/255$ with the number of iterations $T=10$. The base attack for other types of attack is [MI-FGSM](https://arxiv.org/abs/1710.06081). The defaut surrogate model is ResNet-18. For [YAILA](#yaila), we adopt ResNet-50 as the surrogate model. For [PNA-PatchOUt](#pna), [SAPR](#sapr), [TGR](#tgr), we adopt ViT as the surrogate model.
 
 <table  style="width:100%" border="1">
 <thead>
