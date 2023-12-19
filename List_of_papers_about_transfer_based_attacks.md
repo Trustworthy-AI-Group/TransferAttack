@@ -325,7 +325,7 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 	Qizhang Li, Yiwen Guo, Wangmeng Zuo, Hao Chen
 
 
-[Common Knowledge Learning for Generating Transferable Adversarial Examples](https://arxiv.org/abs/2307.00274) (arXiv preprint arXiv:2307.00274, 2023)
++ [Common Knowledge Learning for Generating Transferable Adversarial Examples](https://arxiv.org/abs/2307.00274) (arXiv preprint arXiv:2307.00274, 2023)
 	
 	Ruijie Yang, Yuanfang Guo, Junfu Wang, Jiantao Zhou, Yunhong Wang
 
