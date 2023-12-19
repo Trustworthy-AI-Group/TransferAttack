@@ -17,7 +17,7 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 
 
 + [Boosting Adversarial Attacks with Momentum](https://arxiv.org/abs/1710.06081) (CVPR 2018)
-    
+
     Yinpeng Dong, Fangzhou Liao, Tianyu Pang, Hang Su, Jun Zhu, Xiaolin Hu, Jianguo Li.
 
 
@@ -45,6 +45,7 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 
 	Qilong Zhang, Xiaosu Zhu, Jingkuan Song, Lianli Gao, Heng Tao Shen.
 
+
 + [Improving Transferability of Adversarial Examples with Virtual Step and Auxiliary Gradients](https://www.ijcai.org/proceedings/2022/0227.pdf) (IJCAI 2022)
 
     Ming Zhang, Xiaohui Kuang, Hu Li, Zhendong Wu, Yuanping Nie, Gang Zhao
@@ -53,6 +54,7 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 + [Making Adversarial Examples More Transferable and Indistinguishable](https://arxiv.org/abs/2007.03838) (AAAI 2022)
 
     Junhua Zou, Yexin Duan, Boyu Li, Wu Zhang, Yu Pan, Zhisong Pan
+
 
 + [Boosting the Transferability of Adversarial Attacks with Reverse Adversarial Perturbation](https://arxiv.org/abs/2210.05968) (NeurIPS 2022)
 
@@ -67,6 +69,7 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 + [Boosting Transferability of Adversarial Example via an Enhanced Euler’s Method](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10096558) (ICASSP 2023)
 
 	Anjie Peng, Zhi Lin, Hui Zeng, Wenxin Yu, Xiangui Kang.
+
 
 + [Improving the Transferability of Adversarial Examples via Direction Tuning](https://arxiv.org/abs/2303.15109) (INS 2023)
 
@@ -86,6 +89,11 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 + [GNP Attack: Transferable Adversarial Examples via Gradient Norm Penalty](https://arxiv.org/abs/2307.04099) (ICIP 2023)
 
     Tao Wu, Tie Luo, Donald C. Wunsch
+
+
++ [Transferable Adversarial Attack for Both Vision Transformers and Convolutional Networks via Momentum Integrated Gradients](https://openaccess.thecvf.com/content/ICCV2023/papers/Ma_Transferable_Adversarial_Attack_for_Both_Vision_Transformers_and_Convolutional_Networks_ICCV_2023_paper.pdf) (ICCV 2023)
+
+	Wenshuo Ma, Yidong Li, Xiaofeng Jia, Wei Xu
 
 
 ### Input Transformation-based Attack
@@ -184,7 +192,7 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 
 
 + [A Unified Approach to Interpreting and Boosting Adversarial Transferability](https://arxiv.org/abs/2010.04055) (ICLR 2021)
-    
+
     Xin Wang, Jie Ren, Shuyun Lin, Xiangming Zhu, Yisen Wang, Quanshi Zhang
 
 
@@ -204,7 +212,7 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 
 
 + [Enhancing the Transferability via Feature-Momentum Adversarial Attack](https://arxiv.org/abs/2204.10606) (arXiv preprint arXiv:2204.10606, 2023)
-    
+
     Xianglong He, Yuezun Li, Haipeng Qu, Junyu Dong
 
 
@@ -272,22 +280,22 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 
 + [Towards Transferable Adversarial Attacks on Vision Transformers](https://arxiv.org/abs/2109.04176) (AAAI 2022)
 
-	Zhipeng Wei, Jingjing Chen, Micah Goldblum, Zuxuan Wu, Tom Goldstein, Yu-Gang Jiang.
+	Zhipeng Wei, Jingjing Chen, Micah Goldblum, Zuxuan Wu, Tom Goldstein, Yu-Gang Jiang
 
 
 + [On Improving Adversarial Transferability of Vision Transformers](https://arxiv.org/abs/2106.04169) (ICLR 2022)
 
-	Muzammal Naseer, Kanchana Ranasinghe, Salman Khan, Fahad Shahbaz Khan, Fatih Porikli.
+	Muzammal Naseer, Kanchana Ranasinghe, Salman Khan, Fahad Shahbaz Khan, Fatih Porikli
 
 
 + [Generating Transferable Adversarial Examples against Vision Transformers](https://dl.acm.org/doi/abs/10.1145/3503161.3547989) (ACM MM 2022)
 
-	Yuxuan Wang, Jiakai Wang, Zixin Yin, Ruihao Gong, Jingyi Wang, Aishan Liu, Xianglong Liu.
+	Yuxuan Wang, Jiakai Wang, Zixin Yin, Ruihao Gong, Jingyi Wang, Aishan Liu, Xianglong Liu
 
 
 + [Improving the Transferability of Adversarial Examples with Restructure Embedded Patches](https://arxiv.org/pdf/2204.12680.pdf) (arXiv preprint arXiv:2204.12680, 2022)
 
-	Huipeng Zhou, Yu-an Tan, Yajie Wang, Haoran Lyu, Shangbo Wu, Yuanzhang Li.
+	Huipeng Zhou, Yu-an Tan, Yajie Wang, Haoran Lyu, Shangbo Wu, Yuanzhang Li
 
 
 + [Transferable Adversarial Attacks on Vision Transformers with Token Gradient Regularization](https://arxiv.org/abs/2303.15754) (CVPR 2023)
@@ -295,21 +303,26 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 	Jianping Zhang, Yizhan Huang, Weibin Wu, Michael R. Lyu
 
 
++ [Backpropagation Path Search On Adversarial Transferability](https://arxiv.org/abs/2308.07625) (ICCV 2023)
+
+	Zhuoer Xu, Zhangxuan Gu, Jianping Zhang, Shiwen Cui, Changhua Meng, Weiqiang Wang
+
+
 ### Ensemble-based Attack
 
 + [Delving into Transferable Adversarial Examples and Black-box Attacks](https://arxiv.org/abs/1611.02770) (ICLR 2017)
 
-	Yanpei Liu, Xinyun Chen, Chang Liu, Dawn Song.
+	Yanpei Liu, Xinyun Chen, Chang Liu, Dawn Song
 
 
 + [Learning Transferable Adversarial Examples via Ghost Networks](https://arxiv.org/abs/1812.03413) (AAAI 2020)
 
-	Yingwei Li, Song Bai, Yuyin Zhou, Cihang Xie, Zhishuai Zhang, Alan Yuille.
+	Yingwei Li, Song Bai, Yuyin Zhou, Cihang Xie, Zhishuai Zhang, Alan Yuille
 
 
 + [Stochastic Variance Reduced Ensemble Adversarial Attack for Boosting the Adversarial Transferability](https://arxiv.org/pdf/2111.10752.pdf) (CVPR 2022)
 
-	Yifeng Xiong, Jiadong Lin, Min Zhang, John E. Hopcroft, Kun He.
+	Yifeng Xiong, Jiadong Lin, Min Zhang, John E. Hopcroft, Kun He
 
 + [Efficient and Transferable Adversarial Examples from Bayesian Neural Networks](https://arxiv.org/abs/2011.05074) (UAI 2022)
 
@@ -317,7 +330,7 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 
 + [LGV: Boosting Adversarial Example Transferability from Large Geometric Vicinity](https://arxiv.org/pdf/2207.13129.pdf) (ECCV 2022)
 
-	Martin Gubri, Maxime Cordy, Mike Papadakis, Yves Le Traon, Koushik Sen.
+	Martin Gubri, Maxime Cordy, Mike Papadakis, Yves Le Traon, Koushik Sen
 
 
 + [Making Substitute Models More Bayesian Can Enhance Transferability of Adversarial Examples](https://openreview.net/forum?id=bjPPypbLre) (ICLR 2023)
@@ -332,24 +345,30 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 
 + [Rethinking Model Ensemble in Transfer-based Adversarial Attacks](https://arxiv.org/abs/2303.09105) (arXiv preprint arXiv:2303.09105, 2023)
 
-	Huanran Chen, Yichi Zhang, Yinpeng Dong, Jun Zhu.
+	Huanran Chen, Yichi Zhang, Yinpeng Dong, Jun Zhu
+
+
++ [An Adaptive Model Ensemble Adversarial Attack for Boosting Adversarial Transferability](https://arxiv.org/abs/2308.02897) (ICCV 2023)
+
+	Bin Chen, Jia-Li Yin, Shukai Chen, Bo-Hao Chen, Ximeng Liu
 
 
 ### Generation-based Attack
 
 + [Cross-domain transferability of adversarial perturbations](https://arxiv.org/abs/1905.11736) (NeurIPS 2019)
 
-	Muzammal Naseer, Salman H. Khan, Harris Khan, Fahad Shahbaz Khan, Fatih Porikli.
+	Muzammal Naseer, Salman H. Khan, Harris Khan, Fahad Shahbaz Khan, Fatih Porikli
 
 
 + [Learning transferable adversarial perturbations](https://proceedings.neurips.cc/paper/2021/hash/7486cef2522ee03547cfb970a404a874-Abstract.html) (NeurIPS 2021)
 
-	Krishna kanth Nakka, Mathieu Salzmann.
+	Krishna kanth Nakka, Mathieu Salzmann
 
 
 + [Diverse Generative Perturbations on Attention Space for Transferable Adversarial Attacks](https://arxiv.org/abs/2208.05650) (ICIP 2022)
 
     Woo Jae Kim, Seunghoon Hong, Sung-Eui Yoon
+
 
 ## Targeted Attack
 
@@ -359,9 +378,11 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 
     Junyoung Byun, Seungju Cho, Myung-Joon Kwon, Hee-Seon Kim, Changick Kim
 
+
 + [Enhancing the Self-Universality for Transferable Targeted Attacks](https://arxiv.org/abs/2209.03716) (CVPR 2023)
-    
+
     Zhipeng Wei, Jingjing Chen, Zuxuan Wu, Yu-Gang Jiang
+
 
 ### Advanced Objective Function
 
@@ -372,60 +393,68 @@ We also provide a  complete list of papers about adversarial examples [here](htt
 
 + [Towards Transferable Targeted Attack](https://openaccess.thecvf.com/content_CVPR_2020/papers/Li_Towards_Transferable_Targeted_Attack_CVPR_2020_paper.pdf) (CVPR 2020)
 
-	Maosen Li, Cheng Deng, Tengjiao Li, Junchi Yan, Xinbo Gao, Heng Huang.
+	Maosen Li, Cheng Deng, Tengjiao Li, Junchi Yan, Xinbo Gao, Heng Huang
 
 
 + [Transferable Perturbations of Deep Feature Distributions](https://arxiv.org/abs/2004.12519) (ICLR 2020)
-    
+
     Nathan Inkawhich, Kevin J Liang, Lawrence Carin, Yiran Chen
+
 
 + [Perturbing Across the Feature Hierarchy to Improve Standard and Strict Blackbox Attack Transferability](https://proceedings.neurips.cc/paper/2020/file/eefc7bfe8fd6e2c8c01aa6ca7b1aab1a-Paper.pdf) (NeurIPS 2020)
 
     Nathan Inkawhich, Kevin J Liang, Binghui Wang, Matthew Inkawhich, Lawrence Carin, Yiran Chen
 
+
 + [Feature Space Targeted Attacks by Statistic Alignment](https://arxiv.org/abs/2105.11645) (IJCAI 2021)
 
     Lianli Gao, Yaya Cheng, Qilong Zhang, Xing Xu, Jingkuan Song
+
 
 + [On Success and Simplicity: A Second Look at Transferable Targeted Attacks](https://arxiv.org/abs/2012.11207) (NeurIPS 2021)
 
     Zhengyu Zhao, Zhuoran Liu, Martha Larson
 
+
 + [Introducing Competition to Boost the Transferability of Targeted Adversarial Examples through Clean Feature Mixup](https://arxiv.org/abs/2305.14846) (CVPR 2023)
 
-	Junyoung Byun; Myung-Joon Kwon; Seungju Cho; Yoonji Kim; Changick Kim.
+	Junyoung Byun; Myung-Joon Kwon; Seungju Cho; Yoonji Kim; Changick Kim
+
 
 + [Logit Margin Matters: Improving Transferable Targeted Adversarial Attack by Logit Calibration](https://arxiv.org/abs/2303.03680) (TIFS 2023)
-    
+
     Juanjuan Weng, Zhiming Luo, Zhun Zhong, Shaozi Li, Nicu Sebe
+
 
 ### Model-related Attack
 
 + [A little robustness goes a long way: Leveraging robust features for targeted transfer attacks](https://arxiv.org/abs/2106.02105) (NeurIPS 2021)
 
-	Jacob M Springer, Melanie Mitchell, Garrett T Kenyon.
+	Jacob M Springer, Melanie Mitchell, Garrett T Kenyon
+
 
 + [Enhancing Targeted Attack Transferability via Diversified Weight Pruning](https://arxiv.org/abs/2208.08677) (arXiv preprint arXiv: 2208.08677 2022)
 
-	Hung-Jui Wang, Yu-Yu Wu, Shang-Tse Chen.
+	Hung-Jui Wang, Yu-Yu Wu, Shang-Tse Chen
 
 
 ### Generation-based Attack
 
 + [On generating transferable targeted perturbations](https://arxiv.org/abs/2103.14641) (ICCV 2021)
 
-	Muzammal Naseer, Salman Khan, Munawar Hayat, Fahad Shahbaz Khan, Fatih Porikli.
+	Muzammal Naseer, Salman Khan, Munawar Hayat, Fahad Shahbaz Khan, Fatih Porikli
+
 
 + [Minimizing Maximum Model Discrepancy for Transferable Black-box Targeted Attacks](https://arxiv.org/abs/2212.09035) (arXiv preprint arXiv: 2212.09035 2022)
 
-	Anqi Zhao, Tong Chu, Yahao Liu, Wen Li, Jingjing Li, Lixin Duan.
+	Anqi Zhao, Tong Chu, Yahao Liu, Wen Li, Jingjing Li, Lixin Duan
 
 
 + [Boosting Transferability of Targeted Adversarial Examples via Hierarchical Generative Networks](https://arxiv.org/pdf/2107.01809.pdf) (ECCV 2022)
 
-	Xiao Yang, Yinpeng Dong, Tianyu Pang, Hang Su, Jun Zhu.
+	Xiao Yang, Yinpeng Dong, Tianyu Pang, Hang Su, Jun Zhu
 
 
 + [Towards Transferable Targeted Adversarial Examples](https://openaccess.thecvf.com/content/CVPR2023/papers/Wang_Towards_Transferable_Targeted_Adversarial_Examples_CVPR_2023_paper.pdf) (CVPR 2023)
 
-	Zhibo Wang, Hongshan Yang, Yunhe Feng, Peng Sun, Hengchang Guo, Zhifei Zhang, Kui Ren.
+	Zhibo Wang, Hongshan Yang, Yunhe Feng, Peng Sun, Hengchang Guo, Zhifei Zhang, Kui Ren
