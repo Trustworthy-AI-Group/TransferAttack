@@ -42,7 +42,6 @@ from .architecture.mta import MTA
 from .architecture.mup import MUP
 from .architecture.bpa import BPA
 from .architecture.pna_patchout import PNA_PatchOut
-from .architecture.setr.setr import SETR
 from .architecture.sapr import SAPR
 from .architecture.tgr import TGR
 
@@ -96,7 +95,6 @@ attack_zoo = {
             'mup': MUP,
             'bpa': BPA,
             'pna_patchout': PNA_PatchOut,
-            'setr': SETR,
             'sapr': SAPR,
             'tgr': TGR,
         }

@@ -13,7 +13,7 @@ def get_parser():
                         choices=['fgsm', 'ifgsm', 'mifgsm', 'nifgsm', 'vmifgsm', 'vnifgsm', 'emifgsm', 'ifgssm', 'vaifgsm', 'aifgtm', 'pcifgsm', 'dta', 'pgn',
                                 'dim', 'tim', 'sim', 'admix', 'dem', 'ssm', 'sia', 'stm', 'bsr',
                                 'tap', 'ila', 'fia', 'yaila', 'trap', 'naa', 'rpa', 'taig', 'fmaa', 'ilpd',
-                                'sgm', 'dsm', 'mta', 'mup', 'bpa', 'pna_patchout', 'setr', 'sapr', 'tgr'
+                                'sgm', 'dsm', 'mta', 'mup', 'bpa', 'pna_patchout', 'sapr', 'tgr'
                         ])
     parser.add_argument('--epoch', default=10, type=int, help='the iterations for updating the adversarial patch')
     parser.add_argument('--batchsize', default=32, type=int, help='the bacth size')
