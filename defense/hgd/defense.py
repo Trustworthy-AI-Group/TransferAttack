@@ -65,6 +65,12 @@ def main():
         print("Error: Please specify an output file")
         exit(-1)
 
+    path_dir = args.output_file.split('/')[0]
+    if os.path.exists(path_dir):
+        pass
+    else:
+        os.mkdir(path_dir)
+
     tf = transforms.Compose([
            transforms.Resize([299,299]),
             transforms.ToTensor()
