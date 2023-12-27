@@ -1,4 +1,6 @@
-ATTACK_METHOD=pifgsm
+# Please change the name of the "ATTACK_METHOD" to eval your method!
+# You can run this file directly!
+ATTACK_METHOD=mifgsm
 SOURCE_MODEL=resnet18
 INPUT_DIR=../../adv_data/${ATTACK_METHOD}/${SOURCE_MODEL}
 OUTPUT_FILE=at_results/${ATTACK_METHOD}_${SOURCE_MODEL}.txt
@@ -16,4 +18,4 @@ cd ..
 python check_output.py \
   --output_file=at/"${OUTPUT_FILE}" \
   --label_file="${LABEL_FILE}" \
-  --targeted
+  # --targeted
