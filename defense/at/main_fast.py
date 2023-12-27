@@ -64,6 +64,12 @@ def main():
     if not os.path.isdir(os.path.join('trained_models', configs.output_name)):
         os.makedirs(os.path.join('trained_models', configs.output_name))
 
+    path_dir = configs.output_prefix.split('/')[0]
+    if os.path.exists(path_dir):
+        pass
+    else:
+        os.mkdir(path_dir)
+        
     # Log the config details
     logger.info(pad_str(' ARGUMENTS '))
     for k, v in configs.items(): print('{}: {}'.format(k, v))
@@ -154,7 +160,6 @@ def main():
         for filename, label in zip(filenames, outputs):
             filename = os.path.basename(filename)
             out_file.write('{0},{1}\n'.format(filename, label))
-
 
 if __name__ == '__main__':
     main()
