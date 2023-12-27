@@ -2,6 +2,7 @@ from .gradient.fgsm import FGSM
 from .gradient.ifgsm import IFGSM
 from .gradient.mifgsm import MIFGSM
 from .gradient.nifgsm import NIFGSM
+from .gradient.pifgsm import PIFGSM
 from .gradient.vmifgsm import VMIFGSM
 from .gradient.vnifgsm import VNIFGSM
 from .gradient.emifgsm import EMIFGSM
@@ -54,6 +55,7 @@ attack_zoo = {
             'ifgsm': IFGSM,
             'mifgsm': MIFGSM,
             'nifgsm': NIFGSM,
+            'pifgsm': PIFGSM,
             'vmifgsm': VMIFGSM,
             'vnifgsm': VNIFGSM,
             'emifgsm': EMIFGSM,

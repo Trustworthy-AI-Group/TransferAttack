@@ -51,7 +51,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="13"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="14"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -69,6 +69,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/1908.06281" target="_blank" rel="noopener noreferrer">NI-FGSM (Lin et al., 2020)</a></td>
 <td ><sub>Integrate the Nesterov's accelerated gradient into I-FGSM</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2007.06765" target="_blank" rel="noopener noreferrer">PI-FGSM (Gao et al., 2020)</a></td>
+<td ><sub>Reusing the cut noise and apply a heuristic project strategy to generate patch-wise noise</sub></td>
 </tr>
 
 <tr>
@@ -289,7 +294,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="13"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="14"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >97.4</td>
 <td >36.2</td>
@@ -351,6 +356,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >36.2</td>
 <td >19.7</td>
 <td >28.2</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/gradient/pifgsm.py" target="_blank" rel="noopener noreferrer">PI-FGSM</a></td>
+<td >100.0</td>
+<td >37.3</td>
+<td >46.7</td>
+<td >74.9</td>
+<td >19.9</td>
+<td >18.4</td>
+<td >26.3</td>
+<td >35.7</td>
+<td >34.1</td>
+<td >35.7</td>
+<td >30.0</td>
+<td >34.1</td>
 </tr>
 
 <tr>
