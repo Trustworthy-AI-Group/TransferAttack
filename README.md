@@ -92,7 +92,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org/abs/2104.09722" target="_blank" rel="noopener noreferrer">I-FGS²M (Gao et al., 2021)</a></td>
+<td><a href="https://arxiv.org/abs/2104.09722" target="_blank" rel="noopener noreferrer">I-FGS²M (Zhang et al., 2021)</a></td>
 <td ><sub>Assigning staircase weights to each interval of the gradient</sub></td>
 </tr>
 
@@ -1074,7 +1074,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </table>
 
 ### Acknowledgement
-- [Yue Yan](https://github.com/YAN-0802) contributed the [GRA](./transferattack/gradient/gra.py) method.
+We thank all the researchers who contribute or check the methods. See [contributors](./contributors.md) for details.
 
 ### Welcom more participants
 We are trying to include more transfer-based attacks. We welcome suggestions and contributions! Submit an issue or pull request and we will try our best to respond in a timely manner.
