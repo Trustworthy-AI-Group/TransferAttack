@@ -51,7 +51,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="16"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="17"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -107,6 +107,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/abs/2210.05968" target="_blank" rel="noopener noreferrer">RAP (Qin et al., 2022)</a></td>
+<td ><sub> Inject the worst-case perturbation when calculating the gradient.</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://arxiv.org/abs/2306.01809" target="_blank" rel="noopener noreferrer">PC-I-FGSM (Wan et al., 2023)</a></td>
 <td ><sub>Gradient Prediction-Correction on MI-FGSM</sub></td>
 </tr>
@@ -117,16 +122,14 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
+<td><a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Zhu_Boosting_Adversarial_Transferability_via_Gradient_Relevance_Attack_ICCV_2023_paper.pdf" target="_blank" rel="noopener noreferrer">GRA (Zhu et al., 2023)</a></td>
+<td ><sub>Propose the gradient relevance framework and adjust the update gradient with a decay indicator</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://arxiv.org/abs/2306.05225" target="_blank" rel="noopener noreferrer">PGN (Ge et al., 2023)</a></td>
 <td ><sub>Penalizing gradient norm on the original loss function</sub></td>
 </tr>
-
-
-<tr>
-<td><a href="https://arxiv.org/abs/2210.05968" target="_blank" rel="noopener noreferrer">RAP (Qin et al., 2022)</a></td>
-<td ><sub> Inject the worst-case perturbation when calculating the gradient.</sub></td>
-</tr>
-
 
 <tr>
 <td><a href="https://ieeexplore.ieee.org/document/10096558" target="_blank" rel="noopener noreferrer">IE-FGSM (Peng et al., 2023)</a></td>
@@ -306,7 +309,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="16"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="17"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >97.4</td>
 <td >36.2</td>
@@ -483,7 +486,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<td><a href="./transferattack/gradient/pcifgsm.py" target="_blank" rel="noopener noreferrer">PC-FGSM</a></td>
+<td><a href="./transferattack/gradient/rap.py" target="_blank" rel="noopener noreferrer">RAP</a></td>
+<td >100.0</td>
+<td >51.8</td>
+<td >58.5</td>
+<td >87.5</td>
+<td >21.1</td>
+<td >26.9</td>
+<td >43.1</td>
+<td >49.3</td>
+<td >32.4</td>
+<td >39.7</td>
+<td >22.8</td>
+<td >31.0</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/gradient/pcifgsm.py" target="_blank" rel="noopener noreferrer">PC-I-FGSM</a></td>
 <td >100.0</td>
 <td >41.3</td>
 <td >48.4</td>
@@ -515,6 +534,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
+<td><a href="./transferattack/gradient/gra.py" target="_blank" rel="noopener noreferrer">GRA</a></td>
+<td >100.0</td>
+<td >65.1</td>
+<td >70.6</td>
+<td >93.6</td>
+<td >32.6</td>
+<td >39.2</td>
+<td >54.0</td>
+<td >63.1</td>
+<td >38.3</td>
+<td >59.0</td>
+<td >31.2</td>
+<td >49.7</td>
+</tr>
+
+<tr>
 <td><a href="./transferattack/gradient/pgn.py" target="_blank" rel="noopener noreferrer">PGN</a></td>
 <td >100.0</td>
 <td >68.4</td>
@@ -524,26 +559,10 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >43.6</td>
 <td >57.3</td>
 <td >65.0</td>
-<td >51.7</td>
+<td >38.8</td>
 <td >60.7</td>
 <td >32.1</td>
-<td >76.9</td>
-</tr>
-
-<tr>
-<td><a href="./transferattack/gradient/rap.py" target="_blank" rel="noopener noreferrer">RAP</a></td>
-<td >100.0</td>
-<td >51.8</td>
-<td >58.5</td>
-<td >87.5</td>
-<td >21.1</td>
-<td >26.9</td>
-<td >43.1</td>
-<td >49.3</td>
-<td >32.4</td>
-<td >39.7</td>
-<td >22.8</td>
-<td >31.0</td>
+<td >51.7</td>
 </tr>
 
 <tr>
@@ -1053,6 +1072,9 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
     </td>
 </tr>
 </table>
+
+### Acknowledgement
+- [Yue Yan](https://github.com/YAN-0802) contributed the [GRA](./transferattack/gradient/gra.py) method.
 
 ### Welcom more participants
 We are trying to include more transfer-based attacks. We welcome suggestions and contributions! Submit an issue or pull request and we will try our best to respond in a timely manner.

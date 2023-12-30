@@ -12,6 +12,7 @@ from .gradient.aifgtm import AIFGTM
 from .gradient.pcifgsm import PCIFGSM
 from .gradient.iefgsm import IEFGSM
 from .gradient.dta import DTA
+from .gradient.gra import GRA
 from .gradient.pgn import PGN
 from .gradient.rap import RAP
 
@@ -67,6 +68,7 @@ attack_zoo = {
             'pcifgsm': PCIFGSM,
             'iefgsm': IEFGSM,
             'dta': DTA,
+            'gra': GRA,
             'pgn': PGN,
             'rap': RAP,
 
