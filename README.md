@@ -51,7 +51,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="15"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="16"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -120,6 +120,13 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <td><a href="https://arxiv.org/abs/2306.05225" target="_blank" rel="noopener noreferrer">PGN (Ge et al., 2023)</a></td>
 <td ><sub>Penalizing gradient norm on the original loss function</sub></td>
 </tr>
+
+
+<tr>
+<td><a href="https://arxiv.org/abs/2210.05968" target="_blank" rel="noopener noreferrer">RAP (Qin et al., 2022)</a></td>
+<td ><sub> Inject the worst-case perturbation when calculating the gradient.</sub></td>
+</tr>
+
 
 <tr>
 <td><a href="https://ieeexplore.ieee.org/document/10096558" target="_blank" rel="noopener noreferrer">IE-FGSM (Peng et al., 2023)</a></td>
@@ -299,7 +306,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="15"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="16"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >97.4</td>
 <td >36.2</td>
@@ -521,6 +528,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >60.7</td>
 <td >32.1</td>
 <td >76.9</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/gradient/rap.py" target="_blank" rel="noopener noreferrer">RAP</a></td>
+<td >100.0</td>
+<td >51.8</td>
+<td >58.5</td>
+<td >87.5</td>
+<td >21.1</td>
+<td >26.9</td>
+<td >43.1</td>
+<td >49.3</td>
+<td >32.4</td>
+<td >39.7</td>
+<td >22.8</td>
+<td >31.0</td>
 </tr>
 
 <tr>
