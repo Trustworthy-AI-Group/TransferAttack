@@ -51,7 +51,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="17"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="18"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -314,7 +314,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="17"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="18"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >97.4</td>
 <td >36.2</td>
