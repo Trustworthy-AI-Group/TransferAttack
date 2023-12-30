@@ -137,6 +137,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/abs/2307.02828" target="_blank" rel="noopener noreferrer">SMI-FGRM (Han et al., 2023)</a></td>
+<td ><sub> Substitute sign function with data rescaling and use the depth first sampling technique to stabilize the update direction.</sub></td>
+</tr>
+
+<tr>
 <th rowspan="9"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
@@ -579,6 +584,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >40.9</td>
 <td >19.5</td>
 <td >29.0</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/gradient/smifgrm.py" target="_blank" rel="noopener noreferrer">SMI-FGRM</a></td>
+<td >99.7</td>
+<td >37.4</td>
+<td >41.0</td>
+<td >74.5</td>
+<td >15.2</td>
+<td >21.8</td>
+<td >29.7</td>
+<td >38.8</td>
+<td >32.8</td>
+<td >31.1</td>
+<td >24.1</td>
+<td >31.3</td>
 </tr>
 
 
