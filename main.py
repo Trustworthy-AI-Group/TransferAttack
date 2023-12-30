@@ -10,7 +10,7 @@ def get_parser():
     parser = argparse.ArgumentParser(description='Generating transferable adversaria examples')
     parser.add_argument('-e', '--eval', action='store_true', help='attack/evluation')
     parser.add_argument('--attack', default='lifgsm', type=str, help='the attack algorithm',
-                        choices=['fgsm', 'ifgsm', 'mifgsm', 'nifgsm', 'pifgsm', 'vmifgsm', 'vnifgsm', 'emifgsm', 'ifgssm', 'vaifgsm', 'aifgtm', 'pcifgsm', 'dta', 'pgn',
+                        choices=['fgsm', 'ifgsm', 'mifgsm', 'nifgsm', 'pifgsm', 'vmifgsm', 'vnifgsm', 'emifgsm', 'ifgssm', 'vaifgsm', 'aifgtm', 'pcifgsm', 'iefgsm', 'dta', 'pgn', 'rap',
                                 'dim', 'tim', 'sim', 'admix', 'dem', 'ssm', 'sia', 'stm', 'bsr',
                                 'tap', 'ila', 'fia', 'yaila', 'trap', 'naa', 'rpa', 'taig', 'fmaa', 'ilpd',
                                 'sgm', 'dsm', 'mta', 'mup', 'bpa', 'pna_patchout', 'sapr', 'tgr'

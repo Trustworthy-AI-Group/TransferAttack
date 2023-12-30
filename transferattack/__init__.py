@@ -10,8 +10,10 @@ from .gradient.ifgssm import IFGSSM
 from .gradient.vaifgsm import VAIFGSM
 from .gradient.aifgtm import AIFGTM
 from .gradient.pcifgsm import PCIFGSM
+from .gradient.iefgsm import IEFGSM
 from .gradient.dta import DTA
 from .gradient.pgn import PGN
+from .gradient.rap import RAP
 
 
 from .input_transformation.dim import DIM
@@ -63,8 +65,10 @@ attack_zoo = {
             'vaifgsm': VAIFGSM,
             'aifgtm': AIFGTM,
             'pcifgsm': PCIFGSM,
+            'iefgsm': IEFGSM,
             'dta': DTA,
             'pgn': PGN,
+            'rap': RAP,
 
             # input transformation
             'dim': DIM,
@@ -78,7 +82,7 @@ attack_zoo = {
             'bsr': BSR,
 
             # advanced_objective
-            
+
             'tap': TAP,
             'ila': ILA,
             'fia': FIA,
