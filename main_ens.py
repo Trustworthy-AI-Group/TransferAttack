@@ -13,10 +13,10 @@ def get_parser():
     parser = argparse.ArgumentParser(description='Generating transferable adversaria examples')
     parser.add_argument('--eval', action='store_true', help='attack/evluation')
     parser.add_argument('--attack', default='aifgtm', type=str, help='the attack algorithm',
-                         choices=['fgsm', 'ifgsm', 'mifgsm', 'nifgsm', 'pifgsm', 'vmifgsm', 'vnifgsm', 'emifgsm', 'ifgssm', 'vaifgsm', 'aifgtm', 'pcifgsm', 'dta', 'gra', 'pgn',
-                                'dim', 'tim', 'sim', 'admix', 'dem', 'ssm', 'sia', 'stm', 'bsr',
+                         choices=['fgsm', 'ifgsm', 'mifgsm', 'nifgsm', 'pifgsm', 'vmifgsm', 'vnifgsm', 'emifgsm', 'ifgssm', 'vaifgsm', 'aifgtm', 'gifgsm', 'pcifgsm', 'iefgsm', 'dta', 'gra', 'pgn',
+                                'dim', 'tim', 'sim', 'admix', 'dem', 'ssm', 'maskblock', 'sia', 'stm', 'bsr',
                                 'tap', 'ila', 'fia', 'yaila', 'trap', 'naa', 'rpa', 'taig', 'fmaa', 'ilpd',
-                                'sgm', 'dsm', 'mta', 'mup', 'bpa', 'pna_patchout', 'sapr', 'tgr'
+                                'sgm', 'dsm', 'mta', 'mup', 'bpa', 'dhf', 'pna_patchout', 'sapr', 'tgr'
                         ])
     parser.add_argument('--epoch', default=10, type=int, help='the iterations for updating the adversarial patch')
     parser.add_argument('--batchsize', default=10, type=int, help='the bacth size')

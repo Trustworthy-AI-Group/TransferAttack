@@ -9,6 +9,7 @@ from .gradient.emifgsm import EMIFGSM
 from .gradient.ifgssm import IFGSSM
 from .gradient.vaifgsm import VAIFGSM
 from .gradient.aifgtm import AIFGTM
+from .gradient.gifgsm import GIFGSM
 from .gradient.pcifgsm import PCIFGSM
 from .gradient.iefgsm import IEFGSM
 from .gradient.dta import DTA
@@ -24,6 +25,7 @@ from .input_transformation.sim import SIM
 from .input_transformation.admix import Admix
 from .input_transformation.dem import DEM
 from .input_transformation.ssm import SSM
+from .input_transformation.maskblock import MaskBlock
 from .input_transformation.sia import SIA
 from .input_transformation.stm import STM
 from .input_transformation.bsr import BSR
@@ -46,6 +48,7 @@ from .architecture.dsm import DSM
 from .architecture.mta import MTA
 from .architecture.mup import MUP
 from .architecture.bpa import BPA
+from .architecture.dhf import DHF_MIFGSM
 from .architecture.pna_patchout import PNA_PatchOut
 from .architecture.sapr import SAPR
 from .architecture.tgr import TGR
@@ -66,6 +69,7 @@ attack_zoo = {
             'ifgssm': IFGSSM,
             'vaifgsm': VAIFGSM,
             'aifgtm': AIFGTM,
+            'gifgsm': GIFGSM,
             'pcifgsm': PCIFGSM,
             'iefgsm': IEFGSM,
             'dta': DTA,
@@ -81,6 +85,7 @@ attack_zoo = {
             'admix': Admix,
             'dem': DEM,
             'ssm': SSM,
+            'maskblock': MaskBlock,
             'sia': SIA,
             'stm': STM,
             'bsr': BSR,
@@ -104,6 +109,7 @@ attack_zoo = {
             'mta': MTA,
             'mup': MUP,
             'bpa': BPA,
+            'dhf': DHF_MIFGSM,
             'pna_patchout': PNA_PatchOut,
             'sapr': SAPR,
             'tgr': TGR,
