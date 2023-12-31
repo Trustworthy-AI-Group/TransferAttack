@@ -9,13 +9,13 @@ from .gradient.emifgsm import EMIFGSM
 from .gradient.ifgssm import IFGSSM
 from .gradient.vaifgsm import VAIFGSM
 from .gradient.aifgtm import AIFGTM
+from .gradient.rap import RAP
 from .gradient.gifgsm import GIFGSM
 from .gradient.pcifgsm import PCIFGSM
 from .gradient.iefgsm import IEFGSM
 from .gradient.dta import DTA
 from .gradient.gra import GRA
 from .gradient.pgn import PGN
-from .gradient.rap import RAP
 from .gradient.smifgrm import SMIFGRM
 
 
@@ -69,13 +69,13 @@ attack_zoo = {
             'ifgssm': IFGSSM,
             'vaifgsm': VAIFGSM,
             'aifgtm': AIFGTM,
+            'rap': RAP,
             'gifgsm': GIFGSM,
             'pcifgsm': PCIFGSM,
             'iefgsm': IEFGSM,
             'dta': DTA,
             'gra': GRA,
             'pgn': PGN,
-            'rap': RAP,
             'smifgrm': SMIFGRM,
 
             # input transformation
