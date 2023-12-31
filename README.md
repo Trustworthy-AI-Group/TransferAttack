@@ -51,7 +51,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="17"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="18"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -134,6 +134,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://ieeexplore.ieee.org/document/10096558" target="_blank" rel="noopener noreferrer">IE-FGSM (Peng et al., 2023)</a></td>
 <td ><sub> Integrate anticipatory data point to stabilize the update direction.</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2307.02828" target="_blank" rel="noopener noreferrer">SMI-FGRM (Han et al., 2023)</a></td>
+<td ><sub> Substitute sign function with data rescaling and use the depth first sampling technique to stabilize the update direction.</sub></td>
 </tr>
 
 <tr>
@@ -309,7 +314,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="17"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="18"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >97.4</td>
 <td >36.2</td>
@@ -579,6 +584,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >40.9</td>
 <td >19.5</td>
 <td >29.0</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/gradient/smifgrm.py" target="_blank" rel="noopener noreferrer">SMI-FGRM</a></td>
+<td >99.7</td>
+<td >37.4</td>
+<td >41.0</td>
+<td >74.5</td>
+<td >15.2</td>
+<td >21.8</td>
+<td >29.7</td>
+<td >38.8</td>
+<td >32.8</td>
+<td >31.1</td>
+<td >24.1</td>
+<td >31.3</td>
 </tr>
 
 
