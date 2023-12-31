@@ -16,6 +16,7 @@ from .gradient.dta import DTA
 from .gradient.gra import GRA
 from .gradient.pgn import PGN
 from .gradient.rap import RAP
+from .gradient.smifgrm import SMIFGRM
 
 
 from .input_transformation.dim import DIM
@@ -75,6 +76,7 @@ attack_zoo = {
             'gra': GRA,
             'pgn': PGN,
             'rap': RAP,
+            'smifgrm': SMIFGRM,
 
             # input transformation
             'dim': DIM,
