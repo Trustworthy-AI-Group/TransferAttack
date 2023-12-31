@@ -51,7 +51,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="17"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="18"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -112,8 +112,18 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/abs/2211.11236" target="_blank" rel="noopener noreferrer">GI-FGSM (Wang et al., 2022)</a></td>
+<td ><sub>Use global momentum initialization to better stablize update direction.</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://arxiv.org/abs/2306.01809" target="_blank" rel="noopener noreferrer">PC-I-FGSM (Wan et al., 2023)</a></td>
 <td ><sub>Gradient Prediction-Correction on MI-FGSM</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://ieeexplore.ieee.org/document/10096558" target="_blank" rel="noopener noreferrer">IE-FGSM (Peng et al., 2023)</a></td>
+<td ><sub> Integrate anticipatory data point to stabilize the update direction.</sub></td>
 </tr>
 
 <tr>
@@ -132,12 +142,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://ieeexplore.ieee.org/document/10096558" target="_blank" rel="noopener noreferrer">IE-FGSM (Peng et al., 2023)</a></td>
-<td ><sub> Integrate anticipatory data point to stabilize the update direction.</sub></td>
-</tr>
-
-<tr>
-<th rowspan="9"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="10"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -165,6 +170,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2207.05382" target="_blank" rel="noopener noreferrer">SSM (Long et al., 2022)</a></td>
 <td ><sub>Randomly scale images and add noise in the frequency domain</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2208.06538" target="_blank" rel="noopener noreferrer">MaskBlock (Fan et al., 2022)</a></td>
+<td ><sub>Calculate the average gradients of multiply randomly block masked images.</sub></td>
 </tr>
 
 <tr>
@@ -234,7 +244,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="8"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="9"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2021)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -257,6 +267,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2306.12685" target="_blank" rel="noopener noreferrer">BPA (Wang et al., 2023)</a></td>
 <td ><sub>Recover the trunctaed gradient of non-linear layers </sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2304.10136" target="_blank" rel="noopener noreferrer">DHF (Wang et al., 2023)</a></td>
+<td ><sub>Mixup the feature of current examples and benign samples and
+randomly replaces the features with their means.</sub></td>
 </tr>
 
 <tr>
@@ -309,7 +325,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="17"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="18"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >97.4</td>
 <td >36.2</td>
@@ -501,6 +517,21 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >31.0</td>
 </tr>
 
+<td><a href="" target="_blank" rel="noopener noreferrer">GI-FGSM</a></td>
+<td >100.0</td>
+<td >49.5</td>
+<td >54.6</td>
+<td >83.7</td>
+<td >18.5</td>
+<td >27.0</td>
+<td >38.7</td>
+<td >46.6</td>
+<td >31.3</td>
+<td >39.0</td>
+<td >20.2</td>
+<td >31.2</td>
+</tr>
+
 <tr>
 <td><a href="./transferattack/gradient/pcifgsm.py" target="_blank" rel="noopener noreferrer">PC-I-FGSM</a></td>
 <td >100.0</td>
@@ -585,7 +616,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 
 <tr>
-<th rowspan="9"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="10"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >100.0</td>
 <td >62.2</td>
@@ -681,6 +712,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >61.2</td>
 <td >26.1</td>
 <td >48.3</td>
+</tr>
+
+<tr>
+<td><a href="" target="_blank" rel="noopener noreferrer">MaskBlock</a></td>
+<td >100.0</td>
+<td >46.8</td>
+<td >54.5</td>
+<td >82.9</td>
+<td >17.5</td>
+<td >27.3</td>
+<td >39.2</td>
+<td >45.4</td>
+<td >30.8</td>
+<td >38.9</td>
+<td >20.5</td>
+<td >30.0</td>
 </tr>
 
 <tr>
@@ -893,7 +940,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="8"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="9"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/architecture/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >47.2</td>
@@ -970,6 +1017,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >52.3</td>
 <td >22.4</td>
 <td >35.3</td>
+</tr>
+
+<tr>
+<td><a href="" target="_blank" rel="noopener noreferrer">DHF</a></td>
+<td >100</td>
+<td >71.8</td>
+<td >76.6</td>
+<td >94.1</td>
+<td >31.3</td>
+<td >43.5</td>
+<td >61.5</td>
+<td >65.2</td>
+<td >32.4</td>
+<td >62</td>
+<td >22.6</td>
+<td >40.5</td>
 </tr>
 
 <tr id="pna">
