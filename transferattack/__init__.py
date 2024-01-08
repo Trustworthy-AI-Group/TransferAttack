@@ -22,6 +22,7 @@ from .gradient.smifgrm import SMIFGRM
 from .input_transformation.dim import DIM
 from .input_transformation.tim import TIM
 from .input_transformation.sim import SIM
+from .input_transformation.atta import ATTA
 from .input_transformation.admix import Admix
 from .input_transformation.dem import DEM
 from .input_transformation.ssm import SSM
@@ -82,6 +83,7 @@ attack_zoo = {
             'dim': DIM,
             'tim': TIM,
             'sim': SIM,
+            'atta': ATTA,
             'admix': Admix,
             'dem': DEM,
             'ssm': SSM,
