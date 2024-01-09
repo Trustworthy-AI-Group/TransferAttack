@@ -42,10 +42,8 @@ class ATTA(MIFGSM):
 
         weight_name = os.path.join(self.checkpoint_path, 'atta_model_weight.pth')
 
-        if os.path.exists(weight_name):
-            pass
-        else:
-            raise ValueError("Please download the checkpoint of the 'ATTA_Model' from 'https://drive.google.com/drive/folders/1QrL3MGuQH-Jx4jwZ5CWO8zHBtquUQkBZ?usp=sharing', and put it into the path './path/to/checkpoints'.")
+        if not os.path.exists(weight_name):
+            raise ValueError("Please download the checkpoint of the 'ATTA_Model' from 'https://drive.google.com/drive/folders/1QrL3MGuQH-Jx4jwZ5CWO8zHBtquUQkBZ?usp=sharing', and put it into the path '{}'.".format(self.checkpoint_path))
 
         atta_model.load_state_dict(torch.load(weight_name))
 

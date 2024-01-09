@@ -133,7 +133,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 <tr>
 <td><a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Zhu_Boosting_Adversarial_Transferability_via_Gradient_Relevance_Attack_ICCV_2023_paper.pdf" target="_blank" rel="noopener noreferrer">GRA (Zhu et al., 2023)</a></td>
-<td ><sub>Propose the gradient relevance framework and adjust the update gradient with a decay indicator</sub></td>
+<td ><sub>Correct the gradient using the average gradient of several data points sampled in the neighborhood and adjust the update gradient with a decay indicator</sub></td>
 </tr>
 
 <tr>
@@ -184,7 +184,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 <tr>
 <td><a href="https://arxiv.org/abs/2208.06538" target="_blank" rel="noopener noreferrer">MaskBlock (Fan et al., 2022)</a></td>
-<td ><sub>Calculate the average gradients of multiply randomly block masked images.</sub></td>
+<td ><sub>Calculate the average gradients of multiply randomly block-level masked images.</sub></td>
 </tr>
 
 <tr>
@@ -281,8 +281,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 <tr>
 <td><a href="https://arxiv.org/abs/2304.10136" target="_blank" rel="noopener noreferrer">DHF (Wang et al., 2023)</a></td>
-<td ><sub>Mixup the feature of current examples and benign samples and
-randomly replaces the features with their means.</sub></td>
+<td ><sub>Mixup the feature of current examples and benign samples and randomly replaces the features with their means.</sub></td>
 </tr>
 
 <tr>
