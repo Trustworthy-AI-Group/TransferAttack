@@ -2,7 +2,7 @@ import torch
 import torch.nn.functional as F
 import numpy as np
 import torch.nn as nn
-from os.path import join, dirname
+import os
 
 from ..utils import *
 from ..gradient.mifgsm import MIFGSM
@@ -33,20 +33,20 @@ class STM(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1, num_style=20, gamma=0.5, beta=2.0
 
     Example script:
-        python main.py --output_dir adv_data/stm/resnet18 --attack stm --model=resnet18
-
+        python main.py --input_dir ./path/to/data --output_dir adv_data/stm/resnet18 --attack stm --model=resnet18
     Notes: 
         Download checkpoints ('checkpoint_transformer.pth' and 'checkpoint_embeddings.pth') from https://github.com/Zhijin-Ge/STM,
         and put them in the path '/path/to/checkpoints/'
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., num_style=20, gamma=0.5, beta = 2.0, targeted=False, 
-                random_start=False, norm='linfty', loss='crossentropy', device=None, attack='STM', **kwargs):
-        super().__init__(model_name, epsilon, alpha, epoch, decay, targeted, random_start, norm, loss, device)
+                random_start=False, norm='linfty', loss='crossentropy', device=None, attack='STM', checkpoint_path='./path/to/checkpoints/', **kwargs):
+        super().__init__(model_name, epsilon, alpha, epoch, decay, targeted, random_start, norm, loss, device, attack)
         self.num_style = num_style
         self.epsilon = epsilon
         self.gamma = gamma
         self.beta = beta
+        self.checkpoint_path = checkpoint_path
 
 
     def transform(self, x, **kwargs):
@@ -57,7 +57,7 @@ class STM(MIFGSM):
         Arguments:
             x: (N, C, H, W) tensor for input images
         """
-        augmentor = StyleAugmentor()
+        augmentor = StyleAugmentor(self.checkpoint_path)
         x_aug = augmentor(x)
         x_sty = self.gamma*x + (1-self.gamma)*x_aug.detach().clone() + torch.randn_like(x).uniform_(-self.epsilon*self.beta, self.epsilon*self.beta).cuda()
 
@@ -241,15 +241,23 @@ class Ghiasi(nn.Module):
 
 """Style Augument"""
 class StyleAugmentor(nn.Module):
-    def __init__(self):
-        super(StyleAugmentor,self).__init__()
+    def __init__(self, checkpoint_path):
+        super(StyleAugmentor, self).__init__()
 
         # create transformer and style predictor networks:
         self.ghiasi = Ghiasi()
         self.ghiasi.cuda()
         # Checkpoints are from https://github.com/Zhijin-Ge/STM:
-        checkpoint_ghiasi = torch.load(join(dirname(__file__),'../../path/to/checkpoints/checkpoint_transformer.pth'))
-        checkpoint_embeddings = torch.load(join(dirname(__file__),'../../path/to/checkpoints/checkpoint_embeddings.pth'))
+        checkpoint_ghiasi_name = os.path.join(checkpoint_path, 'checkpoint_transformer.pth')
+        checkpoint_embeddings_name = os.path.join(checkpoint_path, 'checkpoint_embeddings.pth')
+
+        if os.path.exists(checkpoint_ghiasi_name) and os.path.exists(checkpoint_embeddings_name):
+            pass
+        else:
+            raise ValueError("Please download checkpoints from 'https://drive.google.com/drive/folders/1NkD91e3NbSQlZUflc63kgjqlgXIhzcxg?usp=sharing', and put them into the path './path/to/checkpoints'.")
+        
+        checkpoint_ghiasi = torch.load(checkpoint_ghiasi_name)
+        checkpoint_embeddings = torch.load(checkpoint_embeddings_name)
         
         # load weights for ghiasi and stylePredictor, and mean / covariance for the embedding distribution:
         self.ghiasi.load_state_dict(checkpoint_ghiasi['state_dict_ghiasi'],strict=False)

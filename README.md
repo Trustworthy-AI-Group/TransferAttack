@@ -147,7 +147,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="10"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="11"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -160,6 +160,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/1908.06281" target="_blank" rel="noopener noreferrer">SIM (Ling et al., 2020)</a></td>
 <td ><sub>Calculate the average gradient of several scaled images</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Wu_Improving_the_Transferability_of_Adversarial_Samples_With_Adversarial_Transformations_CVPR_2021_paper" target="_blank" rel="noopener noreferrer">ATTA (Wu et al., 2021)</a></td>
+<td ><sub>Train an adversarial transformation network to perform the input-transformation</sub></td>
 </tr>
 
 <tr>
@@ -522,7 +527,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >31.0</td>
 </tr>
 
-<td><a href="" target="_blank" rel="noopener noreferrer">GI-FGSM</a></td>
+<td><a href="./transferattack/gradient/gifgsm.py" target="_blank" rel="noopener noreferrer">GI-FGSM</a></td>
 <td >100.0</td>
 <td >49.5</td>
 <td >54.6</td>
@@ -637,7 +642,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 
 <tr>
-<th rowspan="10"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="11"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >100.0</td>
 <td >62.2</td>
@@ -672,7 +677,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 
 <tr>
-<td><a href="./transferattack/input_transformation/sim.py target="_blank" rel="noopener noreferrer">SIM</a></td>
+<td><a href="./transferattack/input_transformation/sim.py" target="_blank" rel="noopener noreferrer">SIM</a></td>
 <td >100.0</td>
 <td >58.4</td>
 <td >64.9</td>
@@ -685,6 +690,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >50.1</td>
 <td >22.9</td>
 <td >38.2</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/input_transformation/atta.py" target="_blank" rel="noopener noreferrer">ATTA</a></td>
+<td >100.0</td>
+<td >44.2</td>
+<td >51.1</td>
+<td >80.6</td>
+<td >18.9</td>
+<td >25.9</td>
+<td >37.4</td>
+<td >43.4</td>
+<td >31.0</td>
+<td >37.6</td>
+<td >20.0</td>
+<td >28.8</td>
 </tr>
 
 <tr>
@@ -736,7 +757,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<td><a href="" target="_blank" rel="noopener noreferrer">MaskBlock</a></td>
+<td><a href="./transferattack/input_transformation/maskblock.py" target="_blank" rel="noopener noreferrer">MaskBlock</a></td>
 <td >100.0</td>
 <td >46.8</td>
 <td >54.5</td>
@@ -1041,7 +1062,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<td><a href="" target="_blank" rel="noopener noreferrer">DHF</a></td>
+<td><a href="./transferattack/architecture/dhf.py" target="_blank" rel="noopener noreferrer">DHF</a></td>
 <td >100</td>
 <td >71.8</td>
 <td >76.6</td>

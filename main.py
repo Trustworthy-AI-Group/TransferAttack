@@ -11,7 +11,7 @@ def get_parser():
     parser.add_argument('-e', '--eval', action='store_true', help='attack/evluation')
     parser.add_argument('--attack', default='lifgsm', type=str, help='the attack algorithm',
                         choices=['fgsm', 'ifgsm', 'mifgsm', 'nifgsm', 'pifgsm', 'vmifgsm', 'vnifgsm', 'emifgsm', 'ifgssm', 'vaifgsm', 'aifgtm', 'rap', 'gifgsm', 'pcifgsm', 'iefgsm', 'dta', 'gra', 'pgn', 'smifgrm',
-                                'dim', 'tim', 'sim', 'admix', 'dem', 'ssm', 'maskblock', 'sia', 'stm', 'bsr',
+                                'dim', 'tim', 'sim', 'atta', 'admix', 'dem', 'ssm', 'maskblock', 'sia', 'stm', 'bsr',
                                 'tap', 'ila', 'fia', 'yaila', 'trap', 'naa', 'rpa', 'taig', 'fmaa', 'ilpd',
                                 'sgm', 'dsm', 'mta', 'mup', 'bpa', 'dhf', 'pna_patchout', 'sapr', 'tgr'
                         ])
