@@ -1,10 +1,9 @@
 import torch
 import torchvision.transforms as transforms
-import torch.nn.functional as F
+import torch.nn as nn
 
 from ..utils import *
-from ..attack import Attack
-import torch.nn as nn
+
 from ..gradient.mifgsm import MIFGSM
 
 class Mid_layer_target_Loss(nn.Module):
@@ -22,7 +21,7 @@ class Mid_layer_target_Loss(nn.Module):
             y_norm = y / y.norm()
         angle_loss = torch.mm(x_norm, y_norm.transpose(0, 1))
         magnitude_gain = y.norm() / x.norm()
-        return angle_loss + magnitude_gain * coeff
+        return angle_loss + magnitude_gain * coeff        
  
 class TRAP(MIFGSM):
     """
@@ -33,9 +32,11 @@ class TRAP(MIFGSM):
         model_name (str): the name of surrogate model for attack.
         epsilon (float): the perturbation budget.
         alpha (float): the step size.
-        beta (float): the relative value for the neighborhood.
-        num_neighbor (int): the number of samples for estimating the gradient variance.
+        beta (float): the balance coefficient.
         epoch (int): the number of iterations.
+        baseline_epoch (int): the number of iterations for baseline attack phase.
+        probb (float): the execution probability of applying affine-transformation.
+        coeff (float): the tradeoff parameter.
         decay (float): the decay factor for momentum calculation.
         targeted (bool): targeted/untargeted attack.
         random_start (bool): whether using random initialization for delta.
@@ -44,7 +45,7 @@ class TRAP(MIFGSM):
         device (torch.device): the device for data. If it is None, the device would be same as model
         
     Official arguments:
-        epsilon=16/255, alpha=epsilon/epoch=1.6/255, beta=1.5, num_scale=20, epoch=10, decay=1.
+        epsilon=16/255, alpha=epsilon/epoch=1.6/255, beta=0.8, epoch=300, baseline_epoch=4, probb=0.9, coeff=0.8 decay=1.
 
     Example script:
         python main.py --attack trap --output_dir adv_data/trap/resnet18
@@ -62,11 +63,15 @@ class TRAP(MIFGSM):
         self.probb = probb
 
     def find_layer(self,layer_name):
-        if layer_name not in self.model[1]._modules.keys():
-            print("Selected layer is not in Model")
-            exit()
-        else:
-            return self.model[1]._modules.get(layer_name)
+        parser = layer_name.split(' ')
+        m = self.model[1]
+        for layer in parser:
+            if layer not in m._modules.keys():
+                print("Selected layer is not in Model")
+                exit() 
+            else:
+                m = m._modules.get(layer)
+        return m
         
     def __forward_hook(self,m,i,o):
         global mid_output
@@ -96,32 +101,29 @@ class TRAP(MIFGSM):
         data = data.clone().detach().to(self.device)
         label = label.clone().detach().to(self.device)
 
+        delta = self.init_delta(data)
+
         h = self.feature_layer.register_forward_hook(self.__forward_hook)
 
         # Calculate h_ori
-        out = self.model(data)
-        h_ori = torch.zeros(mid_output.size()).cuda()
-        h_ori.copy_(mid_output)
+        logits = self.get_logits(self.transform(data))
+        h_ori = mid_output
         
-        # Calculate h_adv
-        out = self.model(data + init_delta)
-        h_guide = torch.zeros(mid_output.size()).cuda()
-        h_guide.copy_(mid_output)
+        # Calculate h_guide
+        logits = self.get_logits(self.transform(data+init_delta))
+        h_guide = mid_output
 
-        # h_guide = h_adv
         momentum = 0
-        delta = self.init_delta(data)
+        
         self.alpha = self.epsilon / self.enhance_epoch
         for _ in range(self.enhance_epoch):
             # Obtain the output
             logits = self.get_logits(self.transform(data+delta))
 
-            h_adv = torch.zeros(mid_output.size()).cuda()
-            h_adv.copy_(mid_output)
+            h_adv = mid_output
 
             # Calculate the loss
             loss = self.get_trap_loss(h_guide, h_adv, h_ori)
-            # print(loss.data)
 
             # Calculate the gradients
             grad = self.get_grad(loss, delta)

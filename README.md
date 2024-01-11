@@ -886,19 +886,19 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr>
 <td><a href="./transferattack/advanced_objective/trap.py" target="_blank" rel="noopener noreferrer">TRAP</a></td>
-<td >99.8</td>
-<td >80.3</td>
-<td >84.0</td>
-<td >96.7</td>
-<td >35.9</td>
-<td >49.3</td>
-<td >71.4</td>
-<td >67.9</td>
-<td >33.5</td>
-<td >76.0</td>
-<td >21.8</td>
-<td >37.2</td>
-</tr>
+<td >80.8</td>
+<td >50.9</td>
+<td >54.4</td>
+<td >68.7</td>
+<td >22.0</td>
+<td >33.6</td>
+<td >44.5</td>
+<td >45.8</td>
+<td >30.0</td>
+<td >44.2</td>
+<td >18.2</td>
+<td >26.4</td>
+</tr> 
 
 <tr>
 <td><a href="./transferattack/advanced_objective/naa.py" target="_blank" rel="noopener noreferrer">NAA</a></td>
