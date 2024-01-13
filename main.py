@@ -9,21 +9,16 @@ from transferattack.utils import *
 def get_parser():
     parser = argparse.ArgumentParser(description='Generating transferable adversaria examples')
     parser.add_argument('-e', '--eval', action='store_true', help='attack/evluation')
-    parser.add_argument('--attack', default='lifgsm', type=str, help='the attack algorithm',
-                        choices=['fgsm', 'ifgsm', 'mifgsm', 'nifgsm', 'pifgsm', 'vmifgsm', 'vnifgsm', 'emifgsm', 'ifgssm', 'vaifgsm', 'aifgtm', 'rap', 'gifgsm', 'pcifgsm', 'iefgsm', 'dta', 'gra', 'pgn', 'smifgrm',
-                                'dim', 'tim', 'sim', 'atta', 'admix', 'dem', 'ssm', 'maskblock', 'sia', 'stm', 'bsr',
-                                'tap', 'ila', 'fia', 'yaila', 'trap', 'naa', 'rpa', 'taig', 'fmaa', 'ilpd',
-                                'sgm', 'dsm', 'mta', 'mup', 'bpa', 'dhf', 'pna_patchout', 'sapr', 'tgr'
-                        ])
+    parser.add_argument('--attack', default='mifgsm', type=str, help='the attack algorithm', choices=transferattack.attack_zoo.keys())
     parser.add_argument('--epoch', default=10, type=int, help='the iterations for updating the adversarial patch')
     parser.add_argument('--batchsize', default=32, type=int, help='the bacth size')
     parser.add_argument('--eps', default=16 / 255, type=float, help='the stepsize to update the perturbation')
     parser.add_argument('--alpha', default=1.6 / 255, type=float, help='the stepsize to update the perturbation')
     parser.add_argument('--momentum', default=0., type=float, help='the decay factor for momentum based attack')
     parser.add_argument('--model', default='resnet18', type=str, help='the source surrogate model')
+    parser.add_argument('--ensemble', action='store_true', help='enable ensemble attack')
     parser.add_argument('--input_dir', default='./data', type=str, help='the path for custom benign images, default: untargeted attack data')
     parser.add_argument('--output_dir', default='./results', type=str, help='the path to store the adversarial patches')
-    parser.add_argument('--helper_folder',default='./helper',type=str, help='the path to store the helper models')
     parser.add_argument('--targeted', action='store_true', help='targeted attack')
     parser.add_argument('--GPU_ID', default='0', type=str)
     return parser.parse_args()
@@ -40,6 +35,8 @@ def main():
 
     if not args.eval:
         if args.attack in transferattack.attack_zoo:
+            if args.ensemble:
+                args.model = ['resnet18', 'densenet121', 'vit_base_patch16_224', 'pit_b_224'] # example for ensemble attack
             attacker = transferattack.attack_zoo[args.attack.lower()](model_name = args.model, targeted = args.targeted)
         else:
             raise Exception("Unspported attack algorithm {}".format(args.attack))

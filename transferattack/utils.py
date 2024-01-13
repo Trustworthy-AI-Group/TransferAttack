@@ -58,22 +58,26 @@ def clamp(x, x_min, x_max):
 
 
 class EnsembleModel(torch.nn.Module):
-    def __init__(self, models):
+    def __init__(self, models, mode='mean'):
         super(EnsembleModel, self).__init__()
+        self.device = next(models[0].parameters()).device
+        for model in models:
+            model.to(self.device)
         self.models = models
         self.softmax = torch.nn.Softmax(dim=1)
         self.type_name = 'ensemble'
         self.num_models = len(models)
+        self.mode = mode
 
-    def forward(self, x, mode='mean'):
+    def forward(self, x):
         outputs = []
         for model in self.models:
             outputs.append(model(x))
         outputs = torch.stack(outputs, dim=0)
-        if mode == 'mean':
+        if self.mode == 'mean':
             outputs = torch.mean(outputs, dim=0)
             return outputs
-        elif mode == 'ind':
+        elif self.mode == 'ind':
             return outputs
         else:
             raise NotImplementedError

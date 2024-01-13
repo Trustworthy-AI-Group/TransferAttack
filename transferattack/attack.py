@@ -31,7 +31,10 @@ class Attack(object):
         self.targeted = targeted
         self.random_start = random_start
         self.norm = norm
-        self.device = next(self.model.parameters()).device if device is None else device
+        if isinstance(self.model, EnsembleModel):
+            self.device = self.model.device
+        else:
+            self.device = next(self.model.parameters()).device if device is None else device
         self.loss = self.loss_function(loss)
 
     def load_model(self, model_name):
@@ -40,20 +43,26 @@ class Attack(object):
         Prioritize the model in torchvision.models, then timm.models
 
         Arguments:
-            model_name (str): the name of surrogate model in model_list in utils.py
+            model_name (str/list): the name of surrogate model in model_list in utils.py
 
         Returns:
             model (torch.nn.Module): the surrogate model wrapped by wrap_model in utils.py
         """
-        if model_name in models.__dict__.keys():
-            print('=> Loading model {} from torchvision.models'.format(model_name))
-            model = models.__dict__[model_name](weights="DEFAULT")
-        elif model_name in timm.list_models():
-            print('=> Loading model {} from timm.models'.format(model_name))
-            model = timm.create_model(model_name, pretrained=True)
+        def load_single_model(model_name):
+            if model_name in models.__dict__.keys():
+                print('=> Loading model {} from torchvision.models'.format(model_name))
+                model = models.__dict__[model_name](weights="DEFAULT")
+            elif model_name in timm.list_models():
+                print('=> Loading model {} from timm.models'.format(model_name))
+                model = timm.create_model(model_name, pretrained=True)
+            else:
+                raise ValueError('Model {} not supported'.format(model_name))
+            return wrap_model(model.eval().cuda())
+
+        if isinstance(model_name, list):
+            return EnsembleModel([load_single_model(name) for name in model_name])
         else:
-            raise ValueError('Model {} not supported'.format(model_name))
-        return wrap_model(model.eval().cuda())
+            return load_single_model(model_name)
 
     def forward(self, data, label, **kwargs):
         """
