@@ -255,8 +255,8 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 <tr>
 <th rowspan="10"><sub><strong>Model-related</strong></sub></th>
-<td><a href="https://arxiv.org/abs/1812.03413" target="_blank" rel="noopener noreferrer">Ghost (Li et al., 2018)</a></td>
-<td ><sub>Apply feature-level perturbations to an existing model to potentially create a huge set of diverse models</sub></td>
+<td><a href="https://arxiv.org/abs/1812.03413" target="_blank" rel="noopener noreferrer">Ghost (Li et al., 2020)</a></td>
+<td ><sub>Densely apply dropout and random scaling on the skip connection to generate several ghost networks to average the gradient</sub></td>
 </tr>
 
 <tr>
