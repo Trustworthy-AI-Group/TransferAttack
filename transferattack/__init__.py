@@ -43,17 +43,17 @@ from .advanced_objective.taig import TAIG
 from .advanced_objective.fmaa import FMAA
 from .advanced_objective.ilpd import ILPD
 
+from .model_related.ghost import GhostNetwork_MIFGSM
+from .model_related.sgm import SGM
+from .model_related.dsm import DSM
+from .model_related.mta import MTA
+from .model_related.mup import MUP
+from .model_related.bpa import BPA
+from .model_related.dhf import DHF_MIFGSM
+from .model_related.pna_patchout import PNA_PatchOut
+from .model_related.sapr import SAPR
+from .model_related.tgr import TGR
 
-from .architecture.sgm import SGM
-from .architecture.dsm import DSM
-from .architecture.mta import MTA
-from .architecture.mup import MUP
-from .architecture.bpa import BPA
-from .architecture.dhf import DHF_MIFGSM
-from .architecture.pna_patchout import PNA_PatchOut
-from .architecture.sapr import SAPR
-from .architecture.tgr import TGR
-from .architecture.ghost import GhostNetwork_MIFGSM
 
 
 
@@ -106,7 +106,7 @@ attack_zoo = {
             'fmaa': FMAA,
             'ilpd':ILPD,
 
-            # architecture
+            # model_related
             'sgm': SGM,
             'dsm': DSM,
             'mta': MTA,

@@ -987,7 +987,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr>
 <th rowspan="10"><sub><strong>Model-related</strong></sub></th>
-<td><a href="./transferattack/architecture/ghost.py" target="_blank" rel="noopener noreferrer">Ghost</a></td>
+<td><a href="./transferattack/model_related/ghost.py" target="_blank" rel="noopener noreferrer">Ghost</a></td>
 <td >67.2</td>
 <td >95.4</td>
 <td >71.7</td>
@@ -1003,7 +1003,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<td><a href="./transferattack/architecture/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
+<td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >47.2</td>
 <td >52.7</td>
@@ -1019,7 +1019,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<td><a href="./transferattack/architecture/dsm.py" target="_blank" rel="noopener noreferrer">DSM</a></td>
+<td><a href="./transferattack/model_related/dsm.py" target="_blank" rel="noopener noreferrer">DSM</a></td>
 <td >99.2</td>
 <td >62.3</td>
 <td >67.6</td>
@@ -1035,7 +1035,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<td><a href="./transferattack/architecture/mta.py" target="_blank" rel="noopener noreferrer">MTA</a></td>
+<td><a href="./transferattack/model_related/mta.py" target="_blank" rel="noopener noreferrer">MTA</a></td>
 <td >84.7</td>
 <td >42.4</td>
 <td >46.5</td>
@@ -1051,7 +1051,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<td><a href="./transferattack/architecture/mup.py" target="_blank" rel="noopener noreferrer">MUP</a></td>
+<td><a href="./transferattack/model_related/mup.py" target="_blank" rel="noopener noreferrer">MUP</a></td>
 <td >100.0</td>
 <td >46.9</td>
 <td >54.0</td>
@@ -1067,7 +1067,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<td><a href="./transferattack/architecture/bpa.py" target="_blank" rel="noopener noreferrer">BPA</a></td>
+<td><a href="./transferattack/model_related/bpa.py" target="_blank" rel="noopener noreferrer">BPA</a></td>
 <td >100.0</td>
 <td >61.4</td>
 <td >68.0</td>
@@ -1083,7 +1083,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<td><a href="./transferattack/architecture/dhf.py" target="_blank" rel="noopener noreferrer">DHF</a></td>
+<td><a href="./transferattack/model_related/dhf.py" target="_blank" rel="noopener noreferrer">DHF</a></td>
 <td >100</td>
 <td >71.8</td>
 <td >76.6</td>
@@ -1099,7 +1099,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr id="pna">
-<td><a href="./transferattack/architecture/pna_patchout.py" target="_blank" rel="noopener noreferrer">PNA-PatchOut</a></td>
+<td><a href="./transferattack/model_related/pna_patchout.py" target="_blank" rel="noopener noreferrer">PNA-PatchOut</a></td>
 <td >68.0</td>
 <td >52.6</td>
 <td >56.7</td>
@@ -1115,7 +1115,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr id="sapr">
-<td><a href="./transferattack/architecture/sapr.py" target="_blank" rel="noopener noreferrer">SAPR</a></td>
+<td><a href="./transferattack/model_related/sapr.py" target="_blank" rel="noopener noreferrer">SAPR</a></td>
 <td >67.6</td>
 <td >53.1</td>
 <td >55.2</td>
@@ -1131,7 +1131,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr id="tgr">
-<td><a href="./transferattack/architecture/tgr.py" target="_blank" rel="noopener noreferrer">TGR</a></td>
+<td><a href="./transferattack/model_related/tgr.py" target="_blank" rel="noopener noreferrer">TGR</a></td>
 <td >80.0</td>
 <td >58.0</td>
 <td >63.4</td>

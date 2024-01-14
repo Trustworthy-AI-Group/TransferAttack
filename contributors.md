@@ -1,3 +1,7 @@
 # Contributors
 
 - [Yue Yan](https://github.com/YAN-0802) added the [GRA](./transferattack/gradient/gra.py) method.
+
+- Xiangyuan Yang checked the [DTA](./transferattack/gradient/dta.py) method.
+
+- Zhi Lin checked the [IE-FGSM](./transferattack/gradient/iefgsm.py) method.
