@@ -53,6 +53,7 @@ from .architecture.dhf import DHF_MIFGSM
 from .architecture.pna_patchout import PNA_PatchOut
 from .architecture.sapr import SAPR
 from .architecture.tgr import TGR
+from .architecture.ghost import GhostNetwork_MIFGSM
 
 
 
@@ -115,6 +116,7 @@ attack_zoo = {
             'pna_patchout': PNA_PatchOut,
             'sapr': SAPR,
             'tgr': TGR,
+            'ghost': GhostNetwork_MIFGSM,
         }
 
 __version__ = '1.0.0'

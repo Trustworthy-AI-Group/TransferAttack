@@ -254,7 +254,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="9"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="10"><sub><strong>Model-related</strong></sub></th>
+<td><a href="https://arxiv.org/abs/1812.03413" target="_blank" rel="noopener noreferrer">Ghost (Li et al., 2018)</a></td>
+<td ><sub>Apply feature-level perturbations to an existing model to potentially create a huge set of diverse models</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2021)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -981,7 +986,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="9"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="10"><sub><strong>Model-related</strong></sub></th>
+<td><a href="./transferattack/architecture/ghost.py" target="_blank" rel="noopener noreferrer">Ghost</a></td>
+<td >67.2</td>
+<td >95.4</td>
+<td >71.7</td>
+<td >69.3</td>
+<td >20.4</td>
+<td >36.1</td>
+<td >45.4</td>
+<td >44.3</td>
+<td >30.4</td>
+<td >42.8</td>
+<td >28.0</td>
+<td >35.5</td>
+</tr>
+
+<tr>
 <td><a href="./transferattack/architecture/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >47.2</td>
@@ -996,6 +1017,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >21.6</td>
 <td >31.4</td>
 </tr>
+
 <tr>
 <td><a href="./transferattack/architecture/dsm.py" target="_blank" rel="noopener noreferrer">DSM</a></td>
 <td >99.2</td>
