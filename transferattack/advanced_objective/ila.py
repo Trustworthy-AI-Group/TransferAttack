@@ -43,7 +43,7 @@ class ILA(Attack):
         python main.py --attack=ila --output_dir adv_data/ila/resnet18
     """
     
-    def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, random=False, epoch=100, decay=1., targeted=False, 
+    def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, random=False, epoch=10, decay=1., targeted=False, 
                 random_start=False, norm='linfty', loss='crossentropy', device=None, attack='ILA', coeff=1.0, **kwargs):
         super().__init__(attack, model_name, epsilon, targeted, random_start, norm, loss, device)
         self.alpha = alpha
