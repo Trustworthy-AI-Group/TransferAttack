@@ -5,3 +5,5 @@
 - Xiangyuan Yang checked the [DTA](./transferattack/gradient/dta.py) method.
 
 - Zhi Lin checked the [IE-FGSM](./transferattack/gradient/iefgsm.py) method.
+
+- [Hui Zeng](https://github.com/zengh5) added the [FFT](./transferattack/advanced_objective/fft.py) method.
