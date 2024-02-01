@@ -39,7 +39,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 ## Attacks and Models
 
-### Transfer-based Attacks
+### Untargeted Attacks
 
 <table  style="width:100%" border="1">
 <thead>
@@ -203,7 +203,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="14"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="10"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
 <td ><sub>Maximize the difference of feature maps between benign sample and adversarial example and smooth the perturbation </sub></td>
 </tr>
@@ -214,18 +214,8 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://ieeexplore.ieee.org/document/9156367" target="_blank" rel="noopener noreferrer">PoTrip (Li et al., 2020)</a></td>
-<td ><sub>Introduce the Poincare distance as the similarity metric to make the magnitude of gradient self-adaptive</sub></td>
-</tr>
-
-<tr>
 <td><a href="https://arxiv.org/abs/2008.08847" target="_blank" rel="noopener noreferrer">YAILA (Wu et al., 2020)</a></td>
 <td ><sub>Establishe a linear map between intermediate-level discrepancies and classification loss</sub></td>
-</tr>
-
-<tr>
-<td><a href="https://arxiv.org/abs/2012.11207" target="_blank" rel="noopener noreferrer">Logit (Zhao et al., 2021)</a></td>
-<td ><sub>Replace the cross-entropy loss with logit loss</sub></td>
 </tr>
 
 <tr>
@@ -259,18 +249,8 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org/abs/2303.03680" target="_blank" rel="noopener noreferrer">Logit-Margin (Weng et al., 2023)</a></td>
-<td ><sub>Downscale the logits using a temperature factor and an adaptive margin</sub></td>
-</tr>
-
-<tr>
 <td><a href="https://arxiv.org/abs/2304.13410" target="_blank" rel="noopener noreferrer">ILPD (Li et al., 2023)</a></td>
 <td ><sub>Decays the intermediate-level perturbation from the benign features by mixing the features of benign samples and adversarial examples</sub></td>
-</tr>
-
-<tr>
-<td><a href="https://arxiv.org/abs/2401.02727" target="_blank" rel="noopener noreferrer">FFT (Zeng et al., 2023)</a></td>
-<td ><sub>Fine-tuning a crafted adversarial example in the feature space</sub></td>
 </tr>
 
 <tr>
@@ -322,6 +302,42 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2303.15754" target="_blank" rel="noopener noreferrer">TGR (Zhang et al., 2023)</a></td>
 <td ><sub>Scale the gradient and mask the maximum or minimum gradient magnitude</sub></td>
+</tr>
+
+</table>
+
+### Targeted Attacks
+
+<table  style="width:100%" border="1">
+<thead>
+<tr class="header">
+<th><strong>Category</strong></th>
+<th><strong>Attack </strong></th>
+<th><strong>Main Idea</strong></th>
+</tr>
+</thead>
+
+<tr>
+<th rowspan="5"><sub><strong>Advanced objective</strong></sub></th>
+
+<tr>
+<td><a href="https://ieeexplore.ieee.org/document/9156367" target="_blank" rel="noopener noreferrer">PoTrip (Li et al., 2020)</a></td>
+<td><sub>Introduce the Poincare distance as the similarity metric to make the magnitude of gradient self-adaptive</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2012.11207" target="_blank" rel="noopener noreferrer">Logit (Zhao et al., 2021)</a></td>
+<td ><sub>Replace the cross-entropy loss with logit loss</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2303.03680" target="_blank" rel="noopener noreferrer">Logit-Margin (Weng et al., 2023)</a></td>
+<td ><sub>Downscale the logits using a temperature factor and an adaptive margin</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2401.02727" target="_blank" rel="noopener noreferrer">FFT (Zeng et al., 2023)</a></td>
+<td ><sub>Fine-tuning a crafted adversarial example in the feature space</sub></td>
 </tr>
 
 </table>
@@ -663,9 +679,6 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >31.3</td>
 </tr>
 
-
-
-
 <tr>
 <th rowspan="11"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
@@ -840,9 +853,9 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >79.3</td>
 <td >78.5</td>
 <td >36.6 </td>
-<td > 81.7</td>
-<td > 25.9</td>
-<td > 54.5</td>
+<td >81.7</td>
+<td >25.9</td>
+<td >54.5</td>
 </tr>
 
 <tr>
