@@ -34,14 +34,18 @@ from .input_transformation.bsr import BSR
 
 from .advanced_objective.tap import TAP
 from .advanced_objective.ila import ILA
+from .advanced_objective.potrip import POTRIP
 from .advanced_objective.yaila.yaila import YAILA
+from .advanced_objective.logit import LOGIT
 from .advanced_objective.fia import FIA
 from .advanced_objective.trap import TRAP
 from .advanced_objective.naa import NAA
 from .advanced_objective.rpa import RPA
 from .advanced_objective.taig import TAIG
 from .advanced_objective.fmaa import FMAA
+from .advanced_objective.logit_margin import Logit_Margin
 from .advanced_objective.ilpd import ILPD
+from .advanced_objective.fft import FFT
 
 from .model_related.ghost import GhostNetwork_MIFGSM
 from .model_related.sgm import SGM
@@ -97,14 +101,18 @@ attack_zoo = {
 
             'tap': TAP,
             'ila': ILA,
+            'potrip': POTRIP,
             'fia': FIA,
             'yaila': YAILA,
+            'logit': LOGIT,
             'trap': TRAP,
             'naa': NAA,
             'rpa': RPA,
             'taig': TAIG,
             'fmaa': FMAA,
-            'ilpd':ILPD,
+            'logit_margin': Logit_Margin,
+            'ilpd': ILPD,
+            'fft': FFT,
 
             # model_related
             'sgm': SGM,

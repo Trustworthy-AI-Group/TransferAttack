@@ -39,7 +39,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 ## Attacks and Models
 
-### Transfer-based Attacks
+### Untargeted Attacks
 
 <table  style="width:100%" border="1">
 <thead>
@@ -220,7 +220,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 <tr>
 <td><a href="https://arxiv.org/pdf/2107.14185.pdf" target="_blank" rel="noopener noreferrer">FIA (Wang et al., 2021)</a></td>
-<td ><sub>Minimize a weighted feature map in the intermediate layer </sub></td>
+<td ><sub>Minimize a weighted feature map in the intermediate layer</sub></td>
 </tr>
 
 <tr>
@@ -306,6 +306,42 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 </table>
 
+### Targeted Attacks
+
+<table  style="width:100%" border="1">
+<thead>
+<tr class="header">
+<th><strong>Category</strong></th>
+<th><strong>Attack </strong></th>
+<th><strong>Main Idea</strong></th>
+</tr>
+</thead>
+
+<tr>
+<th rowspan="5"><sub><strong>Advanced objective</strong></sub></th>
+
+<tr>
+<td><a href="https://ieeexplore.ieee.org/document/9156367" target="_blank" rel="noopener noreferrer">PoTrip (Li et al., 2020)</a></td>
+<td><sub>Introduce the Poincare distance as the similarity metric to make the magnitude of gradient self-adaptive</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2012.11207" target="_blank" rel="noopener noreferrer">Logit (Zhao et al., 2021)</a></td>
+<td ><sub>Replace the cross-entropy loss with logit loss</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2303.03680" target="_blank" rel="noopener noreferrer">Logit-Margin (Weng et al., 2023)</a></td>
+<td ><sub>Downscale the logits using a temperature factor and an adaptive margin</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2401.02727" target="_blank" rel="noopener noreferrer">FFT (Zeng et al., 2023)</a></td>
+<td ><sub>Fine-tuning a crafted adversarial example in the feature space</sub></td>
+</tr>
+
+</table>
+
 ### Models
 
 To thoroughly evaluate existing attacks, we have included various popular models, including both CNNs ([ResNet-18](https://arxiv.org/abs/1512.03385), [ResNet-101](https://arxiv.org/abs/1512.03385), [ResNeXt-50](https://arxiv.org/abs/1611.05431), [DenseNet-121](https://arxiv.org/abs/1608.06993)) and ViTs ([ViT](https://arxiv.org/abs/2010.11929), [PiT](https://arxiv.org/abs/2103.16302), [Visformer](https://arxiv.org/abs/2104.12533), [Swin](https://arxiv.org/abs/2103.14030)). Moreover, we also adopted four defense methods, namely [AT](https://arxiv.org/abs/1705.07204), [HGD](https://arxiv.org/abs/1712.02976), [RS](https://arxiv.org/abs/1902.02918), [NRP](https://arxiv.org/abs/2006.04924).
@@ -313,6 +349,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 ## Evaluation
 
+### Untargeted Attack
 **Note**: We adopt $\epsilon=16/255$ with the number of iterations $T=10$. The base attack for other types of attack is [MI-FGSM](https://arxiv.org/abs/1710.06081). The defaut surrogate model is ResNet-18. For [YAILA](#yaila), we adopt ResNet-50 as the surrogate model. For [PNA-PatchOUt](#pna), [SAPR](#sapr), [TGR](#tgr), we adopt ViT as the surrogate model.
 
 <table  style="width:100%" border="1">
@@ -642,9 +679,6 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >31.3</td>
 </tr>
 
-
-
-
 <tr>
 <th rowspan="11"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
@@ -819,9 +853,9 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >79.3</td>
 <td >78.5</td>
 <td >36.6 </td>
-<td > 81.7</td>
-<td > 25.9</td>
-<td > 54.5</td>
+<td >81.7</td>
+<td >25.9</td>
+<td >54.5</td>
 </tr>
 
 <tr>
@@ -1144,6 +1178,96 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >54.0</td>
 <td >28.7</td>
 <td >41.7</td>
+</tr>
+
+</table>
+
+### Targeted Attack
+
+**Note**: We adopt $\epsilon=16/255, \alpha=2/255$ with the number of iterations $T=300$. The defaut surrogate model is ResNet-18. For each image, we randomly set a target label.
+
+<table  style="width:100%" border="1">
+<thead>
+<tr class="header">
+<th rowspan="2"><strong>Category</strong></th>
+<th rowspan="2"><strong>Attacks</strong></th>
+<th colspan="4"><strong>CNNs</strong></th>
+<th colspan="4"><strong>ViTs</strong></th>
+<th colspan="4"><strong>Defenses</strong></th>
+</tr>
+<th> ResNet-18 </th>
+<th> ResNet-101 </th>
+<th> ResNeXt-50 </th>
+<th> DenseNet-101 </th>
+<th> ViT </th>
+<th> PiT </th>
+<th> Visformer </th>
+<th> Swin </th>
+<th> AT </th>
+<th> HGD </th>
+<th> RS </th>
+<th> NRP </th>
+</thead>
+
+<th rowspan="4"><sub><strong>Advanced objective</strong></sub></th>
+<td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
+<td >99.7</td>
+<td > 4.8</td>
+<td > 5.0</td>
+<td >14.2</td>
+<td > 0.5</td>
+<td > 0.8</td>
+<td > 2.5</td>
+<td > 0.9</td>
+<td > 0.0</td>
+<td > 3.2</td>
+<td > 0.0</td>
+<td > 0.4</td>
+</tr>
+
+<td><a href="./transferattack/advanced_objective/logit.py" target="_blank" rel="noopener noreferrer">Logit</a></td>
+<td >98.1</td>
+<td >12.8</td>
+<td >16.4</td>
+<td >37.2</td>
+<td > 2.8</td>
+<td > 3.5</td>
+<td > 8.7</td>
+<td > 5.5</td>
+<td > 0.0</td>
+<td >12.9</td>
+<td > 0.0</td>
+<td > 0.4</td>
+</tr>
+
+<td><a href="./transferattack/advanced_objective/logit_margin.py" target="_blank" rel="noopener noreferrer">Logit-Margin</a></td>
+<td >100.0</td>
+<td >13.9</td>
+<td >19.3</td>
+<td >42.4</td>
+<td > 2.4</td>
+<td > 3.0</td>
+<td > 8.8</td>
+<td > 5.5</td>
+<td > 0.0</td>
+<td >14.2</td>
+<td > 0.0</td>
+<td > 0.5</td>
+</tr>
+
+<td><a href="./transferattack/advanced_objective/fft.py" target="_blank" rel="noopener noreferrer">FFT</a></td>
+<td >99.3</td>
+<td > 5.2</td>
+<td > 6.3</td>
+<td >17.8</td>
+<td > 0.3</td>
+<td > 1.0</td>
+<td > 2.1</td>
+<td > 2.0</td>
+<td > 0.0</td>
+<td > 4.0</td>
+<td > 0.0</td>
+<td > 0.1</td>
 </tr>
 
 </table>
