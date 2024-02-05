@@ -1,10 +1,16 @@
 <h1 align="center">TransferAttack</h1>
 
 ## About
+<p align="center">
+  <a href="https://github.com/Trustworthy-AI-Group/TransferAttack/stargazers"> <img src="https://img.shields.io/github/stars/Trustworthy-AI-Group/TransferAttack.svg?style=popout-square" alt="GitHub stars"></a>
+  <a href="https://github.com/Trustworthy-AI-Group/TransferAttack/issues"> <img src="https://img.shields.io/github/issues/Trustworthy-AI-Group/TransferAttack.svg?style=popout-square" alt="GitHub issues"></a>
+  <a href="https://github.com/Trustworthy-AI-Group/TransferAttack/forks"> <img src="https://img.shields.io/github/forks/Trustworthy-AI-Group/TransferAttack.svg?style=popout-square" alt="GitHub forks"></a>
+</p>
 
-TransferAttack is a pytorch framework to boost the adversarial transferability for image classification.
+TransferAttack is a pytorch framework to boost the adversarial transferability for image classification. 
 
 [Devling into Adversarial Transferability on Image Classification: A Review, Benchmark and Evaluation](./README.md) will be released soon.
+
 
 ![Overview](./figs/overview.png)
 
@@ -30,7 +36,7 @@ pip install -r requirements.txt
 
 
 ## Usage
-We randomly sample 1,000 images from ImageNet validate set, in which each image is from one category and can be correctly classified by the adopted models. Download the [data](https://drive.google.com/file/d/1VJbWlmcKRVei8rXbBtkjL0Ja_S2tvctp/view?usp=sharing) into `/path/to/data`. Then you can run the attack as follows:
+We randomly sample 1,000 images from ImageNet validate set, in which each image is from one category and can be correctly classified by the adopted models (For some categories, we cannot choose one image that is correctly classified by all the models. In this case, we select the image that receives accurate classifications from the majority of models.). Download the [data](https://drive.google.com/file/d/1VJbWlmcKRVei8rXbBtkjL0Ja_S2tvctp/view?usp=sharing) into `/path/to/data`. Then you can excute the attack as follows:
 
 ```
 python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 --attack mifgsm --model=resnet18
@@ -1184,7 +1190,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 ### Targeted Attack
 
-**Note**: We adopt $\epsilon=16/255, \alpha=2/255$ with the number of iterations $T=300$. The defaut surrogate model is ResNet-18. For each image, we randomly set a target label.
+**Note**: We adopt $\epsilon=16/255, \alpha=2/255$ with the number of iterations $T=300$. The default surrogate model is ResNet-18. For each image, the target label is randomly sampled and fixed in the `labels.csv`.
 
 <table  style="width:100%" border="1">
 <thead>
