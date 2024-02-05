@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 
 ## Usage
-We randomly sample 1,000 images from ImageNet validate set, in which each image is from one category and can be correctly classified by the adopted models (For some categories, we cannot choose one image that is correctly classified by all the models. In this case, we select the image that receives accurate classifications from the majority of models.). Download the [data](https://drive.google.com/file/d/1VJbWlmcKRVei8rXbBtkjL0Ja_S2tvctp/view?usp=sharing) into `/path/to/data`. Then you can excute the attack as follows:
+We randomly sample 1,000 images from ImageNet validate set, in which each image is from one category and can be correctly classified by the adopted models (For some categories, we cannot choose one image that is correctly classified by all the models. In this case, we select the image that receives accurate classifications from the majority of models.). Download the data from [Google Drive](https://huggingface.co/datasets/zeyuanyin/TransferAttack/resolve/main/new_data.zip?download=true) or [Huggingface](https://huggingface.co/datasets/zeyuanyin/TransferAttack/resolve/main/new_data.zip?download=true) into `/path/to/data`. Then you can execute the attack as follows:
 
 ```
 python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 --attack mifgsm --model=resnet18
@@ -79,7 +79,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 <tr>
 <td><a href="https://arxiv.org/abs/2007.06765" target="_blank" rel="noopener noreferrer">PI-FGSM (Gao et al., 2020)</a></td>
-<td ><sub>Reusing the cut noise and apply a heuristic project strategy to generate patch-wise noise</sub></td>
+<td ><sub>Reuse the cut noise and apply a heuristic project strategy to generate patch-wise noise</sub></td>
 </tr>
 
 <tr>
@@ -149,7 +149,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 <tr>
 <td><a href="https://arxiv.org/abs/2307.02828" target="_blank" rel="noopener noreferrer">SMI-FGRM (Han et al., 2023)</a></td>
-<td ><sub> Substitute sign function with data rescaling and use the depth first sampling technique to stabilize the update direction.</sub></td>
+<td ><sub> Substitute the sign function with data rescaling and use the depth first sampling technique to stabilize the update direction.</sub></td>
 </tr>
 
 <tr>
@@ -190,7 +190,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 <tr>
 <td><a href="https://arxiv.org/abs/2208.06538" target="_blank" rel="noopener noreferrer">MaskBlock (Fan et al., 2022)</a></td>
-<td ><sub>Calculate the average gradients of multiply randomly block-level masked images.</sub></td>
+<td ><sub>Calculate the average gradients of multiple randomly block-level masked images.</sub></td>
 </tr>
 
 <tr>
