@@ -113,20 +113,6 @@ def K_matrix(X, Y):
     return K
 
 def P_matrix(X):
-    """Makes the minor diagonal submatrix P
-    of the (k + 3, k + 3) shaped L matrix.
-
-    Stacks a column of 1s before the coordinate columns in X.
-
-    Parameters
-    ----------
-    X : (N, k, 2) torch.tensor of k points in 2 dimensions.
-
-    Returns
-    -------
-    P : (N, k, 3) tensor, which is 1 in the first column, and
-        exactly X in the remaining columns.
-    """
     n, k = X.shape[:2]
     device = X.device
 
