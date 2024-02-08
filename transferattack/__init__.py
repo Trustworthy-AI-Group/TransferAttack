@@ -97,7 +97,7 @@ attack_zoo = {
             'sia': SIA,
             'stm': STM,
             'bsr': BSR,
-            'decowa':DeCowA
+            'decowa': DeCowA,
 
             # advanced_objective
 
