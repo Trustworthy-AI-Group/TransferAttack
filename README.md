@@ -882,7 +882,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >36.6 </td>
 <td >81.7</td>
 <td >25.9</td>
-<td >54.5</td>
+<td >56.1</td>
 </tr>
 
 <tr>
