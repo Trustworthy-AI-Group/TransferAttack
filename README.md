@@ -204,11 +204,6 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org/abs/2402.03951" target="_blank" rel="noopener noreferrer">DeCowA (Lin et al., 2024)</a></td>
-<td ><sub>Augments input examples via an elastic deformation, to obtain rich local details of the augmented inputs</sub></td>
-</tr>
-
-<tr>
 <td><a href="https://arxiv.org/abs/2308.10299" target="_blank" rel="noopener noreferrer">BSR (Wang et al., 2023)</a></td>
 <td ><sub>Randomly shuffles and rotates the image blocks</sub></td>
 </tr>
