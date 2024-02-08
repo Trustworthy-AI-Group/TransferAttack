@@ -30,7 +30,7 @@ from .input_transformation.maskblock import MaskBlock
 from .input_transformation.sia import SIA
 from .input_transformation.stm import STM
 from .input_transformation.bsr import BSR
-from .input_transformation.bsr import DeCowA
+from .input_transformation.decowa import DeCowA
 
 
 from .advanced_objective.tap import TAP
