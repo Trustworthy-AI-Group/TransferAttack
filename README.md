@@ -691,7 +691,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="11"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="12"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >100.0</td>
 <td >62.2</td>
@@ -863,6 +863,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >61.5</td>
 <td >79.3</td>
 <td >78.5</td>
+<td >36.6 </td>
+<td >81.7</td>
+<td >25.9</td>
+<td >54.5</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/input_transformation/decowa.py" target="_blank" rel="noopener noreferrer">DeCowA</a></td>
+<td >100.0</td>
+<td >85.9</td>
+<td >88.9</td>
+<td >98.8</td>
+<td >55.6</td>
+<td >64.2</td>
+<td >80.2</td>
+<td >80.0</td>
 <td >36.6 </td>
 <td >81.7</td>
 <td >25.9</td>
