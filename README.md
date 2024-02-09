@@ -153,7 +153,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="11"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="12"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -206,6 +206,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2308.10299" target="_blank" rel="noopener noreferrer">BSR (Wang et al., 2023)</a></td>
 <td ><sub>Randomly shuffles and rotates the image blocks</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2402.03951" target="_blank" rel="noopener noreferrer">DeCowA (Lin et al., 2024)</a></td>
+<td ><sub>Augments input examples via an elastic deformation, to obtain rich local details of the augmented inputs</sub></td>
 </tr>
 
 <tr>
@@ -686,7 +691,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="11"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="12"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >100.0</td>
 <td >62.2</td>
@@ -862,6 +867,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >81.7</td>
 <td >25.9</td>
 <td >54.5</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/input_transformation/decowa.py" target="_blank" rel="noopener noreferrer">DeCowA</a></td>
+<td >100.0</td>
+<td >85.9</td>
+<td >88.9</td>
+<td >98.8</td>
+<td >55.6</td>
+<td >64.2</td>
+<td >80.2</td>
+<td >80.0</td>
+<td >44.1</td>
+<td >87.4</td>
+<td >25.9</td>
+<td >56.1</td>
 </tr>
 
 <tr>

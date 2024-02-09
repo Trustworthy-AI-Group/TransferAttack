@@ -7,3 +7,5 @@
 - Zhi Lin checked the [IE-FGSM](./transferattack/gradient/iefgsm.py) method.
 
 - [Hui Zeng](https://github.com/zengh5) added the [FFT](./transferattack/advanced_objective/fft.py) method.
+
+- [Qinliang Lin](https://github.com/LinQinLiang) added the [DeCowA](./transferattack/input_transformation/decowa.py) method.
