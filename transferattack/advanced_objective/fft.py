@@ -4,6 +4,9 @@ from ..utils import *
 from ..attack import Attack
 import torch.nn.functional as F
 import scipy.stats as st
+
+from torch.nn.modules.module import Module
+
 mid_outputs = None
 
 class FFT(Attack):
@@ -40,9 +43,9 @@ class FFT(Attack):
         2). About the middle layer to be attacked: the principle is the middle-to-end module. For a model with 4 blocks, the 3rd block is a good candidate.
     """
 
-    def __init__(self, model_name, epsilon=16 / 255, alpha=2.0 / 255, random=False, epoch=300, decay=1., coeff=1.0,
+    def __init__(self, model_name, epsilon=16 / 255, alpha=2.0 / 255, random=False, epoch=300, decay=1., coeff=1.0, 
                  drop_rate=0.3, num_ens=30, beta_combine=0.2, epoch_ft=10, targeted=False, random_start=False, norm='linfty', 
-                 loss='crossentropy', device=None, attack='FFT', **kwargs):
+                 loss='crossentropy', device=None, attack='FFT', loss_base='logit_margin', **kwargs):
         super().__init__(attack, model_name, epsilon, targeted, random_start, norm, loss, device)
         self.alpha = alpha
         self.epoch = epoch
@@ -51,16 +54,17 @@ class FFT(Attack):
         self.coeff = coeff
         self.model_name = model_name
 
-        self.num_ens = num_ens                  # ensemble number for AG, following FIA
-        self.drop_rate = drop_rate              # 0.3, following FIA
-        self.beta_combine = beta_combine        # following SupHigh method
-        self.alpha_ft = alpha/2                 # should < self.alpha
-        self.epoch_ft = epoch_ft                # should << self.epoch
+        self.num_ens = num_ens  # ensemble number for AG, following FIA
+        self.drop_rate = drop_rate  # 0.3, following FIA
+        self.beta_combine = beta_combine  # following SupHigh method
+        self.alpha_ft = alpha / 2  # should < self.alpha
+        self.epoch_ft = epoch_ft  # should << self.epoch
+        self.loss_base = loss_base  # the loss function of the baseline attack, 202402
 
     # define DI
     def DI_keepresolution(self, X_in):
         img_size = X_in.shape[-1]
-        rnd = np.random.randint(img_size-22, img_size, size=1)[0]
+        rnd = np.random.randint(img_size - 22, img_size, size=1)[0]
         h_rem = img_size - rnd
         w_rem = img_size - rnd
         pad_top = np.random.randint(0, h_rem, size=1)[0]
@@ -75,7 +79,7 @@ class FFT(Attack):
             return X_out
         else:
             return X_in
-    
+
     # define TI
     def gkern(self, kernlen=15, nsig=3):
         x = np.linspace(-nsig, nsig, kernlen)
@@ -92,11 +96,11 @@ class FFT(Attack):
         gaussian_kernel = np.expand_dims(gaussian_kernel, 1)
         gaussian_kernel = torch.from_numpy(gaussian_kernel).cuda()
         return gaussian_kernel
-    
+
     # redefine the transform function
     def transform(self, data, **kwargs):
         return self.DI_keepresolution(data)
-    
+
     # redefine the get_grad function
     def get_grad(self, loss, delta, **kwargs):
         """
@@ -106,7 +110,7 @@ class FFT(Attack):
         grad = torch.autograd.grad(loss, delta, retain_graph=False, create_graph=False)[0]
         grad = F.conv2d(grad, gaussian_kernel, bias=None, stride=1, padding=(2, 2), groups=3)  # TI
         return grad
-    
+
     ###### FIA related function
     def __backward_hook(self, m, i, o):
         global mid_grad
@@ -119,6 +123,7 @@ class FFT(Attack):
         Mask = torch.bernoulli(torch.ones_like(x_drop) * (1 - self.drop_rate))
         x_drop = x_drop * Mask
         return x_drop
+
     ####### FIA related function end
 
     def forward(self, data, label, **kwargs):
@@ -129,7 +134,22 @@ class FFT(Attack):
             data: (N, C, H, W) tensor for input images
             labels: (N,) tensor for ground-truth labels if untargetd, otherwise targeted labels
         """
-        init_delta = super().forward(data, label, **kwargs)        # baseline attack
+        # baseline attack. Literally, the power of fine-tuned AE is more depended on the baseline attack, rather
+        # than the fine-tuning scheme.
+        # How to set the loss function of base attack?
+        # attacker = transferattack.attack_zoo[args.attack.lower()](..., loss_base='logit_margin')
+
+        # 202402 modified
+        if self.loss_base == 'CE':
+            init_delta = super().forward(data, label, **kwargs)
+        elif self.loss_base == 'logit':   # default
+            self.get_loss = LogitLoss()
+            init_delta = super().forward(data, label, **kwargs)
+        elif self.loss_base == 'logit_margin':
+            self.get_loss = Logit_marginLoss()
+            init_delta = super().forward(data, label, **kwargs)
+        else:
+            raise ValueError("Only support three types of loss functions now: CE, logit, logit_margin.")
 
         if self.targeted:
             assert len(label) == 2
@@ -142,7 +162,7 @@ class FFT(Attack):
         # 1 Initialize adversarial perturbation
         delta = self.init_delta(data)
 
-        ### 2.1 Aggregate Gradient of X_ori, HZ
+        ### 2.1 Aggregate Gradient of X_ori
         if self.model_name in ['resnet18', 'resnet50']:
             """res18, 50, the output of the 3rd Block (total 4)"""
             h2 = self.model[1]._modules.get('layer3')[-1].register_full_backward_hook(self.__backward_hook)
@@ -160,12 +180,14 @@ class FFT(Attack):
 
         agg_grad = 0
         for _ in range(self.num_ens):
-            x_drop = self.drop(data)
-            output_random = self.model(x_drop)
-            output_random = torch.softmax(output_random, 1)
-            loss = 0
-            for batch_i in range(data.shape[0]):
-                loss += output_random[batch_i][label_ori[batch_i]]
+            # 202402 modified
+            img_temp_i = self.model[0](data).clone()
+            x_drop = self.drop(img_temp_i)
+            output_random = self.model[1](x_drop)
+            # get the logit of the corresponding label
+            logit_label = output_random.gather(1, label_ori.unsqueeze(1)).squeeze(1)
+            loss = logit_label.sum()
+
             self.model.zero_grad()
             loss.backward()
             agg_grad += mid_grad[0].detach()
@@ -174,7 +196,7 @@ class FFT(Attack):
             agg_grad[batch_i] /= agg_grad[batch_i].norm(2)
         h2.remove()
 
-        ### 2.2 Aggregate Gradient of X_adv, HZ
+        ### 2.2 Aggregate Gradient of X_adv
         if self.model_name in ['resnet18', 'resnet50']:
             """res18, 50, the output of the 3rd Block (total 4)"""
             h2 = self.model[1]._modules.get('layer3')[-1].register_full_backward_hook(self.__backward_hook)
@@ -192,12 +214,14 @@ class FFT(Attack):
 
         agg_grad_adv = 0
         for _ in range(self.num_ens):
-            x_drop = self.drop(data + init_delta)
-            output_random = self.model(x_drop)
-            output_random = torch.softmax(output_random, 1)
-            loss = 0
-            for batch_i in range(data.shape[0]):
-                loss += output_random[batch_i][label_tar[batch_i]]
+            # 202402 modified
+            img_temp_i = self.model[0](data + init_delta).clone()
+            x_drop = self.drop(img_temp_i)
+            output_random = self.model[1](x_drop)
+            # get the logit of the corresponding label
+            logit_label = output_random.gather(1, label_tar.unsqueeze(1)).squeeze(1)
+            loss = logit_label.sum()
+
             self.model.zero_grad()
             loss.backward()
             agg_grad_adv += mid_grad[0].detach()
@@ -218,11 +242,11 @@ class FFT(Attack):
 
         ## 3 Fine-tune begin
         if self.model_name in ['resnet18', 'resnet50']:
-            hs.append(self.model[1]._modules.get('layer3')[-1].register_forward_hook(get_mid_output))   # resnet
+            hs.append(self.model[1]._modules.get('layer3')[-1].register_forward_hook(get_mid_output))  # resnet
         elif self.model_name in ['densenet121']:
             hs.append(self.model[1]._modules.get('features')[7].register_forward_hook(get_mid_output))  # dense121
         elif self.model_name in ['inception_v3']:
-            hs.append(self.model[1]._modules.get('Mixed_6b').register_forward_hook(get_mid_output))     # incV3
+            hs.append(self.model[1]._modules.get('Mixed_6b').register_forward_hook(get_mid_output))  # incV3
         elif self.model_name in ['vgg16_bn']:
             hs.append(self.model[1]._modules.get('features')[33].register_forward_hook(get_mid_output))  # vgg16_bn
         else:
@@ -232,10 +256,10 @@ class FFT(Attack):
         momentum = 0
         for _ in range(self.epoch_ft):
             # Obtain the output
-            logits = self.get_logits(self.transform(data_adv + delta))    #DI
+            logits = self.get_logits(self.transform(data_adv + delta))  # DI
 
             # Calculate the loss
-            loss = torch.sum(agg_grad_combine * mid_outputs)         # FIA loss
+            loss = torch.sum(agg_grad_combine * mid_outputs)  # FIA loss
 
             # Calculate the gradients
             grad = self.get_grad(loss, delta)
@@ -245,12 +269,45 @@ class FFT(Attack):
 
             # Update adversarial perturbation
             # Note, the overall perturbation (not only delta) should be bounded, ZH
-            delta = torch.clamp(init_delta + delta + self.alpha_ft * momentum.sign(), -self.epsilon, self.epsilon) - init_delta
+            delta = torch.clamp(init_delta + delta + self.alpha_ft * momentum.sign(), -self.epsilon,
+                                self.epsilon) - init_delta
             delta = clamp(delta, img_min - data_adv, img_max - data_adv)
 
             mid_outputs = []
-            
+
         for h in hs:
             h.remove()
         ## 3 Fine-tune end
         return (init_delta + delta).detach()
+        # when you need compare the AE w/ and w/o fine-tuning
+        # return (init_delta + delta).detach(), init_delta.detach()
+
+
+# Advanced, targeted attack-tailored loss functions
+class LogitLoss(Module):
+    """
+    targeted logit loss
+    """
+    def __init__(self):
+        super(LogitLoss, self).__init__()
+
+    def forward(self, logits, label):
+        logit_tar = logits.gather(1, label.unsqueeze(1)).squeeze(1)
+        loss = logit_tar.sum()
+
+        return loss
+
+
+class Logit_marginLoss(Module):
+    """
+    targeted margin-calibrated loss
+    """
+    def __init__(self):
+        super(Logit_marginLoss, self).__init__()
+
+    def forward(self, logits, label):
+        value, _ = torch.sort(logits, dim=1, descending=True)
+        logits = logits / torch.unsqueeze(value[:, 0] - value[:, 1], 1).detach()  # margin-calibrated loss
+        loss = torch.nn.CrossEntropyLoss(reduction='sum')(logits, label)
+
+        return -loss

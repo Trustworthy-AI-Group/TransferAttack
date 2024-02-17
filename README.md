@@ -1283,18 +1283,18 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <td><a href="./transferattack/advanced_objective/fft.py" target="_blank" rel="noopener noreferrer">FFT</a></td>
-<td >99.3</td>
-<td > 5.2</td>
-<td > 6.3</td>
-<td >17.8</td>
-<td > 0.3</td>
-<td > 1.0</td>
-<td > 2.1</td>
-<td > 2.0</td>
+<td >100.0</td>
+<td >16.7</td>
+<td >20.3</td>
+<td >43.4</td>
+<td > 1.7</td>
+<td > 3.4</td>
+<td > 8.8</td>
+<td > 7.3</td>
 <td > 0.0</td>
-<td > 4.0</td>
+<td >14.7</td>
 <td > 0.0</td>
-<td > 0.1</td>
+<td > 0.6</td>
 </tr>
 
 </table>
