@@ -174,13 +174,13 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org/abs/2102.00436" target="_blank" rel="noopener noreferrer">Admix (Wang et al., 2021)</a></td>
-<td ><sub>Mix up the images from other categories</sub></td>
+<td><a href="https://arxiv.org/abs/2112.06011" target="_blank" rel="noopener noreferrer">DEM (Zou et al., 2020)</a></td>
+<td ><sub>Calculate the average gradient of several DIM's transformed images</sub></td>
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org/abs/2112.06011" target="_blank" rel="noopener noreferrer">DEM (Zou et al., 2021)</a></td>
-<td ><sub>Calculate the average gradient of several DIM's transformed images</sub></td>
+<td><a href="https://arxiv.org/abs/2102.00436" target="_blank" rel="noopener noreferrer">Admix (Wang et al., 2021)</a></td>
+<td ><sub>Mix up the images from other categories</sub></td>
 </tr>
 
 <tr>
@@ -225,7 +225,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org/abs/2008.08847" target="_blank" rel="noopener noreferrer">YAILA (Wu et al., 2020)</a></td>
+<td><a href="https://arxiv.org/abs/2008.08847" target="_blank" rel="noopener noreferrer">YAILA (Li et al., 2020)</a></td>
 <td ><sub>Establishe a linear map between intermediate-level discrepancies and classification loss</sub></td>
 </tr>
 
@@ -758,22 +758,6 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<td><a href="./transferattack/input_transformation/admix.py" target="_blank" rel="noopener noreferrer">Admix</a></td>
-<td >100.0</td>
-<td >70.1</td>
-<td >74.4</td>
-<td >96.0</td>
-<td >28.6</td>
-<td >40.5</td>
-<td >58.4</td>
-<td >62.1</td>
-<td >35.6</td>
-<td >62.0</td>
-<td >24.8</td>
-<td >43.6</td>
-</tr>
-
-<tr>
 <td><a href="./transferattack/input_transformation/dem.py" target="_blank" rel="noopener noreferrer">DEM</a></td>
 <td >100.0</td>
 <td >74.5</td>
@@ -787,6 +771,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >78.2</td>
 <td >29.0</td>
 <td >45.5</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/input_transformation/admix.py" target="_blank" rel="noopener noreferrer">Admix</a></td>
+<td >100.0</td>
+<td >70.1</td>
+<td >74.4</td>
+<td >96.0</td>
+<td >28.6</td>
+<td >40.5</td>
+<td >58.4</td>
+<td >62.1</td>
+<td >35.6</td>
+<td >62.0</td>
+<td >24.8</td>
+<td >43.6</td>
 </tr>
 
 <tr>
