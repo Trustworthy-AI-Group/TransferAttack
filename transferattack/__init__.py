@@ -58,7 +58,7 @@ from .model_related.dhf import DHF_MIFGSM
 from .model_related.pna_patchout import PNA_PatchOut
 from .model_related.sapr import SAPR
 from .model_related.tgr import TGR
-
+from .model_related.setr import SETR
 
 
 
@@ -100,7 +100,6 @@ attack_zoo = {
             'decowa': DeCowA,
 
             # advanced_objective
-
             'tap': TAP,
             'ila': ILA,
             'potrip': POTRIP,
@@ -127,6 +126,7 @@ attack_zoo = {
             'sapr': SAPR,
             'tgr': TGR,
             'ghost': GhostNetwork_MIFGSM,
+            'setr': SETR,
         }
 
 __version__ = '1.0.0'
