@@ -32,7 +32,7 @@ if __name__ == "__main__":
     base_classifier.load_state_dict(checkpoint['state_dict'])
 
     # create the smoothed classifier g
-    f2l = load_labels(args.label_file)
+    f2l = load_labels(args.label_file, args.targeted)
     smoothed_classifier = Smooth(base_classifier, 1000, args.sigma)
 
     # prepare output file

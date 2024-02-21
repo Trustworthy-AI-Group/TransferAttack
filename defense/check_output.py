@@ -8,11 +8,14 @@ parser.add_argument('--label_file', metavar='FILE', default='',
 parser.add_argument('--output_file', metavar='FILE', default='',help='Output file with defensed results.')
 parser.add_argument('--targeted', action='store_true', help='targeted attack evaluation')
 
-def load_labels(file_name):
+def load_labels(file_name, targeted=False):
     dev = pd.read_csv(file_name, header=None)
     # dev = pd.read_csv(file_name,names=['filename', 'label'])
-    dev = dev.iloc[:,[0,-1]]
-    dev.columns = ['filename', 'label']
+    if targeted:
+        dev = dev.iloc[:,[0,2]]
+    else:
+        dev = dev.iloc[:,[0,1]]
+    dev.columns = ['filename', 'label'] # label or target_label
 
     if dev.iloc[0]['filename'] == 'filename':
         dev = dev.iloc[1:]
@@ -29,7 +32,7 @@ def main():
     START = 1
     print("Label start gap is: ", START)
 
-    f2l = load_labels(args.label_file,)
+    f2l = load_labels(args.label_file, args.targeted)
     check = load_labels(args.output_file)
     assert len(f2l) == len(check) == 1000, f"len(f2l) = {len(f2l)}, len(check) = {len(check)}"
 

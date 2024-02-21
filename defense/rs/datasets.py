@@ -118,9 +118,12 @@ def get_labels(names, f2l):
         labels.append(f2l[name]-1)
     return torch.from_numpy(np.array(labels, dtype=np.int64))
 
-def load_labels(file_name):
+def load_labels(file_name, targeted=False):
     dev = pd.read_csv(file_name)
-    dev = dev.iloc[:,[0,-1]]
+    if targeted:
+        dev = dev.iloc[:,[0,2]]
+    else:
+        dev = dev.iloc[:,[0,1]]
     dev.columns = ['filename', 'label']
     f2l = {dev.iloc[i]['filename']: dev.iloc[i]['label'] for i in range(len(dev))}
     return f2l
