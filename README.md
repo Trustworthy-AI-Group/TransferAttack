@@ -1,10 +1,16 @@
 <h1 align="center">TransferAttack</h1>
 
 ## About
+<p align="center">
+  <a href="https://github.com/Trustworthy-AI-Group/TransferAttack/stargazers"> <img src="https://img.shields.io/github/stars/Trustworthy-AI-Group/TransferAttack.svg?style=popout-square" alt="GitHub stars"></a>
+  <a href="https://github.com/Trustworthy-AI-Group/TransferAttack/issues"> <img src="https://img.shields.io/github/issues/Trustworthy-AI-Group/TransferAttack.svg?style=popout-square" alt="GitHub issues"></a>
+  <a href="https://github.com/Trustworthy-AI-Group/TransferAttack/forks"> <img src="https://img.shields.io/github/forks/Trustworthy-AI-Group/TransferAttack.svg?style=popout-square" alt="GitHub forks"></a>
+</p>
 
-TransferAttack is a pytorch framework to boost the adversarial transferability for image classification.
+TransferAttack is a pytorch framework to boost the adversarial transferability for image classification. 
 
 [Devling into Adversarial Transferability on Image Classification: A Review, Benchmark and Evaluation](./README.md) will be released soon.
+
 
 ![Overview](./figs/overview.png)
 
@@ -30,7 +36,7 @@ pip install -r requirements.txt
 
 
 ## Usage
-We randomly sample 1,000 images from ImageNet validate set, in which each image is from one category and can be correctly classified by the adopted models. Download the [data](https://drive.google.com/file/d/1VJbWlmcKRVei8rXbBtkjL0Ja_S2tvctp/view?usp=sharing) into `/path/to/data`. Then you can run the attack as follows:
+We randomly sample 1,000 images from ImageNet validate set, in which each image is from one category and can be correctly classified by the adopted models (For some categories, we cannot choose one image that is correctly classified by all the models. In this case, we select the image that receives accurate classifications from the majority of models.). Download the data from [Google Drive](https://huggingface.co/datasets/zeyuanyin/TransferAttack/resolve/main/new_data.zip?download=true) or [Huggingface](https://huggingface.co/datasets/zeyuanyin/TransferAttack/resolve/main/new_data.zip?download=true) into `/path/to/data`. Then you can execute the attack as follows:
 
 ```
 python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 --attack mifgsm --model=resnet18
@@ -73,7 +79,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 <tr>
 <td><a href="https://arxiv.org/abs/2007.06765" target="_blank" rel="noopener noreferrer">PI-FGSM (Gao et al., 2020)</a></td>
-<td ><sub>Reusing the cut noise and apply a heuristic project strategy to generate patch-wise noise</sub></td>
+<td ><sub>Reuse the cut noise and apply a heuristic project strategy to generate patch-wise noise</sub></td>
 </tr>
 
 <tr>
@@ -143,11 +149,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 <tr>
 <td><a href="https://arxiv.org/abs/2307.02828" target="_blank" rel="noopener noreferrer">SMI-FGRM (Han et al., 2023)</a></td>
-<td ><sub> Substitute sign function with data rescaling and use the depth first sampling technique to stabilize the update direction.</sub></td>
+<td ><sub> Substitute the sign function with data rescaling and use the depth first sampling technique to stabilize the update direction.</sub></td>
 </tr>
 
 <tr>
-<th rowspan="11"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="12"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -168,13 +174,13 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org/abs/2102.00436" target="_blank" rel="noopener noreferrer">Admix (Wang et al., 2021)</a></td>
-<td ><sub>Mix up the images from other categories</sub></td>
+<td><a href="https://arxiv.org/abs/2112.06011" target="_blank" rel="noopener noreferrer">DEM (Zou et al., 2020)</a></td>
+<td ><sub>Calculate the average gradient of several DIM's transformed images</sub></td>
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org/abs/2112.06011" target="_blank" rel="noopener noreferrer">DEM (Zou et al., 2021)</a></td>
-<td ><sub>Calculate the average gradient of several DIM's transformed images</sub></td>
+<td><a href="https://arxiv.org/abs/2102.00436" target="_blank" rel="noopener noreferrer">Admix (Wang et al., 2021)</a></td>
+<td ><sub>Mix up the images from other categories</sub></td>
 </tr>
 
 <tr>
@@ -184,7 +190,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 <tr>
 <td><a href="https://arxiv.org/abs/2208.06538" target="_blank" rel="noopener noreferrer">MaskBlock (Fan et al., 2022)</a></td>
-<td ><sub>Calculate the average gradients of multiply randomly block-level masked images.</sub></td>
+<td ><sub>Calculate the average gradients of multiple randomly block-level masked images.</sub></td>
 </tr>
 
 <tr>
@@ -203,6 +209,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/abs/2402.03951" target="_blank" rel="noopener noreferrer">DeCowA (Lin et al., 2024)</a></td>
+<td ><sub>Augments input examples via an elastic deformation, to obtain rich local details of the augmented inputs</sub></td>
+</tr>
+
+<tr>
 <th rowspan="10"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
 <td ><sub>Maximize the difference of feature maps between benign sample and adversarial example and smooth the perturbation </sub></td>
@@ -214,7 +225,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org/abs/2008.08847" target="_blank" rel="noopener noreferrer">YAILA (Wu et al., 2020)</a></td>
+<td><a href="https://arxiv.org/abs/2008.08847" target="_blank" rel="noopener noreferrer">YAILA (Li et al., 2020)</a></td>
 <td ><sub>Establishe a linear map between intermediate-level discrepancies and classification loss</sub></td>
 </tr>
 
@@ -680,7 +691,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="11"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="12"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >100.0</td>
 <td >62.2</td>
@@ -747,22 +758,6 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<td><a href="./transferattack/input_transformation/admix.py" target="_blank" rel="noopener noreferrer">Admix</a></td>
-<td >100.0</td>
-<td >70.1</td>
-<td >74.4</td>
-<td >96.0</td>
-<td >28.6</td>
-<td >40.5</td>
-<td >58.4</td>
-<td >62.1</td>
-<td >35.6</td>
-<td >62.0</td>
-<td >24.8</td>
-<td >43.6</td>
-</tr>
-
-<tr>
 <td><a href="./transferattack/input_transformation/dem.py" target="_blank" rel="noopener noreferrer">DEM</a></td>
 <td >100.0</td>
 <td >74.5</td>
@@ -776,6 +771,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >78.2</td>
 <td >29.0</td>
 <td >45.5</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/input_transformation/admix.py" target="_blank" rel="noopener noreferrer">Admix</a></td>
+<td >100.0</td>
+<td >70.1</td>
+<td >74.4</td>
+<td >96.0</td>
+<td >28.6</td>
+<td >40.5</td>
+<td >58.4</td>
+<td >62.1</td>
+<td >35.6</td>
+<td >62.0</td>
+<td >24.8</td>
+<td >43.6</td>
 </tr>
 
 <tr>
@@ -856,6 +867,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >81.7</td>
 <td >25.9</td>
 <td >54.5</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/input_transformation/decowa.py" target="_blank" rel="noopener noreferrer">DeCowA</a></td>
+<td >100.0</td>
+<td >85.9</td>
+<td >88.9</td>
+<td >98.8</td>
+<td >55.6</td>
+<td >64.2</td>
+<td >80.2</td>
+<td >80.0</td>
+<td >44.1</td>
+<td >87.4</td>
+<td >25.9</td>
+<td >56.1</td>
 </tr>
 
 <tr>
@@ -1184,7 +1211,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 ### Targeted Attack
 
-**Note**: We adopt $\epsilon=16/255, \alpha=2/255$ with the number of iterations $T=300$. The defaut surrogate model is ResNet-18. For each image, we randomly set a target label.
+**Note**: We adopt $\epsilon=16/255, \alpha=2/255$ with the number of iterations $T=300$. The default surrogate model is ResNet-18. For each image, the target label is randomly sampled and fixed in the `labels.csv`.
 
 <table  style="width:100%" border="1">
 <thead>
@@ -1256,18 +1283,18 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <td><a href="./transferattack/advanced_objective/fft.py" target="_blank" rel="noopener noreferrer">FFT</a></td>
-<td >99.3</td>
-<td > 5.2</td>
-<td > 6.3</td>
-<td >17.8</td>
-<td > 0.3</td>
-<td > 1.0</td>
-<td > 2.1</td>
-<td > 2.0</td>
+<td >100.0</td>
+<td >16.7</td>
+<td >20.3</td>
+<td >43.4</td>
+<td > 1.7</td>
+<td > 3.4</td>
+<td > 8.8</td>
+<td > 7.3</td>
 <td > 0.0</td>
-<td > 4.0</td>
+<td >14.7</td>
 <td > 0.0</td>
-<td > 0.1</td>
+<td > 0.6</td>
 </tr>
 
 </table>
