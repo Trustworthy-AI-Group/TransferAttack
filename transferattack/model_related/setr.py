@@ -2,7 +2,6 @@ from timm.models import create_model
 
 from ..gradient.mifgsm import MIFGSM
 from ..utils import *
-# from .setr_networks import *  # NOTE: comment this import if you do not use SETR attack
 
 
 class SETR(MIFGSM):
@@ -44,6 +43,8 @@ class SETR(MIFGSM):
         else: # SE only, load pretrained model from timm
             model_name_detail = f"deit_{model_name}_patch16_224"  # 'deit_tiny_patch16_224'
 
+        # import the module only when setr attack is called
+        from .setr_networks import tiny_patch16_224_hierarchical, small_patch16_224_hierarchical, base_patch16_224_hierarchical
 
         src_model, src_mean, src_std = get_model(model_name_detail)
         if model_path is not None:
