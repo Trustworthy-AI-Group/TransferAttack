@@ -329,7 +329,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="5"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
 
 <tr>
 <td><a href="https://ieeexplore.ieee.org/document/9156367" target="_blank" rel="noopener noreferrer">PoTrip (Li et al., 2020)</a></td>
@@ -339,6 +339,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2012.11207" target="_blank" rel="noopener noreferrer">Logit (Zhao et al., 2021)</a></td>
 <td ><sub>Replace the cross-entropy loss with logit loss</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2305.14846" target="_blank" rel="noopener noreferrer">CFM (Byun et al., 2023)</a></td>
+<td ><sub>Mix feature maps of adversarial examples with clean feature maps of benign images stocastically </sub></td>
 </tr>
 
 <tr>
@@ -1236,7 +1241,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <th> NRP </th>
 </thead>
 
-<th rowspan="4"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="5"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
 <td >99.7</td>
 <td > 4.8</td>
@@ -1265,6 +1270,21 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >12.9</td>
 <td > 0.0</td>
 <td > 0.4</td>
+</tr>
+
+<td><a href="./transferattack/advanced_objective/cfm.py" target="_blank" rel="noopener noreferrer">CFM</a></td>
+<td >98.3</td>
+<td >39.6</td>
+<td >44.8</td>
+<td >66.1</td>
+<td >9.6</td>
+<td >11.4</td>
+<td >26.6</td>
+<td >18.9</td>
+<td >0.2</td>
+<td >37.6</td>
+<td >1.6</td>
+<td >0.0</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/logit_margin.py" target="_blank" rel="noopener noreferrer">Logit-Margin</a></td>
