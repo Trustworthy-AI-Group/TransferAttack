@@ -265,7 +265,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="10"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="11"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1812.03413" target="_blank" rel="noopener noreferrer">Ghost (Li et al., 2020)</a></td>
 <td ><sub>Densely apply dropout and random scaling on the skip connection to generate several ghost networks to average the gradient</sub></td>
 </tr>
@@ -313,6 +313,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2303.15754" target="_blank" rel="noopener noreferrer">TGR (Zhang et al., 2023)</a></td>
 <td ><sub>Scale the gradient and mask the maximum or minimum gradient magnitude</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2106.04169" target="_blank" rel="noopener noreferrer">SETR (Naseer et al., 2022)</a></td>
+<td ><sub>Ensemble and refine classifiers after each transformer block</sub></td>
 </tr>
 
 </table>
@@ -1047,7 +1052,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="10"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="11"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/ghost.py" target="_blank" rel="noopener noreferrer">Ghost</a></td>
 <td >67.2</td>
 <td >95.4</td>
@@ -1205,6 +1210,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >54.0</td>
 <td >28.7</td>
 <td >41.7</td>
+</tr>
+
+<tr id="setr">
+<td><a href="./transferattack/model_related/setr.py" target="_blank" rel="noopener noreferrer">SETR</a></td>
+<td >72.6</td>
+<td >36.6</td>
+<td >43.4</td>
+<td >64.5</td>
+<td >54.3</td>
+<td >33.6</td>
+<td >43.5</td>
+<td >68.8</td>
+<td >36.5</td>
+<td >31.6</td>
+<td >25.5</td>
+<td >50.7</td>
 </tr>
 
 </table>
