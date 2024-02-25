@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 
 ## Usage
-We randomly sample 1,000 images from ImageNet validate set, in which each image is from one category and can be correctly classified by the adopted models (For some categories, we cannot choose one image that is correctly classified by all the models. In this case, we select the image that receives accurate classifications from the majority of models.). Download the data from [Google Drive](https://drive.google.com/file/d/1d-_PKYi3MBDPtJV4rfMCCtmsE0oWX7ZB/view?usp=sharing) or [Huggingface](https://huggingface.co/datasets/zeyuanyin/TransferAttack/resolve/main/new_data.zip?download=true) into `/path/to/data`. Then you can execute the attack as follows:
+We randomly sample 1,000 images from ImageNet validate set, in which each image is from one category and can be correctly classified by the adopted models (For some categories, we cannot choose one image that is correctly classified by all the models. In this case, we select the image that receives accurate classifications from the majority of models.). Download the data from [Google Drive](https://drive.google.com/file/d/1d-_PKYi3MBDPtJV4rfMCCtmsE0oWX7ZB/view?usp=sharing) or [Huggingface](https://huggingface.co/datasets/Trustworthy-AI-Group/TransferAttack) into `/path/to/data`. Then you can execute the attack as follows:
 
 ```
 python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 --attack mifgsm --model=resnet18
