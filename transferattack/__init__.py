@@ -44,6 +44,7 @@ from .advanced_objective.naa import NAA
 from .advanced_objective.rpa import RPA
 from .advanced_objective.taig import TAIG
 from .advanced_objective.fmaa import FMAA
+from .advanced_objective.cfm import CFM
 from .advanced_objective.logit_margin import Logit_Margin
 from .advanced_objective.ilpd import ILPD
 from .advanced_objective.fft import FFT
@@ -111,6 +112,7 @@ attack_zoo = {
             'rpa': RPA,
             'taig': TAIG,
             'fmaa': FMAA,
+            'cfm': CFM,
             'logit_margin': Logit_Margin,
             'ilpd': ILPD,
             'fft': FFT,

@@ -120,7 +120,7 @@ class AdvDataset(torch.utils.data.Dataset):
         dev = pd.read_csv(file_name)
         if self.targeted:
             f2l = {dev.iloc[i]['filename']: [dev.iloc[i]['label'],
-                                             dev.iloc[i]['target_label']] for i in range(len(dev))}
+                                             dev.iloc[i]['targeted_label']] for i in range(len(dev))}
         else:
             f2l = {dev.iloc[i]['filename']: dev.iloc[i]['label']
                    for i in range(len(dev))}
