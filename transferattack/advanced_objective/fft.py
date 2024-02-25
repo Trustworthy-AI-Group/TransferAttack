@@ -64,12 +64,12 @@ class FFT(Attack):
     # define DI
     def DI_keepresolution(self, X_in):
         img_size = X_in.shape[-1]
-        rnd = np.random.randint(img_size - 22, img_size, size=1)[0]
+        rnd = np.random.randint(img_size - 22, img_size)
         h_rem = img_size - rnd
         w_rem = img_size - rnd
-        pad_top = np.random.randint(0, h_rem, size=1)[0]
+        pad_top = np.random.randint(0, h_rem)
         pad_bottom = h_rem - pad_top
-        pad_left = np.random.randint(0, w_rem, size=1)[0]
+        pad_left = np.random.randint(0, w_rem)
         pad_right = w_rem - pad_left
 
         c = np.random.rand(1)
