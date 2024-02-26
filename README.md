@@ -334,6 +334,14 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
+<th rowspan="2"><sub><strong>Input transformation-based</strong></sub></th>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2203.09123" target="_blank" rel="noopener noreferrer">ODI (Byun et al., 2022)</a></td>
+<td ><sub>Diverse inputs based on 3D objects</sub></td>
+</tr>
+
+<tr>
 <th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
 
 <tr>
@@ -1262,6 +1270,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <th> NRP </th>
 </thead>
 
+
+<th rowspan="1"><sub><strong>Input transformation-based</strong></sub></th>
+<td><a href="./transferattack/input_transformation/odi/odi.py" target="_blank" rel="noopener noreferrer">ODI</a></td>
+<td >98.9</td>
+<td >38.6</td>
+<td >45.5</td>
+<td >67.0</td>
+<td > 9.4</td>
+<td >13.9</td>
+<td >29.5</td>
+<td >19.9</td>
+<td > 0.1</td>
+<td >41.4</td>
+<td > 0.0</td>
+<td > 1.0</td>
+</tr>
+
 <th rowspan="5"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
 <td >99.7</td>
@@ -1304,8 +1329,8 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >18.9</td>
 <td >0.2</td>
 <td >37.6</td>
-<td >1.6</td>
 <td >0.0</td>
+<td >1.6</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/logit_margin.py" target="_blank" rel="noopener noreferrer">Logit-Margin</a></td>
