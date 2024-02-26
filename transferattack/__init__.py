@@ -25,6 +25,7 @@ from .input_transformation.sim import SIM
 from .input_transformation.atta import ATTA
 from .input_transformation.admix import Admix
 from .input_transformation.dem import DEM
+from .input_transformation.odi.odi import ODI
 from .input_transformation.ssm import SSM
 from .input_transformation.maskblock import MaskBlock
 from .input_transformation.sia import SIA
@@ -93,6 +94,7 @@ attack_zoo = {
             'atta': ATTA,
             'admix': Admix,
             'dem': DEM,
+            'odi': ODI,
             'ssm': SSM,
             'maskblock': MaskBlock,
             'sia': SIA,
