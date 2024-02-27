@@ -265,7 +265,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="11"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="12"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1812.03413" target="_blank" rel="noopener noreferrer">Ghost (Li et al., 2020)</a></td>
 <td ><sub>Densely apply dropout and random scaling on the skip connection to generate several ghost networks to average the gradient</sub></td>
 </tr>
@@ -318,6 +318,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2106.04169" target="_blank" rel="noopener noreferrer">SETR (Naseer et al., 2022)</a></td>
 <td ><sub>Ensemble and refine classifiers after each transformer block</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/lwmming" target="_blank" rel="noopener noreferrer">AGS (Wang et al., 2024)</a></td>
+<td ><sub>Train surrogate models with adversary-centric contrastive learning and adversarial invariant learning</sub></td>
 </tr>
 
 </table>
@@ -1065,7 +1070,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="11"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="12"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/ghost.py" target="_blank" rel="noopener noreferrer">Ghost</a></td>
 <td >67.2</td>
 <td >95.4</td>
@@ -1239,6 +1244,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >31.6</td>
 <td >25.5</td>
 <td >50.7</td>
+</tr>
+
+<tr id="ags">
+<td><a href="./transferattack/model_related/ags.py" target="_blank" rel="noopener noreferrer">AGS</a></td>
+<td >86.1</td>
+<td >55.8</td>
+<td >60.3</td>
+<td >81.6</td>
+<td >29.0</td>
+<td >22.0</td>
+<td >46.7</td>
+<td >46.1</td>
+<td >37.8</td>
+<td >62.2</td>
+<td >27.4</td>
+<td >39.4</td>
 </tr>
 
 </table>
