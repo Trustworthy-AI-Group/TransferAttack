@@ -59,8 +59,7 @@ from .model_related.pna_patchout import PNA_PatchOut
 from .model_related.sapr import SAPR
 from .model_related.tgr import TGR
 from .model_related.setr import SETR
-
-
+from .model_related.ags import AGS
 
 
 attack_zoo = {
@@ -127,6 +126,7 @@ attack_zoo = {
             'tgr': TGR,
             'ghost': GhostNetwork_MIFGSM,
             'setr': SETR,
+            'ags': AGS
         }
 
 __version__ = '1.0.0'
