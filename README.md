@@ -320,6 +320,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <td ><sub>Ensemble and refine classifiers after each transformer block</sub></td>
 </tr>
 
+<tr>
+<td><a href="https://github.com/lwmming" target="_blank" rel="noopener noreferrer">AGS (Wang et al., 2024)</a></td>
+<td ><sub>Train surrogate models with adversary-centric contrastive learning and adversarial invariant learning</sub></td>
+</tr>
+
 </table>
 
 ### Targeted Attacks
