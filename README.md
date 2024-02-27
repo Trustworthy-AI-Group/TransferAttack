@@ -1238,6 +1238,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >50.7</td>
 </tr>
 
+<tr id="ags">
+<td><a href="./transferattack/model_related/ags.py" target="_blank" rel="noopener noreferrer">AGS</a></td>
+<td >86.1</td>
+<td >55.8</td>
+<td >60.3</td>
+<td >81.6</td>
+<td >29.0</td>
+<td >22.0</td>
+<td >46.7</td>
+<td >46.1</td>
+<td >37.8</td>
+<td >62.2</td>
+<td >27.4</td>
+<td >39.4</td>
+</tr>
+
 </table>
 
 ### Targeted Attack
