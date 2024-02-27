@@ -6,6 +6,8 @@
 
 - [Qinliang Lin](https://github.com/LinQinLiang) added the [DeCowA](./transferattack/input_transformation/decowa.py) method.
 
+- [Ruikui_Wang](https://github.com/lwmming) added the [AGS](./transferattack/model_related/ags.py) method.
+
 -------------
 
 - Xiangyuan Yang checked the [DTA](./transferattack/gradient/dta.py) method.
