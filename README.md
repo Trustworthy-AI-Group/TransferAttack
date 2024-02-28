@@ -153,7 +153,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="12"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="13"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -186,6 +186,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2207.05382" target="_blank" rel="noopener noreferrer">SSM (Long et al., 2022)</a></td>
 <td ><sub>Randomly scale images and add noise in the frequency domain</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2111.13844" target="_blank" rel="noopener noreferrer">AITL (Yuan et al., 2022)</a></td>
+<td ><sub>Select the most effective combination of image transformations specific to the input image.</sub></td>
 </tr>
 
 <tr>
@@ -714,7 +719,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="12"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="13"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >100.0</td>
 <td >62.2</td>
@@ -826,6 +831,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >61.2</td>
 <td >26.1</td>
 <td >48.3</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/input_transformation/aitl.py" target="_blank" rel="noopener noreferrer">AITL</a></td>
+<td >99.5</td>
+<td >78.9</td>
+<td >82.4</td>
+<td >96.3</td>
+<td >46.4</td>
+<td >51.4</td>
+<td >68.1</td>
+<td >71.1</td>
+<td >41.8</td>
+<td >79.7</td>
+<td >32.9</td>
+<td >53.1</td>
 </tr>
 
 <tr>
