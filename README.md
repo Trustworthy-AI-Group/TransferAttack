@@ -219,7 +219,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="10"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="11"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
 <td ><sub>Maximize the difference of feature maps between benign sample and adversarial example and smooth the perturbation </sub></td>
 </tr>
@@ -267,6 +267,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2304.13410" target="_blank" rel="noopener noreferrer">ILPD (Li et al., 2023)</a></td>
 <td ><sub>Decays the intermediate-level perturbation from the benign features by mixing the features of benign samples and adversarial examples</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org//abs/2309.15696" target="_blank" rel="noopener noreferrer">IR (Chen et al., 2021)</a></td>
+<td ><sub>Introduces the interaction regularizer into the objective function to minimize the interaction for better transferability</sub></td>
 </tr>
 
 <tr>
@@ -930,7 +935,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="10"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="11"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/tap.py" target="_blank" rel="noopener noreferrer">TAP</a></td>
 <td >100.0</td>
 <td >36.1</td>
@@ -1088,6 +1093,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >85.2</td>
 <td >22.7</td>
 <td >48.8</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/advanced_objective/ir.py" target="_blank" rel="noopener noreferrer">IR</a></td>
+<td >100.0</td>
+<td >42.0</td>
+<td >45.3</td>
+<td >74.0</td>
+<td >16.7</td>
+<td >23.4</td>
+<td >33.4</td>
+<td >40.9</td>
+<td >40.8</td>
+<td >32.2</td>
+<td >28.0</td>
+<td >22.8</td>
 </tr>
 
 <tr>
