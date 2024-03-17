@@ -50,6 +50,7 @@ from .advanced_objective.cfm import CFM
 from .advanced_objective.logit_margin import Logit_Margin
 from .advanced_objective.ilpd import ILPD
 from .advanced_objective.fft import FFT
+from .advanced_objective.ir import IR
 
 from .model_related.ghost import GhostNetwork_MIFGSM
 from .model_related.sgm import SGM
@@ -119,6 +120,7 @@ attack_zoo = {
             'logit_margin': Logit_Margin,
             'ilpd': ILPD,
             'fft': FFT,
+            'ir': IR,
 
             # model_related
             'sgm': SGM,
