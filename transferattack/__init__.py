@@ -33,6 +33,7 @@ from .input_transformation.sia import SIA
 from .input_transformation.stm import STM
 from .input_transformation.bsr import BSR
 from .input_transformation.decowa import DeCowA
+from .input_transformation.l2t import L2T
 
 
 from .advanced_objective.tap import TAP
@@ -103,6 +104,7 @@ attack_zoo = {
             'stm': STM,
             'bsr': BSR,
             'decowa': DeCowA,
+            'l2t': L2T,
 
             # advanced_objective
             'tap': TAP,
