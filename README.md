@@ -219,6 +219,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
+<td><a href="" target="_blank" rel="noopener noreferrer">L2T (Zhu et al., 2024)</a></td>
+<td ><sub>Optimizing the input-transformation trajectory along the adversarial iteration</sub></td>
+</tr>
+
+<tr>
 <th rowspan="11"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
 <td ><sub>Maximize the difference of feature maps between benign sample and adversarial example and smooth the perturbation </sub></td>
@@ -932,6 +937,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >85.7</td>
 <td >35.2</td>
 <td >56.0</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/input_transformation/l2t.py" target="_blank" rel="noopener noreferrer">L2T</a></td>
+<td >100.0</td>
+<td >99.2</td>
+<td >99.0</td>
+<td >99.8</td>
+<td >64.2</td>
+<td >72.4</td>
+<td >86.6</td>
+<td >87.5</td>
+<td >45.9</td>
+<td >93.9</td>
+<td >73.5</td>
+<td >37.5</td>
 </tr>
 
 <tr>
