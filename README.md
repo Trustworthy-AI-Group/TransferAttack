@@ -7,7 +7,7 @@
   <a href="https://github.com/Trustworthy-AI-Group/TransferAttack/forks"> <img src="https://img.shields.io/github/forks/Trustworthy-AI-Group/TransferAttack.svg?style=popout-square" alt="GitHub forks"></a>
 </p>
 
-TransferAttack is a pytorch framework to boost the adversarial transferability for image classification. 
+TransferAttack is a pytorch framework to boost the adversarial transferability for image classification.
 
 [Devling into Adversarial Transferability on Image Classification: A Review, Benchmark and Evaluation](./README.md) will be released soon.
 
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 
 ## Usage
-We randomly sample 1,000 images from ImageNet validate set, in which each image is from one category and can be correctly classified by the adopted models (For some categories, we cannot choose one image that is correctly classified by all the models. In this case, we select the image that receives accurate classifications from the majority of models.). Download the data from [Google Drive](https://drive.google.com/file/d/1d-_PKYi3MBDPtJV4rfMCCtmsE0oWX7ZB/view?usp=sharing) or [Huggingface](https://huggingface.co/datasets/Trustworthy-AI-Group/TransferAttack) into `/path/to/data`. Then you can execute the attack as follows:
+We randomly sample 1,000 images from ImageNet validate set, in which each image is from one category and can be correctly classified by the adopted models (For some categories, we cannot choose one image that is correctly classified by all the models. In this case, we select the image that receives accurate classifications from the majority of models.). Download the data from [Google Drive](https://drive.google.com/file/d/1d-_PKYi3MBDPtJV4rfMCCtmsE0oWX7ZB/view?usp=sharing) or [Huggingface](https://huggingface.co/datasets/Trustworthy-AI-Group/TransferAttack/blob/main/data.zip) into `/path/to/data`. Then you can execute the attack as follows:
 
 ```
 python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 --attack mifgsm --model=resnet18
@@ -389,7 +389,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 ### Models
 
 To thoroughly evaluate existing attacks, we have included various popular models, including both CNNs ([ResNet-18](https://arxiv.org/abs/1512.03385), [ResNet-101](https://arxiv.org/abs/1512.03385), [ResNeXt-50](https://arxiv.org/abs/1611.05431), [DenseNet-121](https://arxiv.org/abs/1608.06993)) and ViTs ([ViT](https://arxiv.org/abs/2010.11929), [PiT](https://arxiv.org/abs/2103.16302), [Visformer](https://arxiv.org/abs/2104.12533), [Swin](https://arxiv.org/abs/2103.14030)). Moreover, we also adopted four defense methods, namely [AT](https://arxiv.org/abs/1705.07204), [HGD](https://arxiv.org/abs/1712.02976), [RS](https://arxiv.org/abs/1902.02918), [NRP](https://arxiv.org/abs/2006.04924).
-The defense models can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1NfSjLzc-MtkYHLumcKYs6OqC2X_zWy3g?usp=share_link).
+The defense models can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1NfSjLzc-MtkYHLumcKYs6OqC2X_zWy3g?usp=share_link) or [Huggingface](https://huggingface.co/Trustworthy-AI-Group/TransferAttack/blob/main/defense_model.zip).
 
 ## Evaluation
 
@@ -1013,7 +1013,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >56.8</td>
 <td >20.6</td>
 <td >26.2</td>
-</tr> 
+</tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/naa.py" target="_blank" rel="noopener noreferrer">NAA</a></td>
@@ -1146,34 +1146,34 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr>
 <td><a href="./transferattack/model_related/dsm.py" target="_blank" rel="noopener noreferrer">DSM</a></td>
-<td >99.2</td>
-<td >62.3</td>
-<td >67.6</td>
-<td >93.8</td>
-<td >42.6</td>
-<td >36.9</td>
-<td >50.8</td>
-<td >56.9</td>
-<td >32.5</td>
-<td >51.5</td>
-<td >21.9</td>
-<td >35.2</td>
+<td >98.9</td>
+<td >60.4</td>
+<td >66.3</td>
+<td >91.9</td>
+<td >23.8</td>
+<td >33.8</td>
+<td >49.3</td>
+<td >56.2</td>
+<td >34.7</td>
+<td >48.7</td>
+<td >24.3</td>
+<td >34.1</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/model_related/mta.py" target="_blank" rel="noopener noreferrer">MTA</a></td>
-<td >84.7</td>
-<td >42.4</td>
-<td >46.5</td>
-<td >73.8</td>
-<td >12.9</td>
-<td >21.5</td>
-<td >32.0</td>
-<td >40.0</td>
-<td >28.9</td>
-<td >36.8</td>
-<td >19.3</td>
-<td >24.1</td>
+<td >82.4</td>
+<td >44.2</td>
+<td >46.8</td>
+<td >74.9</td>
+<td >12.6</td>
+<td >17.9</td>
+<td >31.7</td>
+<td >41.0</td>
+<td >30.4</td>
+<td >34.5</td>
+<td >19.1</td>
+<td >19.2</td>
 </tr>
 
 <tr>
