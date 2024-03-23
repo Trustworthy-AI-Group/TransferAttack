@@ -275,7 +275,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="12"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="13"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1812.03413" target="_blank" rel="noopener noreferrer">Ghost (Li et al., 2020)</a></td>
 <td ><sub>Densely apply dropout and random scaling on the skip connection to generate several ghost networks to average the gradient</sub></td>
 </tr>
@@ -283,6 +283,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2021)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://openreview.net/pdf?id=gVRhIEajG1k" target="_blank" rel="noopener noreferrer">IAA (Zhu et al., 2022)</a></td>
+<td ><sub>Replace ReLU with Softplus and decrease the weight of residual module</sub></td>
 </tr>
 
 <tr>
@@ -1112,7 +1117,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="12"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="13"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/ghost.py" target="_blank" rel="noopener noreferrer">Ghost</a></td>
 <td >64.4</td>
 <td >93.9</td>
@@ -1142,6 +1147,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >37.5</td>
 <td >24.2</td>
 <td >30.9</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/iaa.py" target="_blank" rel="noopener noreferrer">IAA</a></td>
+<td >100.0</td>
+<td >44.2</td>
+<td >50.6</td>
+<td >85.1</td>
+<td >12.8</td>
+<td >19.6</td>
+<td >32.8</td>
+<td >40.4</td>
+<td >33.3</td>
+<td >29.4</td>
+<td >22.0</td>
+<td >26.0</td>
 </tr>
 
 <tr>

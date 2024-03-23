@@ -54,6 +54,7 @@ from .advanced_objective.ir import IR
 
 from .model_related.ghost import GhostNetwork_MIFGSM
 from .model_related.sgm import SGM
+from .model_related.iaa import IAA
 from .model_related.dsm import DSM
 from .model_related.mta import MTA
 from .model_related.mup import MUP
@@ -124,6 +125,7 @@ attack_zoo = {
 
             # model_related
             'sgm': SGM,
+            'iaa': IAA,
             'dsm': DSM,
             'mta': MTA,
             'mup': MUP,
