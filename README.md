@@ -153,7 +153,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="13"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="14"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -216,6 +216,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2402.03951" target="_blank" rel="noopener noreferrer">DeCowA (Lin et al., 2024)</a></td>
 <td ><sub>Augments input examples via an elastic deformation, to obtain rich local details of the augmented inputs</sub></td>
+</tr>
+
+<tr>
+<td><a href="" target="_blank" rel="noopener noreferrer">L2T (Zhu et al., 2024)</a></td>
+<td ><sub>Optimizing the input-transformation trajectory along the adversarial iteration</sub></td>
 </tr>
 
 <tr>
@@ -729,7 +734,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="13"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="14"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >100.0</td>
 <td >62.7</td>
@@ -937,6 +942,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >85.7</td>
 <td >35.2</td>
 <td >56.0</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/input_transformation/l2t.py" target="_blank" rel="noopener noreferrer">L2T</a></td>
+<td >100.0</td>
+<td >99.2</td>
+<td >99.0</td>
+<td >99.8</td>
+<td >64.2</td>
+<td >72.4</td>
+<td >86.6</td>
+<td >87.5</td>
+<td >45.9</td>
+<td >93.9</td>
+<td >73.5</td>
+<td >37.5</td>
 </tr>
 
 <tr>
