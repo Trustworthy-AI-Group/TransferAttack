@@ -30,8 +30,7 @@ class TGR(MIFGSM):
         python main.py --attack=tgr --input_dir=./data --output_dir=./results/tgr/vit --model vit_base_patch16_224 --batchsize 1
 
     NOTE:
-        1) The highest version of pytorch that can run this code is torch==1.11.0+cu115, otherwise the code will raise an error. (pip install torch==1.11.0+cu115 torchvision==0.12.0+cu115 --index-url https://download.pytorch.org/whl/cu115)
-        2) The code only support batchsize = 1.
+        1) The code only support batchsize = 1.
     """
 
 
