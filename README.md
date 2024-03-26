@@ -1300,18 +1300,18 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr id="tgr">
 <td><a href="./transferattack/model_related/tgr.py" target="_blank" rel="noopener noreferrer">TGR</a></td>
-<td >80.0</td>
-<td >58.0</td>
-<td >63.4</td>
-<td >77.8</td>
-<td >98.8</td>
-<td >69.8</td>
-<td >73.8</td>
-<td >86.9</td>
-<td >36.1</td>
-<td >54.0</td>
-<td >28.7</td>
-<td >41.7</td>
+<td >70.8</td>
+<td >48.1</td>
+<td >52.6</td>
+<td >68.2</td>
+<td >98.3</td>
+<td >56.0</td>
+<td >61.8</td>
+<td >73.4</td>
+<td >36.6</td>
+<td >43.5</td>
+<td >28.0</td>
+<td >36.9</td>
 </tr>
 
 <tr id="setr">

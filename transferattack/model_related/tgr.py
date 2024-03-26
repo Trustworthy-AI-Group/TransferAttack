@@ -30,8 +30,7 @@ class TGR(MIFGSM):
         python main.py --attack=tgr --input_dir=./data --output_dir=./results/tgr/vit --model vit_base_patch16_224 --batchsize 1
 
     NOTE:
-        1) The highest version of pytorch that can run this code is torch==1.11.0+cu115, otherwise the code will raise an error. (pip install torch==1.11.0+cu115 torchvision==0.12.0+cu115 --index-url https://download.pytorch.org/whl/cu115)
-        2) The code only support batchsize = 1.
+        1) The code only support batchsize = 1.
     """
 
 
@@ -105,6 +104,20 @@ class TGR(MIFGSM):
             return (out_grad, grad_in[1], grad_in[2])
 
         def v_tgr(module, grad_in, grad_out, gamma):
+            # show diff between high and low PyTorch version
+            # print('v len(grad_in)',len(grad_in))
+            # high, 1
+            # low, 2
+
+            # print('v grad_in[0].shape',grad_in[0].shape)
+            # high, torch.Size([197, 2304])
+            # low, torch.Size([1, 197, 2304])
+            is_high_pytorch = False
+            if len(grad_in[0].shape) == 2:
+                grad_in = list(grad_in)
+                is_high_pytorch = True
+                grad_in[0] = grad_in[0].unsqueeze(0)
+
             mask = torch.ones_like(grad_in[0]) * gamma
             out_grad = mask * grad_in[0][:]
 
@@ -128,9 +141,25 @@ class TGR(MIFGSM):
 
                 out_grad[:,max_all,range(c)] = 0.0
                 out_grad[:,min_all,range(c)] = 0.0
-            return (out_grad, grad_in[1])
+
+            if is_high_pytorch:
+                out_grad = out_grad.squeeze(0)
+
+            # return (out_grad, grad_in[1])
+            for i in range(len(grad_in)):
+                if i == 0:
+                    return_dics = (out_grad,)
+                else:
+                    return_dics = return_dics + (grad_in[i],)
+            return return_dics
 
         def mlp_tgr(module, grad_in, grad_out, gamma):
+            is_high_pytorch = False
+            if len(grad_in[0].shape) == 2:
+                grad_in = list(grad_in)
+                is_high_pytorch = True
+                grad_in[0] = grad_in[0].unsqueeze(0)
+
             mask = torch.ones_like(grad_in[0]) * gamma
             out_grad = mask * grad_in[0][:]
             if self.model_name in ['visformer_small']:
@@ -152,6 +181,10 @@ class TGR(MIFGSM):
                 min_all = np.argmin(out_grad_cpu[0,:,:], axis = 0)
                 out_grad[:,max_all,range(c)] = 0.0
                 out_grad[:,min_all,range(c)] = 0.0
+
+            if is_high_pytorch:
+                out_grad = out_grad.squeeze(0)
+
             for i in range(len(grad_in)):
                 if i == 0:
                     return_dics = (out_grad,)
