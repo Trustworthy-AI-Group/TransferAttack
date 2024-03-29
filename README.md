@@ -224,7 +224,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="11"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="12"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
 <td ><sub>Maximize the difference of feature maps between benign sample and adversarial example and smooth the perturbation </sub></td>
 </tr>
@@ -267,6 +267,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/pdf/2204.10606.pdf" target="_blank" rel="noopener noreferrer">FMAA (He et al., 2022)</a></td>
 <td ><sub>Utilize momentum to calculate the weight matrix in FIA</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2303.10078" target="_blank" rel="noopener noreferrer">Fuzziness_Tuned (Yang et al., 2023)</a></td>
+<td ><sub>The logits vector is fuzzified using the confidence scaling mechanism and temperature scaling mechanism</sub></td>
 </tr>
 
 <tr>
@@ -341,7 +346,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://github.com/lwmming" target="_blank" rel="noopener noreferrer">AGS (Wang et al., 2024)</a></td>
+<td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/28365" target="_blank" rel="noopener noreferrer">AGS (Wang et al., 2024)</a></td>
 <td ><sub>Train surrogate models with adversary-centric contrastive learning and adversarial invariant learning</sub></td>
 </tr>
 
@@ -961,7 +966,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="11"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="12"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/tap.py" target="_blank" rel="noopener noreferrer">TAP</a></td>
 <td >100.0</td>
 <td >38.5</td>
@@ -1103,6 +1108,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >25.9</td>
 <td >21.3</td>
 <td >22.3</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/advanced_objective/fuzziness_tuned.py target="_blank" rel="noopener noreferrer">Fuzziness_Tuned</a></td>
+<td >100.0</td>
+<td >39.9</td>
+<td >46.5</td>
+<td >75.3</td>
+<td >15.6</td>
+<td >21.2</td>
+<td >31.5</td>
+<td >38.9</td>
+<td >33.1</td>
+<td >29.9</td>
+<td >27.6</td>
+<td >22.8</td>
 </tr>
 
 <tr>
