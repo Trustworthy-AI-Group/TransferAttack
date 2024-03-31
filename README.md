@@ -153,7 +153,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="14"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="15"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -206,6 +206,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2308.10601" target="_blank" rel="noopener noreferrer">STM (Ge et al., 2023)</a></td>
 <td ><sub>Transform the image using a style transfer network</sub></td>
+</tr>
+
+
+<tr>
+<td><a href="https://arxiv.org/abs/2306.15931" target="_blank" rel="noopener noreferrer">LPM (Wei et al., 2023)</a></td>
+<td ><sub>Boosting Adversarial Transferability with Learnable Patch-wise Masks</sub></td>
 </tr>
 
 <tr>
@@ -915,6 +921,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >70.7</td>
 <td >32.5</td>
 <td >58.8</td>
+</tr>
+
+
+<tr>
+<td><a href="./transferattack/input_transformation/lpm.py" target="_blank" rel="noopener noreferrer">LPM</a></td>
+<td >100.0</td>
+<td >68.2</td>
+<td >62.3</td>
+<td >79.2</td>
+<td >23.5</td>
+<td >30.0</td>
+<td >41.3</td>
+<td >45.6</td>
+<td >22.8</td>
+<td >48.9</td>
+<td >21.2</td>
+<td >35.7</td>
 </tr>
 
 <tr>
