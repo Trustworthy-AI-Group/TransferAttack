@@ -17,6 +17,7 @@ def get_parser():
     parser.add_argument('--momentum', default=0., type=float, help='the decay factor for momentum based attack')
     parser.add_argument('--model', default='resnet18', type=str, help='the source surrogate model')
     parser.add_argument('--ensemble', action='store_true', help='enable ensemble attack')
+    parser.add_argument('--random_start', default=False, type=bool, help='set random start')
     parser.add_argument('--input_dir', default='./data', type=str, help='the path for custom benign images, default: untargeted attack data')
     parser.add_argument('--output_dir', default='./results', type=str, help='the path to store the adversarial patches')
     parser.add_argument('--targeted', action='store_true', help='targeted attack')
@@ -35,8 +36,8 @@ def main():
 
     if not args.eval:
         if args.attack in transferattack.attack_zoo:
-            if args.ensemble:
-                args.model = ['resnet18', 'densenet121', 'vit_base_patch16_224', 'pit_b_224'] # example for ensemble attack
+            if args.ensemble or len(args.model.split(','))>1:
+                args.model = args.model.split(',') # example for ensemble attack
             attacker = transferattack.attack_zoo[args.attack.lower()](model_name = args.model, targeted = args.targeted)
         else:
             raise Exception("Unspported attack algorithm {}".format(args.attack))
