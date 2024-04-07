@@ -8,6 +8,8 @@
 
 - [Ruikui_Wang](https://github.com/lwmming) added the [AGS](./transferattack/model_related/ags.py) method.
 
+- [Rongyi Zhu](https://github.com/RongyiZhu) added the [L2T](./transferattack/input_transformation/l2t.py) method.
+
 -------------
 
 - Xiangyuan Yang checked the [DTA](./transferattack/gradient/dta.py) method.
