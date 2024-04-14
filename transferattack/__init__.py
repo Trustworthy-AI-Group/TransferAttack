@@ -71,6 +71,7 @@ from .model_related.ags import AGS
 
 from .ensemble.ens import ENS
 from .ensemble.svre import SVRE
+from .ensemble.lgv import LGV
 from .ensemble.mba import MBA
 
 attack_zoo = {
@@ -150,6 +151,7 @@ attack_zoo = {
             # ensemble-based
             'ens': ENS,
             'svre': SVRE,
+            'lgv': LGV,
             'mba': MBA,
         }
 
