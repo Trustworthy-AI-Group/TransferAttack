@@ -358,7 +358,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="3"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1611.02770" target="_blank" rel="noopener noreferrer">Ens (Liu et al., 2017)</a></td>
 <td ><sub>Generate the adversarial examplesusing multiple models</sub></td>
 </tr>
@@ -368,6 +368,10 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <td ><sub>Use the stochastic variance reduced gradient to update the adversarial example</sub></td>
 </tr>
 
+<tr>
+<td><a href="https://arxiv.org/abs/2302.05086" target="_blank" rel="noopener noreferrer">MBA (Li et al., 2023)</a></td>
+<td ><sub>Maximize the average prediction loss on several models obtained by single run of fine-tuning the surrogate model using Bayes optimization</sub></td>
+</tr>
 </table>
 
 ### Targeted Attacks
@@ -1403,7 +1407,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="3"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/ens.py" target="_blank" rel="noopener noreferrer">ENS</a></td>
 <td >100.0</td>
 <td >91.7</td>
@@ -1415,8 +1419,8 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >66.4</td>
 <td >33.5</td>
 <td >67.8</td>
-<td >56.1</td>
 <td >24.7</td>
+<td >56.1</td>
 </tr>
 
 <tr>
@@ -1431,8 +1435,25 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >69.5</td>
 <td >33.8</td>
 <td >74.9</td>
-<td >59.7</td>
 <td >24.1</td>
+<td >59.7</td>
+</tr>
+
+
+<tr>
+<td><a href="./transferattack/ensemble/mba.py" target="_blank" rel="noopener noreferrer">MBA</a></td>
+<td >100.0</td>
+<td >96.0</td>
+<td >95.2</td>
+<td >99.8</td>
+<td >41.9</td>
+<td >51.8</td>
+<td >75.1</td>
+<td >76.8</td>
+<td >39.5</td>
+<td >86.1</td>
+<td >28.7</td>
+<td >52.1</td>
 </tr>
 
 </table>
