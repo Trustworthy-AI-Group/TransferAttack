@@ -358,7 +358,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="4"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="5"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1611.02770" target="_blank" rel="noopener noreferrer">Ens (Liu et al., 2017)</a></td>
 <td ><sub>Generate the adversarial examplesusing multiple models</sub></td>
 </tr>
@@ -366,6 +366,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/pdf/2111.10752" target="_blank" rel="noopener noreferrer">SVRE (Xiong et al., 2020)</a></td>
 <td ><sub>Use the stochastic variance reduced gradient to update the adversarial example</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2207.13129" target="_blank" rel="noopener noreferrer">LGV (Gubri et al., 2022)</a></td>
+<td ><sub>Ensemble multiple weight sets from a few additional training epochs with a constant and high learning rate</sub></td>
 </tr>
 
 <tr>
@@ -1407,7 +1412,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="4"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="5"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/ens.py" target="_blank" rel="noopener noreferrer">ENS</a></td>
 <td >100.0</td>
 <td >91.7</td>
@@ -1439,6 +1444,21 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >59.7</td>
 </tr>
 
+<tr>
+<td><a href="./transferattack/ensemble/lgv.py" target="_blank" rel="noopener noreferrer">LGV</a></td>
+<td >97.7</td>
+<td >69.5</td>
+<td >69.4</td>
+<td >93.6</td>
+<td >23.1</td>
+<td >29.2</td>
+<td >43.7</td>
+<td >51.5</td>
+<td >34.5</td>
+<td >52.9</td>
+<td >24.5</td>
+<td >37.3</td>
+</tr>
 
 <tr>
 <td><a href="./transferattack/ensemble/mba.py" target="_blank" rel="noopener noreferrer">MBA</a></td>
