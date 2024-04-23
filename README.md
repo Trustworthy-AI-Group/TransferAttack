@@ -391,11 +391,16 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="2"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="3"><sub><strong>Input transformation-based</strong></sub></th>
 
 <tr>
 <td><a href="https://arxiv.org/pdf/2203.09123" target="_blank" rel="noopener noreferrer">ODI (Byun et al., 2022)</a></td>
 <td ><sub>Diverse inputs based on 3D objects</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2209.03716.pdf" target="_blank" rel="noopener noreferrer">SU (Wei et al., 2023)</a></td>
+<td ><sub>Optimize adversarial perturbation on the original and cropped images by minimizing prediction error and maximizing their feature similarity</sub></td>
 </tr>
 
 <tr>
@@ -1506,7 +1511,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 
-<th rowspan="1"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="2"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/odi/odi.py" target="_blank" rel="noopener noreferrer">ODI</a></td>
 <td >98.9</td>
 <td >38.6</td>
@@ -1521,6 +1526,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td > 0.0</td>
 <td > 1.0</td>
 </tr>
+
+<td><a href="./transferattack/input_transformation/su.py" target="_blank" rel="noopener noreferrer">SU</a></td>
+<td >99.2</td>
+<td >7.2</td>
+<td >8.0</td>
+<td >19.7</td>
+<td >0.1</td>
+<td >0.6</td>
+<td >2.1</td>
+<td >1.8</td>
+<td >0.1</td>
+<td >2.1</td>
+<td >0.0</td>
+<td >0.2</td>
+</tr>
+
 
 <th rowspan="5"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
