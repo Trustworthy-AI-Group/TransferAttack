@@ -17,6 +17,7 @@ from .gradient.dta import DTA
 from .gradient.gra import GRA
 from .gradient.pgn import PGN
 from .gradient.smifgrm import SMIFGRM
+from .gradient.mig import MIG
 
 
 from .input_transformation.dim import DIM
@@ -34,6 +35,7 @@ from .input_transformation.sia import SIA
 from .input_transformation.stm import STM
 from .input_transformation.lpm import LPM
 from .input_transformation.bsr import BSR
+from .input_transformation.usmm import USMM
 from .input_transformation.decowa import DeCowA
 from .input_transformation.l2t import L2T
 
@@ -96,6 +98,7 @@ attack_zoo = {
             'gra': GRA,
             'pgn': PGN,
             'smifgrm': SMIFGRM,
+            'mig': MIG,
 
             # input transformation
             'dim': DIM,
@@ -113,6 +116,7 @@ attack_zoo = {
             'stm': STM,
             'lpm': LPM,
             'bsr': BSR,
+            'usmm': USMM,
             'decowa': DeCowA,
             'l2t': L2T,
 
