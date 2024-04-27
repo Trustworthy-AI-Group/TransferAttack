@@ -1547,7 +1547,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >0.2</td>
 </tr>
 
-<td><a href="./transferattack/input_transformation/idaa.py" target="_blank" rel="noopener noreferrer">SU</a></td>
+<td><a href="./transferattack/input_transformation/idaa.py" target="_blank" rel="noopener noreferrer">IDAA </a></td>
 <td >87.1</td>
 <td >2.6</td>
 <td >3.0</td>
