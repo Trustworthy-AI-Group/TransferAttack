@@ -26,11 +26,13 @@ from .input_transformation.atta import ATTA
 from .input_transformation.admix import Admix
 from .input_transformation.dem import DEM
 from .input_transformation.odi.odi import ODI
+from .input_transformation.su import SU
 from .input_transformation.ssm import SSM
 from .input_transformation.aitl import AITL
 from .input_transformation.maskblock import MaskBlock
 from .input_transformation.sia import SIA
 from .input_transformation.stm import STM
+from .input_transformation.lpm import LPM
 from .input_transformation.bsr import BSR
 from .input_transformation.decowa import DeCowA
 from .input_transformation.l2t import L2T
@@ -68,6 +70,10 @@ from .model_related.tgr import TGR
 from .model_related.setr import SETR
 from .model_related.ags import AGS
 
+from .ensemble.ens import ENS
+from .ensemble.svre import SVRE
+from .ensemble.lgv import LGV
+from .ensemble.mba import MBA
 
 attack_zoo = {
             # gredient
@@ -99,11 +105,13 @@ attack_zoo = {
             'admix': Admix,
             'dem': DEM,
             'odi': ODI,
+            'su': SU,
             'ssm': SSM,
             'aitl': AITL,
             'maskblock': MaskBlock,
             'sia': SIA,
             'stm': STM,
+            'lpm': LPM,
             'bsr': BSR,
             'decowa': DeCowA,
             'l2t': L2T,
@@ -140,7 +148,13 @@ attack_zoo = {
             'tgr': TGR,
             'ghost': GhostNetwork_MIFGSM,
             'setr': SETR,
-            'ags': AGS
+            'ags': AGS,
+
+            # ensemble-based
+            'ens': ENS,
+            'svre': SVRE,
+            'lgv': LGV,
+            'mba': MBA,
         }
 
 __version__ = '1.0.0'

@@ -357,6 +357,26 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <td ><sub>Train surrogate models with adversary-centric contrastive learning and adversarial invariant learning</sub></td>
 </tr>
 
+<tr>
+<th rowspan="5"><sub><strong>Ensemble-based</strong></sub></th>
+<td><a href="https://arxiv.org/abs/1611.02770" target="_blank" rel="noopener noreferrer">Ens (Liu et al., 2017)</a></td>
+<td ><sub>Generate the adversarial examplesusing multiple models</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2111.10752" target="_blank" rel="noopener noreferrer">SVRE (Xiong et al., 2020)</a></td>
+<td ><sub>Use the stochastic variance reduced gradient to update the adversarial example</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2207.13129" target="_blank" rel="noopener noreferrer">LGV (Gubri et al., 2022)</a></td>
+<td ><sub>Ensemble multiple weight sets from a few additional training epochs with a constant and high learning rate</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2302.05086" target="_blank" rel="noopener noreferrer">MBA (Li et al., 2023)</a></td>
+<td ><sub>Maximize the average prediction loss on several models obtained by single run of fine-tuning the surrogate model using Bayes optimization</sub></td>
+</tr>
 </table>
 
 ### Targeted Attacks
@@ -371,11 +391,16 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="2"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="3"><sub><strong>Input transformation-based</strong></sub></th>
 
 <tr>
 <td><a href="https://arxiv.org/pdf/2203.09123" target="_blank" rel="noopener noreferrer">ODI (Byun et al., 2022)</a></td>
 <td ><sub>Diverse inputs based on 3D objects</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2209.03716.pdf" target="_blank" rel="noopener noreferrer">SU (Wei et al., 2023)</a></td>
+<td ><sub>Optimize adversarial perturbation on the original and cropped images by minimizing prediction error and maximizing their feature similarity</sub></td>
 </tr>
 
 <tr>
@@ -416,7 +441,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 ## Evaluation
 
 ### Untargeted Attack
-**Note**: We adopt $\epsilon=16/255$ with the number of iterations $T=10$. The base attack for other types of attack is [MI-FGSM](https://arxiv.org/abs/1710.06081). The defaut surrogate model is ResNet-18. For [YAILA](#yaila), we adopt ResNet-50 as the surrogate model. For [PNA-PatchOUt](#pna), [SAPR](#sapr), [TGR](#tgr), we adopt ViT as the surrogate model.
+**Note**: We adopt $\epsilon=16/255$ with the number of iterations $T=10$. The base attack for other types of attack is [MI-FGSM](https://arxiv.org/abs/1710.06081). The defaut surrogate model is ResNet-18. For [YAILA](#yaila), we adopt ResNet-50 as the surrogate model. For [PNA-PatchOUt](#pna), [SAPR](#sapr), [TGR](#tgr), we adopt ViT as the surrogate model. For [Ensemble](#ensemble) attacks, we use four CNNs([ResNet-18](https://arxiv.org/abs/1512.03385), [ResNet-101](https://arxiv.org/abs/1512.03385), [ResNeXt-50](https://arxiv.org/abs/1611.05431), [DenseNet-121](https://arxiv.org/abs/1608.06993)) as the ensemble model.
 
 <table  style="width:100%" border="1">
 <thead>
@@ -1391,6 +1416,71 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >39.4</td>
 </tr>
 
+<tr>
+<th rowspan="5"><sub><strong>Ensemble-based</strong></sub></th>
+<td><a href="./transferattack/ensemble/ens.py" target="_blank" rel="noopener noreferrer">ENS</a></td>
+<td >100.0</td>
+<td >91.7</td>
+<td >92.5</td>
+<td >100.0</td>
+<td >38.7</td>
+<td >53.0</td>
+<td >66.6</td>
+<td >66.4</td>
+<td >33.5</td>
+<td >67.8</td>
+<td >24.7</td>
+<td >56.1</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/ensemble/svre.py" target="_blank" rel="noopener noreferrer">SVRE</a></td>
+<td >100.0</td>
+<td >97.7</td>
+<td >98.0</td>
+<td >100.0</td>
+<td >40.6</td>
+<td >54.4</td>
+<td >69.9</td>
+<td >69.5</td>
+<td >33.8</td>
+<td >74.9</td>
+<td >24.1</td>
+<td >59.7</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/ensemble/lgv.py" target="_blank" rel="noopener noreferrer">LGV</a></td>
+<td >97.7</td>
+<td >69.5</td>
+<td >69.4</td>
+<td >93.6</td>
+<td >23.1</td>
+<td >29.2</td>
+<td >43.7</td>
+<td >51.5</td>
+<td >34.5</td>
+<td >52.9</td>
+<td >24.5</td>
+<td >37.3</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/ensemble/mba.py" target="_blank" rel="noopener noreferrer">MBA</a></td>
+<td >100.0</td>
+<td >96.0</td>
+<td >95.2</td>
+<td >99.8</td>
+<td >41.9</td>
+<td >51.8</td>
+<td >75.1</td>
+<td >76.8</td>
+<td >39.5</td>
+<td >86.1</td>
+<td >28.7</td>
+<td >52.1</td>
+</tr>
+
 </table>
 
 ### Targeted Attack
@@ -1421,7 +1511,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 
-<th rowspan="1"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="2"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/odi/odi.py" target="_blank" rel="noopener noreferrer">ODI</a></td>
 <td >98.9</td>
 <td >38.6</td>
@@ -1436,6 +1526,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td > 0.0</td>
 <td > 1.0</td>
 </tr>
+
+<td><a href="./transferattack/input_transformation/su.py" target="_blank" rel="noopener noreferrer">SU</a></td>
+<td >99.2</td>
+<td >7.2</td>
+<td >8.0</td>
+<td >19.7</td>
+<td >0.1</td>
+<td >0.6</td>
+<td >2.1</td>
+<td >1.8</td>
+<td >0.1</td>
+<td >2.1</td>
+<td >0.0</td>
+<td >0.2</td>
+</tr>
+
 
 <th rowspan="5"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
