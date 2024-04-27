@@ -391,7 +391,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="3"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Input transformation-based</strong></sub></th>
 
 <tr>
 <td><a href="https://arxiv.org/pdf/2203.09123" target="_blank" rel="noopener noreferrer">ODI (Byun et al., 2022)</a></td>
@@ -401,6 +401,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/pdf/2209.03716.pdf" target="_blank" rel="noopener noreferrer">SU (Wei et al., 2023)</a></td>
 <td ><sub>Optimize adversarial perturbation on the original and cropped images by minimizing prediction error and maximizing their feature similarity</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2401.13205" target="_blank" rel="noopener noreferrer">IDAA (Liu et al., 2024)</a></td>
+<td ><sub> design local mixup to randomly mix a group of transformed adversarial images, strengthening the input diversity</sub></td>
 </tr>
 
 <tr>
@@ -1511,7 +1516,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 
-<th rowspan="2"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="3"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/odi/odi.py" target="_blank" rel="noopener noreferrer">ODI</a></td>
 <td >98.9</td>
 <td >38.6</td>
@@ -1540,6 +1545,21 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >2.1</td>
 <td >0.0</td>
 <td >0.2</td>
+</tr>
+
+<td><a href="./transferattack/input_transformation/idaa.py" target="_blank" rel="noopener noreferrer">SU</a></td>
+<td >87.1</td>
+<td >2.6</td>
+<td >3.0</td>
+<td >13.0</td>
+<td >1.3</td>
+<td >1.8</td>
+<td >2.1</td>
+<td >3.3</td>
+<td >0.4</td>
+<td >1.5</td>
+<td >0.0</td>
+<td >0.1</td>
 </tr>
 
 
