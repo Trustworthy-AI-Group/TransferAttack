@@ -1,160 +1,95 @@
-from .gradient.fgsm import FGSM
-from .gradient.ifgsm import IFGSM
-from .gradient.mifgsm import MIFGSM
-from .gradient.nifgsm import NIFGSM
-from .gradient.pifgsm import PIFGSM
-from .gradient.vmifgsm import VMIFGSM
-from .gradient.vnifgsm import VNIFGSM
-from .gradient.emifgsm import EMIFGSM
-from .gradient.ifgssm import IFGSSM
-from .gradient.vaifgsm import VAIFGSM
-from .gradient.aifgtm import AIFGTM
-from .gradient.rap import RAP
-from .gradient.gifgsm import GIFGSM
-from .gradient.pcifgsm import PCIFGSM
-from .gradient.iefgsm import IEFGSM
-from .gradient.dta import DTA
-from .gradient.gra import GRA
-from .gradient.pgn import PGN
-from .gradient.smifgrm import SMIFGRM
-
-
-from .input_transformation.dim import DIM
-from .input_transformation.tim import TIM
-from .input_transformation.sim import SIM
-from .input_transformation.atta import ATTA
-from .input_transformation.admix import Admix
-from .input_transformation.dem import DEM
-from .input_transformation.odi.odi import ODI
-from .input_transformation.su import SU
-from .input_transformation.ssm import SSM
-from .input_transformation.aitl import AITL
-from .input_transformation.maskblock import MaskBlock
-from .input_transformation.sia import SIA
-from .input_transformation.stm import STM
-from .input_transformation.lpm import LPM
-from .input_transformation.bsr import BSR
-from .input_transformation.decowa import DeCowA
-from .input_transformation.l2t import L2T
-
-
-from .advanced_objective.tap import TAP
-from .advanced_objective.ila import ILA
-from .advanced_objective.potrip import POTRIP
-from .advanced_objective.yaila.yaila import YAILA
-from .advanced_objective.logit import LOGIT
-from .advanced_objective.fia import FIA
-from .advanced_objective.trap import TRAP
-from .advanced_objective.naa import NAA
-from .advanced_objective.rpa import RPA
-from .advanced_objective.taig import TAIG
-from .advanced_objective.fmaa import FMAA
-from .advanced_objective.cfm import CFM
-from .advanced_objective.logit_margin import Logit_Margin
-from .advanced_objective.fuzziness_tuned import Fuzziness_Tuned
-from .advanced_objective.ilpd import ILPD
-from .advanced_objective.fft import FFT
-from .advanced_objective.ir import IR
-
-from .model_related.ghost import GhostNetwork_MIFGSM
-from .model_related.sgm import SGM
-from .model_related.iaa import IAA
-from .model_related.dsm import DSM
-from .model_related.mta import MTA
-from .model_related.mup import MUP
-from .model_related.bpa import BPA
-from .model_related.dhf import DHF_MIFGSM
-from .model_related.pna_patchout import PNA_PatchOut
-from .model_related.sapr import SAPR
-from .model_related.tgr import TGR
-from .model_related.setr import SETR
-from .model_related.ags import AGS
-
-from .ensemble.ens import ENS
-from .ensemble.svre import SVRE
-from .ensemble.lgv import LGV
-from .ensemble.mba import MBA
+import importlib
 
 attack_zoo = {
-            # gredient
-            'fgsm': FGSM,
-            'ifgsm': IFGSM,
-            'mifgsm': MIFGSM,
-            'nifgsm': NIFGSM,
-            'pifgsm': PIFGSM,
-            'vmifgsm': VMIFGSM,
-            'vnifgsm': VNIFGSM,
-            'emifgsm': EMIFGSM,
-            'ifgssm': IFGSSM,
-            'vaifgsm': VAIFGSM,
-            'aifgtm': AIFGTM,
-            'rap': RAP,
-            'gifgsm': GIFGSM,
-            'pcifgsm': PCIFGSM,
-            'iefgsm': IEFGSM,
-            'dta': DTA,
-            'gra': GRA,
-            'pgn': PGN,
-            'smifgrm': SMIFGRM,
+    # gradient
+    'fgsm': ('.gradient.fgsm', 'FGSM'),
+    'ifgsm': ('.gradient.ifgsm', 'IFGSM'),
+    'mifgsm': ('.gradient.mifgsm', 'MIFGSM'),
+    'nifgsm': ('.gradient.nifgsm', 'NIFGSM'),
+    'pifgsm': ('.gradient.pifgsm', 'PIFGSM'),
+    'vmifgsm': ('.gradient.vmifgsm', 'VMIFGSM'),
+    'vnifgsm': ('.gradient.vnifgsm', 'VNIFGSM'),
+    'emifgsm': ('.gradient.emifgsm', 'EMIFGSM'),
+    'ifgssm': ('.gradient.ifgssm', 'IFGSSM'),
+    'vaifgsm': ('.gradient.vaifgsm', 'VAIFGSM'),
+    'aifgtm': ('.gradient.aifgtm', 'AIFGTM'),
+    'rap': ('.gradient.rap', 'RAP'),
+    'gifgsm': ('.gradient.gifgsm', 'GIFGSM'),
+    'pcifgsm': ('.gradient.pcifgsm', 'PCIFGSM'),
+    'iefgsm': ('.gradient.iefgsm', 'IEFGSM'),
+    'dta': ('.gradient.dta', 'DTA'),
+    'gra': ('.gradient.gra', 'GRA'),
+    'pgn': ('.gradient.pgn', 'PGN'),
+    'smifgrm': ('.gradient.smifgrm', 'SMIFGRM'),
+    
+    # input transformation
+    'dim': ('.input_transformation.dim', 'DIM'),
+    'tim': ('.input_transformation.tim', 'TIM'),
+    'sim': ('.input_transformation.sim', 'SIM'),
+    'atta': ('.input_transformation.atta', 'ATTA'),
+    'admix': ('.input_transformation.admix', 'Admix'),
+    'dem': ('.input_transformation.dem', 'DEM'),
+    'odi': ('.input_transformation.odi.odi', 'ODI'),
+    'su': ('.input_transformation.su', 'SU'),
+    'smm': ('.input_transformation.ssm', 'SSM'),
+    'aitl': ('.input_transformation.aitl', 'AITL'),
+    'maskblock': ('.input_transformation.maskblock', 'MaskBlock'),
+    'sia': ('.input_transformation.sia', 'SIA'),
+    'stm': ('.input_transformation.stm', 'STM'),
+    'lpm': ('.input_transformation.lpm', 'LPM'),
+    'bsr': ('.input_transformation.bsr', 'BSR'),
+    'decowa': ('.input_transformation.decowa', 'DeCowA'),
+    'l2t': ('.input_transformation.l2t', 'L2T'),
+    
+    # advanced_objective
+    'tap': ('.advanced_objective.tap', 'TAP'),
+    'ila': ('.advanced_objective.ila', 'ILA'),
+    'potrip': ('.advanced_objective.potrip', 'POTRIP'),
+    'yaila': ('.advanced_objective.yaila.yaila', 'YAILA'),
+    'logit': ('.advanced_objective.logit', 'LOGIT'),
+    'fia': ('.advanced_objective.fia', 'FIA'),
+    'trap': ('.advanced_objective.trap', 'TRAP'),
+    'naa': ('.advanced_objective.naa', 'NAA'),
+    'rpa': ('.advanced_objective.rpa', 'RPA'),
+    'taig': ('.advanced_objective.taig', 'TAIG'),
+    'fmaa': ('.advanced_objective.fmaa', 'FMAA'),
+    'cfm': ('.advanced_objective.cfm', 'CFM'),
+    'logit_margin': ('.advanced_objective.logit_margin', 'Logit_Margin'),
+    'fuzziness_tuned': ('.advanced_objective.fuzziness_tuned', 'Fuzziness_Tuned'),
+    'ilpd': ('.advanced_objective.ilpd', 'ILPD'),
+    'fft': ('.advanced_objective.fft', 'FFT'),
+    'ir': ('.advanced_objective.ir', 'IR'),
+    
+    # model_related
+    'sgm': ('.model_related.sgm', 'SGM'),
+    'iaa': ('.model_related.iaa', 'IAA'),
+    'dsm': ('.model_related.dsm', 'DSM'),
+    'mta': ('.model_related.mta', 'MTA'),
+    'mup': ('.model_related.mup', 'MUP'),
+    'bpa': ('.model_related.bpa', 'BPA'),
+    'dhf': ('.model_related.dhf', 'DHF_MIFGSM'),
+    'pna_patchout': ('.model_related.pna_patchout', 'PNA_PatchOut'),
+    'sapr': ('.model_related.sapr', 'SAPR'),
+    'tgr': ('.model_related.tgr', 'TGR'),
+    'ghost': ('.model_related.ghost', 'GhostNetwork_MIFGSM'),
+    'setr': ('.model_related.setr', 'SETR'),
+    'ags': ('.model_related.ags', 'AGS'),
+    
+    # ensemble
+    'ens': ('.ensemble.ens', 'ENS'),
+    'svre': ('.ensemble.svre', 'SVRE'),
+    'lgv': ('.ensemble.lgv', 'LGV'),
+    'mba': ('.ensemble.mba', 'MBA'),
+}
 
-            # input transformation
-            'dim': DIM,
-            'tim': TIM,
-            'sim': SIM,
-            'atta': ATTA,
-            'admix': Admix,
-            'dem': DEM,
-            'odi': ODI,
-            'su': SU,
-            'ssm': SSM,
-            'aitl': AITL,
-            'maskblock': MaskBlock,
-            'sia': SIA,
-            'stm': STM,
-            'lpm': LPM,
-            'bsr': BSR,
-            'decowa': DeCowA,
-            'l2t': L2T,
 
-            # advanced_objective
-            'tap': TAP,
-            'ila': ILA,
-            'potrip': POTRIP,
-            'fia': FIA,
-            'yaila': YAILA,
-            'logit': LOGIT,
-            'trap': TRAP,
-            'naa': NAA,
-            'rpa': RPA,
-            'taig': TAIG,
-            'fmaa': FMAA,
-            'cfm': CFM,
-            'logit_margin': Logit_Margin,
-            'fuzziness_tuned': Fuzziness_Tuned,
-            'ilpd': ILPD,
-            'fft': FFT,
-            'ir': IR,
+def load_attack_class(attack_name):
+    if attack_name not in attack_zoo:
+        raise Exception('Unspported attack algorithm {}'.format(attack_name))
+    module_path, class_name = attack_zoo[attack_name]
+    module = importlib.import_module(module_path, __package__)
+    attack_class = getattr(module, class_name)
+    return attack_class
 
-            # model_related
-            'sgm': SGM,
-            'iaa': IAA,
-            'dsm': DSM,
-            'mta': MTA,
-            'mup': MUP,
-            'bpa': BPA,
-            'dhf': DHF_MIFGSM,
-            'pna_patchout': PNA_PatchOut,
-            'sapr': SAPR,
-            'tgr': TGR,
-            'ghost': GhostNetwork_MIFGSM,
-            'setr': SETR,
-            'ags': AGS,
-
-            # ensemble-based
-            'ens': ENS,
-            'svre': SVRE,
-            'lgv': LGV,
-            'mba': MBA,
-        }
 
 __version__ = '1.0.0'
