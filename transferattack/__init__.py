@@ -38,6 +38,7 @@ from .input_transformation.bsr import BSR
 from .input_transformation.usmm import USMM
 from .input_transformation.decowa import DeCowA
 from .input_transformation.l2t import L2T
+from .input_transformation.idaa import IDAA
 
 
 from .advanced_objective.tap import TAP
@@ -119,6 +120,7 @@ attack_zoo = {
             'usmm': USMM,
             'decowa': DeCowA,
             'l2t': L2T,
+            'idaa': IDAA,
 
             # advanced_objective
             'tap': TAP,
