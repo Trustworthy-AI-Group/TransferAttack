@@ -40,6 +40,7 @@ attack_zoo = {
     'bsr': ('.input_transformation.bsr', 'BSR'),
     'decowa': ('.input_transformation.decowa', 'DeCowA'),
     'l2t': ('.input_transformation.l2t', 'L2T'),
+    'idaa': ('.input_transformation.idaa', 'IDAA'),
     
     # advanced_objective
     'tap': ('.advanced_objective.tap', 'TAP'),

@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="19"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="20"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -154,7 +154,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="15"><sub><strong>Input transformation-based</strong></sub></th>
+<td><a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Ma_Transferable_Adversarial_Attack_for_Both_Vision_Transformers_and_Convolutional_Networks_ICCV_2023_paper.pdf" target="_blank" rel="noopener noreferrer">MIG (Ma et al., 2023)</a></td>
+<td ><sub>Utilize integrated gradient to steer the generation of adversarial perturbations</sub></td>
+</tr>
+
+<tr>
+<th rowspan="16"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -218,6 +223,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2308.10299" target="_blank" rel="noopener noreferrer">BSR (Wang et al., 2023)</a></td>
 <td ><sub>Randomly shuffles and rotates the image blocks</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2311.12051.pdf" target="_blank" rel="noopener noreferrer">USMM (Wang et al., 2023)</a></td>
+<td ><sub> Apply uniform scale and a mix mask from an image of a different category to the input image</sub></td>
 </tr>
 
 <tr>
@@ -391,7 +401,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="3"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Input transformation-based</strong></sub></th>
 
 <tr>
 <td><a href="https://arxiv.org/pdf/2203.09123" target="_blank" rel="noopener noreferrer">ODI (Byun et al., 2022)</a></td>
@@ -401,6 +411,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/pdf/2209.03716.pdf" target="_blank" rel="noopener noreferrer">SU (Wei et al., 2023)</a></td>
 <td ><sub>Optimize adversarial perturbation on the original and cropped images by minimizing prediction error and maximizing their feature similarity</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2401.13205" target="_blank" rel="noopener noreferrer">IDAA (Liu et al., 2024)</a></td>
+<td ><sub> design local mixup to randomly mix a group of transformed adversarial images, strengthening the input diversity</sub></td>
 </tr>
 
 <tr>
@@ -467,7 +482,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="19"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="20"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >96.1</td>
 <td >33.5</td>
@@ -771,7 +786,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="15"><sub><strong>Input transformation-based</strong></sub></th>
+<td><a href="./transferattack/gradient/mig.py" target="_blank" rel="noopener noreferrer">MIG</a></td>
+<td >100.0</td>
+<td >54.3</td>
+<td >58.0</td>
+<td >87.2</td>
+<td >22.9</td>
+<td >31.3</td>
+<td >44.3</td>
+<td >53.5</td>
+<td >37.5</td>
+<td >47.7</td>
+<td >26.5</td>
+<td >39.8</td>
+</tr>
+
+<tr>
+<th rowspan="16"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >100.0</td>
 <td >62.7</td>
@@ -980,6 +1011,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >80.1</td>
 <td >27.3</td>
 <td >48.1</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/input_transformation/usmm.py" target="_blank" rel="noopener noreferrer">USMM</a></td>
+<td >100.0</td>
+<td >74.0</td>
+<td >78.1</td>
+<td >96.4</td>
+<td >33.7</td>
+<td >45.3</td>
+<td >62.8</td>
+<td >64.8</td>
+<td >40.0</td>
+<td >66.1</td>
+<td >29.4</td>
+<td >50.8</td>
 </tr>
 
 <tr>
@@ -1511,7 +1558,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 
-<th rowspan="2"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="3"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/odi/odi.py" target="_blank" rel="noopener noreferrer">ODI</a></td>
 <td >98.9</td>
 <td >38.6</td>
@@ -1540,6 +1587,21 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >2.1</td>
 <td >0.0</td>
 <td >0.2</td>
+</tr>
+
+<td><a href="./transferattack/input_transformation/idaa.py" target="_blank" rel="noopener noreferrer">IDAA </a></td>
+<td >87.1</td>
+<td >2.6</td>
+<td >3.0</td>
+<td >13.0</td>
+<td >1.3</td>
+<td >1.8</td>
+<td >2.1</td>
+<td >3.3</td>
+<td >0.4</td>
+<td >1.5</td>
+<td >0.0</td>
+<td >0.1</td>
 </tr>
 
 
