@@ -368,7 +368,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="5"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="6"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1611.02770" target="_blank" rel="noopener noreferrer">Ens (Liu et al., 2017)</a></td>
 <td ><sub>Generate the adversarial examplesusing multiple models</sub></td>
 </tr>
@@ -386,6 +386,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2302.05086" target="_blank" rel="noopener noreferrer">MBA (Li et al., 2023)</a></td>
 <td ><sub>Maximize the average prediction loss on several models obtained by single run of fine-tuning the surrogate model using Bayes optimization</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2303.09105" target="_blank" rel="noopener noreferrer">CWA (Chen et al., 2023)</a></td>
+<td ><sub>Define the common weakness of an ensemble of models as the solution that is at the flat landscape and close to the models' local optima</sub></td>
 </tr>
 </table>
 
@@ -1464,7 +1469,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="5"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="6"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/ens.py" target="_blank" rel="noopener noreferrer">ENS</a></td>
 <td >100.0</td>
 <td >91.7</td>
@@ -1528,6 +1533,21 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >52.1</td>
 </tr>
 
+<tr>
+<td><a href="./transferattack/ensemble/cwa.py" target="_blank" rel="noopener noreferrer">CWA</a></td>
+<td >99.7</td>
+<td >98.3</td>
+<td >99.1</td>
+<td >100.0</td>
+<td >33.9</td>
+<td >47.7</td>
+<td >66.4</td>
+<td >65.0</td>
+<td >35.8</td>
+<td >69.4</td>
+<td >24.9</td>
+<td >68.9</td>
+</tr>
 </table>
 
 ### Targeted Attack
