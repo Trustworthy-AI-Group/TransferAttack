@@ -81,6 +81,7 @@ attack_zoo = {
     'svre': ('.ensemble.svre', 'SVRE'),
     'lgv': ('.ensemble.lgv', 'LGV'),
     'mba': ('.ensemble.mba', 'MBA'),
+    'cwa': ('.ensemble.cwa', 'CWA'),
 }
 
 
