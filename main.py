@@ -1,10 +1,11 @@
-import os
 import argparse
-import tqdm
-import torch
+import os
 
+import torch
+import tqdm
 import transferattack
 from transferattack.utils import *
+
 
 def get_parser():
     parser = argparse.ArgumentParser(description='Generating transferable adversaria examples')
@@ -35,12 +36,9 @@ def main():
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=args.batchsize, shuffle=False, num_workers=4)
 
     if not args.eval:
-        if args.attack in transferattack.attack_zoo:
-            if args.ensemble or len(args.model.split(','))>1:
-                args.model = args.model.split(',') # example for ensemble attack
-            attacker = transferattack.attack_zoo[args.attack.lower()](model_name = args.model, targeted = args.targeted)
-        else:
-            raise Exception("Unspported attack algorithm {}".format(args.attack))
+        if args.ensemble or len(args.model.split(',')) > 1:
+            args.model = args.model.split(',')
+        attacker = transferattack.load_attack_class(args.attack)(model_name=args.model, targeted=args.targeted)
 
         for batch_idx, [images, labels, filenames] in tqdm.tqdm(enumerate(dataloader)):
             perturbations = attacker(images, labels)
@@ -48,7 +46,7 @@ def main():
     else:
         asr = dict()
         res = '|'
-        for model_name, model in load_pretrained_model(cnn_model_paper,vit_model_paper):
+        for model_name, model in load_pretrained_model(cnn_model_paper, vit_model_paper):
             model = wrap_model(model.eval().cuda())
             for p in model.parameters():
                 p.requires_grad = False
@@ -59,9 +57,11 @@ def main():
                 pred = model(images.cuda())
                 correct += (labels.numpy() == pred.argmax(dim=1).detach().cpu().numpy()).sum()
                 total += labels.shape[0]
-            if args.targeted: # correct: pred == target_label
+            if args.targeted:
+                # correct: pred == target_label
                 asr[model_name] = (correct / total) * 100
-            else: # correct: pred == original_label
+            else:
+                # correct: pred == original_label
                 asr[model_name] = (1 - correct / total) * 100
             print(model_name, asr[model_name])
             res += ' {:.1f} |'.format(asr[model_name])
@@ -74,4 +74,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
