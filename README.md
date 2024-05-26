@@ -241,7 +241,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="12"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="13"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
 <td ><sub>Maximize the difference of feature maps between benign sample and adversarial example and smooth the perturbation </sub></td>
 </tr>
@@ -249,6 +249,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/pdf/1907.10823.pdf" target="_blank" rel="noopener noreferrer">ILA (Huang et al., 2019)</a></td>
 <td ><sub>Enlarge the similarity of feature difference between the original adversarial example and benign sample </sub></td>
+</tr>
+
+<tr>
+<td><a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Wu_Boosting_the_Transferability_of_Adversarial_Samples_via_Attention_CVPR_2020_paper.pdf" target="_blank" rel="noopener noreferrer">ATA (Wu et al., 2020)</a></td>
+<td ><sub>Add a regularizer on the difference between attention maps of benign sample and adversarial example</sub></td>
 </tr>
 
 <tr>
@@ -1067,7 +1072,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="12"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="13"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/tap.py" target="_blank" rel="noopener noreferrer">TAP</a></td>
 <td >100.0</td>
 <td >38.5</td>
@@ -1081,6 +1086,21 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >28.9</td>
 <td >20.8</td>
 <td >25.9</td>
+</tr>
+
+<td><a href="./transferattack/advanced_objective/ata.py" target="_blank" rel="noopener noreferrer">ATA</a></td>
+<td >100.0</td>
+<td >16.4</td>
+<td >19.6</td>
+<td >41.8</td>
+<td >5.9</td>
+<td >8.9</td>
+<td >14.4</td>
+<td >21.4</td>
+<td >30.4</td>
+<td >10.0</td>
+<td >20.5</td>
+<td >15.7</td>
 </tr>
 
 <tr>
