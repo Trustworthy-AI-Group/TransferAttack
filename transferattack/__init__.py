@@ -61,6 +61,7 @@ attack_zoo = {
     'ilpd': ('.advanced_objective.ilpd', 'ILPD'),
     'fft': ('.advanced_objective.fft', 'FFT'),
     'ir': ('.advanced_objective.ir', 'IR'),
+    'danaa': ('.advanced_objective.danaa', 'DANAA'),
     
     # model_related
     'sgm': ('.model_related.sgm', 'SGM'),

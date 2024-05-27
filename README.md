@@ -241,7 +241,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="13"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="14"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
 <td ><sub>Maximize the difference of feature maps between benign sample and adversarial example and smooth the perturbation </sub></td>
 </tr>
@@ -304,6 +304,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org//abs/2309.15696" target="_blank" rel="noopener noreferrer">IR (Chen et al., 2021)</a></td>
 <td ><sub>Introduces the interaction regularizer into the objective function to minimize the interaction for better transferability</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2310.10427" target="_blank" rel="noopener noreferrer">DANAA (Jin et al., 2023)</a></td>
+<td ><sub>Utilize an adversarial non-linear path to compute feature importance for each neuron by decomposing the integral</sub></td>
 </tr>
 
 <tr>
@@ -1072,7 +1077,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="13"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="14"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/tap.py" target="_blank" rel="noopener noreferrer">TAP</a></td>
 <td >100.0</td>
 <td >38.5</td>
@@ -1277,6 +1282,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >32.2</td>
 <td >28.0</td>
 <td >22.8</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/advanced_objective/danaa.py" target="_blank" rel="noopener noreferrer">DANAA</a></td>
+<td >100.0</td>
+<td >59.6</td>
+<td >63.8</td>
+<td >90.4</td>
+<td >17.3</td>
+<td >26.4</td>
+<td >44.7</td>
+<td >49.8</td>
+<td >34.8</td>
+<td >44.9</td>
+<td >23.4</td>
+<td >32.4</td>
 </tr>
 
 <tr>
