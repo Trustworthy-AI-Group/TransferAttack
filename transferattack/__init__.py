@@ -44,6 +44,7 @@ attack_zoo = {
     
     # advanced_objective
     'tap': ('.advanced_objective.tap', 'TAP'),
+    'ata': ('.advanced_objective.ata', 'ATA'),
     'ila': ('.advanced_objective.ila', 'ILA'),
     'potrip': ('.advanced_objective.potrip', 'POTRIP'),
     'yaila': ('.advanced_objective.yaila.yaila', 'YAILA'),
