@@ -993,18 +993,18 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr>
 <td><a href="./transferattack/input_transformation/lpm.py" target="_blank" rel="noopener noreferrer">LPM</a></td>
-<td >100.0</td>
-<td >68.2</td>
-<td >62.3</td>
-<td >79.2</td>
-<td >23.5</td>
-<td >30.0</td>
-<td >41.3</td>
-<td >45.6</td>
-<td >22.8</td>
-<td >48.9</td>
-<td >21.2</td>
-<td >35.7</td>
+<td >95.9</td>
+<td >11.1</td>
+<td >12.2</td>
+<td >28.9</td>
+<td >4.6</td>
+<td >6.8</td>
+<td >11.3</td>
+<td >17.2</td>
+<td >29.6</td>
+<td >5.5</td>
+<td >19.2</td>
+<td >18.7</td>
 </tr>
 
 <tr>

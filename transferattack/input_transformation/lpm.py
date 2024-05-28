@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
-from sko.GA import GA
-from sko.DE import DE
+from .sko.GA import GA
+from .sko.DE import DE
 from ..utils import *
 from ..gradient.mifgsm import MIFGSM
 from types import MethodType, FunctionType
@@ -83,8 +83,8 @@ class LPM(MIFGSM):
         
         lb = [0] * len(bounds)
         ub = [elem[1] for elem in bounds]
-        
-        de = MyDE(func=myfunc, n_dim=len(bounds), size_pop=self.popsize, max_iter=self.epoch, prob_mut=0.001, lb=lb, ub=ub, precision=1, img=None, label=None)
+        # import pdb;pdb.set_trace()
+        de = MyDE(func=myfunc, n_dim=len(bounds), size_pop=self.popsize*len(data), max_iter=self.epoch, prob_mut=0.001, lb=lb, ub=ub, precision=1, img=None, label=None)
 
 
         masks, y = de.run()
@@ -104,12 +104,13 @@ class LPM(MIFGSM):
                 for k in range(mask.shape[2]):
                     mask_final[i][j][k*self.patch_size:k*self.patch_size + self.patch_size] = mask[i][int(j/self.patch_size)][int(k)]
         mask = mask_final[:,None,:,:]
-
         mask = torch.cat((mask,mask,mask),1)
-
         mask = mask.float()
+        # print(mask.shape)
+        # print(img.shape)
+        # mask = F.interpolate(mask, (288, 288), mode='bilinear', align_corners=False)
         mask = mask.cuda()
-        X_ori = torch.squeeze(img)
+        X_ori = torch.stack([img])[0]
 
         X = X_ori.clone()
 
@@ -118,9 +119,11 @@ class LPM(MIFGSM):
 
         delta = torch.zeros_like(X, requires_grad=True).to(self.device)
         grad_momentum = 0
+        cnt = 0
         for t in range(10):
             X_adv = X + delta
-            X_adv[:,:,:288,:288] = X_adv[:,:,:288,:288] * mask
+            # import pdb;pdb.set_trace()
+            X_adv[:,:,:224,:224] = X_adv[:,:,:224,:224] * mask[cnt]
             ensemble_logits = white_models(X_adv)
             loss = -nn.CrossEntropyLoss()(ensemble_logits, labels)
             loss.backward()
@@ -158,124 +161,20 @@ class LPM(MIFGSM):
         mask = mask.reshape(-1,int(self.HEIGHT/self.patch_size),int(self.WIDTH/self.patch_size))
         numsum = x.shape[0]
         scorelist = []
-        bn = int(np.ceil(numsum/batch_size))
+        POPSIZE = int(np.ceil(numsum/batch_size))
+        # import pdb;pdb.set_trace()
         
-        for i in range(bn):
-            bs = i*batch_size
-            be = min((i+1)*batch_size, numsum)
-            bn = be-bs
-            
-            X_adv = self.batch_attack(torch.vstack([img]*bn), torch.vstack([mask[bs:be]]*bn), torch.hstack([label]*bn), white_models)
-            scorelist = np.append(scorelist,self.score_transferability(X_adv, torch.hstack([label]*bn),gray_models))
+        perturb = self.batch_attack(torch.vstack([img]*POPSIZE),mask, torch.hstack([label]*POPSIZE), white_models)
+        # import pdb;pdb.set_trace()
+        X_adv = torch.vstack([img]*POPSIZE) + perturb
+        scorelist = np.append(scorelist,self.score_transferability(X_adv, torch.hstack([label]*POPSIZE),gray_models))
+        # import pdb;pdb.set_trace()
         return scorelist
 
 
 
-
 class MyDE(GA):
-    
-    
-    def __init__(self, func, n_dim,
-                 size_pop=50, max_iter=200,
-                 prob_mut=0.001,
-                 lb=-1, ub=1,
-                 constraint_eq=tuple(), constraint_ueq=tuple(),
-                 precision=1e-7,img=None,label=None):
-        super().__init__(func, n_dim, size_pop, max_iter, prob_mut, lb, ub, constraint_eq, constraint_ueq)
-        self.func = func_transformer(func)
-        self.lb, self.ub = np.array(lb) * np.ones(self.n_dim), np.array(ub) * np.ones(self.n_dim)
-        self.precision = np.array(precision) * np.ones(self.n_dim)  # works when precision is int, float, list or array
-        self.img = img
-        self.label = label
-        
-        # Lind is the num of genes of every variable of func（segments）
-        Lind_raw = np.log2((self.ub - self.lb) / self.precision + 1)
-        self.Lind = np.ceil(Lind_raw).astype(int)
-
-        # if precision is integer:
-        # if Lind_raw is integer, which means the number of all possible value is 2**n, no need to modify
-        # if Lind_raw is decimal, we need ub_extend to make the number equal to 2**n,
-        self.int_mode_ = (self.precision % 1 == 0) & (Lind_raw % 1 != 0)
-        self.int_mode = np.any(self.int_mode_)
-        if self.int_mode:
-            self.ub_extend = np.where(self.int_mode_
-                                      , self.lb + (np.exp2(self.Lind) - 1) * self.precision
-                                      , self.ub)
-
-        self.len_chrom = sum(self.Lind)
-
-        self.crtbp()
-    
-        self.Y = self.x2y()
-    
-    def run(self, max_iter=None):
-        self.max_iter = max_iter or self.max_iter
-        
-        for i in range(self.max_iter):
-            self.iter = i
-            import pdb; pdb.set_trace()
-            if i == 0:
-                self.X = self.chrom2x(self.Chrom)
-                self.Y = self.x2y()
-        
-            self.ranking()
-           
-            self.crossover()
-            self.mutation()
-            self.selection()
-            
-            generation_best_index = self.Y.argmin()
-            
-        return self.Chrom, self.Y
-
-    fit = run
-    
-    def crtbp(self):
-        rate = 0.1
-        middle_1 = np.zeros((int(self.size_pop), int(rate * self.len_chrom)))
-        middle_2 = np.ones((int(self.size_pop),self.len_chrom - int(rate * self.len_chrom)))
-        self.Chrom = np.concatenate((middle_1,middle_2), axis=1)
-        for i in range(self.Chrom.shape[0]):
-            self.Chrom[i] = np.random.permutation(self.Chrom[i])
-        return self.Chrom
-    
-    def gray2rv(self, gray_code):
-        # Gray Code to real value: one piece of a whole chromosome
-        # input is a 2-dimensional numpy array of 0 and 1.
-        # output is a 1-dimensional numpy array which convert every row of input into a real number.
-        _, len_gray_code = gray_code.shape
-        b = gray_code.cumsum(axis=1) % 2
-        mask = np.logspace(start=1, stop=len_gray_code, base=0.5, num=len_gray_code)
-        return (b * mask).sum(axis=1) / mask.sum()
-
-    def chrom2x(self, Chrom):
-        cumsum_len_segment = self.Lind.cumsum()
-        X = np.zeros(shape=(self.size_pop, self.n_dim))
-        for i, j in enumerate(cumsum_len_segment):
-            if i == 0:
-                Chrom_temp = Chrom[:, :cumsum_len_segment[0]]
-            else:
-                Chrom_temp = Chrom[:, cumsum_len_segment[i - 1]:cumsum_len_segment[i]]
-            X[:, i] = self.gray2rv(Chrom_temp)
-
-        if self.int_mode:
-            X = self.lb + (self.ub_extend - self.lb) * X
-            X = np.where(X > self.ub, self.ub, X)
-            # the ub may not obey precision, which is ok.
-            # for example, if precision=2, lb=0, ub=5, then x can be 5
-        else:
-            X = self.lb + (self.ub - self.lb) * X
-        return X
-    
-    
-    def x2y(self):
-        
-        self.Y_raw = self.func(self.Chrom)
-        
-        self.Y = self.Y_raw
-        
-        return self.Y
-    
+    # 可自定义排序，杂交，变异，选择
     def ranking(self):
         # import pdb;pdb.set_trace()
         self.Chrom = self.Chrom[np.argsort(self.Y),:]
@@ -291,7 +190,8 @@ class MyDE(GA):
         # print(cross_chrom_size)
         superior_size = int(0.3 * self.size_pop)
         generation_superior = self.Chrom[:superior_size,:]
-        
+        # half_size_pop = int(size_pop / 2)
+        # Chrom1, Chrom2 = self.Chrom[:size_pop,:][:half_size_pop], self.Chrom[:size_pop,:][half_size_pop:]
         self.crossover_Chrom = np.zeros(shape=(cross_chrom_size, len_chrom), dtype=int)
         # print(self.crossover_Chrom.shape)
         for i in range(cross_chrom_size):
@@ -331,24 +231,31 @@ class MyDE(GA):
         '''
         greedy selection
         '''
+        # 上一代个体Chrom,得分self.Y 
+        # 得到这一代个体以及分数
         offspring_Chrom = np.vstack((self.crossover_Chrom,self.mutation_Chrom))
         f_offspring  = self.func(offspring_Chrom)
-        
+        # f_chrom = self.Y.copy()
         print("this generate score:")
         print(f_offspring)
         num_inbreeding = int(0.3 * self.size_pop)
         selection_chrom = np.vstack((offspring_Chrom, self.Chrom))
         selection_chrom_Y = np.hstack((f_offspring, self.Y))
-        
+        # print(selection_chrom_Y)
         generation_best_index = selection_chrom_Y.argmin()
-       
+        # print(selection_chrom[generation_best_index])
         
         
         a, indices = np.unique(selection_chrom_Y, return_index=True)
-        
+        # print(a)
+        # print(indices)
         
         selection_chrom_1 = np.zeros_like(selection_chrom[0:len(a)])
         selection_chrom_1 = selection_chrom[indices]
+        # selection_chrom = selection_chrom[np.argsort(selection_chrom_Y),:]
+        # selection_chrom_Y = selection_chrom_Y[(np.argsort(selection_chrom_Y))]
+        # print("selection_chrom_1")
+        # print(selection_chrom_1)
         if len(a) >= self.size_pop:
             self.Chrom = selection_chrom_1[:self.size_pop,:]
             self.Y = a[:self.size_pop]
@@ -359,46 +266,7 @@ class MyDE(GA):
             self.Y[len(a):self.size_pop] = a[len(a)-1]
         # print(self.Chrom[0])
         # assert False
-        
-        
 
-def func_transformer(func):
-    '''
-    transform this kind of function:
-    ```
-    def demo_func(x):
-        x1, x2, x3 = x
-        return x1 ** 2 + x2 ** 2 + x3 ** 2
-    ```
-    into this kind of function:
-    ```
-    def demo_func(x):
-        x1, x2, x3 = x[:,0], x[:,1], x[:,2]
-        return x1 ** 2 + (x2 - 0.05) ** 2 + x3 ** 2
-    ```
-    getting vectorial performance if possible:
-    ```
-    def demo_func(x):
-        x1, x2, x3 = x[:, 0], x[:, 1], x[:, 2]
-        return x1 ** 2 + (x2 - 0.05) ** 2 + x3 ** 2
-    ```
-    :param func:
-    :return:
-    '''
-
-    # to support the former version
-    if (func.__class__ is FunctionType) and (func.__code__.co_argcount > 1):
-        warnings.warn('multi-input might be deprecated in the future, use fun(p) instead')
-
-        def func_transformed(X):
-            # l = []
-            # for x in X:
-            #     l.append(func(*tuple(x)))
-            # return np.array(l)
-            return func(X)
-            # return np.array([func(x) for x in X])
-
-        return func_transformed
 
 
 
