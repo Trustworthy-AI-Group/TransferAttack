@@ -1527,7 +1527,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >35.7</td>
 <td >32.6</td>
 <td >34.8</td>
-<td >27.4</td>
+<td >20.7</td>
 <td >48.7</td>
 </tr>
 
