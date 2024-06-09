@@ -312,7 +312,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="13"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="14"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1812.03413" target="_blank" rel="noopener noreferrer">Ghost (Li et al., 2020)</a></td>
 <td ><sub>Densely apply dropout and random scaling on the skip connection to generate several ghost networks to average the gradient</sub></td>
 </tr>
@@ -370,6 +370,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2106.04169" target="_blank" rel="noopener noreferrer">SETR (Naseer et al., 2022)</a></td>
 <td ><sub>Ensemble and refine classifiers after each transformer block</sub></td>
+</tr>
+
+
+<tr>
+<td><a href="https://arxiv.org/abs/1905.11736" target="_blank" rel="noopener noreferrer">CDTP (Naseer et al., 2019)</a></td>
+<td ><sub>Train a generative model on datasets from different domains to learn domain-invariant perturbations</sub></td>
 </tr>
 
 <tr>
@@ -1301,7 +1307,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="13"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="14"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/ghost.py" target="_blank" rel="noopener noreferrer">Ghost</a></td>
 <td >64.4</td>
 <td >93.9</td>
@@ -1507,6 +1513,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >62.2</td>
 <td >27.4</td>
 <td >39.4</td>
+</tr>
+
+<tr id="cdtp">
+<td><a href="./transferattack/model_related/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
+<td >72.8</td>
+<td >29.9</td>
+<td >39.8</td>
+<td >64.6</td>
+<td >10.5</td>
+<td >18.7</td>
+<td >37.4</td>
+<td >35.7</td>
+<td >32.6</td>
+<td >34.8</td>
+<td >27.4</td>
+<td >48.7</td>
 </tr>
 
 <tr>
