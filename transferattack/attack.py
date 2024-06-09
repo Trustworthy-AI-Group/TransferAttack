@@ -135,7 +135,7 @@ class Attack(object):
             else:
                 delta.normal_(-self.epsilon, self.epsilon)
                 d_flat = delta.view(delta.size(0), -1)
-                n = d_flat.norm(p=2, dim=10).view(delta.size(0), 1, 1, 1)
+                n = d_flat.norm(p=2, dim=-1).view(delta.size(0), 1, 1, 1)
                 r = torch.zeros_like(data).uniform_(0,1).to(self.device)
                 delta *= r/n*self.epsilon
             delta = clamp(delta, img_min-data, img_max-data)
