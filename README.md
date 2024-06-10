@@ -410,9 +410,14 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="1"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://proceedings.neurips.cc/paper/2021/hash/7486cef2522ee03547cfb970a404a874-Abstract.html" target="_blank" rel="noopener noreferrer">LTP (Nakka et al., 2021)</a></td>
 <td ><sub>Introduce a loss function based on such mid-level features to learn an effective, transferable perturbation generator</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2208.05650" target="_blank" rel="noopener noreferrer">ADA (Kim et al., 2022)</a></td>
+<td ><sub>Utilize a generator to stochastically perturb shared salient features across models to avoid poor local optima and explore the search space thoroughly </sub></td>
 </tr>
 </table>
 
@@ -1619,7 +1624,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="1"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/ltp.py" target="_blank" rel="noopener noreferrer">LTP</a></td>
 <td >99.1</td>
 <td >98.7</td>
@@ -1633,6 +1638,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >96.5</td>
 <td >21.6</td>
 <td >29.7</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/generation/ada.py" target="_blank" rel="noopener noreferrer">ADA</a></td>
+<td >69.9</td>
+<td >47.5</td>
+<td >45.2</td>
+<td >63.6</td>
+<td >8.5</td>
+<td >11.2</td>
+<td >31.7</td>
+<td >29.4</td>
+<td >29.4</td>
+<td >37.0</td>
+<td >20.6</td>
+<td >16.3</td>
 </tr>
 </table>
 
