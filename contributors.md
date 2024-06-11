@@ -10,6 +10,8 @@
 
 - [Rongyi Zhu](https://github.com/RongyiZhu) added the [L2T](./transferattack/input_transformation/l2t.py) method.
 
+- [Bin Chen](https://github.com/CHENBIN99) added the [AdaEA](./transferattack/ensemble/adaea.py) method.
+
 -------------
 
 - Xiangyuan Yang checked the [DTA](./transferattack/gradient/dta.py) method.
