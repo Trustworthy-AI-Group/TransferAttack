@@ -88,6 +88,7 @@ attack_zoo = {
 
     # generation
     'ltp': ('.generation.ltp', 'LTP'),
+    'ada': ('.generation.ada', 'ADA'),
 }
 
 
