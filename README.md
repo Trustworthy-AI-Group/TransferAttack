@@ -384,7 +384,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="5"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="6"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1611.02770" target="_blank" rel="noopener noreferrer">Ens (Liu et al., 2017)</a></td>
 <td ><sub>Generate the adversarial examplesusing multiple models</sub></td>
 </tr>
@@ -407,6 +407,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2303.09105" target="_blank" rel="noopener noreferrer">CWA (Chen et al., 2023)</a></td>
 <td ><sub>Define the common weakness of an ensemble of models as the solution that is at the flat landscape and close to the models' local optima</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2308.02897" target="_blank" rel="noopener noreferrer">AdaEA (Chen et al., 2023)</a></td>
+<td ><sub>Adjust the weights of each surrogate model in ensemble attack using adjustment strategy and reducing conflicts between surrogate models by reducing disparity of gradients of them</sub></td>
 </tr>
 
 <tr>
@@ -1543,7 +1548,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="5"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="6"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/ens.py" target="_blank" rel="noopener noreferrer">ENS</a></td>
 <td >100.0</td>
 <td >91.7</td>
@@ -1621,6 +1626,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >69.4</td>
 <td >24.9</td>
 <td >68.9</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/ensemble/adaea.py" target="_blank" rel="noopener noreferrer">AdaEA</a></td>
+<td >100.0</td>
+<td >91.9</td>
+<td >92.7</td>
+<td >100.0</td>
+<td >39.4</td>
+<td >52.4</td>
+<td >67.3</td>
+<td >67.0</td>
+<td >33.9</td>
+<td >69.6</td>
+<td >24.3</td>
+<td >58.0</td>
 </tr>
 
 <tr>

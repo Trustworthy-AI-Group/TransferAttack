@@ -28,7 +28,7 @@ def get_parser():
 
 def main():
     args = get_parser()
-    os.environ["CUDA_VISIBLE_DEVICES"] = args.GPU_ID
+    # os.environ["CUDA_VISIBLE_DEVICES"] = args.GPU_ID
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
 
