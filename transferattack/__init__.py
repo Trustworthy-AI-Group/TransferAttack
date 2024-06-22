@@ -85,6 +85,11 @@ attack_zoo = {
     'lgv': ('.ensemble.lgv', 'LGV'),
     'mba': ('.ensemble.mba', 'MBA'),
     'cwa': ('.ensemble.cwa', 'CWA'),
+    'adaea': ('.ensemble.adaea', 'AdaEA'),
+
+    # generation
+    'ltp': ('.generation.ltp', 'LTP'),
+    'ada': ('.generation.ada', 'ADA'),
 }
 
 

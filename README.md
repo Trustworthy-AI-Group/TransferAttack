@@ -408,6 +408,22 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <td><a href="https://arxiv.org/abs/2303.09105" target="_blank" rel="noopener noreferrer">CWA (Chen et al., 2023)</a></td>
 <td ><sub>Define the common weakness of an ensemble of models as the solution that is at the flat landscape and close to the models' local optima</sub></td>
 </tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2308.02897" target="_blank" rel="noopener noreferrer">AdaEA (Chen et al., 2023)</a></td>
+<td ><sub>Adjust the weights of each surrogate model in ensemble attack using adjustment strategy and reducing conflicts between surrogate models by reducing disparity of gradients of them</sub></td>
+</tr>
+
+<tr>
+<th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
+<td><a href="https://proceedings.neurips.cc/paper/2021/hash/7486cef2522ee03547cfb970a404a874-Abstract.html" target="_blank" rel="noopener noreferrer">LTP (Nakka et al., 2021)</a></td>
+<td ><sub>Introduce a loss function based on such mid-level features to learn an effective, transferable perturbation generator</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2208.05650" target="_blank" rel="noopener noreferrer">ADA (Kim et al., 2022)</a></td>
+<td ><sub>Utilize a generator to stochastically perturb shared salient features across models to avoid poor local optima and explore the search space thoroughly </sub></td>
+</tr>
 </table>
 
 ### Targeted Attacks
@@ -1610,6 +1626,55 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >69.4</td>
 <td >24.9</td>
 <td >68.9</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/ensemble/adaea.py" target="_blank" rel="noopener noreferrer">AdaEA</a></td>
+<td >100.0</td>
+<td >91.9</td>
+<td >92.7</td>
+<td >100.0</td>
+<td >39.4</td>
+<td >52.4</td>
+<td >67.3</td>
+<td >67.0</td>
+<td >33.9</td>
+<td >69.6</td>
+<td >24.3</td>
+<td >58.0</td>
+</tr>
+
+<tr>
+<th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
+<td><a href="./transferattack/generation/ltp.py" target="_blank" rel="noopener noreferrer">LTP</a></td>
+<td >99.1</td>
+<td >98.7</td>
+<td >98.7</td>
+<td >99.5</td>
+<td >45.1</td>
+<td >69.4</td>
+<td >92.1</td>
+<td >90.2</td>
+<td >31.7</td>
+<td >96.5</td>
+<td >21.6</td>
+<td >29.7</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/generation/ada.py" target="_blank" rel="noopener noreferrer">ADA</a></td>
+<td >69.9</td>
+<td >47.5</td>
+<td >45.2</td>
+<td >63.6</td>
+<td >8.5</td>
+<td >11.2</td>
+<td >31.7</td>
+<td >29.4</td>
+<td >29.4</td>
+<td >37.0</td>
+<td >20.6</td>
+<td >16.3</td>
 </tr>
 </table>
 
