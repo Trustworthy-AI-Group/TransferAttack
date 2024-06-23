@@ -1854,7 +1854,6 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 
 <th rowspan="1"><sub><strong>Generation-based</strong></sub></th>
-<tr id="ttp">
 <td><a href="./transferattack/generation/ttp.py" target="_blank" rel="noopener noreferrer">TTP</a></td>
 <td >96.2</td>
 <td >19.6</td>
