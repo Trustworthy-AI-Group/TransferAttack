@@ -41,7 +41,6 @@ attack_zoo = {
     'decowa': ('.input_transformation.decowa', 'DeCowA'),
     'l2t': ('.input_transformation.l2t', 'L2T'),
     'idaa': ('.input_transformation.idaa', 'IDAA'),
-    'cdtp': ('.model_related.cdtp', 'CDTP'),
     
     # advanced_objective
     'tap': ('.advanced_objective.tap', 'TAP'),
@@ -90,6 +89,8 @@ attack_zoo = {
     # generation
     'ltp': ('.generation.ltp', 'LTP'),
     'ada': ('.generation.ada', 'ADA'),
+    'cdtp': ('.generation.cdtp', 'CDTP'),
+    'ttp': ('.generation.ttp', 'TTP'),
 }
 
 

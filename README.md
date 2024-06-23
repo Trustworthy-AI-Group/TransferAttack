@@ -241,7 +241,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="14"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="13"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
 <td ><sub>Maximize the difference of feature maps between benign sample and adversarial example and smooth the perturbation </sub></td>
 </tr>
@@ -373,10 +373,6 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 
-<tr>
-<td><a href="https://arxiv.org/abs/1905.11736" target="_blank" rel="noopener noreferrer">CDTP (Naseer et al., 2019)</a></td>
-<td ><sub>Train a generative model on datasets from different domains to learn domain-invariant perturbations</sub></td>
-</tr>
 
 <tr>
 <td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/28365" target="_blank" rel="noopener noreferrer">AGS (Wang et al., 2024)</a></td>
@@ -415,7 +411,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://proceedings.neurips.cc/paper/2021/hash/7486cef2522ee03547cfb970a404a874-Abstract.html" target="_blank" rel="noopener noreferrer">LTP (Nakka et al., 2021)</a></td>
 <td ><sub>Introduce a loss function based on such mid-level features to learn an effective, transferable perturbation generator</sub></td>
 </tr>
@@ -424,6 +420,16 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <td><a href="https://arxiv.org/abs/2208.05650" target="_blank" rel="noopener noreferrer">ADA (Kim et al., 2022)</a></td>
 <td ><sub>Utilize a generator to stochastically perturb shared salient features across models to avoid poor local optima and explore the search space thoroughly </sub></td>
 </tr>
+
+
+
+<tr>
+<td><a href="https://arxiv.org/abs/1905.11736" target="_blank" rel="noopener noreferrer">CDTP (Naseer et al., 2019)</a></td>
+<td ><sub>Train a generative model on datasets from different domains to learn domain-invariant perturbations</sub></td>
+</tr>
+
+
+
 </table>
 
 ### Targeted Attacks
@@ -481,6 +487,15 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2401.02727" target="_blank" rel="noopener noreferrer">FFT (Zeng et al., 2023)</a></td>
 <td ><sub>Fine-tuning a crafted adversarial example in the feature space</sub></td>
+</tr>
+
+
+<tr>
+<th rowspan="1"><sub><strong>Generation-based</strong></sub></th>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2103.14641" target="_blank" rel="noopener noreferrer">TTP (Naseer et al., 2021)</a></td>
+<td ><sub>Train a generative model to generate adversarial examples, of which both the global distribution and local neighborhood structure in the latent feature space are matched with the target class.</sub></td>
 </tr>
 
 </table>
@@ -1323,7 +1338,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="14"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="13"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/ghost.py" target="_blank" rel="noopener noreferrer">Ghost</a></td>
 <td >64.4</td>
 <td >93.9</td>
@@ -1531,22 +1546,6 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >39.4</td>
 </tr>
 
-<tr id="cdtp">
-<td><a href="./transferattack/model_related/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
-<td >72.8</td>
-<td >29.9</td>
-<td >39.8</td>
-<td >64.6</td>
-<td >10.5</td>
-<td >18.7</td>
-<td >37.4</td>
-<td >35.7</td>
-<td >32.6</td>
-<td >34.8</td>
-<td >20.7</td>
-<td >48.7</td>
-</tr>
-
 <tr>
 <th rowspan="6"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/ens.py" target="_blank" rel="noopener noreferrer">ENS</a></td>
@@ -1645,7 +1644,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/ltp.py" target="_blank" rel="noopener noreferrer">LTP</a></td>
 <td >99.1</td>
 <td >98.7</td>
@@ -1676,6 +1675,29 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >20.6</td>
 <td >16.3</td>
 </tr>
+
+
+
+<tr id="cdtp">
+<td><a href="./transferattack/model_related/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
+<td >72.8</td>
+<td >29.9</td>
+<td >39.8</td>
+<td >64.6</td>
+<td >10.5</td>
+<td >18.7</td>
+<td >37.4</td>
+<td >35.7</td>
+<td >32.6</td>
+<td >34.8</td>
+<td >20.7</td>
+<td >48.7</td>
+</tr>
+
+
+
+
+
 </table>
 
 ### Targeted Attack
@@ -1828,6 +1850,26 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td > 0.0</td>
 <td > 0.4</td>
 </tr>
+
+
+
+<th rowspan="1"><sub><strong>Generation-based</strong></sub></th>
+<tr id="ttp">
+<td><a href="./transferattack/generation/ttp.py" target="_blank" rel="noopener noreferrer">TTP</a></td>
+<td >96.2</td>
+<td >19.6</td>
+<td >27.4</td>
+<td >62.4</td>
+<td >3.2</td>
+<td >4.3</td>
+<td >19.5</td>
+<td >5.3</td>
+<td >0.0</td>
+<td >0.0</td>
+<td >28.3</td>
+<td >4.1</td>
+</tr>
+
 
 </table>
 
