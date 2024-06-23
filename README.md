@@ -444,7 +444,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="3"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Input transformation-based</strong></sub></th>
 
 <tr>
 <td><a href="https://arxiv.org/pdf/2203.09123" target="_blank" rel="noopener noreferrer">ODI (Byun et al., 2022)</a></td>
@@ -462,7 +462,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="5"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
 
 <tr>
 <td><a href="https://ieeexplore.ieee.org/document/9156367" target="_blank" rel="noopener noreferrer">PoTrip (Li et al., 2020)</a></td>
@@ -492,7 +492,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 
 
 <tr>
-<th rowspan="1"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
 
 <tr>
 <td><a href="https://arxiv.org/pdf/2103.14641" target="_blank" rel="noopener noreferrer">TTP (Naseer et al., 2021)</a></td>
