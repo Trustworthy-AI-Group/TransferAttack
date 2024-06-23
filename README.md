@@ -241,7 +241,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="15"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="14"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
 <td ><sub>Maximize the difference of feature maps between benign sample and adversarial example and smooth the perturbation </sub></td>
 </tr>
@@ -373,6 +373,10 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 
+<tr>
+<td><a href="https://arxiv.org/abs/1905.11736" target="_blank" rel="noopener noreferrer">CDTP (Naseer et al., 2019)</a></td>
+<td ><sub>Train a generative model on datasets from different domains to learn domain-invariant perturbations</sub></td>
+</tr>
 
 <tr>
 <td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/28365" target="_blank" rel="noopener noreferrer">AGS (Wang et al., 2024)</a></td>
@@ -380,7 +384,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="7"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="6"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1611.02770" target="_blank" rel="noopener noreferrer">Ens (Liu et al., 2017)</a></td>
 <td ><sub>Generate the adversarial examplesusing multiple models</sub></td>
 </tr>
@@ -411,7 +415,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="4"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://proceedings.neurips.cc/paper/2021/hash/7486cef2522ee03547cfb970a404a874-Abstract.html" target="_blank" rel="noopener noreferrer">LTP (Nakka et al., 2021)</a></td>
 <td ><sub>Introduce a loss function based on such mid-level features to learn an effective, transferable perturbation generator</sub></td>
 </tr>
@@ -420,16 +424,6 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <td><a href="https://arxiv.org/abs/2208.05650" target="_blank" rel="noopener noreferrer">ADA (Kim et al., 2022)</a></td>
 <td ><sub>Utilize a generator to stochastically perturb shared salient features across models to avoid poor local optima and explore the search space thoroughly </sub></td>
 </tr>
-
-
-
-<tr>
-<td><a href="https://arxiv.org/abs/1905.11736" target="_blank" rel="noopener noreferrer">CDTP (Naseer et al., 2019)</a></td>
-<td ><sub>Train a generative model on datasets from different domains to learn domain-invariant perturbations</sub></td>
-</tr>
-
-
-
 </table>
 
 ### Targeted Attacks
