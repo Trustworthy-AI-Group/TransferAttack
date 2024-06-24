@@ -236,7 +236,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="" target="_blank" rel="noopener noreferrer">L2T (Zhu et al., 2024)</a></td>
+<td><a href="https://arxiv.org/abs/2405.14077" target="_blank" rel="noopener noreferrer">L2T (Zhu et al., 2024)</a></td>
 <td ><sub>Optimizing the input-transformation trajectory along the adversarial iteration</sub></td>
 </tr>
 
@@ -1096,17 +1096,17 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <tr>
 <td><a href="./transferattack/input_transformation/l2t.py" target="_blank" rel="noopener noreferrer">L2T</a></td>
 <td >100.0</td>
-<td >99.2</td>
-<td >99.0</td>
-<td >99.8</td>
+<td >88.4</td>
+<td >89.9</td>
+<td >98.8</td>
+<td >50.7</td>
 <td >64.2</td>
-<td >72.4</td>
-<td >86.6</td>
-<td >87.5</td>
-<td >45.9</td>
-<td >93.9</td>
-<td >73.5</td>
-<td >37.5</td>
+<td >79.6</td>
+<td >79.7</td>
+<td >43.0</td>
+<td >86.7</td>
+<td >32.9</td>
+<td >60.6</td>
 </tr>
 
 <tr>
@@ -1675,7 +1675,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 
 <tr id="cdtp">
-<td><a href="./transferattack/model_related/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
+<td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
 <td >72.8</td>
 <td >29.9</td>
 <td >39.8</td>
