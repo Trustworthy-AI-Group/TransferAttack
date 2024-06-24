@@ -302,7 +302,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org//abs/2309.15696" target="_blank" rel="noopener noreferrer">IR (Chen et al., 2021)</a></td>
+<td><a href="https://arxiv.org/pdf/2010.04055" target="_blank" rel="noopener noreferrer">IR (Wang et al., 2021)</a></td>
 <td ><sub>Introduces the interaction regularizer into the objective function to minimize the interaction for better transferability</sub></td>
 </tr>
 
