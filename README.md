@@ -1675,7 +1675,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 
 <tr id="cdtp">
-<td><a href="./transferattack/model_related/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
+<td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
 <td >72.8</td>
 <td >29.9</td>
 <td >39.8</td>
