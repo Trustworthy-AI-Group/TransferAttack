@@ -159,6 +159,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/abs/2405.16181" target="_blank" rel="noopener noreferrer">NCS (Qiu et al., 2024)</a></td>
+<td ><sub> Construct a max-min bi-level optimization problem aimed at finding flat adversarial regions</sub></td>
+</tr>
+
+<tr>
 <th rowspan="16"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
@@ -847,6 +852,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >47.7</td>
 <td >26.5</td>
 <td >39.8</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/gradient/ncs.py" target="_blank" rel="noopener noreferrer">NCS</a></td>
+<td >100.0</td>
+<td >80.1</td>
+<td >82.3</td>
+<td >96.7</td>
+<td >45.6</td>
+<td >54.3</td>
+<td >68.6</td>
+<td >75.1</td>
+<td >41.3</td>
+<td >74.6</td>
+<td >36.3</td>
+<td >62.6</td>
 </tr>
 
 <tr>

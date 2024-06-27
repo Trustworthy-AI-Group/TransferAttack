@@ -12,6 +12,8 @@
 
 - [Bin Chen](https://github.com/CHENBIN99) added the [AdaEA](./transferattack/ensemble/adaea.py) method.
 
+- [Chunlin Qiu](https://github.com/SignedQiu) added the [NCS](./transferattack/gradient/ncs.py) method.
+
 -------------
 
 - Xiangyuan Yang checked the [DTA](./transferattack/gradient/dta.py) method.

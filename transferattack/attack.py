@@ -158,8 +158,6 @@ class Attack(object):
         """
         if loss == 'crossentropy':
             return nn.CrossEntropyLoss()
-        elif loss == 'crossentropy_no_reduction':
-            return nn.CrossEntropyLoss(reduction='none')
         else:
             raise Exception("Unsupported loss {}".format(loss))
 

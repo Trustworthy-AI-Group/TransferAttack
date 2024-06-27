@@ -1,6 +1,7 @@
 import torch
 from ..utils import *
 from ..attack import Attack
+import torch.nn as nn
 
 class NCS(Attack):
     """
@@ -25,10 +26,14 @@ class NCS(Attack):
         
     Official arguments:
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, num_neighbor=20, kesai=2., gamma=0.15, lamada=alpha/epoch=0.16/255, epoch=10, decay=1.
+
+    Example script:
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ncs/resnet18 --attack ncs --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ncs/resnet18 --eval
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, num_neighbor=20, kesai=2., gamma=0.15, lamada=0.16/255, epoch=10, decay=1., targeted=False, 
-                random_start=False, norm='linfty', loss='crossentropy_no_reduction', device=None, attack='PGN', **kwargs):
+                random_start=False, norm='linfty', loss='crossentropy_no_reduction', device=None, attack='NCS', **kwargs):
         super().__init__(attack, model_name, epsilon, targeted, random_start, norm, loss, device)
         self.alpha = alpha
         self.kesai = kesai * epsilon
@@ -38,6 +43,17 @@ class NCS(Attack):
         self.decay = decay
         self.num_neighbor = num_neighbor
     
+    def loss_function(self, loss):
+        """
+        Get the loss function
+        """
+        if loss == 'crossentropy':
+            return nn.CrossEntropyLoss()
+        elif loss == 'crossentropy_no_reduction':
+            return nn.CrossEntropyLoss(reduction='none')
+        else:
+            raise Exception("Unsupported loss {}".format(loss))
+            
     def get_conditional_sampled_points(self, delta, grad_pgia):
         """
         Neighborhood conditional sampling
@@ -45,7 +61,7 @@ class NCS(Attack):
         sample_delta = self.transform(delta + torch.zeros_like(grad_pgia).uniform_(-self.kesai, self.kesai))
         sample_delta = self.transform(sample_delta + self.gamma * grad_pgia)
         return sample_delta
-
+        
     def get_points_gradient(self, data, delta, label, **kwargs):
         """
         Calculate the gradients of the sampled points
