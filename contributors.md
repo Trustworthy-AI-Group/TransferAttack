@@ -12,6 +12,7 @@
 
 - [Bin Chen](https://github.com/CHENBIN99) added the [AdaEA](./transferattack/ensemble/adaea.py) method.
 
+- [Jiayu Zhang](https://github.com/KxPlaug) added the [GE-ADVGAN](./transferattack/generation/ge_advgan.py) method.
 -------------
 
 - Xiangyuan Yang checked the [DTA](./transferattack/gradient/dta.py) method.

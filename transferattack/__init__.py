@@ -91,6 +91,7 @@ attack_zoo = {
     'ada': ('.generation.ada', 'ADA'),
     'cdtp': ('.generation.cdtp', 'CDTP'),
     'ttp': ('.generation.ttp', 'TTP'),
+    'ge_advgan': ('.generation.ge_advgan', 'GE_ADVGAN'),
 }
 
 
