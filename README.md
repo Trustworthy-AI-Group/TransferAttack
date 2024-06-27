@@ -416,7 +416,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://proceedings.neurips.cc/paper/2021/hash/7486cef2522ee03547cfb970a404a874-Abstract.html" target="_blank" rel="noopener noreferrer">LTP (Nakka et al., 2021)</a></td>
 <td ><sub>Introduce a loss function based on such mid-level features to learn an effective, transferable perturbation generator</sub></td>
 </tr>
@@ -429,6 +429,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/1905.11736" target="_blank" rel="noopener noreferrer">CDTP (Naseer et al., 2019)</a></td>
 <td ><sub>Train a generative model on datasets from different domains to learn domain-invariant perturbations</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2401.06031" target="_blank" rel="noopener noreferrer">GE-ADVGAN (Zhu et al., 2024)</a></td>
+<td ><sub> Enhance the transferability of adversarial samples by incorporating gradient editing mechanisms and frequency domain exploration into the generative model's training process.</sub></td>
 </tr>
 </table>
 
@@ -1661,7 +1666,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/ltp.py" target="_blank" rel="noopener noreferrer">LTP</a></td>
 <td >99.1</td>
 <td >98.7</td>
@@ -1711,6 +1716,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >48.7</td>
 </tr>
 
+
+
+<tr>
+<td><a href="./transferattack/generation/ge_advgan.py" target="_blank" rel="noopener noreferrer">GE-ADVGAN</a></td>
+<td >97.7</td>
+<td >47.7</td>
+<td >59.8</td>
+<td >73.4</td>
+<td >13.8</td>
+<td >8.2</td>
+<td >22.6</td>
+<td >23.2</td>
+<td >31.1</td>
+<td >52.5</td>
+<td >34.0</td>
+<td >33.0</td>
+</tr>
 
 
 
