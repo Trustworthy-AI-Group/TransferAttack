@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="20"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="21"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -156,6 +156,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Ma_Transferable_Adversarial_Attack_for_Both_Vision_Transformers_and_Convolutional_Networks_ICCV_2023_paper.pdf" target="_blank" rel="noopener noreferrer">MIG (Ma et al., 2023)</a></td>
 <td ><sub>Utilize integrated gradient to steer the generation of adversarial perturbations</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2405.16181" target="_blank" rel="noopener noreferrer">NCS (Qiu et al., 2024)</a></td>
+<td ><sub> Construct a max-min bi-level optimization problem aimed at finding flat adversarial regions</sub></td>
 </tr>
 
 <tr>
@@ -535,7 +540,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="20"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="21"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >96.1</td>
 <td >33.5</td>
@@ -852,6 +857,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >47.7</td>
 <td >26.5</td>
 <td >39.8</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/gradient/ncs.py" target="_blank" rel="noopener noreferrer">NCS</a></td>
+<td >100.0</td>
+<td >80.5</td>
+<td >82.9</td>
+<td >96.8</td>
+<td >45.6</td>
+<td >54.3</td>
+<td >68.6</td>
+<td >75.1</td>
+<td >41.3</td>
+<td >74.6</td>
+<td >36.3</td>
+<td >62.6</td>
 </tr>
 
 <tr>
