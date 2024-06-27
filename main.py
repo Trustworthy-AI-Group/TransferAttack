@@ -10,7 +10,7 @@ from transferattack.utils import *
 def get_parser():
     parser = argparse.ArgumentParser(description='Generating transferable adversaria examples')
     parser.add_argument('-e', '--eval', action='store_true', help='attack/evluation')
-    parser.add_argument('--attack', default='ncs', type=str, help='the attack algorithm', choices=transferattack.attack_zoo.keys())
+    parser.add_argument('--attack', default='mifgsm', type=str, help='the attack algorithm', choices=transferattack.attack_zoo.keys())
     parser.add_argument('--epoch', default=10, type=int, help='the iterations for updating the adversarial patch')
     parser.add_argument('--batchsize', default=32, type=int, help='the bacth size')
     parser.add_argument('--eps', default=16 / 255, type=float, help='the stepsize to update the perturbation')
@@ -19,7 +19,7 @@ def get_parser():
     parser.add_argument('--model', default='resnet18', type=str, help='the source surrogate model')
     parser.add_argument('--ensemble', action='store_true', help='enable ensemble attack')
     parser.add_argument('--random_start', default=False, type=bool, help='set random start')
-    parser.add_argument('--input_dir', default='./new_data', type=str, help='the path for custom benign images, default: untargeted attack data')
+    parser.add_argument('--input_dir', default='./data', type=str, help='the path for custom benign images, default: untargeted attack data')
     parser.add_argument('--output_dir', default='./results', type=str, help='the path to store the adversarial patches')
     parser.add_argument('--targeted', action='store_true', help='targeted attack')
     parser.add_argument('--GPU_ID', default='0', type=str)
