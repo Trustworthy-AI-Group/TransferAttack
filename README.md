@@ -857,9 +857,9 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <tr>
 <td><a href="./transferattack/gradient/ncs.py" target="_blank" rel="noopener noreferrer">NCS</a></td>
 <td >100.0</td>
-<td >80.1</td>
-<td >82.3</td>
-<td >96.7</td>
+<td >80.5</td>
+<td >82.9</td>
+<td >96.8</td>
 <td >45.6</td>
 <td >54.3</td>
 <td >68.6</td>
