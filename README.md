@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="20"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="21"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -159,6 +159,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/abs/2405.16181" target="_blank" rel="noopener noreferrer">NCS (Qiu et al., 2024)</a></td>
+<td ><sub> Construct a max-min bi-level optimization problem aimed at finding flat adversarial regions</sub></td>
+</tr>
+
+<tr>
 <th rowspan="16"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
@@ -236,7 +241,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="" target="_blank" rel="noopener noreferrer">L2T (Zhu et al., 2024)</a></td>
+<td><a href="https://arxiv.org/abs/2405.14077" target="_blank" rel="noopener noreferrer">L2T (Zhu et al., 2024)</a></td>
 <td ><sub>Optimizing the input-transformation trajectory along the adversarial iteration</sub></td>
 </tr>
 
@@ -302,7 +307,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org//abs/2309.15696" target="_blank" rel="noopener noreferrer">IR (Chen et al., 2021)</a></td>
+<td><a href="https://arxiv.org/pdf/2010.04055" target="_blank" rel="noopener noreferrer">IR (Wang et al., 2021)</a></td>
 <td ><sub>Introduces the interaction regularizer into the objective function to minimize the interaction for better transferability</sub></td>
 </tr>
 
@@ -411,7 +416,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://proceedings.neurips.cc/paper/2021/hash/7486cef2522ee03547cfb970a404a874-Abstract.html" target="_blank" rel="noopener noreferrer">LTP (Nakka et al., 2021)</a></td>
 <td ><sub>Introduce a loss function based on such mid-level features to learn an effective, transferable perturbation generator</sub></td>
 </tr>
@@ -424,6 +429,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/1905.11736" target="_blank" rel="noopener noreferrer">CDTP (Naseer et al., 2019)</a></td>
 <td ><sub>Train a generative model on datasets from different domains to learn domain-invariant perturbations</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2401.06031" target="_blank" rel="noopener noreferrer">GE-ADVGAN (Zhu et al., 2024)</a></td>
+<td ><sub> Enhance the transferability of adversarial samples by incorporating gradient editing mechanisms and frequency domain exploration into the generative model's training process.</sub></td>
 </tr>
 </table>
 
@@ -530,7 +540,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="20"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="21"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >96.1</td>
 <td >33.5</td>
@@ -850,6 +860,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
+<td><a href="./transferattack/gradient/ncs.py" target="_blank" rel="noopener noreferrer">NCS</a></td>
+<td >100.0</td>
+<td >80.5</td>
+<td >82.9</td>
+<td >96.8</td>
+<td >45.6</td>
+<td >54.3</td>
+<td >68.6</td>
+<td >75.1</td>
+<td >41.3</td>
+<td >74.6</td>
+<td >36.3</td>
+<td >62.6</td>
+</tr>
+
+<tr>
 <th rowspan="16"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >100.0</td>
@@ -1096,17 +1122,17 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <tr>
 <td><a href="./transferattack/input_transformation/l2t.py" target="_blank" rel="noopener noreferrer">L2T</a></td>
 <td >100.0</td>
-<td >99.2</td>
-<td >99.0</td>
-<td >99.8</td>
+<td >88.4</td>
+<td >89.9</td>
+<td >98.8</td>
+<td >50.7</td>
 <td >64.2</td>
-<td >72.4</td>
-<td >86.6</td>
-<td >87.5</td>
-<td >45.9</td>
-<td >93.9</td>
-<td >73.5</td>
-<td >37.5</td>
+<td >79.6</td>
+<td >79.7</td>
+<td >43.0</td>
+<td >86.7</td>
+<td >32.9</td>
+<td >60.6</td>
 </tr>
 
 <tr>
@@ -1640,7 +1666,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/ltp.py" target="_blank" rel="noopener noreferrer">LTP</a></td>
 <td >99.1</td>
 <td >98.7</td>
@@ -1690,6 +1716,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >48.7</td>
 </tr>
 
+
+
+<tr>
+<td><a href="./transferattack/generation/ge_advgan.py" target="_blank" rel="noopener noreferrer">GE-ADVGAN</a></td>
+<td >97.7</td>
+<td >47.7</td>
+<td >59.8</td>
+<td >73.4</td>
+<td >13.8</td>
+<td >8.2</td>
+<td >22.6</td>
+<td >23.2</td>
+<td >31.1</td>
+<td >52.5</td>
+<td >34.0</td>
+<td >33.0</td>
+</tr>
 
 
 

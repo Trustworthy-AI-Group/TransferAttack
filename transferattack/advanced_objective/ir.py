@@ -91,7 +91,7 @@ def get_features(
 class IR(MIFGSM):
     """
     IR Attack
-    A Unified Approach to Interpreting and Boosting Adversarial Transferability (ICLR 2021)(https://arxiv.org//abs/2309.15696)
+    A Unified Approach to Interpreting and Boosting Adversarial Transferability (ICLR 2021)(https://arxiv.org/pdf/2010.04055)
 
     Arguments:
         model (torch.nn.Module): the surrogate model for attack.
