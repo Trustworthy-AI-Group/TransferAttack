@@ -28,7 +28,7 @@ class BSR(MIFGSM):
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., num_scale=20, num_block=3, targeted=False, random_start=False,
-                norm='linfty', loss='crossentropy', device=None, attack='SIM', **kwargs):
+                norm='linfty', loss='crossentropy', device=None, attack='BSR', **kwargs):
         super().__init__(model_name, epsilon, alpha, epoch, decay, targeted, random_start, norm, loss, device, attack)
         self.num_scale = num_scale
         self.num_block = num_block

@@ -11,7 +11,7 @@ mid_outputs = []
 class AGS(Attack):
     """
     AGS Attack
-    'AGS: Affordable and Generalizable Substitute Training for Transferable Adversarial Attack (AAAI 2024)'(comming soon..)
+    'AGS: Affordable and Generalizable Substitute Training for Transferable Adversarial Attack (AAAI 2024)'(https://ojs.aaai.org/index.php/AAAI/article/view/28365)
 
     Arguments:
         model_name (str): the name of surrogate model for attack.
