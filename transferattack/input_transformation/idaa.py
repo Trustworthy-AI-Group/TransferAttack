@@ -8,8 +8,8 @@ import scipy.stats as st
 
 class IDAA(MIFGSM):
     """
-    SIA(Structure Invariant Attack)
-    'Structure Invariant Transformation for better Adversarial Transferability'(https://arxiv.org/abs/2309.14700)
+    IDAA(Input-Diversity-based Adaptive Attack)
+    'Boosting the Transferability of Adversarial Examples via Local Mixup and Adaptive Step Size'(https://arxiv.org/pdf/2401.13205)
     
     Arguments:
         model_name (str): the name of surrogate model for attack.
@@ -33,7 +33,7 @@ class IDAA(MIFGSM):
     """
     
     def __init__(self, model_name, epsilon=0.07, alpha=1, epoch=10, decay=1., num_scale=20, num_block=3, crop_size=0.7, targeted=False, random_start=False, 
-                norm='linfty', loss='crossentropy', device=None, attack='SIA', **kwargs):
+                norm='linfty', loss='crossentropy', device=None, attack='IDAA', **kwargs):
         super().__init__(model_name, epsilon, alpha, epoch, decay, targeted, random_start, norm, loss, device, attack)
         self.num_scale = num_scale
         self.num_block = num_block

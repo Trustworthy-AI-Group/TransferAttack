@@ -21,6 +21,7 @@ attack_zoo = {
     'gra': ('.gradient.gra', 'GRA'),
     'pgn': ('.gradient.pgn', 'PGN'),
     'smifgrm': ('.gradient.smifgrm', 'SMIFGRM'),
+    'mig': ('.gradient.mig', 'MIG'),
     'ncs': ('.gradient.ncs', 'NCS'),
     
     # input transformation
@@ -32,13 +33,14 @@ attack_zoo = {
     'dem': ('.input_transformation.dem', 'DEM'),
     'odi': ('.input_transformation.odi.odi', 'ODI'),
     'su': ('.input_transformation.su', 'SU'),
-    'smm': ('.input_transformation.ssm', 'SSM'),
+    'ssm': ('.input_transformation.ssm', 'SSM'),
     'aitl': ('.input_transformation.aitl', 'AITL'),
     'maskblock': ('.input_transformation.maskblock', 'MaskBlock'),
     'sia': ('.input_transformation.sia', 'SIA'),
     'stm': ('.input_transformation.stm', 'STM'),
     'lpm': ('.input_transformation.lpm', 'LPM'),
     'bsr': ('.input_transformation.bsr', 'BSR'),
+    'usmm': ('.input_transformation.usmm', 'USMM'),
     'decowa': ('.input_transformation.decowa', 'DeCowA'),
     'l2t': ('.input_transformation.l2t', 'L2T'),
     'idaa': ('.input_transformation.idaa', 'IDAA'),

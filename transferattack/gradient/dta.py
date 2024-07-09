@@ -29,7 +29,7 @@ class DTA(Attack):
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, beta=1.5, K=10, u=0.8, epoch=10, decay=1., targeted=False, 
-                random_start=False, norm='linfty', loss='crossentropy', device=None, attack='VMI-FGSM', **kwargs):
+                random_start=False, norm='linfty', loss='crossentropy', device=None, attack='DTA', **kwargs):
         super().__init__(attack, model_name, epsilon, targeted, random_start, norm, loss, device)
         self.alpha = alpha
         self.radius = beta * epsilon

@@ -22,14 +22,11 @@ support_models = {
     "resnet152": dhf_resnet152,
 }
 
-"""
-Diversifying the High-level Features for better Adversarial Transferability BMVC 2023 (https://arxiv.org/abs/2304.10136)
-"""
 
 class DHF_IFGSM(MIFGSM):
     """
     DHF Attack
-
+    Diversifying the High-level Features for better Adversarial Transferability (BMVC 2023) (https://arxiv.org/abs/2304.10136)
     Arguments:
         model (str): the surrogate model name for attack.
         mixup_weight_max (float): the maximium of mixup weight.
@@ -95,7 +92,7 @@ class DHF_IFGSM(MIFGSM):
 class DHF_MIFGSM(MIFGSM):
     """
     DHF Attack
-
+    Diversifying the High-level Features for better Adversarial Transferability (BMVC 2023) (https://arxiv.org/abs/2304.10136)
     Arguments:
         model (str): the surrogate model name for attack.
         mixup_weight_max (float): the maximium of mixup weight.
@@ -160,7 +157,7 @@ class DHF_MIFGSM(MIFGSM):
 class DHF_NIFGSM(NIFGSM):
     """
     DHF Attack
-
+    Diversifying the High-level Features for better Adversarial Transferability (BMVC 2023) (https://arxiv.org/abs/2304.10136)
     Arguments:
         model (str): the surrogate model name for attack.
         mixup_weight_max (float): the maximium of mixup weight.
@@ -225,7 +222,7 @@ class DHF_NIFGSM(NIFGSM):
 class DHF_DIM(DIM):
     """
     DHF Attack
-
+    Diversifying the High-level Features for better Adversarial Transferability (BMVC 2023) (https://arxiv.org/abs/2304.10136)
     Arguments:
         model (str): the surrogate model name for attack.
         mixup_weight_max (float): the maximium of mixup weight.
@@ -292,7 +289,7 @@ class DHF_DIM(DIM):
 class DHF_TIM(TIM):
     """
     DHF Attack
-
+    Diversifying the High-level Features for better Adversarial Transferability (BMVC 2023) (https://arxiv.org/abs/2304.10136)
     Arguments:
         model (str): the surrogate model name for attack.
         mixup_weight_max (float): the maximium of mixup weight.
@@ -357,7 +354,7 @@ class DHF_TIM(TIM):
 class DHF_SIM(SIM):
     """
     DHF Attack
-
+    Diversifying the High-level Features for better Adversarial Transferability (BMVC 2023) (https://arxiv.org/abs/2304.10136)
     Arguments:
         model (str): the surrogate model name for attack.
         mixup_weight_max (float): the maximium of mixup weight.
@@ -422,7 +419,7 @@ class DHF_SIM(SIM):
 class DHF_Admix(Admix):
     """
     DHF Attack
-
+    Diversifying the High-level Features for better Adversarial Transferability (BMVC 2023) (https://arxiv.org/abs/2304.10136)
     Arguments:
         model (str): the surrogate model name for attack.
         mixup_weight_max (float): the maximium of mixup weight.
