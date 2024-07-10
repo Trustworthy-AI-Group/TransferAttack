@@ -21,6 +21,7 @@ attack_zoo = {
     'gra': ('.gradient.gra', 'GRA'),
     'pgn': ('.gradient.pgn', 'PGN'),
     'smifgrm': ('.gradient.smifgrm', 'SMIFGRM'),
+    'gnp': ('.gradient.gnp', 'GNP'),
     'mig': ('.gradient.mig', 'MIG'),
     'ncs': ('.gradient.ncs', 'NCS'),
     
