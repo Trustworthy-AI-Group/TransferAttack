@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="21"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="22"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -151,6 +151,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2307.02828" target="_blank" rel="noopener noreferrer">SMI-FGRM (Han et al., 2023)</a></td>
 <td ><sub> Substitute the sign function with data rescaling and use the depth first sampling technique to stabilize the update direction.</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://ieeexplore.ieee.org/abstract/document/10223158" target="_blank" rel="noopener noreferrer">GNP (Wu et al., 2023)</a></td>
+<td ><sub>Introduce a gradient norm penalty (GNP) term into the loss function</sub></td>
 </tr>
 
 <tr>
@@ -545,7 +550,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="21"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="22"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >96.1</td>
 <td >33.5</td>
@@ -846,6 +851,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >31.6</td>
 <td >26.0</td>
 <td >30.5</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/gradient/gnp.py" target="_blank" rel="noopener noreferrer">GNP</a></td>
+<td >100.0</td>
+<td >50.3</td>
+<td >55.4</td>
+<td >82.7</td>
+<td >21.5</td>
+<td >26.9</td>
+<td >39.5</td>
+<td >47.0</td>
+<td >33.3</td>
+<td >40.4</td>
+<td >24.1</td>
+<td >30.6</td>
 </tr>
 
 <tr>
