@@ -236,6 +236,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/abs/2303.15735" target="_blank" rel="noopener noreferrer">PAM (Zhang et al., 2023)</a></td>
+<td ><sub>Mix adversarial examples with base images, where ratios are genreated by a trianed semantic predictor, for gradient accumulation. </sub></td>
+</tr>
+
+<tr>
 <td><a href="https://arxiv.org/abs/2402.03951" target="_blank" rel="noopener noreferrer">DeCowA (Lin et al., 2024)</a></td>
 <td ><sub>Augments input examples via an elastic deformation, to obtain rich local details of the augmented inputs</sub></td>
 </tr>
@@ -1101,6 +1106,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >66.1</td>
 <td >29.4</td>
 <td >50.8</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/input_transformation/pam.py" target="_blank" rel="noopener noreferrer">PAM</a></td>
+<td >100.0</td>
+<td >56.5</td>
+<td >58.5</td>
+<td >89.1</td>
+<td >19.7</td>
+<td >29.7</td>
+<td >42.8</td>
+<td >49.9</td>
+<td >36.3</td>
+<td >48.0</td>
+<td >25.0</td>
+<td >36.0</td>
 </tr>
 
 <tr>
