@@ -164,7 +164,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="16"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="17"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -472,7 +472,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="7"><sub><strong>Advanced objective</strong></sub></th>
+
+<tr>
+<td><a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Inkawhich_Feature_Space_Perturbations_Yield_More_Transferable_Adversarial_Examples_CVPR_2019_paper.pdf" target="_blank" rel="noopener noreferrer">AA (Inkawhich et al., 2019)</a></td>
+<td ><sub>Minimize the similarity of feature difference between the original adversarial example and target benign sample </sub></td>
+</tr>
 
 <tr>
 <td><a href="https://ieeexplore.ieee.org/document/9156367" target="_blank" rel="noopener noreferrer">PoTrip (Li et al., 2020)</a></td>
@@ -881,7 +886,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="16"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="17"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >100.0</td>
 <td >62.7</td>
@@ -1835,7 +1840,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 
-<th rowspan="5"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
+<td><a href="./transferattack/advanced_objective/aa.py" target="_blank" rel="noopener noreferrer">AA</a></td>
+<td >5.0</td>
+<td >0.7</td>
+<td >0.7</td>
+<td >0.9</td>
+<td >0.3</td>
+<td >0.3</td>
+<td >0.3</td>
+<td >0.1</td>
+<td >0.0</td>
+<td >0.2</td>
+<td >0.0</td>
+<td >0.0</td>
+</tr>
+
 <td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
 <td >100.0</td>
 <td > 3.2</td>
