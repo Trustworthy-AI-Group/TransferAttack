@@ -31,7 +31,7 @@ support_models = {
 class GhostNetwork_MIFGSM(MIFGSM):
     """
     Ghost Network Attack: 
-
+    'Learning Transferable Adversarial Examples via Ghost Networks (AAAI 2020)'(https://arxiv.org/abs/1812.03413)
     Arguments:
         model (str): the surrogate model for attack.
         ghost_keep_prob (float): the dropout rate when generating ghost networks.
@@ -55,7 +55,7 @@ class GhostNetwork_MIFGSM(MIFGSM):
 class GhostNetwork_IFGSM(MIFGSM):
     """
     Ghost Network Attack: 
-
+    'Learning Transferable Adversarial Examples via Ghost Networks (AAAI 2020)'(https://arxiv.org/abs/1812.03413)
     Arguments:
         model (str): the surrogate model for attack.
         ghost_keep_prob (float): the dropout rate when generating ghost networks.
@@ -80,7 +80,7 @@ class GhostNetwork_IFGSM(MIFGSM):
 class GhostNetwork_NIFGSM(NIFGSM):
     """
     Ghost Network Attack: 
-
+    'Learning Transferable Adversarial Examples via Ghost Networks (AAAI 2020)'(https://arxiv.org/abs/1812.03413)
     Arguments:
         model (str): the surrogate model for attack.
         ghost_keep_prob (float): the dropout rate when generating ghost networks.
@@ -104,7 +104,7 @@ class GhostNetwork_NIFGSM(NIFGSM):
 class GhostNetwork_VMIFGSM(VMIFGSM):
     """
     Ghost Network Attack: 
-
+    'Learning Transferable Adversarial Examples via Ghost Networks (AAAI 2020)'(https://arxiv.org/abs/1812.03413)
     Arguments:
         model (str): the surrogate model for attack.
         ghost_keep_prob (float): the dropout rate when generating ghost networks.
@@ -128,7 +128,7 @@ class GhostNetwork_VMIFGSM(VMIFGSM):
 class GhostNetwork_DIM(DIM):
     """
     Ghost Network Attack: 
-
+    'Learning Transferable Adversarial Examples via Ghost Networks (AAAI 2020)'(https://arxiv.org/abs/1812.03413)
     Arguments:
         model (str): the surrogate model for attack.
         ghost_keep_prob (float): the dropout rate when generating ghost networks.
@@ -152,7 +152,7 @@ class GhostNetwork_DIM(DIM):
 class GhostNetwork_SIM(SIM):
     """
     Ghost Network Attack: 
-
+    'Learning Transferable Adversarial Examples via Ghost Networks (AAAI 2020)'(https://arxiv.org/abs/1812.03413)
     Arguments:
         model (str): the surrogate model for attack.
         ghost_keep_prob (float): the dropout rate when generating ghost networks.
@@ -176,7 +176,7 @@ class GhostNetwork_SIM(SIM):
 class GhostNetwork_TIM(TIM):
     """
     Ghost Network Attack: 
-
+    'Learning Transferable Adversarial Examples via Ghost Networks (AAAI 2020)'(https://arxiv.org/abs/1812.03413)
     Arguments:
         model (str): the surrogate model for attack.
         ghost_keep_prob (float): the dropout rate when generating ghost networks.
@@ -199,7 +199,7 @@ class GhostNetwork_TIM(TIM):
 class GhostNetwork_Admix(Admix):
     """
     Ghost Network Attack: 
-
+    'Learning Transferable Adversarial Examples via Ghost Networks (AAAI 2020)'(https://arxiv.org/abs/1812.03413)
     Arguments:
         model (str): the surrogate model for attack.
         ghost_keep_prob (float): the dropout rate when generating ghost networks.

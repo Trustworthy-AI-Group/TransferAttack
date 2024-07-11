@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="21"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -154,9 +154,15 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
+<td><a href="https://ieeexplore.ieee.org/abstract/document/10223158" target="_blank" rel="noopener noreferrer">GNP (Wu et al., 2023)</a></td>
+<td ><sub>Introduce a gradient norm penalty (GNP) term into the loss function</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Ma_Transferable_Adversarial_Attack_for_Both_Vision_Transformers_and_Convolutional_Networks_ICCV_2023_paper.pdf" target="_blank" rel="noopener noreferrer">MIG (Ma et al., 2023)</a></td>
 <td ><sub>Utilize integrated gradient to steer the generation of adversarial perturbations</sub></td>
 </tr>
+
 
 <tr>
 <td><a href="https://arxiv.org/abs/2405.16181" target="_blank" rel="noopener noreferrer">NCS (Qiu et al., 2024)</a></td>
@@ -164,7 +170,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="16"><sub><strong>Input transformation-based</strong></sub></th>
+<td><a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Fang_Strong_Transferable_Adversarial_Attacks_via_Ensembled_Asymptotically_Normal_Distribution_Learning_CVPR_2024_paper.pdf" target="_blank" rel="noopener noreferrer">ANDA (Fang et al., 2024)</a></td>
+<td ><sub> Explicitly characterize adversarial perturbations from a learned distribution by taking advantage of the asymptotic normality property of stochastic gradient ascent. </sub></td>
+</tr>
+
+<tr>
+<th rowspan="17"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -233,6 +244,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/pdf/2311.12051.pdf" target="_blank" rel="noopener noreferrer">USMM (Wang et al., 2023)</a></td>
 <td ><sub> Apply uniform scale and a mix mask from an image of a different category to the input image</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2303.15735" target="_blank" rel="noopener noreferrer">PAM (Zhang et al., 2023)</a></td>
+<td ><sub>Mix adversarial examples with base images, where ratios are genreated by a trianed semantic predictor, for gradient accumulation. </sub></td>
 </tr>
 
 <tr>
@@ -467,7 +483,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="7"><sub><strong>Advanced objective</strong></sub></th>
+
+<tr>
+<td><a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Inkawhich_Feature_Space_Perturbations_Yield_More_Transferable_Adversarial_Examples_CVPR_2019_paper.pdf" target="_blank" rel="noopener noreferrer">AA (Inkawhich et al., 2019)</a></td>
+<td ><sub>Minimize the similarity of feature difference between the original adversarial example and target benign sample </sub></td>
+</tr>
 
 <tr>
 <td><a href="https://ieeexplore.ieee.org/document/9156367" target="_blank" rel="noopener noreferrer">PoTrip (Li et al., 2020)</a></td>
@@ -540,7 +561,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="21"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >96.1</td>
 <td >33.5</td>
@@ -844,6 +865,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
+<td><a href="./transferattack/gradient/gnp.py" target="_blank" rel="noopener noreferrer">GNP</a></td>
+<td >100.0</td>
+<td >50.3</td>
+<td >55.4</td>
+<td >82.7</td>
+<td >21.5</td>
+<td >26.9</td>
+<td >39.5</td>
+<td >47.0</td>
+<td >33.3</td>
+<td >40.4</td>
+<td >24.1</td>
+<td >30.6</td>
+</tr>
+
+<tr>
 <td><a href="./transferattack/gradient/mig.py" target="_blank" rel="noopener noreferrer">MIG</a></td>
 <td >100.0</td>
 <td >54.3</td>
@@ -876,7 +913,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="16"><sub><strong>Input transformation-based</strong></sub></th>
+<td><a href="./transferattack/gradient/anda.py" target="_blank" rel="noopener noreferrer">ANDA</a></td>
+<td >100.0</td>
+<td >74.4</td>
+<td >78.9</td>
+<td >96.9</td>
+<td >42.0</td>
+<td >50.4</td>
+<td >65.8</td>
+<td >69.0</td>
+<td >38.0</td>
+<td >71.8</td>
+<td >26.9</td>
+<td >42.9</td>
+</tr>
+
+<tr>
+<th rowspan="17"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >100.0</td>
 <td >62.7</td>
@@ -1101,6 +1154,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >66.1</td>
 <td >29.4</td>
 <td >50.8</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/input_transformation/pam.py" target="_blank" rel="noopener noreferrer">PAM</a></td>
+<td >100.0</td>
+<td >56.5</td>
+<td >58.5</td>
+<td >89.1</td>
+<td >19.7</td>
+<td >29.7</td>
+<td >42.8</td>
+<td >49.9</td>
+<td >36.3</td>
+<td >48.0</td>
+<td >25.0</td>
+<td >36.0</td>
 </tr>
 
 <tr>
@@ -1814,7 +1883,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 
-<th rowspan="5"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
+<td><a href="./transferattack/advanced_objective/aa.py" target="_blank" rel="noopener noreferrer">AA</a></td>
+<td >5.0</td>
+<td >0.7</td>
+<td >0.7</td>
+<td >0.9</td>
+<td >0.3</td>
+<td >0.3</td>
+<td >0.3</td>
+<td >0.1</td>
+<td >0.0</td>
+<td >0.2</td>
+<td >0.0</td>
+<td >0.0</td>
+</tr>
+
 <td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
 <td >100.0</td>
 <td > 3.2</td>
