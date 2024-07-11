@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </thead>
 
 <tr>
-<th rowspan="22"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -163,9 +163,15 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <td ><sub>Utilize integrated gradient to steer the generation of adversarial perturbations</sub></td>
 </tr>
 
+
 <tr>
 <td><a href="https://arxiv.org/abs/2405.16181" target="_blank" rel="noopener noreferrer">NCS (Qiu et al., 2024)</a></td>
 <td ><sub> Construct a max-min bi-level optimization problem aimed at finding flat adversarial regions</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Fang_Strong_Transferable_Adversarial_Attacks_via_Ensembled_Asymptotically_Normal_Distribution_Learning_CVPR_2024_paper.pdf" target="_blank" rel="noopener noreferrer">ANDA (Fang et al., 2024)</a></td>
+<td ><sub> Explicitly characterize adversarial perturbations from a learned distribution by taking advantage of the asymptotic normality property of stochastic gradient ascent. </sub></td>
 </tr>
 
 <tr>
@@ -555,7 +561,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="22"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >96.1</td>
 <td >33.5</td>
@@ -904,6 +910,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >74.6</td>
 <td >36.3</td>
 <td >62.6</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/gradient/anda.py" target="_blank" rel="noopener noreferrer">ANDA</a></td>
+<td >100.0</td>
+<td >74.4</td>
+<td >78.9</td>
+<td >96.9</td>
+<td >42.0</td>
+<td >50.4</td>
+<td >65.8</td>
+<td >69.0</td>
+<td >38.0</td>
+<td >71.8</td>
+<td >26.9</td>
+<td >42.9</td>
 </tr>
 
 <tr>

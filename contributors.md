@@ -19,3 +19,5 @@
 - Xiangyuan Yang checked the [DTA](./transferattack/gradient/dta.py) method.
 
 - Zhi Lin checked the [IE-FGSM](./transferattack/gradient/iefgsm.py) method.
+
+- [Zhengwei Fang](https://github.com/jankinf) added the [ANDA](./transferattack/gradient/anda.py) method.
