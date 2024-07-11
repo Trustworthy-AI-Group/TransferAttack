@@ -24,6 +24,7 @@ attack_zoo = {
     'gnp': ('.gradient.gnp', 'GNP'),
     'mig': ('.gradient.mig', 'MIG'),
     'ncs': ('.gradient.ncs', 'NCS'),
+    'anda': ('.gradient.anda', 'ANDA'),
     
     # input transformation
     'dim': ('.input_transformation.dim', 'DIM'),
