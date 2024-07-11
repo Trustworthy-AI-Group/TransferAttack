@@ -34,9 +34,12 @@ class ANDA(Attack):
         alpha = epsilon/epoch=1.6/255
     
     Example script:
-        # NOTE: batchsize=1 only
         python main.py --input_dir ./path/to/data --output_dir adv_data/anda/resnet18 --attack anda --model=resnet18 --batchsize=1
         python main.py --input_dir ./path/to/data --output_dir adv_data/anda/resnet18 --eval
+    
+    Notes:
+        - batchsize=1 only
+        - MultiANDA requires torch.distributed, please refer to https://github.com/CLIAgroup/ANDA for more details
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, n_ens=25, aug_max=0.3, sample=False, targeted=False, random_start=False,
