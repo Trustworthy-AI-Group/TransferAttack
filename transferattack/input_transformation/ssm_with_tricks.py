@@ -17,8 +17,8 @@ Note: The implementation for learnable spectrum simulation can be referred to th
 
 class SSM_H(MIFGSM):
     """
-    SSM (Spectrum Simulation Attack)
-    'Frequency Domain Model Augmentation for Adversarial Attack. (ECCV 2022)'(https://arxiv.org/abs/2207.05382)
+    High-frequency SSM Attack
+    'Bag of tricks to boost the adversarial transferability'(https://arxiv.org/abs/2401.08734)
 
     Arguments:
         model_name (str): the name of surrogate model for attack.
@@ -229,8 +229,8 @@ class SSM_H(MIFGSM):
 
 class SSM_P(MIFGSM):
     """
-    SSM (Spectrum Simulation Attack)
-    'Frequency Domain Model Augmentation for Adversarial Attack. (ECCV 2022)'(https://arxiv.org/abs/2207.05382)
+    Block-wise SSM Attack
+    'Bag of tricks to boost the adversarial transferability'(https://arxiv.org/abs/2401.08734)
 
     Arguments:
         model_name (str): the name of surrogate model for attack.
