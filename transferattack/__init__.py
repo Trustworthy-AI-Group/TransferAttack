@@ -25,6 +25,10 @@ attack_zoo = {
     'mig': ('.gradient.mig', 'MIG'),
     'ncs': ('.gradient.ncs', 'NCS'),
     'anda': ('.gradient.anda', 'ANDA'),
+    'rgmifgsm': ('.gradient.mifgsm_with_tricks', 'RGMIFGSM'),
+    'dual_mifgsm': ('.gradient.mifgsm_with_tricks', 'DualMIFGSM'),
+    'ens_mifgsm': ('.gradient.mifgsm_with_tricks', 'Ens_FGSM_MIFGSM'),
+
     
     # input transformation
     'dim': ('.input_transformation.dim', 'DIM'),
@@ -47,6 +51,8 @@ attack_zoo = {
     'l2t': ('.input_transformation.l2t', 'L2T'),
     'idaa': ('.input_transformation.idaa', 'IDAA'),
     'pam': ('.input_transformation.pam', 'PAM'),
+    'ssm_p': ('.input_transformation.ssm_with_tricks', 'SSA_P'),
+    'ssm_h': ('.input_transformation.ssm_with_tricks', 'SSM_H'),
     
     # advanced_objective
     'tap': ('.advanced_objective.tap', 'TAP'),
