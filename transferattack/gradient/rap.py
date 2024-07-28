@@ -28,15 +28,15 @@ class RAP(Attack):
 
     Official arguments:
         Untargeted Attack:
-            epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, transpoint=100, epsilon_n=16/255, alpha_n=2/255, adv_steps=8
+            epsilon=16/255, alpha=2/255, epoch=10, transpoint=100, epsilon_n=16/255, alpha_n=2/255, adv_steps=8
         Targeted Attack:
-            epsilon=, alpha=, epoch, transpoint, epsilon_n, alpha_n, adv_step=
+            epsilon=16/255, alpha=2/255, epoch, transpoint, epsilon_n, alpha_n, adv_step=
     Example script:
         python main.py --attack rap --output_dir adv_data/rap/resnet18
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=400, transpoint=100, epsilon_n=16/255, alpha_n=2/255, adv_steps=8,
-                targeted=True, random_start=False,
+                targeted=False, random_start=False,
                 norm='linfty', loss='crossentropy', device=None, attack='RAP', **kwargs):
         super().__init__(attack, model_name, epsilon, targeted, random_start, norm, loss, device)
         self.alpha = alpha
@@ -47,7 +47,10 @@ class RAP(Attack):
         self.transpoint = transpoint
         self.epsilon_n = epsilon_n
 
-    def get_loss(self, logits, label):
+    def get_logit_loss(self, logits, label):
+        """
+        Logit loss for targeted attack. Please refer to the paper for more details.
+        """
         if not self.targeted:
             real = logits.gather(1, label.unsqueeze(1)).squeeze(1)
             logit_dists = -1 * real
@@ -57,30 +60,30 @@ class RAP(Attack):
             loss = real.mean()
         return loss
 
-    def update_n_rap(self, delta, data, grad, alpha, **kwargs):
-        # if self.norm == 'linfty':
-        delta = torch.clamp(delta + alpha * grad.sign(), -self.epsilon_n, self.epsilon_n)
-        # else:
-        #     grad_norm = torch.norm(grad.view(grad.size(0), -1), dim=1).view(-1, 1, 1, 1)
-        #     scaled_grad = grad / (grad_norm + 1e-20)
-        #     delta = (delta + scaled_grad * alpha).view(delta.size(0), -1).renorm(p=2, dim=0, maxnorm=self.epsilon).view_as(delta)
-        delta = clamp(delta, img_min-data, img_max-data)
-        return delta
-
     def init_n_rap(self, data, random_start, **kwargs):
         delta = torch.zeros_like(data).to(self.device)
         if random_start:
-            # if self.norm == 'linfty':
-            delta.uniform_(-self.epsilon_n, self.epsilon_n)
-            # else:
-            #     delta.normal_(-self.epsilon, self.epsilon)
-            #     d_flat = delta.view(delta.size(0), -1)
-            #     n = d_flat.norm(p=2, dim=10).view(delta.size(0), 1, 1, 1)
-            #     r = torch.zeros_like(data).uniform_(0,1).to(self.device)
-            #     delta *= r/n*self.epsilon
+            if self.norm == 'linfty':
+                delta.uniform_(-self.epsilon_n, self.epsilon_n)
+            else:
+                delta.normal_(-self.epsilon, self.epsilon)
+                d_flat = delta.view(delta.size(0), -1)
+                n = d_flat.norm(p=2, dim=10).view(delta.size(0), 1, 1, 1)
+                r = torch.zeros_like(data).uniform_(0,1).to(self.device)
+                delta *= r/n*self.epsilon
             delta = clamp(delta, img_min-data, img_max-data)
         delta.detach().requires_grad = True
         return delta
+
+    def update_n_rap(self, delta, data, grad, alpha, **kwargs):
+        if self.norm == 'linfty':
+            delta = torch.clamp(delta + alpha * grad.sign(), -self.epsilon_n, self.epsilon_n)
+        else:
+            grad_norm = torch.norm(grad.view(grad.size(0), -1), dim=1).view(-1, 1, 1, 1)
+            scaled_grad = grad / (grad_norm + 1e-20)
+            delta = (delta + scaled_grad * alpha).view(delta.size(0), -1).renorm(p=2, dim=0, maxnorm=self.epsilon).view_as(delta)
+        delta = clamp(delta, img_min-data, img_max-data)
+        return delta.detach().requires_grad_(True)
 
     def get_n_rap(self, data, label):
         n_rap = self.init_n_rap(data, random_start=True)

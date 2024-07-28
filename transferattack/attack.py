@@ -150,7 +150,7 @@ class Attack(object):
             scaled_grad = grad / (grad_norm + 1e-20)
             delta = (delta + scaled_grad * alpha).view(delta.size(0), -1).renorm(p=2, dim=0, maxnorm=self.epsilon).view_as(delta)
         delta = clamp(delta, img_min-data, img_max-data)
-        return delta
+        return delta.detach().requires_grad_(True)
 
     def loss_function(self, loss):
         """
