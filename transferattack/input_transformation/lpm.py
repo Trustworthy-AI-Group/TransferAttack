@@ -3,7 +3,7 @@ import torch.nn as nn
 from .sko.GA import GA
 from .sko.DE import DE
 from ..utils import *
-from ..gradient.mifgsm import MIFGSM
+from ..attack import Attack
 from types import MethodType, FunctionType
 import warnings
 import sys
@@ -14,21 +14,7 @@ import multiprocessing
 
 import warnings 
 
-# standard imagenet normalize
-class imgnormalize(nn.Module):
-    def __init__(self):
-        super(imgnormalize, self).__init__()
-        self.mean = torch.tensor([0.485, 0.456, 0.406])
-        self.std = torch.tensor([0.229, 0.224, 0.225])
-
-    def forward(self, x):
-        return (x - self.mean.type_as(x)[None, :, None, None]) / self.std.type_as(x)[None, :, None, None]
-
-
-norm = imgnormalize()  # standard imagenet normalize
-
-
-class LPM(MIFGSM):
+class LPM(Attack):
     """
      LPM (Learnable Patch-wise Masks)
     'Boosting Adversarial Transferability with Learnable Patch-wise Masks (IEEE MM 2023)'(https://ieeexplore.ieee.org/abstract/document/10251606)
@@ -48,22 +34,46 @@ class LPM(MIFGSM):
     Official arguments:
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1
 
-
+    Example script:
+        python main.py --input_dir ./path/to/data --output_dir adv_data/lpm/resnet18 --attack lpm --model=resnet18 --batchsize 1
+        python main.py --input_dir ./path/to/data --output_dir adv_data/lpm/resnet18 --eval
     """
     
-
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1.,  targeted=False, 
                 random_start=False, norm='linfty', loss='crossentropy', device=None, attack='lmp', **kwargs):
-        super().__init__(model_name, epsilon, alpha, epoch, decay, targeted, random_start, norm, loss, device, attack)
+        super().__init__(attack, model_name, epsilon, targeted, random_start, norm, loss, device)
+        self.alpha = alpha
+        self.epoch = epoch
+        self.decay = decay
         self.HEIGHT = 224
         self.WIDTH = 224
-        self.CLUSTER = 10   
+        self.maxiter = 10   
         self.patch_size = 32
         self.popsize = 40
+        self.b_s = 20
+        simulated_names = ['resnet50','vgg16','densenet161']
+        self.gray_models = self.load_models(simulated_names)
         warnings.warn(" Please refer to the official code for the installation of the sko package: https://github.com/zhaoshiji123/LP")
         
-
+    def load_models(seld, model_names):
+        # load single model
+        def load_single_model(model_name):
+            if model_name in models.__dict__.keys():
+                print('=> Loading model {} from torchvision.models'.format(model_name))
+                model = models.__dict__[model_name](weights="DEFAULT")
+            elif model_name in timm.list_models():
+                print('=> Loading model {} from timm.models'.format(model_name))
+                model = timm.create_model(model_name, pretrained=True)
+            else:
+                raise ValueError('Model {} not supported'.format(model_name))
+            return wrap_model(model.eval().cuda())
+        
+        models_list = []
+        for model_name in model_names:
+            models_list.append(load_single_model(model_name))
+        return models_list
     
+
     def forward(self, data, label, **kwargs):
         """
         The general attack procedure
@@ -73,10 +83,17 @@ class LPM(MIFGSM):
         """
         data = data.clone().detach().to(self.device)
         label = label.clone().detach().to(self.device)
+
+        if(data.shape[0]>1):
+            raise ValueError("Please set the batch_size==1!")
+        
+        data = data[0]
+        label = label[0]
+
         bounds = [(0,1)] * int(self.WIDTH/self.patch_size) * int(self.HEIGHT/self.patch_size)
-        def myfunc(x,img=data,label=label):
+        def myfunc(x, img=data, label=label):
             
-            return self.predict_transfer_score(x,img,label,self.model,self.model,len(img))
+            return self.predict_transfer_score(x, img, label, self.model, self.gray_models, self.b_s)
 
         def callback_fn(x, convergence):
             return True
@@ -84,94 +101,138 @@ class LPM(MIFGSM):
         lb = [0] * len(bounds)
         ub = [elem[1] for elem in bounds]
         # import pdb;pdb.set_trace()
-        de = MyDE(func=myfunc, n_dim=len(bounds), size_pop=self.popsize*len(data), max_iter=self.epoch, prob_mut=0.001, lb=lb, ub=ub, precision=1, img=None, label=None)
-
+        de = MyDE(func=myfunc, n_dim=len(bounds), size_pop=self.popsize, max_iter=self.maxiter, prob_mut=0.001, lb=lb, ub=ub, precision=1, img=None, label=None)
 
         masks, y = de.run()
         
         mask = torch.from_numpy(masks)
-        mask = mask.reshape(-1,int(self.HEIGHT/self.patch_size),int(self.WIDTH/self.patch_size))
+        mask = mask.reshape(-1, int(self.HEIGHT/self.patch_size), int(self.WIDTH/self.patch_size))
         
-        perturbs = self.batch_attack(data, mask, label, self.model) 
-        return perturbs
+        delta = self.batch_attack_final_multiple_mask_2(data, mask, label, self.model, M_num=12, pop_size=self.popsize)  # TODO
+
+        return delta.detach()
+
+    def batch_attack_final_multiple_mask_2(self, img, mask, label, white_models, M_num=4, pop_size=20):
+        mask_final = torch.zeros([mask.shape[0], mask.shape[1]*self.patch_size, mask.shape[2]*self.patch_size], dtype=torch.int)
+        for i in range(mask.shape[0]):
+            for j in range(mask.shape[1]*self.patch_size):
+                for k in range(mask.shape[2]):
+                    mask_final[i][j][k*self.patch_size:k*self.patch_size + self.patch_size] = mask[i][int(j/self.patch_size)][int(k)]
+        # mask_final = mask_final[:,:299,:299]
+        mask = mask_final[:,None,:,:]
+        mask = torch.cat((mask,mask,mask),1)
+        mask = mask.float()
+
+        mask = mask.cuda()
         
+        X_ori = torch.stack([img])
+        X = X_ori
+
+        labels = torch.stack([label])
+        X = X.cuda()
+        labels = labels.cuda()
+        delta = torch.zeros_like(X, requires_grad=True).cuda()
+        grad_momentum = 0
+        # M_num = int(mask.shape[0]/8)
+        cnt = 0
+        # M_num = 4
+        for t in range(10):
+            g_temp = []
+            for tt in range(M_num):
+                # if args.input_diversity:  # use Input Diversity
+                X_adv = X + delta
+                X_adv[:,:,:224,:224] = X_adv[:,:,:224,:224] * mask[cnt%pop_size]
+                cnt += 1
+                ensemble_logits = self.get_logits(X_adv, white_models)
+
+                # Calculate the loss
+                loss = self.get_loss(ensemble_logits, labels)
+
+                # Calculate the gradients
+                grad = self.get_grad(loss, delta)
+
+                g_temp.append(grad)
+            # calculate the mean and cancel out the noise, retained the effective noise
+            g = 0.0
+            for j in range(M_num):      
+                g += g_temp[j]
+            grad_momentum = self.get_momentum(g, grad_momentum)
+            # Update adversarial perturbation
+            delta = self.update_delta(delta, X, grad_momentum, self.alpha)
+        # X_adv = X_ori + delta
+        return delta.detach()
+
+    def get_logits(self, X_adv, model):
+        return model(X_adv)
     
+    def score_transferability(self, X_adv, label, gray_models):
+        labels = label
+        sum_score = np.zeros((len(gray_models), X_adv.shape[0]))
+        model_num = 0
+        with torch.no_grad():
+            for model in gray_models:
+                logits = self.get_logits(X_adv, model)
+                loss = -nn.CrossEntropyLoss(reduce=False)(logits, labels)
+                sum_score[model_num] += loss.detach().cpu().numpy()
+                model_num += 1
+            Var0 = sum_score.var(axis = 0)
+            Mean0 = sum_score.mean(axis = 0)
+        final_sumscore =  Var0 + Mean0
+        return final_sumscore
     
-    def batch_attack(self, img,mask,labels,white_models):
-        mask_final = torch.zeros([mask.shape[0],mask.shape[1]*self.patch_size, mask.shape[2]*self.patch_size],dtype=torch.int)
+    def batch_attack(self, img, mask, labels, white_models):
+        mask_final = torch.zeros([mask.shape[0], mask.shape[1]*self.patch_size, mask.shape[2]*self.patch_size], dtype=torch.int)
         for i in range(mask.shape[0]):
             for j in range(mask.shape[1]*self.patch_size):
                 for k in range(mask.shape[2]):
                     mask_final[i][j][k*self.patch_size:k*self.patch_size + self.patch_size] = mask[i][int(j/self.patch_size)][int(k)]
         mask = mask_final[:,None,:,:]
         mask = torch.cat((mask,mask,mask),1)
+
+        # assert False
         mask = mask.float()
-        # print(mask.shape)
-        # print(img.shape)
-        # mask = F.interpolate(mask, (288, 288), mode='bilinear', align_corners=False)
         mask = mask.cuda()
-        X_ori = torch.stack([img])[0]
+        X_ori = torch.squeeze(img)
+        X = X_ori.clone().cuda()
 
-        X = X_ori.clone()
-
-        X.to(self.device)
-        labels.to(self.device)
-
-        delta = torch.zeros_like(X, requires_grad=True).to(self.device)
+        labels = labels.cuda()
+        delta = torch.zeros_like(X, requires_grad=True).cuda()
         grad_momentum = 0
-        cnt = 0
         for t in range(10):
             X_adv = X + delta
-            # import pdb;pdb.set_trace()
-            X_adv[:,:,:224,:224] = X_adv[:,:,:224,:224] * mask[cnt]
-            ensemble_logits = white_models(X_adv)
-            loss = -nn.CrossEntropyLoss()(ensemble_logits, labels)
-            loss.backward()
-            grad = delta.grad.clone()
-            delta.grad.zero_()
+            X_adv[:,:,:224,:224] = X_adv[:,:,:224,:224] * mask
+            ensemble_logits = self.get_logits(X_adv, white_models)
 
-            delta.data = delta.data - 1.6/255 * torch.sign(grad)
-            delta.data = delta.data.clamp(-16/255., 16/255.)
-            delta.data = ((X+delta.data).clamp(0.0, 1.0)) - X
-        return delta
+            # Calculate the loss
+            loss = self.get_loss(ensemble_logits, labels)
 
+            # Calculate the gradients
+            grad = self.get_grad(loss, delta)
+            # Ti
+            # grad = F.conv2d(grad, TI_kernel(kernel_size=5, nsig=3), bias=None, stride=1, padding=(2,2), groups=3)
+            # Mi
+            grad_momentum = self.get_momentum(grad, grad_momentum)
 
+            # Update adversarial perturbation
+            delta = self.update_delta(delta, X, grad_momentum, self.alpha)
 
-    def score_transferability(self, X_adv,label,gray_models):
-        labels = label
-        sum_score = np.zeros((len(gray_models), X_adv.shape[0]))
-        model_num = 0
-        with torch.no_grad():
-            logits = gray_models(norm(X_adv))
+        X_adv = X_ori + delta.detach()
+        return X_adv
 
-            loss = -nn.CrossEntropyLoss(reduce=False)(logits, labels)
-            sum_score[model_num] += loss.detach().cpu().numpy()
-            model_num += 1
-            Var0 = sum_score.var(axis = 0)
-            Mean0 = sum_score.mean(axis = 0)
-    
-        final_sumscore =  Var0 + Mean0
-        return final_sumscore
-
-
-
-    def predict_transfer_score(self, x,img,label,white_models,gray_models,batch_size=4):
-        
+    def predict_transfer_score(self, x, img, label, white_models, gray_models, batch_size=4):
+        # 每个个体的得分，通过每个mask单独作用到图像进行对抗攻击产生对抗样本在一组黑盒模型上的效果得分获得
         mask = torch.from_numpy(x)
-        mask = mask.reshape(-1,int(self.HEIGHT/self.patch_size),int(self.WIDTH/self.patch_size))
+        mask = mask.reshape(-1, int(self.HEIGHT/self.patch_size), int(self.WIDTH/self.patch_size))
         numsum = x.shape[0]
         scorelist = []
-        POPSIZE = int(np.ceil(numsum/batch_size))
-        # import pdb;pdb.set_trace()
-        
-        perturb = self.batch_attack(torch.vstack([img]*POPSIZE),mask, torch.hstack([label]*POPSIZE), white_models)
-        # import pdb;pdb.set_trace()
-        X_adv = torch.vstack([img]*POPSIZE) + perturb
-        scorelist = np.append(scorelist,self.score_transferability(X_adv, torch.hstack([label]*POPSIZE),gray_models))
-        # import pdb;pdb.set_trace()
+        bn = int(np.ceil(numsum/batch_size))
+        for i in range(bn):
+            bs = i*batch_size
+            be = min((i+1)*batch_size, numsum)
+            bn = be-bs
+            X_adv = self.batch_attack(torch.stack([img]*bn), mask[bs:be], torch.stack([label]*bn), white_models)
+            scorelist = np.append(scorelist, self.score_transferability(X_adv, torch.stack([label]*bn), gray_models))
         return scorelist
-
-
 
 class MyDE(GA):
     # 可自定义排序，杂交，变异，选择
@@ -236,8 +297,8 @@ class MyDE(GA):
         offspring_Chrom = np.vstack((self.crossover_Chrom,self.mutation_Chrom))
         f_offspring  = self.func(offspring_Chrom)
         # f_chrom = self.Y.copy()
-        print("this generate score:")
-        print(f_offspring)
+        # print("this generate score:")
+        # print(f_offspring)
         num_inbreeding = int(0.3 * self.size_pop)
         selection_chrom = np.vstack((offspring_Chrom, self.Chrom))
         selection_chrom_Y = np.hstack((f_offspring, self.Y))
@@ -266,7 +327,3 @@ class MyDE(GA):
             self.Y[len(a):self.size_pop] = a[len(a)-1]
         # print(self.Chrom[0])
         # assert False
-
-
-
-
