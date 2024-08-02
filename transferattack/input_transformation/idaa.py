@@ -29,10 +29,11 @@ class IDAA(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1., num_scale=10, num_block=3
     
     Example script:
-        python main.py --attack sia --output_dir adv_data/sia/resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/idaa/resnet18_targeted --attack idaa --model=resnet18 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/idaa/resnet18_targeted --eval --targeted
     """
     
-    def __init__(self, model_name, epsilon=0.07, alpha=1, epoch=10, decay=1., num_scale=20, num_block=3, crop_size=0.7, targeted=False, random_start=False, 
+    def __init__(self, model_name, epsilon=0.07, alpha=1, epoch=10, decay=1., num_scale=20, num_block=3, crop_size=0.7, targeted=True, random_start=False, 
                 norm='linfty', loss='crossentropy', device=None, attack='IDAA', **kwargs):
         super().__init__(model_name, epsilon, alpha, epoch, decay, targeted, random_start, norm, loss, device, attack)
         self.num_scale = num_scale

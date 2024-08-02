@@ -29,6 +29,7 @@ class DeCowA(MIFGSM):
     
     Example script:
         python main.py --input_dir ./path/to/data --output_dir adv_data/decowa/resnet18 --attack decowa --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/decowa/resnet18 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., mesh_width=3, mesh_height=3, rho=0.01, 

@@ -27,12 +27,15 @@ class RAP(Attack):
         device (torch.device): the device for data. If it is None, the device would be same as model
 
     Official arguments:
-        Untargeted Attack:
-            epsilon=16/255, alpha=2/255, epoch=10, transpoint=100, epsilon_n=16/255, alpha_n=2/255, adv_steps=8
-        Targeted Attack:
-            epsilon=16/255, alpha=2/255, epoch, transpoint, epsilon_n, alpha_n, adv_step=
-    Example script:
-        python main.py --attack rap --output_dir adv_data/rap/resnet18
+            epsilon=16/255, alpha=2/255, epoch=400, transpoint=100, epsilon_n=16/255, alpha_n=2/255, adv_steps=8
+
+    Example script (Untargeted attack):
+        python main.py --input_dir ./path/to/data --output_dir adv_data/rap/resnet18 --attack rap --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/rap/resnet18 --eval
+
+    Example script (Targeted attack):
+        python main.py --input_dir ./path/to/data --output_dir adv_data/rap/resnet18_targeted --attack rap --model=resnet18 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/rap/resnet18_targeted --eval --targeted
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=400, transpoint=100, epsilon_n=16/255, alpha_n=2/255, adv_steps=8,

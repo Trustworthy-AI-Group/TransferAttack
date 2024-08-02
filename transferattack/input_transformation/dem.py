@@ -27,7 +27,8 @@ class DEM(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1, resize_rates=[1.14, 1.27, 1.4, 1.53, 1.66]
 
     Example script:
-        python main.py --attack dem --output_dir adv_data/dem/resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dem/resnet18 --attack dem --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dem/resnet18 --eval
 
     Compared with DIM:
         1. Remove the diversity_prob in DIM, set diversity_prob=1 in DEM

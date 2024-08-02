@@ -28,7 +28,8 @@ class SMIFGRM(Attack):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, beta=1.5, num_neighbor=12, epoch=10, decay=1., rescale_factor=2
 
     Example script:
-        python main.py --attack smifgsm --output_dir adv_data/smifgsm/resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/smifgrm/resnet18 --attack smifgrm --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/smifgrm/resnet18 --eval
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, beta=1.5, num_neighbor=12, rescale_factor=2, epoch=10, decay=1., targeted=False, 

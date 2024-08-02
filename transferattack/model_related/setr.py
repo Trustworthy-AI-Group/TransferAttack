@@ -26,7 +26,8 @@ class SETR(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1.
 
     Example script:
-        python main.py --attack=setr --model=tiny --output_dir adv_data/setr/tiny
+        python main.py --input_dir ./path/to/data --output_dir adv_data/setr/tiny --attack setr --model=tiny
+        python main.py --input_dir ./path/to/data --output_dir adv_data/setr/tiny --eval
     """
 
     def __init__(self, model_name='tiny', epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., targeted=False, gamma=0.2, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='SETR',trm=True, **kwargs):

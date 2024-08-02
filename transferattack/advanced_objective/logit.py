@@ -25,6 +25,7 @@ class LOGIT(Attack):
 
     Example script:
         python main.py --input_dir ./path/to/data --output_dir adv_data/logit/resnet18_targeted --attack logit --model=resnet18 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/logit/resnet18_targeted --eval --targeted
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=300, decay=1.0, resize_rate=1.1, kernel_size=5, targeted=True, 

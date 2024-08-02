@@ -35,7 +35,8 @@ class SU(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=2/255, epoch=300, decay=1, resize_rate=1.1, diversity_prob=0.5, lamb=0.4, kernel_type='gaussian', kernel_size=15, feature_layer='layer3'
 
     Example script:
-        python main.py --attack su --output_dir adv_data/su/resnet18 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/su/resnet18_targeted --attack su --model=resnet18 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/su/resnet18_targeted --eval --targeted
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=300, decay=1., lamb=0.001, scale=(0.1, 0.), feature_layer='layer3', targeted=True, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='SU', **kwargs):

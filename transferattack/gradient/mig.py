@@ -28,8 +28,8 @@ class MIG(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=0.64/255, epoch=25, decay=1., s_factor=20,
 
     Example script:
-        python main.py --attack mig --output_dir adv_data/mig/resnet18 # attack
-        python main.py --attack mig --output_dir adv_data/mig/resnet18 --eval # evaluation
+        python main.py --input_dir ./path/to/data --output_dir adv_data/mig/resnet18 --attack mig --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/mig/resnet18 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., s_factor=20,

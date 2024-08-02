@@ -27,7 +27,8 @@ class IAA(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=2/255, epoch=10, decay=0., random_start=True
 
     Example script:
-        python main.py --attack=iaa --output_dir adv_data/iaa/resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/iaa/resnet18 --attack iaa --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/iaa/resnet18 --eval
     '''
 
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=10, decay=1., targeted=False, random_start=True, 

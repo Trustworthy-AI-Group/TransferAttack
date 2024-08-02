@@ -106,12 +106,17 @@ class IR(MIFGSM):
         norm (str): the norm of perturbation, l2/linfty.
         loss (str): the loss function.
         device (torch.device): the device for data. If it is None, the device would be same as model
+
     Official arguments:
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1., num_scale=10
+
+    Example script:
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ir/resnet18 --attack ir --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ir/resnet18 --eval
     """
 
     def __init__(self, model_name, epsilon=16 / 255, alpha=1.6 / 255, epoch=10, decay=1.,
-                 targeted=False, random_start=False,grid_scale=16,grid_num=32,sample_times=1,lam=1,
+                 targeted=False, random_start=False, grid_scale=16, grid_num=32, sample_times=1, lam=1,
                  norm='linfty', loss='crossentropy', device=None, attack='ir', **kwargs):
         super().__init__(model_name, epsilon, alpha, epoch, decay, targeted, random_start, norm, loss, device, attack)
         self.grid_scale = grid_scale

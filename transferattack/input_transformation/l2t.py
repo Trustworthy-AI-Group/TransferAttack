@@ -409,8 +409,8 @@ class L2T(Attack):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1, num_scale=3
 
     Example script:
-        python main.py --attack l2t --output_dir adv_data/l2t/resnet18 --batch_size 2
-        python main.py -- attack l2t --output_dir adv_data/l2t/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/l2t/resnet18 --attack l2t --model=resnet18 --batchsize 2
+        python main.py --input_dir ./path/to/data --output_dir adv_data/l2t/resnet18 --eval
     """
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., num_scale=3,
                  targeted=False, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='L2T', **kwargs):
