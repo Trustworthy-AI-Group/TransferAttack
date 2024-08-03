@@ -1579,17 +1579,17 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <tr>
 <td><a href="./transferattack/model_related/bpa.py" target="_blank" rel="noopener noreferrer">BPA</a></td>
 <td >100.0</td>
-<td >60.1</td>
-<td >65.6</td>
-<td >89.6</td>
-<td >24.2</td>
-<td >34.2</td>
-<td >51.2</td>
-<td >58.2</td>
-<td >35.2</td>
-<td >50.6</td>
-<td >26.0</td>
-<td >37.4</td>
+<td >59.0</td>
+<td >63.9</td>
+<td >88.1</td>
+<td >22.8</td>
+<td >32.0</td>
+<td >47.6</td>
+<td >54.4</td>
+<td >35.1</td>
+<td >47.3</td>
+<td >26.1</td>
+<td >37.7</td>
 </tr>
 
 <tr id="ags">

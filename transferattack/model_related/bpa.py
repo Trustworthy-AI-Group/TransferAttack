@@ -1,4 +1,6 @@
 import torch
+import torch.nn as nn
+from torch.autograd import Function
 import torch.nn.functional as F
 
 from ..utils import *
@@ -29,152 +31,106 @@ class BPA(MIFGSM):
     Example script:
         python main.py --input_dir ./path/to/data --output_dir adv_data/bpa/resnet18 --attack bpa --model=resnet18
         python main.py --input_dir ./path/to/data --output_dir adv_data/bpa/resnet18 --eval
+
+    Note:
+        Currently, we only support Resnet model.
     """
 
-    def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., bpa_layer='3_1', targeted=False, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='BPA', **kwargs):
+    def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., bpa_layer='3_1',
+                 targeted=False, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='BPA', **kwargs):
         super().__init__(model_name, epsilon, alpha, epoch, decay, targeted, random_start, norm, loss, device, attack)
         self.bpa_layer = bpa_layer
 
-    def forward(self, data, label, **kwargs):
-        """
-        The BPA attack procedure
-
-        Arguments:
-            data: (N, C, H, W) tensor for input images
-            labels: (N,) tensor for ground-truth labels if untargetd, otherwise targeted labels
-        """
-        if self.targeted:
-            assert len(label) == 2
-            label = label[1] # the second element is the targeted label tensor
-        data = data.clone().detach().to(self.device)
-        label = label.clone().detach().to(self.device)
-
-        # Initialize adversarial perturbation
-        delta = self.init_delta(data)
-
-        momentum=0
-        for _ in range(self.epoch):
-            # Obtain the logits
-            logits = bpa_forw_resnet(self.model, data+delta, self.bpa_layer)
-
-            # Calculate the loss
-            loss = self.get_loss(logits, label)
-
-            # Calculate the gradients
-            grad = self.get_grad(loss, delta)
-
-            # Get the momentum
-            momentum = self.get_momentum(grad, momentum)
-
-            # Update the delta
-            delta = self.update_delta(delta, data, momentum, self.alpha)
+    def load_model(self, model_name):
+        if 'resnet' not in model_name:
+            raise ValueError(
+                'Model {} not supported. Currently we only support Resnet.'.format(model_name))
         
-        return delta.detach()
-
-
-
-class BPA_MaxPool(torch.autograd.Function):
-    @staticmethod
-    def forward(ctx, inputs, kernel_size, stride=None, padding=0, temp_coef=10):
-        # forward uses original maxpool function
-        outputs = F.max_pool2d(inputs, kernel_size, stride, padding)
-        ctx.save_for_backward(inputs, outputs)
-        ctx.kernel_size = kernel_size
-        ctx.stride = stride
-        ctx.padding = padding
-        ctx.temp_coef = temp_coef
-        return outputs
-
-    @staticmethod
-    def backward(ctx, grad_out):
-        inputs, outputs = ctx.saved_tensors
-        kernel_size = ctx.kernel_size
-        stride = ctx.stride
-        padding = ctx.padding
-        temp_coef = ctx.temp_coef
-        n_in, c_in, _, _ = inputs.shape
-        _, _, h_out, w_out = outputs.shape
-
-        patches = F.unfold(inputs, kernel_size=kernel_size, padding=padding, stride=stride) #[N,C*(kernel_size**2), patch_num], patch_num = h_out * w_out
-        patches = torch.reshape(patches, (n_in, c_in, kernel_size**2, h_out, w_out))
-        softmax_patches = F.softmax(patches * temp_coef, dim=2)
-        grad_out = torch.tile(grad_out[:,:,None,:,:], (1,1,kernel_size**2,1,1))
-        grad_in = grad_out * softmax_patches
-        grad_in = torch.reshape(grad_in, (n_in, c_in*(kernel_size**2), -1))
-        grad_in = F.fold(grad_in, inputs.shape[2:], kernel_size=kernel_size, padding=padding, stride=stride)
-        return grad_in, None, None, None, None
-
-class BPA_ReLU(torch.autograd.Function):
-    @staticmethod
-    def forward(ctx, inputs):
-        result = F.relu(inputs)
-        ctx.save_for_backward(inputs)
-        return result
-
-    @staticmethod
-    def backward(ctx, grad_out):
-        inputs, =ctx.saved_tensors
-        inputs_grad = torch.sigmoid(inputs) * (1 + inputs * (1 - torch.sigmoid(inputs)))
-        return grad_out * inputs_grad
-
-def bpa_maxpool(inputs, kernel_size, stride, padding, temp_coef):
-    return BPA_MaxPool.apply(inputs, kernel_size, stride, padding, temp_coef)
-
-def bpa_relu(inputs):
-    return BPA_ReLU.apply(inputs)
-
-def bpa_forw_resnet(model, x, bpa_layer):
-    jj = int(bpa_layer.split('_')[0])
-    kk = int(bpa_layer.split('_')[1])
-
-    x = model[0](x)
-    x = model[1].conv1(x)
-    x = model[1].bn1(x)
-    x = model[1].relu(x)
-    x = bpa_maxpool(x, kernel_size=3, stride=2, padding=1, temp_coef=10)
-    
-    def layer_forw(jj, kk, jj_now, kk_now, x, mm):
-        if jj < jj_now:
-            x = block_func(mm, x, do_bpa=True)
-        elif jj == jj_now:
-            if kk_now >= kk:
-                x = block_func(mm, x, do_bpa=True)
-            else:
-                x = block_func(mm, x, do_bpa=False)
+        if model_name in models.__dict__.keys():
+            print('=> Loading model {} from torchvision.models'.format(model_name))
+            model = models.__dict__[model_name](pretrained=True)
         else:
-            x = block_func(mm, x, do_bpa=False)
-        return x
-    
-    for ind, mm in enumerate(model[1].layer1):
-        x = layer_forw(jj, kk, 1, ind, x, mm)
-    for ind, mm in enumerate(model[1].layer2):
-        x = layer_forw(jj, kk, 2, ind, x, mm)
-    for ind, mm in enumerate(model[1].layer3):
-        x = layer_forw(jj, kk, 3, ind, x, mm)
-    for ind, mm in enumerate(model[1].layer4):
-        x = layer_forw(jj, kk, 4, ind, x, mm)
-    
-    x = model[1].avgpool(x)
-    x = torch.flatten(x, 1)
-    x = model[1].fc(x)
-    return x
+            raise ValueError('Model {} not supported.'.format(model_name))
 
-def block_func(block, x, do_bpa):
-    identity = x
+        model.maxpool = MaxPool2dK3S2P1()
 
-    out = block.conv1(x)
-    out = block.bn1(out)
-    if do_bpa:
-        out = bpa_relu(out)
-    else:
-        out = block.relu(out)
+        for i in range(1, len(model.layer3)):
+            model.layer3[i].relu = ReLU_SiLU()
 
-    out = block.conv2(out)
-    out = block.bn2(out)
+        for i in range(len(model.layer4)):
+            model.layer4[i].relu = ReLU_SiLU()
 
-    if block.downsample is not None:
-        identity = block.downsample(identity)
+        return wrap_model(model.eval().cuda())
 
-    out += identity
-    out = block.relu(out)
-    return out
+
+# Refer to the code https://github.com/Trustworthy-AI-Group/BPA
+class MaxPool2dK3S2P1Function(Function):
+    temperature = 10.
+
+    @staticmethod
+    def forward(ctx, input_):
+        with torch.no_grad():
+            output = F.max_pool2d(input_, 3, 2, 1)
+        ctx.save_for_backward(input_, output)
+        return output.to(input_.device)
+
+    @staticmethod
+    def backward(ctx, grad_output):
+        with torch.no_grad():
+            input_, output = ctx.saved_tensors
+            input_unfold = F.unfold(input_, 3, padding=1, stride=2).reshape(
+                (input_.shape[0], input_.shape[1], 3*3, grad_output.shape[2]*grad_output.shape[3]))
+
+            output_unfold = torch.exp(
+                MaxPool2dK3S2P1Function.temperature*input_unfold).sum(dim=2, keepdim=True)
+
+            grad_output_unfold = grad_output.reshape(
+                output.shape[0], output.shape[1], 1, -1).repeat(1, 1, 9, 1)
+            grad_input_unfold = grad_output_unfold * \
+                torch.exp(MaxPool2dK3S2P1Function.temperature *
+                          input_unfold) / output_unfold
+            grad_input_unfold = grad_input_unfold.reshape(
+                input_.shape[0], -1, output.shape[2]*output.shape[3])
+            grad_input = F.fold(grad_input_unfold,
+                                input_.shape[2:], 3, padding=1, stride=2)
+            return grad_input.to(input_.device)
+
+
+# Refer to the code https://github.com/Trustworthy-AI-Group/BPA
+class MaxPool2dK3S2P1(nn.Module):
+    def __init__(self):
+        super(MaxPool2dK3S2P1, self).__init__()
+
+    def forward(self, input):
+        return MaxPool2dK3S2P1Function.apply(input)
+
+
+# Refer to the code https://github.com/Trustworthy-AI-Group/BPA
+class ReLU_SiLU_Function(Function):
+    temperature = 1.
+
+    @staticmethod
+    def forward(ctx, input_):
+        with torch.no_grad():
+            output = torch.relu(input_)
+        ctx.save_for_backward(input_)
+        return output.to(input_.device)
+
+    @staticmethod
+    def backward(ctx, grad_output):
+        input_, = ctx.saved_tensors
+        with torch.no_grad():
+            grad_input = input_ * \
+                torch.sigmoid(input_) * (1 - torch.sigmoid(input_)) + \
+                torch.sigmoid(input_)
+            grad_input = grad_input * grad_output * ReLU_SiLU_Function.temperature
+        return grad_input.to(input_.device)
+
+
+# Refer to the code https://github.com/Trustworthy-AI-Group/BPA
+class ReLU_SiLU(nn.Module):
+    def __init__(self):
+        super(ReLU_SiLU, self).__init__()
+
+    def forward(self, input):
+        return ReLU_SiLU_Function.apply(input)
