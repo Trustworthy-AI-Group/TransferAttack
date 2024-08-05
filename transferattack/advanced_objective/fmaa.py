@@ -31,7 +31,8 @@ class FMAA(MIFGSM):
         drop_rate=0.4 for 1st iteration and 0.1 for the rest iterations
 
     Example script:
-        python main.py --attack=fmaa --output_dir adv_data/fmaa/resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/fmaa/resnet18 --attack fmaa --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/fmaa/resnet18 --eval
     """
 
     def __init__(self, model_name, epsilon=16 / 255, alpha=1.6 / 255, epoch=10, decay=1., num_ens=30, lamb=1.1,

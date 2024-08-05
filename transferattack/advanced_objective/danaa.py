@@ -29,8 +29,8 @@ class DANAA(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1., num_ens=30, scale=0.25, lr=0.0025,
 
     Example script:
-        python main.py --attack danaa --output_dir adv_data/danaa/resnet18
-        python main.py --attack danaa --output_dir adv_data/danaa/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/danaa/resnet18 --attack danaa --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/danaa/resnet18 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., num_ens=30, scale=0.25, lr=0.0025,

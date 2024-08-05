@@ -27,8 +27,10 @@ class Logit_Margin(MIFGSM):
     
     Official arguments:
         epsilon=16/255, alpha=2.0/255, epoch=200, decay=1, resize_rate=1.1, diversity_prob=0.7
-    Example Script:
+
+    Example script:
         python main.py --input_dir ./path/to/data --output_dir adv_data/logit_margin/resnet18_targeted --attack logit_margin --model=resnet18 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/logit_margin/resnet18_targeted --eval --targeted
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=300, decay=1., temperature=5, resize_rate=1.1, diversity_prob=0.7,

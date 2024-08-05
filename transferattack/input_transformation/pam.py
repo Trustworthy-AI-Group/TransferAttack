@@ -31,6 +31,10 @@ class PAM(MIFGSM):
 
     Official arguments:
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1., num_aug_path=8, num_scale=4, train_epoch=15
+
+    Example script:
+        python main.py --input_dir ./path/to/data --output_dir adv_data/pam/resnet18 --attack pam --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/pam/resnet18 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., num_aug_path=8, num_scale=4, train_epoch=15, targeted=False, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='PAM', **kwargs):

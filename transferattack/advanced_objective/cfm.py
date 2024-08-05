@@ -31,7 +31,8 @@ class CFM(Attack):
         epsilon=0.07, alpha=epsilon/epoch=0.007, epoch=300, decay=1.
 
     Example script:
-        python main.py --attack=cfm --output_dir adv_data/cfm/resnet18 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/cfm/resnet18_targeted --attack cfm --model=resnet18 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/cfm/resnet18_targeted --eval --targeted
     """
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=300, decay=1., targeted=True, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='CFM', **kwargs):
         super().__init__(attack, model_name, epsilon, targeted, random_start, norm, loss, device)

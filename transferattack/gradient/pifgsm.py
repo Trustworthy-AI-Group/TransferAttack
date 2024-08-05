@@ -28,6 +28,7 @@ class PIFGSM(Attack):
 
     Example script:
         python main.py --input_dir ./path/to/data --output_dir adv_data/pifgsm/resnet18 --attack pifgsm --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/pifgsm/resnet18 --eval
     """
     
     def __init__(self, model_name, epsilon=16.0/255, alpha=1.6/255, epoch=10, decay=0., kern_size=3, gamma=16.0, beta=10.0, targeted=False, random_start=False, 

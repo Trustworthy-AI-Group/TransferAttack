@@ -3,6 +3,7 @@ import torch.nn.functional as F
 
 from ..gradient.mifgsm import MIFGSM
 from ..utils import *
+
 """
 Results of the SSM with tricks on this library:
 | 100.0 | 69.9 | 73.7 | 93.6 | 29.6 | 40.1 | 55.7 | 62.3 |  SSM
@@ -11,8 +12,6 @@ Results of the SSM with tricks on this library:
 
 Note: The implementation for learnable spectrum simulation can be referred to the l2t.py
 """
-
-
 
 
 class SSM_H(MIFGSM):
@@ -38,7 +37,8 @@ class SSM_H(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1, num_spectrum=20, rho=0.5
 
     Example script:
-        python main.py --attack ssm --output_dir adv_data/ssm/resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ssm_h/resnet18 --attack ssm_h --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ssm_h/resnet18 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., num_spectrum=20, rho=0.5, targeted=False, random_start=False, norm='linfty', loss='crossentropy', device=None,  **kwargs):
@@ -225,8 +225,6 @@ class SSM_H(MIFGSM):
         return x2.transpose(-1, -2)
 
 
-
-
 class SSM_P(MIFGSM):
     """
     Block-wise SSM Attack
@@ -250,7 +248,8 @@ class SSM_P(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1, num_spectrum=20, rho=0.5
 
     Example script:
-        python main.py --attack ssm --output_dir adv_data/ssm/resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ssm_p/resnet18 --attack ssm_p --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ssm_p/resnet18 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., rho=0.5,num_scale=20,  targeted=False, random_start=False, norm='linfty', loss='crossentropy', device=None,  **kwargs):

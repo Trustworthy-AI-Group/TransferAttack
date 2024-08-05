@@ -27,7 +27,8 @@ class TGR(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1.0, mlp_gamma=0.25 (we follow mlp_gamma=0.5 in official code)
 
     Example script:
-        python main.py --attack=tgr --input_dir=./data --output_dir=./results/tgr/vit --model vit_base_patch16_224 --batchsize 1
+        python main.py --input_dir ./path/to/data --output_dir adv_data/tgr/vit --attack=tgr --model vit_base_patch16_224 --batchsize 1
+        python main.py --input_dir ./path/to/data --output_dir adv_data/tgr/vit --eval
 
     NOTE:
         1) The code only support batchsize = 1.

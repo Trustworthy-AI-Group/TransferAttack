@@ -28,7 +28,7 @@ class MUP(MIFGSM):
 
     Example scripts:
         python main.py --attack=mup --input_dir=./data --output_dir=./results/mup/resnet18 --model resnet18 --batchsize 1
-        python main.py --attack=mup --input_dir=./data --output_dir=./results/mup/resnet18 -e
+        python main.py --attack=mup --input_dir=./data --output_dir=./results/mup/resnet18 --eval
 
     NOTE:
         1) --batchsize=1 is necessary for MUP attack since gradient and taylor score are calculated w.r.t. each sample.

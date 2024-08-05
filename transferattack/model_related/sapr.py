@@ -26,7 +26,8 @@ class SAPR(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1., prob=0.15 for vit
 
     Example script:
-        python main.py --attack sapr --output_dir adv_data/sapr/vit
+        python main.py --input_dir ./path/to/data --output_dir adv_data/sapr/vit --attack sapr --model=vit_base_patch16_224
+        python main.py --input_dir ./path/to/data --output_dir adv_data/sapr/vit --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1.,  targeted=False, random_start=False,

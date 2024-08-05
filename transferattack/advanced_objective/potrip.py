@@ -30,7 +30,8 @@ class POTRIP(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=2.0/255, epoch=300, decay=1, resize_rate=1.1, diversity_prob=0.5
     
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/potrip/resnet18_targeted --attack potrip --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/potrip/resnet18_targeted --attack potrip --model=resnet18 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/potrip/resnet18_targeted --eval --targeted
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=300, decay=1., resize_rate=1.1, 

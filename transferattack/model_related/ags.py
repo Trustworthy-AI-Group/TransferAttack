@@ -29,7 +29,8 @@ class AGS(Attack):
         epsilon=25.5/255, alpha=1.0/255, epoch=300, decay=1.
 
     Example script:
-        python main.py --batchsize=20 --input_dir ./path/to/data --output_dir adv_data/ags/ags_coco --attack ags --model ags_coco
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ags/ags_coco --attack ags --model ags_coco --batchsize=20
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ags/ags_coco --eval
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=1.0/255, epoch=300, decay=1., targeted=False, 

@@ -34,6 +34,8 @@ class STM(MIFGSM):
 
     Example script:
         python main.py --input_dir ./path/to/data --output_dir adv_data/stm/resnet18 --attack stm --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/stm/resnet18 --eval
+
     Notes: 
         Download checkpoints ('checkpoint_transformer.pth' and 'checkpoint_embeddings.pth') from https://github.com/Zhijin-Ge/STM,
         and put them in the path '/path/to/checkpoints/'
@@ -47,7 +49,6 @@ class STM(MIFGSM):
         self.gamma = gamma
         self.beta = beta
         self.checkpoint_path = checkpoint_path
-
 
     def transform(self, x, **kwargs):
         """
@@ -106,6 +107,7 @@ class STM(MIFGSM):
             delta = self.update_delta(delta, data, momentum, self.alpha)
 
         return delta.detach()
+
 
 """The style transfer model"""
 class ConvInRelu(nn.Module):
@@ -238,6 +240,7 @@ class Ghiasi(nn.Module):
                 x = layer(x, styles)
         
         return torch.sigmoid(x)
+
 
 """Style Augument"""
 class StyleAugmentor(nn.Module):

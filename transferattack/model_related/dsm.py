@@ -28,6 +28,7 @@ class DSM(MIFGSM):
 
     Example script:
         python main.py --input_dir ./path/to/data --output_dir adv_data/dsm/resnet18 --attack dsm --model=SR_resnet18_cutmix
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dsm/resnet18 --eval
 
     Notes:
         Download the checkpoint ('SD_resnet18_cutmix.pth.tar') from official repository: https://github.com/ydc123/Dark_Surrogate_Model, and put it in the path '/path/to/checkpoints/'.

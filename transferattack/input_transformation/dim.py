@@ -25,6 +25,10 @@ class DIM(MIFGSM):
     
     Official arguments:
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1, resize_rate=1.1, diversity_prob=0.5
+
+    Example script:
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dim/resnet18 --attack dim --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dim/resnet18 --eval
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., resize_rate=1.1, diversity_prob=0.5, targeted=False, 

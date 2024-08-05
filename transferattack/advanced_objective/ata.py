@@ -25,6 +25,10 @@ class ATA(Attack):
 
     Official arguments:
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, lamda=1, epoch=10, decay=1.
+
+    Example script:
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ata/resnet18 --attack ata --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ata/resnet18 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, random=False, epoch=10,

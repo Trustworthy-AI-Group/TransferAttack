@@ -27,7 +27,8 @@ class RPA(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1., num_ens=60
 
     Example script:
-        python main.py --attack=rpa --output_dir adv_data/rpa/resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/rpa/resnet18 --attack rpa --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/rpa/resnet18 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1, patch_prob=0.7, num_ens=30,

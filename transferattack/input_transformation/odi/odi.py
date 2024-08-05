@@ -34,7 +34,8 @@ class ODI(MIFGSM):
         epsilon=16/255, alpha=2/255, epoch=300, decay=1., kernel_type='gaussian', kernel_size=15
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/odi/resnet18 --attack odi --model=resnet18 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/odi/resnet18_targeted --attack odi --model=resnet18 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/odi/resnet18_targeted --eval --targeted
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=300, decay=1., kernel_type='gaussian', kernel_size=5, targeted=False,

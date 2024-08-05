@@ -27,8 +27,8 @@ class MaskBlock(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=2/255, epoch=10, decay=1., patch_size=56
 
     Example script:
-        python main.py --attack maskblock --output_dir adv_data/maskblock/resnet18
-        python main.py --attack maskblock --output_dir adv_data/maskblock/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/maskblock/resnet18 --attack maskblock --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/maskblock/resnet18 --eval
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=10, decay=1., patch_size=56, targeted=False, random_start=False, 
