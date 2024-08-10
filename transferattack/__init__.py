@@ -71,6 +71,7 @@ attack_zoo = {
     'fuzziness_tuned': ('.advanced_objective.fuzziness_tuned', 'Fuzziness_Tuned'),
     'danaa': ('.advanced_objective.danaa', 'DANAA'),
     'ilpd': ('.advanced_objective.ilpd', 'ILPD'),
+    'bfa': ('.advanced_objective.bfa', 'BFA'),
     ## Targeted
     'aa': ('.advanced_objective.aa', 'AA'),
     'potrip': ('.advanced_objective.potrip', 'POTRIP'),
