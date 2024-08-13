@@ -336,7 +336,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="12"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="13"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2021)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -359,6 +359,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2106.04169" target="_blank" rel="noopener noreferrer">SETR (Naseer et al., 2022)</a></td>
 <td ><sub>Ensemble and refine classifiers after each transformer block</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://ieeexplore.ieee.org/document/9917370?denied=" target="_blank" rel="noopener noreferrer">DRA (Zhu et al., 2022)</a></td>
+<td ><sub>Use fine-tuned models to push the image away from the original distribution while generating the adversarial examples.</sub></td>
 </tr>
 
 <tr>
@@ -518,6 +523,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <td ><sub>Train a generative model to generate adversarial examples, of which both the global distribution and local neighborhood structure in the latent feature space are matched with the target class.</sub></td>
 </tr>
 
+<tr>
+<th rowspan="1"><sub><strong>Ensemble-based</strong></sub></th>
+<td><a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Wu_Improving_Transferable_Targeted_Adversarial_Attacks_with_Model_Self-Enhancement_CVPR_2024_paper.pdf" target="_blank" rel="noopener noreferrer">SASD_WS (Wu et al., 2024)</a></td>
+<td ><sub>Incorporate Sharpness-Aware Self-Distillation (SASD) and Weight Scaling (WS) to promote the source model's generalization capability.</sub></td>
+</tr>
 </table>
 
 ### Models
@@ -1437,7 +1447,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="12"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="13"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >48.4</td>
@@ -1515,6 +1525,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >31.6</td>
 <td >25.5</td>
 <td >50.7</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/dra.py" target="_blank" rel="noopener noreferrer">DRA</a></td>
+<td >99.4</td>
+<td >91.0</td>
+<td >90.7</td>
+<td >98.5</td>
+<td >75.7</td>
+<td >79.5</td>
+<td >87.0</td>
+<td >89.2</td>
+<td >69.2</td>
+<td >92.6</td>
+<td >68.3</td>
+<td >82.4</td>
 </tr>
 
 <tr>
@@ -1991,6 +2017,21 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >4.1</td>
 </tr>
 
+<th rowspan="1"><sub><strong>Ensemble-based</strong></sub></th>
+<td><a href="./transferattack/ensemble/sasd_ws.py" target="_blank" rel="noopener noreferrer">SASD_WS</a></td>
+<td >91.7</td>
+<td >70.9</td>
+<td >76.9</td>
+<td >91.5</td>
+<td >13.7</td>
+<td >22.5</td>
+<td >39.9</td>
+<td >29.0</td>
+<td >0.1</td>
+<td >64.7</td>
+<td >0.1</td>
+<td >5.7</td>
+</tr>
 </table>
 
 ## Contributing to TransferAttack
