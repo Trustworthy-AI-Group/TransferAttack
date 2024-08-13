@@ -21,3 +21,5 @@
 - Zhi Lin checked the [IE-FGSM](./transferattack/gradient/iefgsm.py) method.
 
 - [Zhengwei Fang](https://github.com/jankinf) added the [ANDA](./transferattack/gradient/anda.py) method.
+
+- Guanyan Ou checked the [SASD_WS](./transferattack/model_related/sasd_ws.py) method.
