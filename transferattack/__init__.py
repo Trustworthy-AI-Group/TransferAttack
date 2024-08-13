@@ -86,6 +86,7 @@ attack_zoo = {
     'iaa': ('.model_related.iaa', 'IAA'),
     'sapr': ('.model_related.sapr', 'SAPR'),
     'setr': ('.model_related.setr', 'SETR'),
+    'dra': ('.model_related.dra', 'DRA'),
     'mta': ('.model_related.mta', 'MTA'),
     'mup': ('.model_related.mup', 'MUP'),
     'tgr': ('.model_related.tgr', 'TGR'),
@@ -102,6 +103,8 @@ attack_zoo = {
     'mba': ('.ensemble.mba', 'MBA'),
     'adaea': ('.ensemble.adaea', 'AdaEA'),
     'cwa': ('.ensemble.cwa', 'CWA'),
+    ## Targeted
+    'sasd_ws': ('.ensemble.sasd_ws', 'SASD_WS'),
     
     # generation
     ## Untargeted
