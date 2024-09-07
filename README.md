@@ -336,7 +336,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="13"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="14"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2021)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -399,6 +399,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/28365" target="_blank" rel="noopener noreferrer">AGS (Wang et al., 2024)</a></td>
 <td ><sub>Train surrogate models with adversary-centric contrastive learning and adversarial invariant learning</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/28541" target="_blank" rel="noopener noreferrer">VDC (Zhang et al., 2024)</a></td>
+<td ><sub>Adding virtual dense connections for dense gradient back-propagation in Attention maps and MLP blocks, without altering the forward pass.</sub></td>
 </tr>
 
 <tr>
@@ -538,7 +543,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 ## Evaluation
 
 ### Untargeted Attack
-**Note**: We adopt $\epsilon=16/255$ with the number of iterations $T=10$. The base attack for other types of attack is [MI-FGSM](https://arxiv.org/abs/1710.06081). The defaut surrogate model is ResNet-18. For [YAILA](#yaila), we adopt ResNet-50 as the surrogate model. For [PNA-PatchOUt](#pna), [SAPR](#sapr), [TGR](#tgr), we adopt ViT as the surrogate model. For [Ensemble](#ensemble) attacks, we use four CNNs([ResNet-18](https://arxiv.org/abs/1512.03385), [ResNet-101](https://arxiv.org/abs/1512.03385), [ResNeXt-50](https://arxiv.org/abs/1611.05431), [DenseNet-121](https://arxiv.org/abs/1608.06993)) as the ensemble model.
+**Note**: We adopt $\epsilon=16/255$ with the number of iterations $T=10$. The base attack for other types of attack is [MI-FGSM](https://arxiv.org/abs/1710.06081). The defaut surrogate model is ResNet-18. For [YAILA](#yaila), we adopt ResNet-50 as the surrogate model. For [PNA-PatchOUt](#pna), [SAPR](#sapr), [TGR](#tgr), [VDC](#vdc), we adopt ViT as the surrogate model. For [Ensemble](#ensemble) attacks, we use four CNNs([ResNet-18](https://arxiv.org/abs/1512.03385), [ResNet-101](https://arxiv.org/abs/1512.03385), [ResNeXt-50](https://arxiv.org/abs/1611.05431), [DenseNet-121](https://arxiv.org/abs/1608.06993)) as the ensemble model.
 
 <table  style="width:100%" border="1">
 <thead>
@@ -1447,7 +1452,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="13"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="14"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >48.4</td>
@@ -1653,6 +1658,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >62.2</td>
 <td >27.4</td>
 <td >39.4</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/vdc.py" target="_blank" rel="noopener noreferrer">VDC</a></td>
+<td >68.1</td>
+<td >47.9</td>
+<td >53.0</td>
+<td >65.5</td>
+<td >99.8</td>
+<td >56.7</td>
+<td >62.0</td>
+<td >73.1</td>
+<td >35.8</td>
+<td >43.9</td>
+<td >27.0</td>
+<td >35.1</td>
 </tr>
 
 <tr>
