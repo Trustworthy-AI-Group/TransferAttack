@@ -94,6 +94,7 @@ attack_zoo = {
     'dhf': ('.model_related.dhf', 'DHF_MIFGSM'),
     'bpa': ('.model_related.bpa', 'BPA'),
     'ags': ('.model_related.ags', 'AGS'),
+    'metassa': ('.model_related.metassa', 'MetaSSA'),
     
     # ensemble
     'ens': ('.ensemble.ens', 'ENS'),
