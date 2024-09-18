@@ -1,0 +1,65 @@
+data:
+    dataset: "CIFAR10"
+    category: "cifar10"
+    image_size: 32
+    num_channels: 3
+    random_flip: True
+    centered: True
+    uniform_dequantization: False
+
+model:
+    sigma_min: 0.01
+    sigma_max: 50
+    num_scales: 1000
+    beta_min: 0.1
+    beta_max: 20.
+    dropout: 0.1
+
+    name: 'ncsnpp'
+    scale_by_sigma: False
+    ema_rate: 0.9999
+    normalization: 'GroupNorm'
+    nonlinearity: 'swish'
+    nf: 128
+    ch_mult: [1, 2, 2, 2]  # (1, 2, 2, 2)
+    num_res_blocks: 8
+    attn_resolutions: [16]  # (16,)
+    resamp_with_conv: True
+    conditional: True
+    fir: False
+    fir_kernel: [1, 3, 3, 1]
+    skip_rescale: True
+    resblock_type: 'biggan'
+    progressive: 'none'
+    progressive_input: 'none'
+    progressive_combine: 'sum'
+    attention_type: 'ddpm'
+    init_scale: 0.
+    embedding_type: 'positional'
+    fourier_scale: 16
+    conv_size: 3
+    
+training:
+    sde: 'vpsde'
+    continuous: True
+    reduce_mean: True
+    n_iters: 950001
+
+optim:
+    weight_decay: 0
+    optimizer: 'Adam'
+    lr: 0.0002  # 2e-4
+    beta1: 0.9
+    eps: 0.00000001  # 1e-8
+    warmup: 5000
+    grad_clip: 1.
+
+sampling:
+    n_steps_each: 1
+    noise_removal: True
+    probability_flow: False
+    snr: 0.16
+
+    method: 'pc'
+    predictor: 'euler_maruyama'
+    corrector: 'none'

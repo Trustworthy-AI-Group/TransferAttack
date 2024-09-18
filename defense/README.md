@@ -46,3 +46,9 @@ python defense/nrp/purify.py --dir=/path/to/adv_data --output=/path/to/save/puri
 
 Then, evaluate the purified_data, we report the ASR on ResNet101 target model.
 
+## DiffPure: https://github.com/NVlabs/DiffPure
+
+```
+sh diffpure_defense.sh
+```
+Then, evaluate the purified_data, we report the ASR on ResNet101 target model.
