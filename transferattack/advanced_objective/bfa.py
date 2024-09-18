@@ -96,6 +96,9 @@ class BFA(MIFGSM):
             data: (N, C, H, W) tensor for input images
             labels: (N,) tensor for ground-truth labels if untargetd, otherwise targeted labels
         """
+        if self.targeted:
+            assert len(label) == 2
+            label = label[1] # the second element is the targeted label tensor
         data = data.clone().detach().to(self.device)
         label = label.clone().detach().to(self.device)
 

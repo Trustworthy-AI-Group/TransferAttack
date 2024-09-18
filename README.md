@@ -402,6 +402,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org//abs/2405.03193" target="_blank" rel="noopener noreferrer">MetaSSA (Weng et al., 2024)</a></td>
+<td ><sub>Utilizes low-frequency feature mixing for meta-train to compute gradients, averages gradients through adversarial feature mixing during meta-test, and updates adversarial examples using gradients from both steps.</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/28541" target="_blank" rel="noopener noreferrer">VDC (Zhang et al., 2024)</a></td>
 <td ><sub>Adding virtual dense connections for dense gradient back-propagation in Attention maps and MLP blocks, without altering the forward pass.</sub></td>
 </tr>
@@ -1658,6 +1663,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >62.2</td>
 <td >27.4</td>
 <td >39.4</td>
+</tr>
+
+<tr id="metassa">
+<td><a href="./transferattack/model_related/metassa.py" target="_blank" rel="noopener noreferrer">MetaSSA</a></td>
+<td >100.0</td>
+<td >72.8</td>
+<td >78.3</td>
+<td >96.0</td>
+<td >41.3</td>
+<td >51.3</td>
+<td >64.3</td>
+<td >64.8</td>
+<td >40.7</td>
+<td >75.4</td>
+<td >31.5</td>
+<td >55.1</td>
 </tr>
 
 <tr>
