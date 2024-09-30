@@ -1886,6 +1886,21 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 **Note**: We adopt $\epsilon=16/255, \alpha=2/255$ with the number of iterations $T=300$. The default surrogate model is ResNet-18. For each image, the target label is randomly sampled and fixed in the `labels.csv`.
 
+For generation-based targeted attack, TTP and M3D, there are 10 target classes and the class to label mapping is shown below.
+```
+Class Number: Class Name
+24: Great Grey Owl
+99: Goose
+245: French Bulldog
+344: Hippopotamus
+471: Cannon
+555: Fire Engine
+661: Model T
+701: Parachute
+802: Snowmobile
+919: Street Sign       
+```
+
 <table  style="width:100%" border="1">
 <thead>
 <tr class="header">
