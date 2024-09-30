@@ -14,7 +14,11 @@ class M3D(MIFGSM):
     'Minimizing Maximum Model Discrepancy for Transferable Black-box Targeted Attacks (CVPR 2023)'(https://openaccess.thecvf.com/content/CVPR2023/papers/Zhao_Minimizing_Maximum_Model_Discrepancy_for_Transferable_Black-Box_Targeted_Attacks_CVPR_2023_paper.pdf)
 
     Arguments:
-        model (str): the surrogate model name for attack.
+        model_name (str): the surrogate model name for attack.
+
+    Example script:
+        python main.py --input_dir ./path/to/data --output_dir adv_data/m3d/resnet50 --attack m3d --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/m3d/resnet50 --attack m3d --model=resnet50 --eval
     """
 
     def __init__(self, model_name="resnet18", *args, **kwargs):
@@ -27,11 +31,16 @@ class M3D(MIFGSM):
 
     def load_Gmodel(self, target_class):
         netG = GeneratorResnet()
-        file_path = "/home/zeyuan/My-Adv/TransferAttack/checkpoint/m3d/netG_{}_9_{}.pth".format(self.model_name, target_class)
+        file_path = "/path/to/checkpoint/m3d/netG_{}_9_{}.pth".format(self.model_name, target_class)
         try:
             netG.load_state_dict(torch.load(file_path))
         except:
-            raise FileExistsError(f"No pre-trained generator model found at {file_path}, please visit https://github.com/Asteriajojo/M3D to download model")
+            raise FileExistsError(
+                f"No pre-trained generator model found at {file_path}, please visit "
+                "https://github.com/Asteriajojo/M3D or "
+                "https://huggingface.co/Trustworthy-AI-Group/TransferAttack/blob/main/M3D.zip "
+                "to download the model."
+            )
 
         netG.to(self.device)
         netG.eval()
