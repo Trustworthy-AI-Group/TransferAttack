@@ -23,6 +23,7 @@ vit_model_pkg = ['vit_base_patch16_224', 'pit_b_224', 'cait_s24_224', 'visformer
 tgr_vit_model_list = ['vit_base_patch16_224', 'pit_b_224', 'cait_s24_224', 'visformer_small',
                       'deit_base_distilled_patch16_224', 'tnt_s_patch16_224', 'levit_256', 'convit_base']
 
+generation_target_classes = [24, 99, 245, 344, 471, 555, 661, 701, 802, 919]
 
 def load_pretrained_model(cnn_model=[], vit_model=[]):
     for model_name in cnn_model:

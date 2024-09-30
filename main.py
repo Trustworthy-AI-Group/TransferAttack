@@ -41,8 +41,16 @@ def main():
         attacker = transferattack.load_attack_class(args.attack)(model_name=args.model, targeted=args.targeted)
 
         for batch_idx, [images, labels, filenames] in tqdm.tqdm(enumerate(dataloader)):
-            perturbations = attacker(images, labels)
-            save_images(args.output_dir, images + perturbations.cpu(), filenames)
+            if args.attack in ['ttp', 'm3d']: 
+                for idx, target_class in enumerate(generation_target_classes):
+                    perturbations = attacker(images, labels, idx)
+                    new_output_dir = os.path.join(args.output_dir, str(target_class))
+                    if not os.path.exists(new_output_dir):
+                        os.makedirs(new_output_dir)
+                    save_images(new_output_dir, images + perturbations.cpu(), filenames)
+            else:
+                perturbations = attacker(images, labels)
+                save_images(args.output_dir, images + perturbations.cpu(), filenames)
     else:
         asr = dict()
         res = '|'
