@@ -85,8 +85,9 @@ class EnsembleModel(torch.nn.Module):
 
 
 class AdvDataset(torch.utils.data.Dataset):
-    def __init__(self, input_dir=None, output_dir=None, targeted=False, eval=False):
+    def __init__(self, input_dir=None, output_dir=None, targeted=False, target_class=None, eval=False):
         self.targeted = targeted
+        self.target_class = target_class
         self.data_dir = input_dir
         self.f2l = self.load_labels(os.path.join(self.data_dir, 'labels.csv'))
 
@@ -120,7 +121,10 @@ class AdvDataset(torch.utils.data.Dataset):
     def load_labels(self, file_name):
         dev = pd.read_csv(file_name)
         if self.targeted:
-            f2l = {dev.iloc[i]['filename']: [dev.iloc[i]['label'],
+            if self.target_class:
+                f2l = {dev.iloc[i]['filename']: [dev.iloc[i]['label'], self.target_class] for i in range(len(dev))}
+            else:
+                f2l = {dev.iloc[i]['filename']: [dev.iloc[i]['label'],
                                              dev.iloc[i]['targeted_label']] for i in range(len(dev))}
         else:
             f2l = {dev.iloc[i]['filename']: dev.iloc[i]['label']

@@ -52,32 +52,46 @@ def main():
                 perturbations = attacker(images, labels)
                 save_images(args.output_dir, images + perturbations.cpu(), filenames)
     else:
-        asr = dict()
         res = '|'
         for model_name, model in load_pretrained_model(cnn_model_paper, vit_model_paper):
             model = wrap_model(model.eval().cuda())
             for p in model.parameters():
                 p.requires_grad = False
-            correct, total = 0, 0
-            for images, labels, _ in dataloader:
-                if args.targeted:
-                    labels = labels[1]
-                pred = model(images.cuda())
-                correct += (labels.numpy() == pred.argmax(dim=1).detach().cpu().numpy()).sum()
-                total += labels.shape[0]
-            if args.targeted:
-                # correct: pred == target_label
-                asr[model_name] = (correct / total) * 100
-            else:
-                # correct: pred == original_label
-                asr[model_name] = (1 - correct / total) * 100
-            print(model_name, asr[model_name])
-            res += ' {:.1f} |'.format(asr[model_name])
+                
+            if args.attack in ['ttp', 'm3d']: 
+                asr = 0
+                for idx, target_class in enumerate(generation_target_classes):
+                    new_output_dir = os.path.join(args.output_dir, str(target_class))
+                    new_dataset = AdvDataset(input_dir=args.input_dir, output_dir=new_output_dir, targeted=True, target_class=target_class, eval=args.eval)
+                    new_dataloader = torch.utils.data.DataLoader(new_dataset, batch_size=args.batchsize, shuffle=False, num_workers=4)
+                    asr += eval(model, new_dataloader, True)
+                asr /= 10
 
-        print(asr)
+            else:
+                asr = eval(model, dataloader, args.targeted)
+            print(f'{model_name}: {asr:.1f}')
+            res += f' {asr:.1f} |'
+
         print(res)
         with open('results_eval.txt', 'a') as f:
             f.write(args.output_dir + res + '\n')
+                
+                
+def eval(model, dataloader, is_targeted):
+    correct, total = 0, 0
+    for images, labels, _ in dataloader:
+        if is_targeted:
+            labels = labels[1]
+        pred = model(images.cuda())
+        correct += (labels.numpy() == pred.argmax(dim=1).detach().cpu().numpy()).sum()
+        total += labels.shape[0]
+    if is_targeted:
+        # correct: pred == target_label
+        asr = (correct / total) * 100
+    else:
+        # correct: pred == original_label
+        asr = (1 - correct / total) * 100
+    return asr
 
 
 if __name__ == '__main__':
