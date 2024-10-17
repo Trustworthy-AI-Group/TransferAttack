@@ -533,9 +533,14 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="1"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://arxiv.org/pdf/2103.14641" target="_blank" rel="noopener noreferrer">TTP (Naseer et al., 2021)</a></td>
 <td ><sub>Train a generative model to generate adversarial examples, of which both the global distribution and local neighborhood structure in the latent feature space are matched with the target class.</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Zhao_Minimizing_Maximum_Model_Discrepancy_for_Transferable_Black-Box_Targeted_Attacks_CVPR_2023_paper.pdf" target="_blank" rel="noopener noreferrer">M3D (Zhao et al., 2023)</a></td>
+<td ><sub></sub></td>
 </tr>
 
 <tr>
@@ -1902,6 +1907,21 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 **Note**: We adopt $\epsilon=16/255, \alpha=2/255$ with the number of iterations $T=300$. The default surrogate model is ResNet-18. For each image, the target label is randomly sampled and fixed in the `labels.csv`.
 
+For generation-based targeted attack, TTP and M3D, there are 10 target classes and the class to label mapping is shown below.
+```
+Class Number: Class Name
+24: Great Grey Owl
+99: Goose
+245: French Bulldog
+344: Hippopotamus
+471: Cannon
+555: Fire Engine
+661: Model T
+701: Parachute
+802: Snowmobile
+919: Street Sign       
+```
+
 <table  style="width:100%" border="1">
 <thead>
 <tr class="header">
@@ -2064,7 +2084,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td > 0.4</td>
 </tr>
 
-<th rowspan="1"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/ttp.py" target="_blank" rel="noopener noreferrer">TTP</a></td>
 <td >96.2</td>
 <td >19.6</td>
@@ -2078,6 +2098,21 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >0.0</td>
 <td >0.3</td>
 <td >4.1</td>
+</tr>
+
+<td><a href="./transferattack/generation/m3d.py" target="_blank" rel="noopener noreferrer">M3D</a></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <th rowspan="1"><sub><strong>Ensemble-based</strong></sub></th>

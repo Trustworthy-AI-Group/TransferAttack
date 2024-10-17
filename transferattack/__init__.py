@@ -117,6 +117,7 @@ attack_zoo = {
     'ge_advgan': ('.generation.ge_advgan', 'GE_ADVGAN'),
     ## Targeted
     'ttp': ('.generation.ttp', 'TTP'),
+    'm3d': ('.generation.m3d', 'M3D'),
     
 }
 

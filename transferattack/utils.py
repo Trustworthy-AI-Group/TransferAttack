@@ -23,6 +23,7 @@ vit_model_pkg = ['vit_base_patch16_224', 'pit_b_224', 'cait_s24_224', 'visformer
 tgr_vit_model_list = ['vit_base_patch16_224', 'pit_b_224', 'cait_s24_224', 'visformer_small',
                       'deit_base_distilled_patch16_224', 'tnt_s_patch16_224', 'levit_256', 'convit_base']
 
+generation_target_classes = [24, 99, 245, 344, 471, 555, 661, 701, 802, 919]
 
 def load_pretrained_model(cnn_model=[], vit_model=[]):
     for model_name in cnn_model:
@@ -84,8 +85,9 @@ class EnsembleModel(torch.nn.Module):
 
 
 class AdvDataset(torch.utils.data.Dataset):
-    def __init__(self, input_dir=None, output_dir=None, targeted=False, eval=False):
+    def __init__(self, input_dir=None, output_dir=None, targeted=False, target_class=None, eval=False):
         self.targeted = targeted
+        self.target_class = target_class
         self.data_dir = input_dir
         self.f2l = self.load_labels(os.path.join(self.data_dir, 'labels.csv'))
 
@@ -119,7 +121,10 @@ class AdvDataset(torch.utils.data.Dataset):
     def load_labels(self, file_name):
         dev = pd.read_csv(file_name)
         if self.targeted:
-            f2l = {dev.iloc[i]['filename']: [dev.iloc[i]['label'],
+            if self.target_class:
+                f2l = {dev.iloc[i]['filename']: [dev.iloc[i]['label'], self.target_class] for i in range(len(dev))}
+            else:
+                f2l = {dev.iloc[i]['filename']: [dev.iloc[i]['label'],
                                              dev.iloc[i]['targeted_label']] for i in range(len(dev))}
         else:
             f2l = {dev.iloc[i]['filename']: dev.iloc[i]['label']
