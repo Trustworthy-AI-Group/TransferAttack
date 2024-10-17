@@ -336,7 +336,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="14"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="16"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2021)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -409,6 +409,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/28541" target="_blank" rel="noopener noreferrer">VDC (Zhang et al., 2024)</a></td>
 <td ><sub>Adding virtual dense connections for dense gradient back-propagation in Attention maps and MLP blocks, without altering the forward pass.</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2311.18495" target="_blank" rel="noopener noreferrer">MA (Ma et al., 2024)</a></td>
+<td ><sub>Minimize KL divergence in the predictions between the source and the witness model. </sub></td>
 </tr>
 
 <tr>
@@ -1457,7 +1462,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="14"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="16"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >48.4</td>
@@ -1695,6 +1700,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >43.9</td>
 <td >27.0</td>
 <td >35.1</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/ma.py" target="_blank" rel="noopener noreferrer">MA</a></td>
+<td >96.4</td>
+<td >82.1</td>
+<td >84.3</td>
+<td >96.4</td>
+<td >35.3</td>
+<td >47.9</td>
+<td >65.1</td>
+<td >65.6</td>
+<td >35.3</td>
+<td >70.2</td>
+<td >24.9</td>
+<td >47.5</td>
 </tr>
 
 <tr>
