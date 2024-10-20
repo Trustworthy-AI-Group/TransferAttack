@@ -82,6 +82,7 @@ attack_zoo = {
     
     # model_related
     'sgm': ('.model_related.sgm', 'SGM'),
+    'linbp': ('.model_related.linbp', 'LinBP'),
     'pna_patchout': ('.model_related.pna_patchout', 'PNA_PatchOut'),
     'iaa': ('.model_related.iaa', 'IAA'),
     'sapr': ('.model_related.sapr', 'SAPR'),
@@ -106,6 +107,7 @@ attack_zoo = {
     'mba': ('.ensemble.mba', 'MBA'),
     'adaea': ('.ensemble.adaea', 'AdaEA'),
     'cwa': ('.ensemble.cwa', 'CWA'),
+    'smer': ('.ensemble.smer', 'SMER'),
     ## Targeted
     'sasd_ws': ('.ensemble.sasd_ws', 'SASD_WS'),
     

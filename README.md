@@ -336,9 +336,14 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="16"><sub><strong>Model-related</strong></sub></th>
-<td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2021)</a></td>
+<th rowspan="17"><sub><strong>Model-related</strong></sub></th>
+<td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://proceedings.neurips.cc/paper_files/paper/2020/file/00e26af6ac3b1c1c49d7c3d79c60d000-Paper.pdf" target="_blank" rel="noopener noreferrer">LinBP (Guo et al., 2020)</a></td>
+<td ><sub>Calculates forward as normal but backpropagates the loss as if no ReLU is encountered in the forward pass</sub></td>
 </tr>
 
 <tr>
@@ -417,7 +422,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="7"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="8"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1611.02770" target="_blank" rel="noopener noreferrer">Ens (Liu et al., 2017)</a></td>
 <td ><sub>Generate the adversarial examplesusing multiple models</sub></td>
 </tr>
@@ -450,6 +455,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2303.09105" target="_blank" rel="noopener noreferrer">CWA (Chen et al., 2023)</a></td>
 <td ><sub>Define the common weakness of an ensemble of models as the solution that is at the flat landscape and close to the models' local optima</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Tang_Ensemble_Diversity_Facilitates_Adversarial_Transferability_CVPR_2024_paper.pdf" target="_blank" rel="noopener noreferrer">SMER (Tang., 2024)</a></td>
+<td ><sub>Ensembles reweighing is introduced to refine ensemble weights by maximizing attack loss based on reinforcement learning</sub></td>
 </tr>
 
 <tr>
@@ -1467,7 +1477,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="16"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="17"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >48.4</td>
@@ -1481,6 +1491,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >37.5</td>
 <td >24.2</td>
 <td >30.9</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/linbp.py" target="_blank" rel="noopener noreferrer">LinBP</a></td>
+<td >85.8</td>
+<td >37.8</td>
+<td >64.2</td>
+<td >69.8</td>
+<td >12.4</td>
+<td >14.7</td>
+<td >25.5</td>
+<td >30.4</td>
+<td >30.4</td>
+<td >24.9</td>
+<td >20.4</td>
+<td >23.6</td>
 </tr>
 
 <tr id="pna">
@@ -1724,7 +1750,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="7"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="8"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/ens.py" target="_blank" rel="noopener noreferrer">ENS</a></td>
 <td >100.0</td>
 <td >91.7</td>
@@ -1834,6 +1860,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >69.4</td>
 <td >24.9</td>
 <td >68.9</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/ensemble/smer.py" target="_blank" rel="noopener noreferrer">SMER</a></td>
+<td >89.6</td>
+<td >77.0</td>
+<td >86.6</td>
+<td >89.9</td>
+<td >41.4</td>
+<td >57.3</td>
+<td >71.7</td>
+<td >69.7</td>
+<td >38.9</td>
+<td >70.1</td>
+<td >26.8</td>
+<td >69.4</td>
 </tr>
 
 <tr>
