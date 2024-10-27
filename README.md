@@ -336,7 +336,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="17"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="18"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -364,6 +364,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2106.04169" target="_blank" rel="noopener noreferrer">SETR (Naseer et al., 2022)</a></td>
 <td ><sub>Ensemble and refine classifiers after each transformer block</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://dl.acm.org/doi/abs/10.1145/3503161.3547989" target="_blank" rel="noopener noreferrer">ATA_ViT (Wang et al., 2022)</a></td>
+<td ><sub>Activate the uncertain attention and perturb the sensitive embedding to generate more transferable adversarial examples on ViTs</sub></td>
 </tr>
 
 <tr>
@@ -1477,7 +1482,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="17"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="18"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >48.4</td>
@@ -1571,6 +1576,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >31.6</td>
 <td >25.5</td>
 <td >50.7</td>
+</tr>
+
+<tr id="ata_vit">
+<td><a href="./transferattack/model_related/ata_vit.py" target="_blank" rel="noopener noreferrer">ATA_ViT</a></td>
+<td >69.1</td>
+<td >26.2</td>
+<td >31.2</td>
+<td >46.8</td>
+<td >36.1</td>
+<td >19.9</td>
+<td >20.2</td>
+<td >27.5</td>
+<td >40.7</td>
+<td >24.4</td>
+<td >33.0</td>
+<td >38.3</td>
 </tr>
 
 <tr>
