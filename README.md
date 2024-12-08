@@ -1580,18 +1580,18 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr id="ata_vit">
 <td><a href="./transferattack/model_related/ata_vit.py" target="_blank" rel="noopener noreferrer">ATA_ViT</a></td>
-<td >69.1</td>
-<td >26.2</td>
-<td >31.2</td>
-<td >46.8</td>
-<td >36.1</td>
-<td >19.9</td>
-<td >20.2</td>
-<td >27.5</td>
-<td >40.7</td>
-<td >24.4</td>
-<td >33.0</td>
-<td >38.3</td>
+<td >70.7</td>
+<td >26.1</td>
+<td >32.6</td>
+<td >49.9</td>
+<td >63.5</td>
+<td >21.7</td>
+<td >21.6</td>
+<td >29.2</td>
+<td >40.6</td>
+<td >24.8</td>
+<td >31.9</td>
+<td >38.4</td>
 </tr>
 
 <tr>

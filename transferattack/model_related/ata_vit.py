@@ -102,11 +102,7 @@ class ATA_ViT(Attack):
             # Obtain the inputs
             inputs = data * (1 - masks_pad) + patchs_pad * masks_pad
 
-            # Clamp the inputs into the valid range
-            if 'vit' in self.model_name:
-                inputs.clamp_(-1, 1)
-            else:
-                inputs.clamp_(0, 1)
+            inputs.clamp_(0, 1)
 
             # Obtain the logits
             outputs = self.model(inputs)
@@ -122,18 +118,12 @@ class ATA_ViT(Attack):
             optimizer.step()
             scheduler.step()
 
-            # Clamp the patchs into the valid range
-            if 'vit' in self.model_name:
-                patchs_pad.data.clamp_(-1, 1)
-            else:
-                patchs_pad.data.clamp_(0, 1)
+            patchs_pad.data.clamp_(0, 1)
 
         # Obtain the adversarial examples
         inputs = data * (1 - masks_pad) + patchs_pad * masks_pad
-        if 'vit' in self.model_name:
-            inputs.clamp_(-1, 1)
-        else:
-            inputs.clamp_(0, 1)
+
+        inputs.clamp_(0, 1)
 
         # Compute the perturbation
         delta = inputs - data
