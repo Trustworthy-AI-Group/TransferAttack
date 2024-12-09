@@ -33,9 +33,6 @@ class ATA_ViT(Attack):
     Example script:
         python main.py --input_dir ./path/to/data --output_dir adv_data/ata_vit/deit_tiny_patch16_224 --attack ma --model deit_tiny_patch16_224
         python main.py --input_dir ./path/to/data --output_dir adv_data/ata_vit/deit_tiny_patch16_224 --eval
-
-    Notes:
-        
     """
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=250, decay=1., targeted=False, random_start=False,
                 norm='linfty', loss='crossentropy', device=None, attack='ATA_ViT', **kwargs):
