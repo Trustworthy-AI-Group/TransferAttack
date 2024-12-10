@@ -87,6 +87,7 @@ attack_zoo = {
     'iaa': ('.model_related.iaa', 'IAA'),
     'sapr': ('.model_related.sapr', 'SAPR'),
     'setr': ('.model_related.setr', 'SETR'),
+    'ata_vit': ('.model_related.ata_vit', 'ATA_ViT'),
     'dra': ('.model_related.dra', 'DRA'),
     'mta': ('.model_related.mta', 'MTA'),
     'mup': ('.model_related.mup', 'MUP'),
