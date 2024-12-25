@@ -84,6 +84,7 @@ attack_zoo = {
     'sgm': ('.model_related.sgm', 'SGM'),
     'linbp': ('.model_related.linbp', 'LinBP'),
     'pna_patchout': ('.model_related.pna_patchout', 'PNA_PatchOut'),
+    'llta': ('.model_related.llta_networks.llta', 'LLTA'),
     'iaa': ('.model_related.iaa', 'IAA'),
     'sapr': ('.model_related.sapr', 'SAPR'),
     'setr': ('.model_related.setr', 'SETR'),
