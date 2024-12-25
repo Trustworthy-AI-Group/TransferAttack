@@ -1,5 +1,6 @@
 import torch
 import random
+import torchvision.transforms as T
 
 from ..utils import *
 from ..gradient.mifgsm import MIFGSM
@@ -38,7 +39,7 @@ class BSR(MIFGSM):
         self.num_block = num_block
 
     def get_length(self, length):
-        rand = np.random.uniform(size=self.num_block)
+        rand = np.random.uniform(2, size=self.num_block)
         rand_norm = np.round(rand/rand.sum()*length).astype(np.int32)
         rand_norm[rand_norm.argmax()] += length - rand_norm.sum()
         return tuple(rand_norm)
@@ -49,12 +50,15 @@ class BSR(MIFGSM):
         random.shuffle(x_strips)
         return x_strips
 
+    def image_rotation(self, x):
+        rotation_transform = T.RandomRotation(degrees=(-24, 24), interpolation=T.InterpolationMode.BILINEAR)
+        return  rotation_transform(x)
 
     def shuffle(self, x):
         dims = [2,3]
         random.shuffle(dims)
         x_strips = self.shuffle_single_dim(x, dims[0])
-        return torch.cat([torch.cat(self.shuffle_single_dim(x_strip, dim=dims[1]), dim=dims[1]) for x_strip in x_strips], dim=dims[0])
+        return torch.cat([torch.cat(self.shuffle_single_dim(self.image_rotation(x_strip), dim=dims[1]), dim=dims[1]) for x_strip in x_strips], dim=dims[0])
 
     def transform(self, x, **kwargs):
         """
