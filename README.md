@@ -336,7 +336,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<th rowspan="18"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="19"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -349,6 +349,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 <tr>
 <td><a href="https://arxiv.org/abs/2109.04176" target="_blank" rel="noopener noreferrer">PNA-PatchOut (Wei et al., 2022)</a></td>
 <td ><sub>Ignore gradient of attention and randomly drop patches among the perturbation</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://cdn.aaai.org/ojs/19936/19936-13-23949-1-2-20220628.pdf" target="_blank" rel="noopener noreferrer">LLTA (Fang et al., 2022)</a></td>
+<td ><sub>Adopt simple random resizing and padding for data augmentation and randomly alter backpropagation for model augmentation</sub></td>
 </tr>
 
 <tr>

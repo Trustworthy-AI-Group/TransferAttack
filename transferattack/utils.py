@@ -1,4 +1,5 @@
 import torch
+import torch.nn as nn
 import torchvision.models as models
 import torchvision.transforms as transforms
 
@@ -11,7 +12,7 @@ import os
 img_height, img_width = 224, 224
 img_max, img_min = 1., 0
 
-cnn_model_paper = ['resnet18', 'resnet101', 'resnext50_32x4d', 'densenet121']
+cnn_model_paper = ['resnet50', 'vgg16', 'mobilenet_v2', 'inception_v3']
 vit_model_paper = ['vit_base_patch16_224', 'pit_b_224',
                    'visformer_small', 'swin_tiny_patch4_window7_224']
 
@@ -37,16 +38,26 @@ def wrap_model(model):
     """
     Add normalization layer with mean and std in training configuration
     """
+    model_name = model.__class__.__name__
+    Resize = 224
+    
     if hasattr(model, 'default_cfg'):
         """timm.models"""
         mean = model.default_cfg['mean']
         std = model.default_cfg['std']
     else:
         """torchvision.models"""
-        mean = [0.485, 0.456, 0.406]
-        std = [0.229, 0.224, 0.225]
-    normalize = transforms.Normalize(mean, std)
-    return torch.nn.Sequential(normalize, model)
+        if 'Inc' in model_name:
+            mean = [0.5, 0.5, 0.5]
+            std = [0.5, 0.5, 0.5]
+            Resize = 299
+        else:
+            mean = [0.485, 0.456, 0.406]
+            std = [0.229, 0.224, 0.225]
+            Resize = 224
+
+    PreprocessModel = PreprocessingModel(Resize, mean, std)
+    return torch.nn.Sequential(PreprocessModel, model)
 
 
 def save_images(output_dir, adversaries, filenames):
@@ -56,6 +67,16 @@ def save_images(output_dir, adversaries, filenames):
 
 def clamp(x, x_min, x_max):
     return torch.min(torch.max(x, x_min), x_max)
+
+
+class PreprocessingModel(nn.Module):
+    def __init__(self, resize, mean, std):
+        super(PreprocessingModel, self).__init__()
+        self.resize = transforms.Resize(resize)
+        self.normalize = transforms.Normalize(mean, std)
+
+    def forward(self, x):
+        return self.normalize(self.resize(x))
 
 
 class EnsembleModel(torch.nn.Module):
