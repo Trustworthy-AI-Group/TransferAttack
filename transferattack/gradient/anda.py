@@ -102,7 +102,7 @@ class ANDA(Attack):
         data_shape = data.shape[1:]
         stat = ANDA_STATISTICS(data_shape=(1,) + data_shape, device=self.device)
 
-        for _ in range(self.epoch):
+        for i in range(self.epoch):
             
             # Augment the data
             xt_batch = xt.repeat(self.n_ens, 1, 1, 1)
