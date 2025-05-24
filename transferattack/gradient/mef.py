@@ -32,7 +32,7 @@ class MEF(Attack):
         python main.py --input_dir ./path/to/data --output_dir adv_data/mef/resnet18 --eval
     """
     
-    def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, num_neighbor=20, kesai=2., gamma=0.15, lamada=0.16/255, epoch=20, inner_decay=0.9, decay=0.5, targeted=False, 
+    def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, num_neighbor=20, gamma=2., kesai=0.15, lamada=0.16/255, epoch=20, inner_decay=0.9, decay=0.5, targeted=False, 
                 random_start=False, norm='linfty', loss='crossentropy_no_reduction', device=None, attack='MEF', **kwargs):
         super().__init__(attack, model_name, epsilon, targeted, random_start, norm, loss, device)
         self.alpha = alpha
@@ -59,8 +59,8 @@ class MEF(Attack):
         """
         Neighborhood conditional sampling
         """
-        sample_delta = self.transform(delta + torch.zeros_like(grad_pgia).uniform_(-self.kesai, self.kesai))
-        sample_delta = self.transform(sample_delta + self.gamma * grad_pgia)
+        sample_delta = self.transform(delta + torch.zeros_like(grad_pgia).uniform_(-self.gamma, self.gamma))
+        sample_delta = self.transform(sample_delta + self.kesai * grad_pgia)
         return sample_delta
         
     def get_points_gradient(self, data, delta, label, **kwargs):
@@ -85,7 +85,7 @@ class MEF(Attack):
             grad_list[i] = self.get_grad(loss_list[i].mean(), x_min)
         
         # Calculate the gradient of the loss function
-        grad = (1/self.num_neighbor)*grad_list
+        grad = (1/self.num_neighbor) * grad_list
 
         return grad
 
