@@ -3,21 +3,21 @@ from ..utils import *
 from ..attack import Attack
 import torch.nn as nn
 
-class NCS(Attack):
+class MEF(Attack):
     """
-    NCS (Neighborhood Conditional Sampling)
-    'Enhancing Adversarial Transferability Through Neighborhood Conditional Sampling' (https://arxiv.org/abs/2405.16181)
+    MEF (Maximin Expected Flatness)
+    'Boosting Adversarial Transferability with Low-Cost Optimization via Maximin Expected Flatness' (https://arxiv.org/abs/2405.16181)
 
     Arguments:
         model_name (str): the name of surrogate model for attack.
         epsilon (float): the perturbation budget.
         alpha (float): the step size.
         num_neighbor (int): the number of randomly sampled samples.
-        kesai (float): the upper bound of random sampling.
-        gamma (float): the upper bound of sub-regions around sample points.
-        lamada (float): coefficient balancing expected loss and standard deviation.
+        gamma (float): the upper bound of random sampling.
+        kesai (float): the upper bound of sub-regions around sample points.
         epoch (int): the number of iterations.
-        decay (float): the decay factor for momentum calculation.
+        inner_decay (float): the decay factor for inner momentum calculation.
+        decay (float): the decay factor for outer momentum calculation.
         targeted (bool): targeted/untargeted attack.
         random_start (bool): whether using random initialization for delta.
         norm (str): the norm of perturbation, l2/linfty.
@@ -25,21 +25,22 @@ class NCS(Attack):
         device (torch.device): the device for data. If it is None, the device would be same as model.
         
     Official arguments:
-        epsilon=16/255, alpha=epsilon/epoch=1.6/255, num_neighbor=20, kesai=2., gamma=0.15, lamada=alpha/epoch=0.16/255, epoch=10, decay=1.
+        epsilon=16/255, alpha=epsilon/epoch=1.6/255, num_neighbor=20, gamma=2., kesai=0.15, epoch=20, inner_decay=0.9, decay=0.5.
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/ncs/resnet18 --attack ncs --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/ncs/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/mef/resnet18 --attack mef --model=resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/mef/resnet18 --eval
     """
     
-    def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, num_neighbor=20, kesai=2., gamma=0.15, lamada=0.16/255, epoch=10, decay=1., targeted=False, 
-                random_start=False, norm='linfty', loss='crossentropy_no_reduction', device=None, attack='NCS', **kwargs):
+    def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, num_neighbor=20, kesai=2., gamma=0.15, lamada=0.16/255, epoch=20, inner_decay=0.9, decay=0.5, targeted=False, 
+                random_start=False, norm='linfty', loss='crossentropy_no_reduction', device=None, attack='MEF', **kwargs):
         super().__init__(attack, model_name, epsilon, targeted, random_start, norm, loss, device)
         self.alpha = alpha
         self.kesai = kesai * epsilon
         self.gamma = gamma * epsilon
         self.lamada = lamada
         self.epoch = epoch
+        self.inner_decay = inner_decay
         self.decay = decay
         self.num_neighbor = num_neighbor
     
@@ -84,13 +85,13 @@ class NCS(Attack):
             grad_list[i] = self.get_grad(loss_list[i].mean(), x_min)
         
         # Calculate the gradient of the loss function
-        grad = (1/self.num_neighbor)*grad_list - (self.lamada)*(2*(self.num_neighbor-1)/(self.num_neighbor**2))*(loss_list - loss_list.mean(0).view(1,b)).view(self.num_neighbor,b,1,1,1)*grad_list
+        grad = (1/self.num_neighbor)*grad_list
 
         return grad
 
     def forward(self, data, label, **kwargs):
         """
-        The attack procedure for NCS
+        The attack procedure for MEF
 
         Arguments:
             data: (N, C, H, W) tensor for input images
@@ -117,7 +118,7 @@ class NCS(Attack):
             gradient = self.get_points_gradient(data, sample_delta, label)
 
             # Update gradient for previous gradient inversion approximation
-            grad_pgia = ((gradient / torch.mean(torch.abs(gradient), (2, 3, 4), keepdim=True)).detach() - grad_pgia)
+            grad_pgia = ((gradient / torch.mean(torch.abs(gradient), (2, 3, 4), keepdim=True)).detach() - self.inner_decay * grad_pgia)
 
             # Calculate the momentum
             momentum = self.get_momentum(gradient.sum(0), momentum)
