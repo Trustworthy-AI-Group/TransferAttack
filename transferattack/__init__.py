@@ -22,7 +22,7 @@ attack_zoo = {
     'mig': ('.gradient.mig', 'MIG'),
     'dta': ('.gradient.dta', 'DTA'),
     'pgn': ('.gradient.pgn', 'PGN'),
-    'ncs': ('.gradient.ncs', 'NCS'),
+    'mef': ('.gradient.mef', 'MEF'),
     'anda': ('.gradient.anda', 'ANDA'),
     'gifgsm': ('.gradient.gifgsm', 'GIFGSM'),
     'rgmifgsm': ('.gradient.mifgsm_with_tricks', 'RGMIFGSM'),
