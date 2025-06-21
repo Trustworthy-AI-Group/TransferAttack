@@ -159,7 +159,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org/abs/2405.16181" target="_blank" rel="noopener noreferrer">NCS (Qiu et al., 2024)</a></td>
+<td><a href="https://arxiv.org/abs/2405.16181" target="_blank" rel="noopener noreferrer">MEF (Qiu et al., 2024)</a></td>
 <td ><sub> Construct a max-min bi-level optimization problem aimed at finding flat adversarial regions</sub></td>
 </tr>
 
@@ -925,7 +925,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<td><a href="./transferattack/gradient/ncs.py" target="_blank" rel="noopener noreferrer">NCS</a></td>
+<td><a href="./transferattack/gradient/mef.py" target="_blank" rel="noopener noreferrer">MEF</a></td>
 <td >100.0</td>
 <td >80.5</td>
 <td >82.9</td>
