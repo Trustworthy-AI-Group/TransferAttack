@@ -27,8 +27,8 @@ class Admix(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1., num_scale=5, num_admix=3, admix_strength=0.2
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/admix/resnet18 --attack admix --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/admix/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/admix/resnet50 --attack admix --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/admix/resnet50 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., num_scale=5, num_admix=3, admix_strength=0.2, targeted=False, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='Admix', **kwargs):

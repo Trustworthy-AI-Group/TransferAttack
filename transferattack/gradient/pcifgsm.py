@@ -24,8 +24,8 @@ class PCIFGSM(Attack):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1.
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/pcifgsm/resnet18 --attack pcifgsm --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/pcifgsm/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/pcifgsm/resnet50 --attack pcifgsm --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/pcifgsm/resnet50 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., targeted=False, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='PC-FGSM', **kwargs):

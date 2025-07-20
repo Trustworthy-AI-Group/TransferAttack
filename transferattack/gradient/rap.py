@@ -30,12 +30,12 @@ class RAP(Attack):
             epsilon=16/255, alpha=2/255, epoch=400, transpoint=100, epsilon_n=16/255, alpha_n=2/255, adv_steps=8
 
     Example script (Untargeted attack):
-        python main.py --input_dir ./path/to/data --output_dir adv_data/rap/resnet18 --attack rap --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/rap/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/rap/resnet50 --attack rap --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/rap/resnet50 --eval
 
     Example script (Targeted attack):
-        python main.py --input_dir ./path/to/data --output_dir adv_data/rap/resnet18_targeted --attack rap --model=resnet18 --targeted
-        python main.py --input_dir ./path/to/data --output_dir adv_data/rap/resnet18_targeted --eval --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/rap/resnet50_targeted --attack rap --model=resnet50 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/rap/resnet50_targeted --eval --targeted
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=400, transpoint=100, epsilon_n=16/255, alpha_n=2/255, adv_steps=8,

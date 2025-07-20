@@ -21,7 +21,7 @@ class CWA(Attack):
         epsilon=16/255, alpha=2*epsilon/epoch=3.2/255, epoch=10, beta=50, r_size=16/255/15, inner_step_size=250
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/cwa/ens --attack cwa --model='resnet18,resnet101,resnext50_32x4d,densenet121'
+        python main.py --input_dir ./path/to/data --output_dir adv_data/cwa/ens --attack cwa --model='resnet50,vgg16,mobilenet_v2,inception_v3'
         python main.py --input_dir ./path/to/data --output_dir adv_data/cwa/ens --eval
     """
 

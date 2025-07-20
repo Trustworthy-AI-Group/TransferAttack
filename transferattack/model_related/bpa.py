@@ -29,8 +29,8 @@ class BPA(MIFGSM):
         epsilon=8/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1., bpa_layer=3_1 for resnet50
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/bpa/resnet18 --attack bpa --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/bpa/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/bpa/resnet50 --attack bpa --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/bpa/resnet50 --eval
 
     Note:
         Currently, we only support Resnet model.

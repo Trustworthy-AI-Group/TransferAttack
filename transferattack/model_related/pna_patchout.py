@@ -30,8 +30,8 @@ class PNA_PatchOut(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1., ablation_study='1,1,1', crop_length=16, sample_num_patches=130, lamb=0.1
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/pna_patchout/resnet18 --attack pna_patchout --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/pna_patchout/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/pna_patchout/resnet50 --attack pna_patchout
+        python main.py --input_dir ./path/to/data --output_dir adv_data/pna_patchout/resnet50 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., targeted=False, gamma=0.2, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='pna-patchout', ablation_study='1,1,1', **kwargs):

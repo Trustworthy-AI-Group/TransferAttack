@@ -24,8 +24,8 @@ class MTA(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1.
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/mta/resnet18 --attack mta --model=resnet_MTA
-        python main.py --input_dir ./path/to/data --output_dir adv_data/mta/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/mta/resnet50 --attack mta --model=resnet_MTA
+        python main.py --input_dir ./path/to/data --output_dir adv_data/mta/resnet50 --eval
 
     Notes:
         Download the checkpoint ('resnet18_MTA_stage3.pth') from official repository: https://github.com/ydc123/Meta_Surrogate_Model, and put it in the path '/path/to/checkpoints/'.

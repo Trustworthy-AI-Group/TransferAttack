@@ -21,8 +21,8 @@ class FGSM(Attack):
         epsilon=16/255
         
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/fgsm/resnet18 --attack fgsm --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/fgsm/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/fgsm/resnet50 --attack fgsm --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/fgsm/resnet50 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, targeted=False, random_start=False, norm='linfty', loss='crossentropy',

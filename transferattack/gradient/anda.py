@@ -34,8 +34,8 @@ class ANDA(Attack):
         alpha = epsilon/epoch=1.6/255
     
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/anda/resnet18 --attack anda --model=resnet18 --batchsize=1
-        python main.py --input_dir ./path/to/data --output_dir adv_data/anda/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/anda/resnet50 --attack anda --model=resnet50 --batchsize=1
+        python main.py --input_dir ./path/to/data --output_dir adv_data/anda/resnet50 --eval
     
     Notes:
         - batchsize=1 only

@@ -30,8 +30,8 @@ class USMM(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1., scale_low=0.1, scale_high=0.75, num_scale=5, num_mix=3, mix_range=0.5
 
     Example script:
-        python main.py --attack usmm --output_dir adv_data/mig/resnet18 # attack
-        python main.py --attack usmm --output_dir adv_data/mig/resnet18 --eval # evaluation
+        python main.py --input_dir ./path/to/data --output_dir adv_data/usmm/resnet50 --attack usmm --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/usmm/resnet50 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., scale_low=0.1, scale_high=0.75, num_scale=5, num_mix=3, mix_range=0.5, targeted=False, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='USMM', **kwargs):

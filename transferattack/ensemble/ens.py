@@ -24,7 +24,7 @@ class ENS(Attack):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1.
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/ens/ensemble --attack ens --model='resnet18,resnet101,resnext50_32x4d,densenet121'
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ens/ensemble --attack ens --model='resnet50,vgg16,mobilenet_v2,inception_v3'
         python main.py --input_dir ./path/to/data --output_dir adv_data/ens/ensemble --eval
     """
 

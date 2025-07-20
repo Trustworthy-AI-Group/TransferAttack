@@ -31,6 +31,10 @@ class DHF_IFGSM(MIFGSM):
         model (str): the surrogate model name for attack.
         mixup_weight_max (float): the maximium of mixup weight.
         random_keep_prob (float): the keep probability when adjusting the feature elements.
+    
+    Example script:
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dhf/resnet50 --attack dhf --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dhf/resnet50 --eval
     """
 
     def __init__(self, model_name='inc_v3', dhf_modules=None, mixup_weight_max=0.2, random_keep_prob=0.9, *args, **kwargs):

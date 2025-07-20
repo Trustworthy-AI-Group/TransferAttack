@@ -24,8 +24,8 @@ class IFGSSM(Attack):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, k=1.5625
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/ifgssm/resnet18 --attack ifgssm --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/ifgssm/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ifgssm/resnet50 --attack ifgssm --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ifgssm/resnet50 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, targeted=False, random_start=False, 
