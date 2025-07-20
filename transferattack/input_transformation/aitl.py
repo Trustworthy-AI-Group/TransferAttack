@@ -29,8 +29,8 @@ class AITL(Attack):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1.
 
     Script examples:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/aitl/resnet18 --attack aitl --model=resnet18 --batchsize=1
-        python main.py --input_dir ./path/to/data --output_dir adv_data/aitl/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/aitl/resnet50 --attack aitl --model=resnet50 --batchsize=1
+        python main.py --input_dir ./path/to/data --output_dir adv_data/aitl/resnet50 --eval
 
     NOTE:
         --batchsize=1 is necessary for AITL attacks since the transformations suitable for each sample are unique.

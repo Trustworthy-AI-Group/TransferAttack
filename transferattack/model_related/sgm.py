@@ -29,8 +29,8 @@ class SGM(MIFGSM):
         (in sgm official paper, epsilon=16/255, alpha=2/255)
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/sgm/resnet18 --attack sgm --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/sgm/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/sgm/resnet50 --attack sgm --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/sgm/resnet50 --eval
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., targeted=False, gamma=0.2, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='SGM', **kwargs):

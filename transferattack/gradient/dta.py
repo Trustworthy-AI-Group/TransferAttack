@@ -25,8 +25,8 @@ class DTA(Attack):
         device (torch.device): the device for data. If it is None, the device would be same as model
         
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/dta/resnet18 --attack dta --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/dta/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dta/resnet50 --attack dta --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dta/resnet50 --eval
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, beta=1.5, K=10, u=0.8, epoch=10, decay=1., targeted=False, 

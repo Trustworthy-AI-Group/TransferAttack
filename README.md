@@ -40,8 +40,8 @@ We randomly sample 1,000 images from ImageNet validate set, in which each image 
 ](https://drive.google.com/file/d/1d-_PKYi3MBDPtJV4rfMCCtmsE0oWX7ZB/view?usp=sharing) or [![Huggingface Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/datasets/Trustworthy-AI-Group/TransferAttack/blob/main/data.zip) into `/path/to/data`. Then you can execute the attack as follows:
 
 ```
-python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 --attack mifgsm --model=resnet18
-python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet18 --eval
+python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 --attack mifgsm --model=resnet50
+python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 --eval
 ```
 
 ## Attacks and Models
@@ -587,12 +587,12 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <th rowspan="2"><strong>Attacks</strong></th>
 <th colspan="4"><strong>CNNs</strong></th>
 <th colspan="4"><strong>ViTs</strong></th>
-<th colspan="4"><strong>Defenses</strong></th>
+<th colspan="5"><strong>Defenses</strong></th>
 </tr>
-<th> ResNet-18 </th>
-<th> ResNet-101 </th>
-<th> ResNeXt-50 </th>
-<th> DenseNet-101 </th>
+<th> ResNet-50 </th>
+<th> VGG-16 </th>
+<th> Mobilenet_v2 </th>
+<th> Inception_v3 </th>
 <th> ViT </th>
 <th> PiT </th>
 <th> Visformer </th>
@@ -601,1372 +601,1474 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <th> HGD </th>
 <th> RS </th>
 <th> NRP </th>
+<th> DiffPure </th>
 </thead>
 
 <tr>
 <th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
-<td >96.1</td>
-<td >33.5</td>
-<td >36.8</td>
-<td >60.2</td>
-<td >15.0</td>
-<td >17.8</td>
-<td >26.4</td>
-<td >32.7</td>
-<td >33.4</td>
-<td >25.9</td>
-<td >22.9</td>
-<td >29.7</td>
+<td >49.2</td>
+<td >54.6</td>
+<td >48.2</td>
+<td >32.8</td>
+<td >11.9</td>
+<td >14.1</td>
+<td >18.7</td>
+<td >19.4</td>
+<td >40.0</td>
+<td >8.8</td>
+<td >26.8</td>
+<td >53.1</td>
+<td >15.8</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/ifgsm.py" target="_blank" rel="noopener noreferrer">I-FGSM</a></td>
-<td >100.0</td>
-<td >14.9</td>
-<td >18.6</td>
-<td >42.9</td>
-<td >4.9</td>
-<td >10.0</td>
-<td >14.6</td>
-<td >21.7</td>
-<td >30.3</td>
-<td >8.8</td>
-<td >20.0</td>
-<td >13.7</td>
+<td >99.6</td>
+<td >36.5</td>
+<td >33.6</td>
+<td >17.7</td>
+<td >7.5</td>
+<td >11.7</td>
+<td >14.4</td>
+<td >15.7</td>
+<td >39.7</td>
+<td >5.9</td>
+<td >26.2</td>
+<td >42.3</td>
+<td >8.7</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/mifgsm.py" target="_blank" rel="noopener noreferrer">MI-FGSM</a></td>
-<td >100.0</td>
-<td >42.9</td>
-<td >46.3</td>
-<td >73.9</td>
-<td >17.2</td>
-<td >23.8</td>
-<td >33.7</td>
-<td >42.5</td>
-<td >33.1</td>
-<td >32.0</td>
-<td >22.4</td>
-<td >26.5</td>
+<td >99.9</td>
+<td >57.9</td>
+<td >53.4</td>
+<td >37.4</td>
+<td >14.5</td>
+<td >22.5</td>
+<td >26.2</td>
+<td >28.1</td>
+<td >40.6</td>
+<td >17.9</td>
+<td >27.4</td>
+<td >58.5</td>
+<td >13.3</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/nifgsm.py" target="_blank" rel="noopener noreferrer">NI-FGSM</a></td>
 <td >100.0</td>
-<td >43.8</td>
-<td >47.2</td>
-<td >77.0</td>
-<td >16.6</td>
-<td >21.5</td>
-<td >33.3</td>
-<td >43.2</td>
-<td >33.0</td>
-<td >33.2</td>
-<td >22.5</td>
-<td >27.3</td>
+<td >66.5</td>
+<td >59.3</td>
+<td >38.9</td>
+<td >15.4</td>
+<td >23.4</td>
+<td >30.1</td>
+<td >29.7</td>
+<td >40.8</td>
+<td >18.2</td>
+<td >27.6</td>
+<td >57.7</td>
+<td >12.7</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/pifgsm.py" target="_blank" rel="noopener noreferrer">PI-FGSM</a></td>
-<td >100.0</td>
-<td >37.9</td>
-<td >46.3</td>
-<td >72.7</td>
-<td >14.4</td>
-<td >17.7</td>
-<td >27.2</td>
-<td >37.9</td>
-<td >37.2</td>
-<td >37.6</td>
-<td >31.9</td>
-<td >36.1</td>
+<td >98.8</td>
+<td >74.9</td>
+<td >59.2</td>
+<td >57.9</td>
+<td >16.3</td>
+<td >16.9</td>
+<td >25.3</td>
+<td >20.6</td>
+<td >42.1</td>
+<td >35.3</td>
+<td >35.0</td>
+<td >60.1</td>
+<td >38.3</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/vmifgsm.py" target="_blank" rel="noopener noreferrer">VMI-FGSM</a></td>
-<td >100.0</td>
-<td >62.0</td>
-<td >64.9</td>
-<td >88.9</td>
-<td >28.2</td>
-<td >39.4</td>
-<td >53.2</td>
-<td >58.6</td>
-<td >36.0</td>
-<td >53.8</td>
-<td >26.1</td>
-<td >40.8</td>
+<td >99.6</td>
+<td >70.8</td>
+<td >66.9</td>
+<td >57.3</td>
+<td >31.9</td>
+<td >47.0</td>
+<td >54.5</td>
+<td >53.5</td>
+<td >41.9</td>
+<td >47.5</td>
+<td >30.5</td>
+<td >61.3</td>
+<td >22.9</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/vnifgsm.py" target="_blank" rel="noopener noreferrer">VNI-FGSM</a></td>
-<td >100.0</td>
-<td >62.2</td>
-<td >64.8</td>
-<td >89.8</td>
-<td >26.3</td>
-<td >35.9</td>
-<td >52.5</td>
-<td >56.3</td>
-<td >34.6</td>
-<td >50.2</td>
-<td >25.0</td>
-<td >38.2</td>
+<td >99.9</td>
+<td >76.9</td>
+<td >72.9</td>
+<td >60.8</td>
+<td >30.0</td>
+<td >47.0</td>
+<td >58.5</td>
+<td >55.5</td>
+<td >41.9</td>
+<td >48.4</td>
+<td >29.8</td>
+<td >61.7</td>
+<td >20.9</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/emifgsm.py" target="_blank" rel="noopener noreferrer">EMI-FGSM</a></td>
 <td >100.0</td>
-<td >57.0</td>
-<td >59.0</td>
-<td >89.0</td>
-<td >21.2</td>
-<td >28.9</td>
-<td >44.6</td>
-<td >52.2</td>
-<td >35.0</td>
-<td >43.2</td>
-<td >24.9</td>
-<td >32.6</td>
+<td >84.7</td>
+<td >81.7</td>
+<td >64.3</td>
+<td >25.2</td>
+<td >43.1</td>
+<td >56.2</td>
+<td >53.1</td>
+<td >43.6</td>
+<td >42.5</td>
+<td >30.3</td>
+<td >67.3</td>
+<td >19.1</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/aifgtm.py" target="_blank" rel="noopener noreferrer">AI-FGTM</a></td>
-<td >100.0</td>
-<td >36.2</td>
-<td >39.6</td>
-<td >69.5</td>
-<td >13.9</td>
-<td >20.1</td>
-<td >29.7</td>
-<td >37.3</td>
-<td >32.0</td>
-<td >26.9</td>
-<td >21.7</td>
-<td >23.5</td>
+<td >99.7</td>
+<td >52.9</td>
+<td >49.0</td>
+<td >33.0</td>
+<td >13.2</td>
+<td >20.5</td>
+<td >26.1</td>
+<td >25.8</td>
+<td >40.5</td>
+<td >16.4</td>
+<td >27.3</td>
+<td >55.1</td>
+<td >11.9</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/ifgssm.py" target="_blank" rel="noopener noreferrer">I-FGS²M</a></td>
-<td >100.0</td>
-<td >22.7</td>
-<td >27.0</td>
-<td >54.5</td>
-<td >9.0</td>
-<td >12.1</td>
-<td >20.1</td>
-<td >28.9</td>
-<td >30.8</td>
-<td >16.2</td>
-<td >20.2</td>
-<td >16.6</td>
+<td >99.8</td>
+<td >45.6</td>
+<td >41.5</td>
+<td >24.6</td>
+<td >9.5</td>
+<td >14.3</td>
+<td >19.1</td>
+<td >20.4</td>
+<td >39.8</td>
+<td >9.3</td>
+<td >26.7</td>
+<td >47.1</td>
+<td >9.9</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/smifgrm.py" target="_blank" rel="noopener noreferrer">SMI-FGRM</a></td>
-<td >99.8</td>
-<td >40.2</td>
-<td >44.5</td>
-<td >77.1</td>
-<td >14.0</td>
-<td >21.0</td>
-<td >30.7</td>
-<td >43.9</td>
-<td >36.6</td>
-<td >31.6</td>
-<td >26.0</td>
-<td >30.5</td>
+<td >99.2</td>
+<td >75.1</td>
+<td >73.5</td>
+<td >67.0</td>
+<td >25.9</td>
+<td >40.9</td>
+<td >51.9</td>
+<td >48.9</td>
+<td >46.4</td>
+<td >47.5</td>
+<td >34.9</td>
+<td >65.8</td>
+<td >23.9</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/vaifgsm.py" target="_blank" rel="noopener noreferrer">VA-I-FGSM</a></td>
-<td >100.0</td>
+<td >99.4</td>
+<td >53.2</td>
+<td >46.4</td>
+<td >26.8</td>
+<td >9.6</td>
+<td >12.2</td>
+<td >15.7</td>
 <td >17.7</td>
-<td >22.4</td>
-<td >46.9</td>
-<td >7.2</td>
-<td >11.2</td>
-<td >15.0</td>
-<td >22.7</td>
-<td >30.3</td>
-<td >12.7</td>
-<td >20.1</td>
-<td >19.2</td>
+<td >40.3</td>
+<td >7.6</td>
+<td >26.8</td>
+<td >53.8</td>
+<td >9.9</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/rap.py" target="_blank" rel="noopener noreferrer">RAP</a></td>
-<td >100.0</td>
-<td >51.8</td>
-<td >58.5</td>
-<td >87.5</td>
-<td >21.1</td>
-<td >26.9</td>
-<td >43.1</td>
-<td >49.3</td>
-<td >32.4</td>
-<td >39.7</td>
-<td >22.8</td>
-<td >31.0</td>
+<td >99.9</td>
+<td >87.8</td>
+<td >85.9</td>
+<td >63.0</td>
+<td >23.8</td>
+<td >40.8</td>
+<td >54.1</td>
+<td >53.7</td>
+<td >42.9</td>
+<td >26.5</td>
+<td >32.0</td>
+<td >65.6</td>
+<td >21.0</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/pcifgsm.py" target="_blank" rel="noopener noreferrer">PC-I-FGSM</a></td>
-<td >100.0</td>
-<td >42.8</td>
-<td >46.8</td>
-<td >74.5</td>
-<td >17.1</td>
-<td >23.6</td>
-<td >33.4</td>
-<td >42.8</td>
-<td >32.9</td>
-<td >32.1</td>
-<td >22.9</td>
-<td >29.3</td>
+<td >99.8</td>
+<td >59.1</td>
+<td >53.8</td>
+<td >36.7</td>
+<td >15.2</td>
+<td >21.4</td>
+<td >26.5</td>
+<td >28.4</td>
+<td >40.7</td>
+<td >17.9</td>
+<td >27.8</td>
+<td >57.0</td>
+<td >14.0</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/iefgsm.py" target="_blank" rel="noopener noreferrer">IE-FGSM</a></td>
 <td >100.0</td>
-<td >51.1</td>
-<td >54.5</td>
-<td >83.9</td>
-<td >19.0</td>
-<td >28.4</td>
-<td >40.1</td>
-<td >47.2</td>
-<td >33.2</td>
-<td >39.9</td>
-<td >22.8</td>
-<td >28.9</td>
+<td >67.3</td>
+<td >63.0</td>
+<td >43.8</td>
+<td >17.4</td>
+<td >29.0</td>
+<td >37.2</td>
+<td >36.7</td>
+<td >40.6</td>
+<td >24.6</td>
+<td >27.7</td>
+<td >59.1</td>
+<td >13.3</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/gra.py" target="_blank" rel="noopener noreferrer">GRA</a></td>
-<td >100.0</td>
-<td >67.9</td>
-<td >70.0</td>
-<td >93.9</td>
-<td >30.3</td>
-<td >39.3</td>
-<td >54.5</td>
-<td >64.2</td>
-<td >40.8</td>
-<td >61.0</td>
-<td >35.1</td>
-<td >54.8</td>
+<td >97.5</td>
+<td >84.6</td>
+<td >83.5</td>
+<td >81.9</td>
+<td >46.3</td>
+<td >61.9</td>
+<td >72.9</td>
+<td >70.9</td>
+<td >49.7</td>
+<td >73.6</td>
+<td >43.1</td>
+<td >75.4</td>
+<td >41.3</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/gnp.py" target="_blank" rel="noopener noreferrer">GNP</a></td>
 <td >100.0</td>
-<td >50.3</td>
-<td >55.4</td>
-<td >82.7</td>
-<td >21.5</td>
-<td >26.9</td>
-<td >39.5</td>
-<td >47.0</td>
-<td >33.3</td>
-<td >40.4</td>
-<td >24.1</td>
-<td >30.6</td>
+<td >68.9</td>
+<td >63.8</td>
+<td >45.8</td>
+<td >16.9</td>
+<td >28.9</td>
+<td >38.3</td>
+<td >36.4</td>
+<td >41.2</td>
+<td >25.5</td>
+<td >27.8</td>
+<td >59.3</td>
+<td >14.1</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/mig.py" target="_blank" rel="noopener noreferrer">MIG</a></td>
 <td >100.0</td>
-<td >54.3</td>
-<td >58.0</td>
-<td >87.2</td>
-<td >22.9</td>
-<td >31.3</td>
+<td >69.0</td>
+<td >63.7</td>
+<td >52.1</td>
+<td >24.8</td>
+<td >36.5</td>
+<td >48.4</td>
 <td >44.3</td>
-<td >53.5</td>
-<td >37.5</td>
-<td >47.7</td>
-<td >26.5</td>
-<td >39.8</td>
+<td >41.2</td>
+<td >35.5</td>
+<td >28.7</td>
+<td >60.6</td>
+<td >18.6</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/dta.py" target="_blank" rel="noopener noreferrer">DTA</a></td>
 <td >100.0</td>
-<td >50.6</td>
-<td >54.8</td>
-<td >82.5</td>
-<td >18.1</td>
-<td >26.0</td>
-<td >40.2</td>
-<td >44.8</td>
-<td >33.0</td>
-<td >40.6</td>
-<td >23.1</td>
-<td >29.2</td>
+<td >64.2</td>
+<td >58.8</td>
+<td >40.3</td>
+<td >16.1</td>
+<td >26.3</td>
+<td >35.0</td>
+<td >33.6</td>
+<td >40.7</td>
+<td >22.3</td>
+<td >27.5</td>
+<td >57.9</td>
+<td >13.4</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/pgn.py" target="_blank" rel="noopener noreferrer">PGN</a></td>
-<td >100.0</td>
-<td >69.3</td>
-<td >73.3</td>
-<td >94.7</td>
-<td >32.7</td>
-<td >42.9</td>
-<td >56.0</td>
-<td >66.5</td>
-<td >40.5</td>
-<td >63.3</td>
-<td >34.9</td>
-<td >56.9</td>
+<td >98.7</td>
+<td >88.7</td>
+<td >86.3</td>
+<td >85.5</td>
+<td >50.1</td>
+<td >68.7</td>
+<td >76.9</td>
+<td >73.6</td>
+<td >49.0</td>
+<td >75.2</td>
+<td >42.3</td>
+<td >78.0</td>
+<td >44.5</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/mef.py" target="_blank" rel="noopener noreferrer">MEF</a></td>
-<td >100.0</td>
-<td >80.5</td>
+<td >96.1</td>
+<td >85.9</td>
 <td >82.9</td>
-<td >96.8</td>
-<td >45.6</td>
-<td >54.3</td>
-<td >68.6</td>
-<td >75.1</td>
-<td >41.3</td>
-<td >74.6</td>
-<td >36.3</td>
-<td >62.6</td>
+<td >79.2</td>
+<td >54.4</td>
+<td >67.7</td>
+<td >74.3</td>
+<td >74.0</td>
+<td >46.6</td>
+<td >70.6</td>
+<td >39.7</td>
+<td >76.1</td>
+<td >43.3</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/gradient/anda.py" target="_blank" rel="noopener noreferrer">ANDA</a></td>
-<td >100.0</td>
-<td >74.4</td>
-<td >78.9</td>
-<td >96.9</td>
-<td >42.0</td>
-<td >50.4</td>
-<td >65.8</td>
-<td >69.0</td>
-<td >38.0</td>
-<td >71.8</td>
-<td >26.9</td>
-<td >42.9</td>
+<td >99.9</td>
+<td >84.5</td>
+<td >81.6</td>
+<td >72.4</td>
+<td >41.4</td>
+<td >60.7</td>
+<td >71.3</td>
+<td >66.8</td>
+<td >43.1</td>
+<td >65.5</td>
+<td >30.9</td>
+<td >65.1</td>
+<td >28.3</td>
 </tr>
 
 <td><a href="./transferattack/gradient/gifgsm.py" target="_blank" rel="noopener noreferrer">GI-FGSM</a></td>
 <td >100.0</td>
-<td >48.0</td>
-<td >53.6</td>
-<td >81.7</td>
-<td >17.8</td>
-<td >24.9</td>
-<td >38.3</td>
-<td >45.4</td>
-<td >34.0</td>
-<td >36.9</td>
-<td >23.7</td>
-<td >31.2</td>
+<td >72.6</td>
+<td >65.4</td>
+<td >49.1</td>
+<td >18.9</td>
+<td >29.5</td>
+<td >37.5</td>
+<td >36.3</td>
+<td >40.8</td>
+<td >25.1</td>
+<td >28.1</td>
+<td >61.7</td>
+<td >16.6</td>
 </tr>
 
 <tr>
 <th rowspan="17"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
-<td >100.0</td>
-<td >62.7</td>
-<td >67.3</td>
-<td >90.3</td>
-<td >29.5</td>
-<td >37.1</td>
-<td >53.7</td>
-<td >58.7</td>
-<td >36.5</td>
-<td >58.5</td>
-<td >24.9</td>
-<td >36.0</td>
+<td >98.7</td>
+<td >71.0</td>
+<td >66.2</td>
+<td >57.1</td>
+<td >27.5</td>
+<td >39.7</td>
+<td >49.5</td>
+<td >45.3</td>
+<td >41.4</td>
+<td >42.0</td>
+<td >28.8</td>
+<td >58.3</td>
+<td >19.9</td>
 </tr>
 
 
 <tr>
 <td><a href="./transferattack/input_transformation/tim.py" target="_blank" rel="noopener noreferrer">TIM</a></td>
-<td >100.0</td>
-<td >37.2</td>
-<td >45.0</td>
-<td >71.8</td>
-<td >15.5</td>
-<td >19.6</td>
-<td >29.3</td>
-<td >39.1</td>
-<td >37.4</td>
-<td >35.2</td>
+<td >97.8</td>
+<td >57.9</td>
+<td >46.9</td>
+<td >38.9</td>
+<td >15.3</td>
+<td >16.5</td>
+<td >23.2</td>
+<td >19.0</td>
+<td >41.7</td>
+<td >25.4</td>
 <td >32.5</td>
-<td >37.4</td>
+<td >56.6</td>
+<td >32.3</td>
 </tr>
 
 
 <tr>
 <td><a href="./transferattack/input_transformation/sim.py" target="_blank" rel="noopener noreferrer">SIM</a></td>
 <td >100.0</td>
-<td >59.9</td>
-<td >63.1</td>
-<td >89.9</td>
-<td >24.8</td>
-<td >34.1</td>
-<td >51.0</td>
-<td >53.9</td>
-<td >36.1</td>
-<td >52.0</td>
-<td >25.1</td>
-<td >38.2</td>
+<td >70.2</td>
+<td >64.4</td>
+<td >52.1</td>
+<td >24.5</td>
+<td >36.9</td>
+<td >48.1</td>
+<td >43.5</td>
+<td >40.8</td>
+<td >35.6</td>
+<td >28.3</td>
+<td >60.3</td>
+<td >17.7</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/dem.py" target="_blank" rel="noopener noreferrer">DEM</a></td>
-<td >100.0</td>
-<td >76.4</td>
-<td >78.8</td>
-<td >97.3</td>
-<td >39.9</td>
-<td >45.6</td>
-<td >66.0</td>
-<td >67.0</td>
-<td >38.6</td>
-<td >78.6</td>
-<td >30.5</td>
-<td >47.3</td>
+<td >99.9</td>
+<td >93.1</td>
+<td >89.3</td>
+<td >91.0</td>
+<td >48.2</td>
+<td >63.5</td>
+<td >78.2</td>
+<td >71.4</td>
+<td >45.5</td>
+<td >74.8</td>
+<td >36.0</td>
+<td >59.3</td>
+<td >35.6</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/admix.py" target="_blank" rel="noopener noreferrer">Admix</a></td>
 <td >100.0</td>
-<td >68.2</td>
-<td >71.8</td>
-<td >95.1</td>
-<td >30.0</td>
-<td >38.6</td>
-<td >56.1</td>
-<td >60.5</td>
-<td >37.6</td>
-<td >60.1</td>
-<td >27.6</td>
-<td >44.2</td>
+<td >79.9</td>
+<td >77.7</td>
+<td >67.7</td>
+<td >32.5</td>
+<td >49.3</td>
+<td >62.5</td>
+<td >58.2</td>
+<td >41.8</td>
+<td >50.7</td>
+<td >30.1</td>
+<td >65.1</td>
+<td >20.7</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/atta.py" target="_blank" rel="noopener noreferrer">ATTA</a></td>
-<td >100.0</td>
-<td >46.6</td>
-<td >50.3</td>
-<td >79.4</td>
-<td >17.5</td>
-<td >26.3</td>
-<td >37.3</td>
-<td >45.3</td>
-<td >33.8</td>
-<td >38.1</td>
-<td >22.8</td>
-<td >30.4</td>
+<td >99.9</td>
+<td >59.7</td>
+<td >52.0</td>
+<td >39.9</td>
+<td >16.9</td>
+<td >27.0</td>
+<td >33.6</td>
+<td >33.6</td>
+<td >40.7</td>
+<td >20.5</td>
+<td >27.9</td>
+<td >57.3</td>
+<td >13.9</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/maskblock.py" target="_blank" rel="noopener noreferrer">MaskBlock</a></td>
 <td >100.0</td>
-<td >49.2</td>
-<td >51.4</td>
-<td >78.6</td>
-<td >18.0</td>
-<td >25.1</td>
-<td >38.1</td>
-<td >45.6</td>
-<td >33.9</td>
-<td >36.8</td>
-<td >22.9</td>
-<td >30.5</td>
+<td >64.3</td>
+<td >59.6</td>
+<td >41.9</td>
+<td >17.0</td>
+<td >26.8</td>
+<td >35.0</td>
+<td >34.5</td>
+<td >41.0</td>
+<td >21.5</td>
+<td >28.0</td>
+<td >58.9</td>
+<td >14.4</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/ssm.py" target="_blank" rel="noopener noreferrer">SSM</a></td>
-<td >99.9</td>
-<td >70.5</td>
-<td >73.8</td>
-<td >93.5</td>
-<td >30.4</td>
-<td >39.4</td>
-<td >54.5</td>
-<td >63.3</td>
-<td >37.2</td>
-<td >62.1</td>
-<td >29.2</td>
-<td >50.9</td>
+<td >98.0</td>
+<td >88.8</td>
+<td >86.4</td>
+<td >83.1</td>
+<td >50.7</td>
+<td >68.3</td>
+<td >76.3</td>
+<td >75.7</td>
+<td >46.0</td>
+<td >72.9</td>
+<td >36.5</td>
+<td >75.3</td>
+<td >35.0</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/aitl.py" target="_blank" rel="noopener noreferrer">AITL</a></td>
-<td >99.5</td>
-<td >78.9</td>
-<td >82.4</td>
-<td >96.3</td>
-<td >46.4</td>
-<td >51.4</td>
-<td >68.1</td>
-<td >71.1</td>
-<td >41.8</td>
-<td >79.7</td>
-<td >32.9</td>
-<td >53.1</td>
+<td >94.5</td>
+<td >87.2</td>
+<td >84.9</td>
+<td >82.8</td>
+<td >52.7</td>
+<td >68.0</td>
+<td >75.3</td>
+<td >72.7</td>
+<td >45.8</td>
+<td >77.2</td>
+<td >36.9</td>
+<td >67.6</td>
+<td >40.4</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/pam.py" target="_blank" rel="noopener noreferrer">PAM</a></td>
-<td >100.0</td>
-<td >56.5</td>
-<td >58.5</td>
-<td >89.1</td>
-<td >19.7</td>
-<td >29.7</td>
-<td >42.8</td>
-<td >49.9</td>
-<td >36.3</td>
-<td >48.0</td>
-<td >25.0</td>
-<td >36.0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/lpm.py" target="_blank" rel="noopener noreferrer">LPM</a></td>
-<td >100.0</td>
-<td >52.7</td>
-<td >55.4</td>
-<td >82.6</td>
-<td >22.0</td>
-<td >29.0</td>
-<td >42.4</td>
-<td >46.6</td>
-<td >33.6</td>
-<td >41.1</td>
-<td >23.7</td>
+<td >98.6</td>
+<td >61.5</td>
+<td >53.2</td>
+<td >39.2</td>
+<td >15.2</td>
+<td >24.3</td>
 <td >31.5</td>
+<td >31.8</td>
+<td >40.3</td>
+<td >19.6</td>
+<td >27.7</td>
+<td >58.5</td>
+<td >14.3</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/sia.py" target="_blank" rel="noopener noreferrer">SIA</a></td>
-<td >100.0</td>
-<td >87.5</td>
-<td >90.5</td>
-<td >99.1</td>
-<td >43.5</td>
-<td >57.8</td>
-<td >77.5</td>
-<td >78.0</td>
-<td >39.2</td>
-<td >81.4</td>
-<td >28.8</td>
-<td >51.9</td>
+<td >99.4</td>
+<td >94.3</td>
+<td >92.7</td>
+<td >83.1</td>
+<td >50.0</td>
+<td >76.7</td>
+<td >86.5</td>
+<td >83.6</td>
+<td >44.0</td>
+<td >79.5</td>
+<td >32.1</td>
+<td >74.9</td>
+<td >27.8</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/stm.py" target="_blank" rel="noopener noreferrer">STM</a></td>
-<td >100.0</td>
-<td >75.4</td>
-<td >77.2</td>
-<td >96.1</td>
-<td >35.7</td>
-<td >45.2</td>
-<td >61.5</td>
-<td >68.1</td>
-<td >40.9</td>
-<td >70.7</td>
-<td >32.5</td>
-<td >58.8</td>
+<td >97.5</td>
+<td >90.2</td>
+<td >88.9</td>
+<td >88.3</td>
+<td >56.7</td>
+<td >73.0</td>
+<td >80.3</td>
+<td >77.5</td>
+<td >49.0</td>
+<td >82.7</td>
+<td >41.8</td>
+<td >79.3</td>
+<td >43.6</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/usmm.py" target="_blank" rel="noopener noreferrer">USMM</a></td>
-<td >100.0</td>
-<td >74.0</td>
-<td >78.1</td>
-<td >96.4</td>
-<td >33.7</td>
-<td >45.3</td>
+<td >99.7</td>
+<td >90.1</td>
+<td >88.4</td>
+<td >78.8</td>
+<td >37.5</td>
+<td >57.5</td>
+<td >72.4</td>
+<td >70.1</td>
+<td >44.0</td>
 <td >62.8</td>
-<td >64.8</td>
-<td >40.0</td>
-<td >66.1</td>
-<td >29.4</td>
-<td >50.8</td>
+<td >32.2</td>
+<td >74.8</td>
+<td >22.3</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/decowa.py" target="_blank" rel="noopener noreferrer">DeCowA</a></td>
-<td >100.0</td>
-<td >84.8</td>
-<td >87.7</td>
-<td >98.6</td>
-<td >53.6</td>
-<td >64.0</td>
-<td >79.5</td>
-<td >79.7</td>
-<td >43.6</td>
-<td >85.7</td>
-<td >35.2</td>
-<td >56.0</td>
+<td >92.6</td>
+<td >98.7</td>
+<td >97.7</td>
+<td >94.2</td>
+<td >59.8</td>
+<td >63.9</td>
+<td >82.6</td>
+<td >75.6</td>
+<td >50.5</td>
+<td >90.1</td>
+<td >43.1</td>
+<td >77.5</td>
+<td >41.3</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/l2t.py" target="_blank" rel="noopener noreferrer">L2T</a></td>
-<td >100.0</td>
-<td >88.4</td>
-<td >89.9</td>
-<td >98.8</td>
-<td >50.7</td>
-<td >64.2</td>
-<td >79.6</td>
-<td >79.7</td>
-<td >43.0</td>
-<td >86.7</td>
-<td >32.9</td>
-<td >60.6</td>
+<td >99.5</td>
+<td >95.1</td>
+<td >94.2</td>
+<td >90.7</td>
+<td >63.2</td>
+<td >80.6</td>
+<td >88.0</td>
+<td >86.4</td>
+<td >48.6</td>
+<td >85.5</td>
+<td ></td>
+<td >80.2</td>
+<td >42.1</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/input_transformation/bsr.py" target="_blank" rel="noopener noreferrer">BSR</a></td>
-<td >100.0</td>
-<td >85.4</td>
-<td >87.9</td>
-<td >99.1</td>
-<td >42.9</td>
-<td >56.9</td>
-<td >74.6</td>
-<td >77.0</td>
-<td >38.6</td>
-<td >80.1</td>
-<td >27.3</td>
-<td >48.1</td>
+<td >99.0</td>
+<td >96.8</td>
+<td >95.6</td>
+<td >90.8</td>
+<td >54.3</td>
+<td >79.9</td>
+<td >89.3</td>
+<td >84.7</td>
+<td >44.8</td>
+<td >84.7</td>
+<td >33.2</td>
+<td >76.3</td>
+<td >32.4</td>
 </tr>
 
 <tr>
 <th rowspan="15"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/tap.py" target="_blank" rel="noopener noreferrer">TAP</a></td>
-<td >100.0</td>
-<td >38.5</td>
-<td >42.4</td>
-<td >72.0</td>
-<td >14.3</td>
-<td >17.9</td>
-<td >28.5</td>
-<td >34.2</td>
-<td >31.6</td>
-<td >28.9</td>
-<td >20.8</td>
-<td >25.9</td>
+<td >99.9</td>
+<td >93.4</td>
+<td >93.8</td>
+<td >64.8</td>
+<td >15.2</td>
+<td >25.4</td>
+<td >44.3</td>
+<td >40.2</td>
+<td >41.7</td>
+<td >34.5</td>
+<td >27.3</td>
+<td >65.8</td>
+<td >15.5</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/ila.py" target="_blank" rel="noopener noreferrer">ILA</a></td>
-<td >100.0</td>
-<td >45.6</td>
-<td >51.9</td>
-<td >77.8</td>
-<td >15.2</td>
-<td >21.6</td>
-<td >35.3</td>
-<td >44.4</td>
-<td >32.0</td>
-<td >31.5</td>
-<td >20.1</td>
-<td >22.9</td>
+<td >98.7</td>
+<td >68.7</td>
+<td >64.6</td>
+<td >33.4</td>
+<td >12.8</td>
+<td >23.5</td>
+<td >31.9</td>
+<td >32.1</td>
+<td >40.0</td>
+<td >16.2</td>
+<td >27.1</td>
+<td >52.5</td>
+<td >11.3</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/ata.py" target="_blank" rel="noopener noreferrer">ATA</a></td>
-<td >100.0</td>
-<td >16.4</td>
-<td >19.6</td>
-<td >41.8</td>
-<td >5.9</td>
-<td >8.9</td>
-<td >14.4</td>
-<td >21.4</td>
-<td >30.4</td>
-<td >10.0</td>
-<td >20.5</td>
-<td >15.7</td>
+<td >99.8</td>
+<td >35.8</td>
+<td >35.1</td>
+<td >19.2</td>
+<td >7.6</td>
+<td >11.9</td>
+<td >14.9</td>
+<td >15.0</td>
+<td >39.6</td>
+<td >6.2</td>
+<td >26.4</td>
+<td >43.0</td>
+<td >9.4</td>
 </tr>
 
 <tr id="yaila">
 <td><a href="./transferattack/advanced_objective/yaila/yaila.py" target="_blank" rel="noopener noreferrer">YAILA</a></td>
-<td >51.5</td>
-<td >26.2</td>
-<td >28.5</td>
-<td >49.0</td>
-<td >6.7</td>
-<td >11.4</td>
-<td >16.5</td>
-<td >25.7</td>
-<td >29.3</td>
-<td >13.4</td>
-<td >18.8</td>
-<td >14.7</td>
+<td >74.8</td>
+<td >81.7</td>
+<td >73.6</td>
+<td >38.4</td>
+<td >13.2</td>
+<td >17.2</td>
+<td >30.5</td>
+<td >28.0</td>
+<td >40.1</td>
+<td >22.9</td>
+<td >26.5</td>
+<td >51.2</td>
+<td >9.5</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/fia.py" target="_blank" rel="noopener noreferrer">FIA</a></td>
-<td >99.5</td>
-<td >31.0</td>
-<td >36.4</td>
-<td >65.3</td>
-<td >10.2</td>
-<td >16.3</td>
-<td >24.4</td>
-<td >35.3</td>
-<td >31.4</td>
-<td >18.9</td>
-<td >21.1</td>
+<td >98.0</td>
+<td >71.2</td>
+<td >65.8</td>
+<td >40.2</td>
+<td >12.6</td>
 <td >19.9</td>
+<td >33.2</td>
+<td >33.1</td>
+<td >41.1</td>
+<td >19.2</td>
+<td >28.0</td>
+<td >58.4</td>
+<td >12.1</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/ir.py" target="_blank" rel="noopener noreferrer">IR</a></td>
 <td >100.0</td>
-<td >42.0</td>
-<td >45.3</td>
-<td >74.0</td>
-<td >16.7</td>
-<td >23.4</td>
-<td >33.4</td>
-<td >40.9</td>
-<td >40.8</td>
-<td >32.2</td>
-<td >28.0</td>
-<td >22.8</td>
+<td >59.4</td>
+<td >53.4</td>
+<td >36.2</td>
+<td >14.8</td>
+<td >22.9</td>
+<td >27.7</td>
+<td >28.1</td>
+<td >40.6</td>
+<td >18.6</td>
+<td >27.3</td>
+<td >57.5</td>
+<td >13.2</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/trap.py" target="_blank" rel="noopener noreferrer">TRAP</a></td>
-<td >96.9</td>
-<td >63.2</td>
-<td >66.7</td>
-<td >85.1</td>
-<td >23.6</td>
-<td >33.3</td>
-<td >52.8</td>
-<td >56.5</td>
-<td >33.0</td>
-<td >56.8</td>
-<td >20.6</td>
-<td >26.2</td>
+<td >99.1</td>
+<td >96.1</td>
+<td >93.5</td>
+<td >84.7</td>
+<td >33.6</td>
+<td >47.7</td>
+<td >64.1</td>
+<td >58.6</td>
+<td >41.1</td>
+<td >64.3</td>
+<td >27.2</td>
+<td >65.3</td>
+<td >16.7</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/taig.py" target="_blank" rel="noopener noreferrer">TAIG</a></td>
-<td >100.0</td>
+<td >99.8</td>
+<td >48.3</td>
+<td >46.4</td>
+<td >30.4</td>
+<td >12.1</td>
+<td >20.8</td>
+<td >26.1</td>
 <td >26.0</td>
-<td >29.1</td>
-<td >62.0</td>
-<td >8.4</td>
-<td >14.1</td>
-<td >21.8</td>
-<td >32.4</td>
-<td >32.3</td>
-<td >18.3</td>
-<td >20.9</td>
-<td >18.2</td>
+<td >39.8</td>
+<td >14.6</td>
+<td >26.6</td>
+<td >47.4</td>
+<td >9.7</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/fmaa.py target="_blank" rel="noopener noreferrer">FMAA</a></td>
-<td >100.0</td>
-<td >39.5</td>
-<td >44.6</td>
-<td >80.3</td>
-<td >11.1</td>
-<td >20.1</td>
+<td >98.3</td>
+<td >80.1</td>
+<td >77.3</td>
+<td >55.8</td>
+<td >18.0</td>
+<td >33.0</td>
+<td >50.8</td>
+<td >52.7</td>
+<td >42.5</td>
+<td >34.4</td>
 <td >29.4</td>
-<td >41.2</td>
-<td >32.4</td>
-<td >25.9</td>
-<td >21.3</td>
-<td >22.3</td>
+<td >62.2</td>
+<td >13.4</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/naa.py" target="_blank" rel="noopener noreferrer">NAA</a></td>
-<td >99.5</td>
-<td >56.5</td>
-<td >58.9</td>
-<td >80.8</td>
-<td >23.9</td>
-<td >33.9</td>
-<td >46.8</td>
-<td >54.5</td>
-<td >34.8</td>
-<td >44.2</td>
-<td >23.9</td>
-<td >36.8</td>
+<td >84.7</td>
+<td >61.6</td>
+<td >58.6</td>
+<td >38.2</td>
+<td >19.5</td>
+<td >29.6</td>
+<td >36.6</td>
+<td >39.0</td>
+<td >40.3</td>
+<td >25.8</td>
+<td >28.0</td>
+<td >52.7</td>
+<td >12.6</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/rpa.py" target="_blank" rel="noopener noreferrer">RPA</a></td>
-<td >100.0</td>
-<td >62.5</td>
-<td >68.7</td>
-<td >91.6</td>
-<td >23.7</td>
-<td >34.2</td>
-<td >49.6</td>
-<td >57.0</td>
-<td >35.8</td>
-<td >56.3</td>
-<td >26.7</td>
-<td >39.1</td>
+<td >95.1</td>
+<td >85.8</td>
+<td >86.0</td>
+<td >76.3</td>
+<td >35.9</td>
+<td >47.5</td>
+<td >63.4</td>
+<td >62.1</td>
+<td >45.0</td>
+<td >58.3</td>
+<td >33.2</td>
+<td >70.8</td>
+<td >23.6</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/fuzziness_tuned.py target="_blank" rel="noopener noreferrer">Fuzziness_Tuned</a></td>
 <td >100.0</td>
-<td >39.9</td>
-<td >46.5</td>
-<td >75.3</td>
-<td >15.6</td>
-<td >21.2</td>
-<td >31.5</td>
-<td >38.9</td>
-<td >33.1</td>
-<td >29.9</td>
-<td >27.6</td>
-<td >22.8</td>
+<td >57.3</td>
+<td >51.8</td>
+<td >33.7</td>
+<td >14.1</td>
+<td >21.7</td>
+<td >26.7</td>
+<td >26.6</td>
+<td >40.3</td>
+<td >16.4</td>
+<td >27.1</td>
+<td >57.1</td>
+<td >12.5</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/danaa.py" target="_blank" rel="noopener noreferrer">DANAA</a></td>
-<td >100.0</td>
-<td >59.6</td>
-<td >63.8</td>
-<td >90.4</td>
-<td >17.3</td>
-<td >26.4</td>
-<td >44.7</td>
-<td >49.8</td>
-<td >34.8</td>
-<td >44.9</td>
+<td >96.8</td>
+<td >86.3</td>
+<td >82.5</td>
+<td >69.9</td>
 <td >23.4</td>
-<td >32.4</td>
+<td >36.0</td>
+<td >54.3</td>
+<td >51.6</td>
+<td >43.4</td>
+<td >51.4</td>
+<td >31.0</td>
+<td >71.8</td>
+<td >17.6</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/ilpd.py" target="_blank" rel="noopener noreferrer">ILPD</a></td>
-<td >70.6</td>
-<td >68.0</td>
-<td >68.0</td>
-<td >72.0</td>
-<td >31.8</td>
-<td >46.1</td>
-<td >52.6</td>
-<td >55.9</td>
-<td >33.8</td>
-<td >50.7</td>
-<td >24.0</td>
-<td >50.0</td>
+<td >97.9</td>
+<td >87.4</td>
+<td >85.8</td>
+<td >72.2</td>
+<td >44.6</td>
+<td >60.7</td>
+<td >69.3</td>
+<td >67.6</td>
+<td >43.8</td>
+<td >56.8</td>
+<td >32.5</td>
+<td >66.3</td>
+<td >28.1</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/advanced_objective/bfa.py" target="_blank" rel="noopener noreferrer">BFA</a></td>
-<td >100.0</td>
-<td >77.8</td>
+<td >98.4</td>
+<td >94.1</td>
+<td >92.3</td>
+<td >84.8</td>
+<td >52.7</td>
+<td >73.2</td>
+<td >85.8</td>
+<td >82.3</td>
+<td >44.6</td>
+<td >78.0</td>
+<td >33.0</td>
 <td >79.7</td>
-<td >96.7</td>
-<td >28.9</td>
-<td >43.4</td>
-<td >64.2</td>
-<td >65.9</td>
-<td >35.9</td>
-<td >65.6</td>
-<td >25.7</td>
-<td >41.0</td>
+<td >26.0</td>
 </tr>
 
 <tr>
-<th rowspan="18"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="19"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
-<td >48.4</td>
-<td >50.9</td>
-<td >78.5</td>
-<td >20.1</td>
-<td >28.7</td>
-<td >39.7</td>
-<td >48.3</td>
-<td >34.9</td>
-<td >37.5</td>
-<td >24.2</td>
-<td >30.9</td>
+<td >73.2</td>
+<td >75.7</td>
+<td >45.9</td>
+<td >18.9</td>
+<td >33.5</td>
+<td >41.1</td>
+<td >41.9</td>
+<td >41.3</td>
+<td >25.3</td>
+<td >28.6</td>
+<td >64.3</td>
+<td >15.0</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/model_related/linbp.py" target="_blank" rel="noopener noreferrer">LinBP</a></td>
-<td >85.8</td>
-<td >37.8</td>
-<td >64.2</td>
-<td >69.8</td>
-<td >12.4</td>
-<td >14.7</td>
-<td >25.5</td>
-<td >30.4</td>
-<td >30.4</td>
-<td >24.9</td>
-<td >20.4</td>
-<td >23.6</td>
+<td >100.0</td>
+<td >87.7</td>
+<td >81.2</td>
+<td >47.5</td>
+<td >18.9</td>
+<td >22.7</td>
+<td >44.0</td>
+<td >37.2</td>
+<td >41.3</td>
+<td >19.9</td>
+<td ></td>
+<td >59.9</td>
+<td >17.1</td>
+</tr>
+
+<td><a href="./transferattack/model_related/llta_networks/llta.py" target="_blank" rel="noopener noreferrer">LLTA</a></td>
+<td >94.9</td>
+<td >96.6</td>
+<td >95.1</td>
+<td >83.8</td>
+<td >45.7</td>
+<td >57.1</td>
+<td >74.1</td>
+<td >73.8</td>
+<td >47.7</td>
+<td >74.3</td>
+<td ></td>
+<td >82.5</td>
+<td ></td>
 </tr>
 
 <tr id="pna">
 <td><a href="./transferattack/model_related/pna_patchout.py" target="_blank" rel="noopener noreferrer">PNA-PatchOut</a></td>
-<td >47.5</td>
-<td >34.3</td>
-<td >36.5</td>
-<td >45.8</td>
-<td >81.3</td>
-<td >39.1</td>
-<td >40.9</td>
-<td >53.0</td>
-<td >31.7</td>
-<td >29.0</td>
-<td >22.5</td>
-<td >27.1</td>
+<td >47.3</td>
+<td >69.3</td>
+<td >62.7</td>
+<td >53.9</td>
+<td >95.3</td>
+<td >55.8</td>
+<td >58.7</td>
+<td >64.2</td>
+<td >42.9</td>
+<td >37.2</td>
+<td >32.7</td>
+<td >51.3</td>
+<td >25.4</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/model_related/iaa.py" target="_blank" rel="noopener noreferrer">IAA</a></td>
 <td >100.0</td>
-<td >44.2</td>
-<td >50.6</td>
-<td >85.1</td>
-<td >12.8</td>
-<td >19.6</td>
-<td >32.8</td>
-<td >40.4</td>
-<td >33.3</td>
-<td >29.4</td>
-<td >22.0</td>
-<td >26.0</td>
+<td >81.7</td>
+<td >74.7</td>
+<td >55.2</td>
+<td >19.5</td>
+<td >30.1</td>
+<td >41.9</td>
+<td >40.7</td>
+<td >42.1</td>
+<td >26.8</td>
+<td >29.6</td>
+<td >66.7</td>
+<td >15.9</td>
 </tr>
 
 <tr id="sapr">
 <td><a href="./transferattack/model_related/sapr.py" target="_blank" rel="noopener noreferrer">SAPR</a></td>
-<td >66.4</td>
-<td >50.3</td>
-<td >53.2</td>
-<td >65.6</td>
-<td >96.7</td>
-<td >57.5</td>
-<td >60.4</td>
-<td >75.4</td>
-<td >35.4</td>
-<td >41.8</td>
-<td >24.8</td>
-<td >31.9</td>
+<td >49.2</td>
+<td >74.5</td>
+<td >69.1</td>
+<td >59.1</td>
+<td >99.9</td>
+<td >57.2</td>
+<td >63.2</td>
+<td >68.1</td>
+<td >43.4</td>
+<td >37.8</td>
+<td >32.7</td>
+<td >54.8</td>
+<td >24.0</td>
 </tr>
 
 <tr id="setr">
 <td><a href="./transferattack/model_related/setr.py" target="_blank" rel="noopener noreferrer">SETR</a></td>
-<td >72.6</td>
-<td >36.6</td>
-<td >43.4</td>
-<td >64.5</td>
-<td >54.3</td>
-<td >33.6</td>
-<td >43.5</td>
-<td >68.8</td>
-<td >36.5</td>
-<td >31.6</td>
-<td >25.5</td>
-<td >50.7</td>
+<td >48.9</td>
+<td >82.7</td>
+<td >81.2</td>
+<td >63.8</td>
+<td >66.3</td>
+<td >41.5</td>
+<td >51.1</td>
+<td >66.6</td>
+<td >45.9</td>
+<td >38.6</td>
+<td >34.5</td>
+<td >62.0</td>
+<td >26.1</td>
 </tr>
 
 <tr id="ata_vit">
 <td><a href="./transferattack/model_related/ata_vit.py" target="_blank" rel="noopener noreferrer">ATA_ViT</a></td>
-<td >70.7</td>
-<td >26.1</td>
-<td >32.6</td>
-<td >49.9</td>
-<td >63.5</td>
-<td >21.7</td>
-<td >21.6</td>
-<td >29.2</td>
-<td >40.6</td>
-<td >24.8</td>
-<td >31.9</td>
-<td >38.4</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/model_related/dra.py" target="_blank" rel="noopener noreferrer">DRA</a></td>
-<td >99.4</td>
-<td >91.0</td>
-<td >90.7</td>
-<td >98.5</td>
-<td >75.7</td>
-<td >79.5</td>
-<td >87.0</td>
-<td >89.2</td>
-<td >69.2</td>
-<td >92.6</td>
-<td >68.3</td>
-<td >82.4</td>
+<td >94.3</td>
+<td >96.8</td>
+<td >97.8</td>
+<td >95.0</td>
+<td >75.3</td>
+<td >77.7</td>
+<td >88.7</td>
+<td >86.4</td>
+<td >70.8</td>
+<td >93.2</td>
+<td >85.7</td>
+<td >86.4</td>
+<td >75.3</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/model_related/mta.py" target="_blank" rel="noopener noreferrer">MTA</a></td>
-<td >82.4</td>
-<td >44.2</td>
-<td >46.8</td>
-<td >74.9</td>
-<td >12.6</td>
-<td >17.9</td>
-<td >31.7</td>
-<td >41.0</td>
-<td >30.4</td>
-<td >34.5</td>
-<td >19.1</td>
-<td >19.2</td>
+<td >68.7</td>
+<td >89.8</td>
+<td >82.5</td>
+<td >68.8</td>
+<td >20.4</td>
+<td >24.4</td>
+<td >37.3</td>
+<td >33.6</td>
+<td >40.4</td>
+<td >48.9</td>
+<td >26.4</td>
+<td >55.9</td>
+<td >14.5</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/model_related/mup.py" target="_blank" rel="noopener noreferrer">MUP</a></td>
-<td >100.0</td>
-<td >50.7</td>
-<td >51.0</td>
-<td >81.2</td>
+<td >98.8</td>
+<td >76.5</td>
+<td >71.0</td>
+<td >53.3</td>
 <td >18.5</td>
-<td >26.3</td>
-<td >37.4</td>
-<td >43.3</td>
-<td >33.8</td>
-<td >37.1</td>
-<td >22.7</td>
-<td >29.6</td>
+<td >32.3</td>
+<td >41.3</td>
+<td >40.0</td>
+<td >41.3</td>
+<td >27.8</td>
+<td >28.4</td>
+<td >61.6</td>
+<td >15.3</td>
 </tr>
 
 <tr id="tgr">
 <td><a href="./transferattack/model_related/tgr.py" target="_blank" rel="noopener noreferrer">TGR</a></td>
-<td >70.8</td>
-<td >48.1</td>
-<td >52.6</td>
-<td >68.2</td>
-<td >98.3</td>
-<td >56.0</td>
-<td >61.8</td>
-<td >73.4</td>
-<td >36.6</td>
-<td >43.5</td>
-<td >28.0</td>
-<td >36.9</td>
+<td >57.9</td>
+<td >80.3</td>
+<td >76.1</td>
+<td >61.4</td>
+<td >99.8</td>
+<td >61.3</td>
+<td >69.2</td>
+<td >75.1</td>
+<td >45.4</td>
+<td >47.1</td>
+<td >37.0</td>
+<td >58.0</td>
+<td >34.0</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/model_related/dsm.py" target="_blank" rel="noopener noreferrer">DSM</a></td>
-<td >98.9</td>
-<td >60.4</td>
-<td >66.3</td>
-<td >91.9</td>
-<td >23.8</td>
-<td >33.8</td>
-<td >49.3</td>
-<td >56.2</td>
-<td >34.7</td>
-<td >48.7</td>
-<td >24.3</td>
-<td >34.1</td>
+<td >82.5</td>
+<td >96.5</td>
+<td >93.0</td>
+<td >74.9</td>
+<td >28.4</td>
+<td >38.4</td>
+<td >59.0</td>
+<td >55.8</td>
+<td >45.0</td>
+<td >58.6</td>
+<td >33.7</td>
+<td >71.6</td>
+<td >20.4</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/model_related/dhf.py" target="_blank" rel="noopener noreferrer">DHF</a></td>
-<td >100.0</td>
-<td >70.4</td>
-<td >72.1</td>
-<td >92.3</td>
-<td >31.5</td>
-<td >43.4</td>
-<td >59.8</td>
-<td >61.9</td>
-<td >35.9</td>
-<td >59.8</td>
-<td >25.5</td>
-<td >40.2</td>
+<td >99.9</td>
+<td >74.4</td>
+<td >70.1</td>
+<td >51.8</td>
+<td >25.3</td>
+<td >40.8</td>
+<td >48.5</td>
+<td >47.4</td>
+<td >41.4</td>
+<td >35.6</td>
+<td >29.0</td>
+<td >62.2</td>
+<td >16.1</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/model_related/bpa.py" target="_blank" rel="noopener noreferrer">BPA</a></td>
-<td >100.0</td>
-<td >59.0</td>
-<td >63.9</td>
-<td >88.1</td>
-<td >22.8</td>
-<td >32.0</td>
-<td >47.6</td>
-<td >54.4</td>
-<td >35.1</td>
-<td >47.3</td>
-<td >26.1</td>
-<td >37.7</td>
+<td >96.2</td>
+<td >96.9</td>
+<td >94.5</td>
+<td >84.9</td>
+<td >41.4</td>
+<td >50.2</td>
+<td >75.1</td>
+<td >65.3</td>
+<td >43.9</td>
+<td >76.3</td>
+<td >33.2</td>
+<td >76.9</td>
+<td >29.4</td>
 </tr>
 
 <tr id="ags">
 <td><a href="./transferattack/model_related/ags.py" target="_blank" rel="noopener noreferrer">AGS</a></td>
-<td >86.1</td>
-<td >55.8</td>
-<td >60.3</td>
-<td >81.6</td>
-<td >29.0</td>
-<td >22.0</td>
-<td >46.7</td>
-<td >46.1</td>
-<td >37.8</td>
-<td >62.2</td>
-<td >27.4</td>
-<td >39.4</td>
+<td >74.1</td>
+<td >86.5</td>
+<td >85.2</td>
+<td >82.6</td>
+<td >28.2</td>
+<td >24.9</td>
+<td >45.2</td>
+<td >35.7</td>
+<td >45.3</td>
+<td >67.1</td>
+<td >34.0</td>
+<td >56.7</td>
+<td >38.0</td>
 </tr>
 
 <tr id="metassa">
 <td><a href="./transferattack/model_related/metassa.py" target="_blank" rel="noopener noreferrer">MetaSSA</a></td>
-<td >100.0</td>
-<td >72.8</td>
-<td >78.3</td>
-<td >96.0</td>
-<td >41.3</td>
-<td >51.3</td>
-<td >64.3</td>
-<td >64.8</td>
-<td >40.7</td>
-<td >75.4</td>
-<td >31.5</td>
-<td >55.1</td>
+<td >98.2</td>
+<td >85.3</td>
+<td >74.7</td>
+<td >79.0</td>
+<td >37.5</td>
+<td >46.7</td>
+<td >63.6</td>
+<td >52.3</td>
+<td >45.3</td>
+<td >65.0</td>
+<td >35.8</td>
+<td >68.7</td>
+<td >36.8</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/model_related/vdc.py" target="_blank" rel="noopener noreferrer">VDC</a></td>
-<td >68.1</td>
-<td >47.9</td>
-<td >53.0</td>
-<td >65.5</td>
-<td >99.8</td>
-<td >56.7</td>
-<td >62.0</td>
-<td >73.1</td>
-<td >35.8</td>
-<td >43.9</td>
-<td >27.0</td>
+<td >51.6</td>
+<td >74.2</td>
+<td >70.7</td>
+<td >59.1</td>
+<td >100.0</td>
+<td >64.0</td>
+<td >68.3</td>
+<td >73.8</td>
+<td >44.7</td>
+<td >41.6</td>
 <td >35.1</td>
+<td >57.9</td>
+<td >29.6</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/model_related/ma.py" target="_blank" rel="noopener noreferrer">MA</a></td>
-<td >96.4</td>
-<td >82.1</td>
-<td >84.3</td>
-<td >96.4</td>
-<td >35.3</td>
-<td >47.9</td>
-<td >65.1</td>
-<td >65.6</td>
-<td >35.3</td>
-<td >70.2</td>
-<td >24.9</td>
-<td >47.5</td>
+<td >96.0</td>
+<td >95.8</td>
+<td >92.4</td>
+<td >83.5</td>
+<td >38.4</td>
+<td >53.2</td>
+<td >74.3</td>
+<td >70.9</td>
+<td >44.1</td>
+<td >80.9</td>
+<td >34.3</td>
+<td >72.7</td>
+<td >23.0</td>
 </tr>
 
 <tr>
 <th rowspan="8"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/ens.py" target="_blank" rel="noopener noreferrer">ENS</a></td>
+<td >99.4</td>
 <td >100.0</td>
-<td >91.7</td>
-<td >92.5</td>
-<td >100.0</td>
-<td >38.7</td>
-<td >53.0</td>
-<td >66.6</td>
-<td >66.4</td>
-<td >33.5</td>
-<td >67.8</td>
-<td >24.7</td>
-<td >56.1</td>
+<td >99.9</td>
+<td >99.5</td>
+<td >32.2</td>
+<td >52.6</td>
+<td >67.5</td>
+<td >65.3</td>
+<td >43.4</td>
+<td >63.0</td>
+<td >31.4</td>
+<td >93.8</td>
+<td >20.6</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/model_related/ghost.py" target="_blank" rel="noopener noreferrer">Ghost</a></td>
-<td >64.4</td>
-<td >93.9</td>
-<td >63.1</td>
-<td >66.9</td>
-<td >19.1</td>
-<td >29.7</td>
-<td >39.5</td>
-<td >42.3</td>
-<td >31.2</td>
-<td >36.1</td>
-<td >21.2</td>
-<td >54.7</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/ensemble/svre.py" target="_blank" rel="noopener noreferrer">SVRE</a></td>
+<td >98.8</td>
 <td >100.0</td>
-<td >97.7</td>
-<td >98.0</td>
 <td >100.0</td>
-<td >40.6</td>
-<td >54.4</td>
-<td >69.9</td>
-<td >69.5</td>
-<td >33.8</td>
-<td >74.9</td>
-<td >24.1</td>
-<td >59.7</td>
+<td >99.6</td>
+<td >31.5</td>
+<td >49.7</td>
+<td >68.1</td>
+<td >67.4</td>
+<td >43.8</td>
+<td >58.6</td>
+<td >31.1</td>
+<td >95.2</td>
+<td >17.4</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/ensemble/lgv.py" target="_blank" rel="noopener noreferrer">LGV</a></td>
-<td >97.7</td>
-<td >69.5</td>
-<td >69.4</td>
-<td >93.6</td>
-<td >23.1</td>
-<td >29.2</td>
-<td >43.7</td>
-<td >51.5</td>
-<td >34.5</td>
-<td >52.9</td>
-<td >24.5</td>
-<td >37.3</td>
+<td >91.4</td>
+<td >97.2</td>
+<td >95.8</td>
+<td >80.6</td>
+<td >28.0</td>
+<td >35.8</td>
+<td >58.8</td>
+<td >55.9</td>
+<td >44.6</td>
+<td >58.2</td>
+<td ></td>
+<td >67.2</td>
+<td >18.0</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/ensemble/mba.py" target="_blank" rel="noopener noreferrer">MBA</a></td>
-<td >100.0</td>
-<td >96.0</td>
-<td >95.2</td>
 <td >99.8</td>
-<td >41.9</td>
-<td >51.8</td>
-<td >75.1</td>
-<td >76.8</td>
-<td >39.5</td>
-<td >86.1</td>
-<td >28.7</td>
-<td >52.1</td>
+<td >99.9</td>
+<td >99.5</td>
+<td >96.5</td>
+<td >53.7</td>
+<td >60.7</td>
+<td >87.3</td>
+<td >82.1</td>
+<td >48.6</td>
+<td >90.8</td>
+<td >36.7</td>
+<td >82.3</td>
+<td >24.8</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/ensemble/adaea.py" target="_blank" rel="noopener noreferrer">AdaEA</a></td>
+<td >99.2</td>
 <td >100.0</td>
-<td >91.9</td>
-<td >92.7</td>
-<td >100.0</td>
-<td >39.4</td>
-<td >52.4</td>
-<td >67.3</td>
-<td >67.0</td>
-<td >33.9</td>
-<td >69.6</td>
-<td >24.3</td>
-<td >58.0</td>
+<td >99.9</td>
+<td >99.3</td>
+<td >32.1</td>
+<td >51.4</td>
+<td >67.6</td>
+<td >65.1</td>
+<td >43.5</td>
+<td >66.3</td>
+<td >31.3</td>
+<td >95.5</td>
+<td >20.7</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/ensemble/cwa.py" target="_blank" rel="noopener noreferrer">CWA</a></td>
-<td >99.7</td>
-<td >98.3</td>
-<td >99.1</td>
+<td >87.1</td>
+<td >99.9</td>
 <td >100.0</td>
-<td >33.9</td>
-<td >47.7</td>
-<td >66.4</td>
-<td >65.0</td>
-<td >35.8</td>
-<td >69.4</td>
-<td >24.9</td>
-<td >68.9</td>
+<td >100.0</td>
+<td >23.9</td>
+<td >35.7</td>
+<td >49.3</td>
+<td >49.9</td>
+<td >43.9</td>
+<td >42.7</td>
+<td >30.7</td>
+<td >96.0</td>
+<td >16.9</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/ensemble/smer.py" target="_blank" rel="noopener noreferrer">SMER</a></td>
-<td >89.6</td>
-<td >77.0</td>
-<td >86.6</td>
-<td >89.9</td>
-<td >41.4</td>
-<td >57.3</td>
-<td >71.7</td>
-<td >69.7</td>
-<td >38.9</td>
-<td >70.1</td>
-<td >26.8</td>
-<td >69.4</td>
+<td >96.4</td>
+<td >95.0</td>
+<td >96.6</td>
+<td >96.1</td>
+<td >33.0</td>
+<td >51.8</td>
+<td >67.7</td>
+<td >68.7</td>
+<td >43.0</td>
+<td >62.0</td>
+<td >30.6</td>
+<td >90.7</td>
+<td >17.4</td>
 </tr>
 
 <tr>
 <th rowspan="4"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
-<td >72.8</td>
-<td >29.9</td>
-<td >39.8</td>
-<td >64.6</td>
-<td >10.5</td>
-<td >18.7</td>
-<td >37.4</td>
-<td >35.7</td>
-<td >32.6</td>
-<td >34.8</td>
-<td >20.7</td>
-<td >48.7</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <tr id="ltp">
 <td><a href="./transferattack/generation/ltp.py" target="_blank" rel="noopener noreferrer">LTP</a></td>
-<td >99.1</td>
-<td >98.7</td>
-<td >98.7</td>
-<td >99.5</td>
-<td >45.1</td>
-<td >69.4</td>
-<td >92.1</td>
-<td >90.2</td>
-<td >31.7</td>
-<td >96.5</td>
-<td >21.6</td>
-<td >29.7</td>
+<td >99.6</td>
+<td >99.8</td>
+<td >98.4</td>
+<td >98.8</td>
+<td >53.5</td>
+<td >69.7</td>
+<td >98.4</td>
+<td >94.1</td>
+<td >41.1</td>
+<td >97.3</td>
+<td >29.4</td>
+<td >69.8</td>
+<td >26.0</td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/generation/ada.py" target="_blank" rel="noopener noreferrer">ADA</a></td>
-<td >69.9</td>
-<td >47.5</td>
-<td >45.2</td>
-<td >63.6</td>
-<td >8.5</td>
-<td >11.2</td>
-<td >31.7</td>
-<td >29.4</td>
-<td >29.4</td>
-<td >37.0</td>
-<td >20.6</td>
-<td >16.3</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <tr>
 <td><a href="./transferattack/generation/ge_advgan.py" target="_blank" rel="noopener noreferrer">GE-ADVGAN</a></td>
-<td >97.7</td>
-<td >47.7</td>
-<td >59.8</td>
-<td >73.4</td>
-<td >13.8</td>
-<td >8.2</td>
-<td >22.6</td>
-<td >23.2</td>
-<td >31.1</td>
-<td >52.5</td>
-<td >34.0</td>
-<td >33.0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 </table>
@@ -1997,12 +2099,12 @@ Class Number: Class Name
 <th rowspan="2"><strong>Attacks</strong></th>
 <th colspan="4"><strong>CNNs</strong></th>
 <th colspan="4"><strong>ViTs</strong></th>
-<th colspan="4"><strong>Defenses</strong></th>
+<th colspan="5"><strong>Defenses</strong></th>
 </tr>
-<th> ResNet-18 </th>
-<th> ResNet-101 </th>
-<th> ResNeXt-50 </th>
-<th> DenseNet-101 </th>
+<th> ResNet-50 </th>
+<th> VGG-16 </th>
+<th> Mobilenet_v2 </th>
+<th> Inception_v3 </th>
 <th> ViT </th>
 <th> PiT </th>
 <th> Visformer </th>
@@ -2011,164 +2113,176 @@ Class Number: Class Name
 <th> HGD </th>
 <th> RS </th>
 <th> NRP </th>
+<th> DiffPure </th>
 </thead>
 
 
 <th rowspan="3"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/odi/odi.py" target="_blank" rel="noopener noreferrer">ODI</a></td>
-<td >98.9</td>
-<td >38.6</td>
-<td >45.5</td>
-<td >67.0</td>
-<td > 9.4</td>
-<td >13.9</td>
-<td >29.5</td>
-<td >19.9</td>
-<td > 0.1</td>
-<td >41.4</td>
-<td > 0.0</td>
-<td > 1.0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <td><a href="./transferattack/input_transformation/su.py" target="_blank" rel="noopener noreferrer">SU</a></td>
-<td >99.2</td>
-<td >7.2</td>
-<td >8.0</td>
-<td >19.7</td>
-<td >0.1</td>
-<td >0.6</td>
-<td >2.1</td>
-<td >1.8</td>
-<td >0.1</td>
-<td >2.1</td>
-<td >0.0</td>
-<td >0.2</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <td><a href="./transferattack/input_transformation/idaa.py" target="_blank" rel="noopener noreferrer">IDAA </a></td>
-<td >87.1</td>
-<td >2.6</td>
-<td >3.0</td>
-<td >13.0</td>
-<td >1.3</td>
-<td >1.8</td>
-<td >2.1</td>
-<td >3.3</td>
-<td >0.4</td>
-<td >1.5</td>
-<td >0.0</td>
-<td >0.1</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 
 <th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/aa.py" target="_blank" rel="noopener noreferrer">AA</a></td>
-<td >5.0</td>
-<td >0.7</td>
-<td >0.7</td>
-<td >0.9</td>
-<td >0.3</td>
-<td >0.3</td>
-<td >0.3</td>
-<td >0.1</td>
-<td >0.0</td>
-<td >0.2</td>
-<td >0.0</td>
-<td >0.0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
-<td >100.0</td>
-<td > 3.2</td>
-<td > 5.1</td>
-<td >15.7</td>
-<td > 0.1</td>
-<td > 0.3</td>
-<td > 1.3</td>
-<td > 1.1</td>
-<td > 0.0</td>
-<td > 3.0</td>
-<td > 0.0</td>
-<td > 0.2</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/logit.py" target="_blank" rel="noopener noreferrer">Logit</a></td>
-<td >99.0</td>
-<td >13.5</td>
-<td >18.5</td>
-<td >38.5</td>
-<td > 1.9</td>
-<td > 2.9</td>
-<td > 8.3</td>
-<td > 3.8</td>
-<td > 0.1</td>
-<td >14.4</td>
-<td > 0.0</td>
-<td > 0.3</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/logit_margin.py" target="_blank" rel="noopener noreferrer">Logit-Margin</a></td>
-<td >100.0</td>
-<td >13.6</td>
-<td >19.1</td>
-<td >42.8</td>
-<td > 1.8</td>
-<td > 3.3</td>
-<td > 8.4</td>
-<td > 4.4</td>
-<td > 0.0</td>
-<td >14.0</td>
-<td > 0.0</td>
-<td > 0.2</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/cfm.py" target="_blank" rel="noopener noreferrer">CFM</a></td>
-<td >98.3</td>
-<td >39.6</td>
-<td >44.8</td>
-<td >66.1</td>
-<td > 9.6</td>
-<td >11.4</td>
-<td >26.6</td>
-<td >18.9</td>
-<td > 0.2</td>
-<td >37.6</td>
-<td > 0.0</td>
-<td > 1.6</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/fft.py" target="_blank" rel="noopener noreferrer">FFT</a></td>
-<td >99.8</td>
-<td >17.5</td>
-<td >21.6</td>
-<td >45.1</td>
-<td > 1.3</td>
-<td > 2.8</td>
-<td >10.3</td>
-<td > 6.6</td>
-<td > 0.1</td>
-<td >13.2</td>
-<td > 0.0</td>
-<td > 0.4</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/ttp.py" target="_blank" rel="noopener noreferrer">TTP</a></td>
-<td >96.2</td>
-<td >19.6</td>
-<td >27.4</td>
-<td >62.4</td>
-<td >3.2</td>
-<td >4.3</td>
-<td >19.5</td>
-<td >5.3</td>
-<td >0.0</td>
-<td >0.0</td>
-<td >0.3</td>
-<td >4.1</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 
 <td><a href="./transferattack/generation/m3d.py" target="_blank" rel="noopener noreferrer">M3D</a></td>
+<td ></td>
 <td ></td>
 <td ></td>
 <td ></td>
@@ -2185,18 +2299,19 @@ Class Number: Class Name
 
 <th rowspan="1"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/sasd_ws.py" target="_blank" rel="noopener noreferrer">SASD_WS</a></td>
-<td >91.7</td>
-<td >70.9</td>
-<td >76.9</td>
-<td >91.5</td>
-<td >13.7</td>
-<td >22.5</td>
-<td >39.9</td>
-<td >29.0</td>
-<td >0.1</td>
-<td >64.7</td>
-<td >0.1</td>
-<td >5.7</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
 </tr>
 </table>
 

@@ -24,7 +24,7 @@ class ILPD(MIFGSM):
         epoch=100, sigma=0.05, coef=0.1, N=1, il_pos="layer2.3"
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/ilpd/resnet50 --attack aa --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/ilpd/resnet50 --attack ilpd --model=resnet50
         python main.py --input_dir ./path/to/data --output_dir adv_data/ilpd/resnet50 --eval
     """
 

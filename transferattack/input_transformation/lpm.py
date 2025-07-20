@@ -35,8 +35,8 @@ class LPM(Attack):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/lpm/resnet18 --attack lpm --model=resnet18 --batchsize 1
-        python main.py --input_dir ./path/to/data --output_dir adv_data/lpm/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/lpm/resnet50 --attack lpm --model=resnet50 --batchsize 1
+        python main.py --input_dir ./path/to/data --output_dir adv_data/lpm/resnet50 --eval
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1.,  targeted=False, 

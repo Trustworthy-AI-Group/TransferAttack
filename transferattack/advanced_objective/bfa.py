@@ -32,8 +32,8 @@ class BFA(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1., eta=28, num_ens=30, layer_name='layer2.7' for ResNet152
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/bfa/resnet18 --attack bfa --model resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/bfa/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/bfa/resnet50 --attack bfa --model resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/bfa/resnet50 --eval
 
     NOTE:
         1) ResNet18 is not mentioned in the original paper. Following the setting for ResNet152 in the paper, we select the last block of the second layer for ResNet18 as the feature layer.

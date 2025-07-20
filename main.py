@@ -16,7 +16,7 @@ def get_parser():
     parser.add_argument('--eps', default=16 / 255, type=float, help='the stepsize to update the perturbation')
     parser.add_argument('--alpha', default=1.6 / 255, type=float, help='the stepsize to update the perturbation')
     parser.add_argument('--momentum', default=0., type=float, help='the decay factor for momentum based attack')
-    parser.add_argument('--model', default='resnet18', type=str, help='the source surrogate model')
+    parser.add_argument('--model', default='resnet50', type=str, help='the source surrogate model')
     parser.add_argument('--ensemble', action='store_true', help='enable ensemble attack')
     parser.add_argument('--random_start', default=False, type=bool, help='set random start')
     parser.add_argument('--input_dir', default='./data', type=str, help='the path for custom benign images, default: untargeted attack data')

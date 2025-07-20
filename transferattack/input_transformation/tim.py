@@ -30,7 +30,8 @@ class TIM(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1., kernel_type='gaussian', kernel_size=15
 
     Example script:
-        python main.py --attack tim --output_dir adv_data/tim/resnet18
+        python main.py --input_dir ./path/to/data --output_dir adv_data/tim/resnet50 --attack tim --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/tim/resnet50 --eval
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., kernel_type='gaussian', kernel_size=15, targeted=False, 

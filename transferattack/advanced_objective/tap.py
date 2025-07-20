@@ -28,8 +28,8 @@ class TAP(Attack):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, beta=1.5, num_scale=20, epoch=10, decay=1.
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/tap/resnet18 --attack tap --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/tap/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/tap/resnet50 --attack tap --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/tap/resnet50 --eval
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, beta=1.5, num_scale=30, random=False, epoch=100, decay=1., targeted=False, 

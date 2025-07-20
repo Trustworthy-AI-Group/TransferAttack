@@ -27,8 +27,8 @@ class MUP(MIFGSM):
         epsilon=16/255, alpha=2/255, epoch=10, decay=1.0
 
     Example scripts:
-        python main.py --attack=mup --input_dir=./data --output_dir=./results/mup/resnet18 --model resnet18 --batchsize 1
-        python main.py --attack=mup --input_dir=./data --output_dir=./results/mup/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/mup/resnet50 --attack mup --model=resnet50 --batchsize 1
+        python main.py --input_dir ./path/to/data --output_dir adv_data/mup/resnet50 --eval
 
     NOTE:
         1) --batchsize=1 is necessary for MUP attack since gradient and taylor score are calculated w.r.t. each sample.

@@ -26,8 +26,8 @@ class VNIFGSM(VMIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, beta=1.5, num_neighbor=20, epoch=10, decay=1.
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/vnifgsm/resnet18 --attack vnifgsm --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/vnifgsm/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/vmifgsm/resnet50 --attack vmifgsm --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/vmifgsm/resnet50 --eval
     """
     
     def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, beta=1.5, num_neighbor=20, epoch=10, decay=1., targeted=False, 

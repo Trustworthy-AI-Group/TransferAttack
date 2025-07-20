@@ -27,7 +27,7 @@ class AdaEA(Attack):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/adaea/ensemble --attack adaea --model='resnet18,resnet101,resnext50_32x4d,densenet121'
+        python main.py --input_dir ./path/to/data --output_dir adv_data/adaea/ensemble --attack adaea --model='resnet50,vgg16,mobilenet_v2,inception_v3'
         python main.py --input_dir ./path/to/data --output_dir adv_data/adaea/ensemble --eval
     """
 

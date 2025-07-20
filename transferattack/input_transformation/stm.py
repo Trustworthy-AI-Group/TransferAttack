@@ -33,8 +33,8 @@ class STM(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1, num_style=20, gamma=0.5, beta=2.0
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/stm/resnet18 --attack stm --model=resnet18
-        python main.py --input_dir ./path/to/data --output_dir adv_data/stm/resnet18 --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/stm/resnet50 --attack stm --model=resnet50
+        python main.py --input_dir ./path/to/data --output_dir adv_data/stm/resnet50 --eval
 
     Notes: 
         Download checkpoints ('checkpoint_transformer.pth' and 'checkpoint_embeddings.pth') from https://github.com/Zhijin-Ge/STM,
