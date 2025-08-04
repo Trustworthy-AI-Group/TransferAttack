@@ -32,13 +32,12 @@ class MEF(Attack):
         python main.py --input_dir ./path/to/data --output_dir adv_data/mef/resnet50 --eval
     """
     
-    def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, num_neighbor=20, gamma=2., kesai=0.15, lamada=0.16/255, epoch=20, inner_decay=0.9, decay=0.5, targeted=False, 
+    def __init__(self, model_name, epsilon=16/255, alpha=1.6/255, num_neighbor=20, gamma=2., kesai=0.15, epoch=20, inner_decay=0.9, decay=0.5, targeted=False, 
                 random_start=False, norm='linfty', loss='crossentropy_no_reduction', device=None, attack='MEF', **kwargs):
         super().__init__(attack, model_name, epsilon, targeted, random_start, norm, loss, device)
         self.alpha = alpha
         self.kesai = kesai * epsilon
         self.gamma = gamma * epsilon
-        self.lamada = lamada
         self.epoch = epoch
         self.inner_decay = inner_decay
         self.decay = decay
