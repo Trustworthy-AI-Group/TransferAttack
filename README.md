@@ -36,8 +36,8 @@ pip install -r requirements.txt
 
 
 ## Usage
-We randomly sample 1,000 images from ImageNet validate set, in which each image is from one category and can be correctly classified by the adopted models (For some categories, we cannot choose one image that is correctly classified by all the models. In this case, we select the image that receives accurate classifications from the majority of models.). Download the data from [![GoogleDrive](https://img.shields.io/badge/GoogleDrive-space-blue)
-](https://drive.google.com/file/d/1d-_PKYi3MBDPtJV4rfMCCtmsE0oWX7ZB/view?usp=sharing) or [![Huggingface Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/datasets/Trustworthy-AI-Group/TransferAttack/blob/main/data.zip) into `/path/to/data`. Then you can execute the attack as follows:
+We adopt an academic-standard ImageNet-compatible dataset comprising 1,000 PNG images for our experiments. Download the data from [![GoogleDrive](https://img.shields.io/badge/GoogleDrive-space-blue)
+](https://drive.google.com/file/d/1Xx-fJ7_zADhNJRTe7ISB0mdWDT7B8LRr/view?usp=drive_link) or [![Huggingface Spaces](https://drive.google.com/file/d/1Xx-fJ7_zADhNJRTe7ISB0mdWDT7B8LRr/view?usp=drive_link) into `/path/to/data`. Then you can execute the attack as follows:
 
 ```
 python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 --attack mifgsm --model=resnet50
@@ -572,13 +572,13 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 
 ### Models
 
-To thoroughly evaluate existing attacks, we have included various popular models, including both CNNs ([ResNet-18](https://arxiv.org/abs/1512.03385), [ResNet-101](https://arxiv.org/abs/1512.03385), [ResNeXt-50](https://arxiv.org/abs/1611.05431), [DenseNet-121](https://arxiv.org/abs/1608.06993)) and ViTs ([ViT](https://arxiv.org/abs/2010.11929), [PiT](https://arxiv.org/abs/2103.16302), [Visformer](https://arxiv.org/abs/2104.12533), [Swin](https://arxiv.org/abs/2103.14030)). Moreover, we also adopted four defense methods, namely [AT](https://arxiv.org/abs/1705.07204), [HGD](https://arxiv.org/abs/1712.02976), [RS](https://arxiv.org/abs/1902.02918), [NRP](https://arxiv.org/abs/2006.04924).
+To thoroughly evaluate existing attacks, we have included various popular models, including both CNNs ([ResNet-50](https://arxiv.org/abs/1512.03385), [VGG-16](https://arxiv.org/abs/2011.12960), [MobileNet-V2](https://arxiv.org/abs/1801.04381), [Inception-V3](https://arxiv.org/abs/1512.00567)) and ViTs ([ViT](https://arxiv.org/abs/2010.11929), [PiT](https://arxiv.org/abs/2103.16302), [Visformer](https://arxiv.org/abs/2104.12533), [Swin](https://arxiv.org/abs/2103.14030)). Moreover, we also adopted four defense methods, namely [AT](https://arxiv.org/abs/1705.07204), [HGD](https://arxiv.org/abs/1712.02976), [RS](https://arxiv.org/abs/1902.02918), [NRP](https://arxiv.org/abs/2006.04924), [DiffPure](https://arxiv.org/abs/2205.07460).
 The defense models can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1NfSjLzc-MtkYHLumcKYs6OqC2X_zWy3g?usp=share_link) or [Huggingface](https://huggingface.co/Trustworthy-AI-Group/TransferAttack/blob/main/defense_model.zip).
 
 ## Evaluation
 
 ### Untargeted Attack
-**Note**: We adopt $\epsilon=16/255$ with the number of iterations $T=10$. The base attack for other types of attack is [MI-FGSM](https://arxiv.org/abs/1710.06081). The defaut surrogate model is ResNet-18. For [YAILA](#yaila), we adopt ResNet-50 as the surrogate model. For [PNA-PatchOUt](#pna), [SAPR](#sapr), [TGR](#tgr), [VDC](#vdc), we adopt ViT as the surrogate model. For [Ensemble](#ensemble) attacks, we use four CNNs([ResNet-18](https://arxiv.org/abs/1512.03385), [ResNet-101](https://arxiv.org/abs/1512.03385), [ResNeXt-50](https://arxiv.org/abs/1611.05431), [DenseNet-121](https://arxiv.org/abs/1608.06993)) as the ensemble model.
+**Note**: We adopt $\epsilon=16/255$ with the number of iterations $T=10$. The base attack for other types of attack is [MI-FGSM](https://arxiv.org/abs/1710.06081). The defaut surrogate model is ResNet-50. For [YAILA](#yaila), we adopt ResNet-50 as the surrogate model. For [PNA-PatchOUt](#pna), [SAPR](#sapr), [TGR](#tgr), [VDC](#vdc), we adopt ViT as the surrogate model. For [Ensemble](#ensemble) attacks, we use four CNNs(ResNet-50](https://arxiv.org/abs/1512.03385), [VGG-16](https://arxiv.org/abs/2011.12960), [MobileNet-V2](https://arxiv.org/abs/1801.04381), [Inception-V3](https://arxiv.org/abs/1512.00567)) as the ensemble model.
 
 <table  style="width:100%" border="1">
 <thead>
@@ -947,19 +947,19 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr>
 <td><a href="./transferattack/gradient/mef.py" target="_blank" rel="noopener noreferrer">MEF</a></td>
-<td >96.1</td>
-<td >85.9</td>
-<td >82.9</td>
-<td >79.2</td>
-<td >54.4</td>
-<td >67.7</td>
-<td >74.3</td>
-<td >74.0</td>
-<td >46.6</td>
-<td >70.6</td>
-<td >39.7</td>
-<td >76.1</td>
-<td >43.3</td>
+<td >99.3</td>
+<td >95.3</td>
+<td >94.1</td>
+<td >91.4</td>
+<td >68.4</td>
+<td >80.8</td>
+<td >88.7</td>
+<td >88.3</td>
+<td >47.6</td>
+<td >86.7</td>
+<td >41.2</td>
+<td >81.6</td>
+<td >44.3</td>
 </tr>
 
 <tr>
@@ -1153,19 +1153,19 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr>
 <td><a href="./transferattack/input_transformation/pam.py" target="_blank" rel="noopener noreferrer">PAM</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >100.0</td>
+<td >81.3</td>
+<td >77.0</td>
+<td >73.3</td>
+<td >27.1</td>
+<td >42.1</td>
+<td >58.2</td>
+<td >53.2</td>
+<td >43.0</td>
+<td >51.2</td>
+<td >30.2</td>
+<td >69.0</td>
+<td >19.9</td>
 </tr>
 
 <tr>
@@ -1265,7 +1265,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >86.4</td>
 <td >48.6</td>
 <td >85.5</td>
-<td ></td>
+<td >39.6</td>
 <td >80.2</td>
 <td >42.1</td>
 </tr>
@@ -1572,7 +1572,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >37.2</td>
 <td >41.3</td>
 <td >19.9</td>
-<td ></td>
+<td >27.9</td>
 <td >59.9</td>
 <td >17.1</td>
 </tr>
@@ -1588,9 +1588,9 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >73.8</td>
 <td >47.7</td>
 <td >74.3</td>
-<td ></td>
+<td >39.5</td>
 <td >82.5</td>
-<td ></td>
+<td >28.2</td>
 </tr>
 
 <tr id="pna">
@@ -1663,19 +1663,19 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr id="ata_vit">
 <td><a href="./transferattack/model_related/ata_vit.py" target="_blank" rel="noopener noreferrer">ATA_ViT</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >24.7</td>
+<td >86.7</td>
+<td >39.9</td>
+<td >58.2</td>
+<td >25.7</td>
+<td >14.5</td>
+<td >15.2</td>
+<td >9.9</td>
+<td >52.7</td>
+<td >52.1</td>
+<td >37.4</td>
+<td >89.3</td>
+<td >45.4</td>
 </tr>
 
 <tr>
@@ -1885,19 +1885,19 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr>
 <td><a href="./transferattack/model_related/ghost.py" target="_blank" rel="noopener noreferrer">Ghost</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >99.3</td>
+<td >77.4</td>
+<td >70.6</td>
+<td >51.6</td>
+<td >18.2</td>
+<td >29.3</td>
+<td >41.5</td>
+<td >9.9</td>
+<td >41.6</td>
+<td >26.3</td>
+<td >28.6</td>
+<td >61.4</td>
+<td >14.5</td>
 </tr>
 
 <tr>
@@ -1929,7 +1929,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >55.9</td>
 <td >44.6</td>
 <td >58.2</td>
-<td ></td>
+<td >32.7</td>
 <td >67.2</td>
 <td >18.0</td>
 </tr>
@@ -2005,19 +2005,19 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <tr>
 <th rowspan="4"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >97.1</td>
+<td >99.2</td>
+<td >98.4</td>
+<td >95.9</td>
+<td >38.3</td>
+<td >44.6</td>
+<td >91.6</td>
+<td >68.7</td>
+<td >42.1</td>
+<td >94.8</td>
+<td >31.3</td>
+<td >70.8</td>
+<td >32.5</td>
 </tr>
 
 <tr id="ltp">
@@ -2039,19 +2039,19 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr>
 <td><a href="./transferattack/generation/ada.py" target="_blank" rel="noopener noreferrer">ADA</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >71.7</td>
+<td >89.4</td>
+<td >80.6</td>
+<td >75.9</td>
+<td >18.1</td>
+<td >20.4</td>
+<td >50.9</td>
+<td >39.5</td>
+<td >38.4</td>
+<td >1.4</td>
+<td >27.9</td>
+<td >32.2</td>
+<td >26.3</td>
 </tr>
 
 <tr>
@@ -2075,7 +2075,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 ### Targeted Attack
 
-**Note**: We adopt $\epsilon=16/255, \alpha=2/255$ with the number of iterations $T=300$. The default surrogate model is ResNet-18. For each image, the target label is randomly sampled and fixed in the `labels.csv`.
+**Note**: We adopt $\epsilon=16/255, \alpha=2/255$ with the number of iterations $T=300$. The default surrogate model is ResNet-50. For each image, the target label is randomly sampled and fixed in the `labels.csv`.
 
 For generation-based targeted attack, TTP and M3D, there are 10 target classes and the class to label mapping is shown below.
 ```
