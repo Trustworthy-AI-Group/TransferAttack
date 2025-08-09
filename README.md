@@ -336,7 +336,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="19"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="20"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -429,6 +429,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://arxiv.org/abs/2311.18495" target="_blank" rel="noopener noreferrer">MA (Ma et al., 2024)</a></td>
 <td ><sub>Minimize KL divergence in the predictions between the source and the witness model. </sub></td>
+</tr>
+
+<tr>
+  <td><a href="https://arxiv.org/html/2503.15404" target="_blank" rel="noopener noreferrer">FPR (Ren et al., 2025)</a></td>
+  <td><sub>Refining attention maps and token embeddings of Vision Transformers from the forward propagation.</sub></td>
 </tr>
 
 <tr>
@@ -1543,7 +1548,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="19"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="20"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >73.2</td>
@@ -1863,6 +1868,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >34.3</td>
 <td >72.7</td>
 <td >23.0</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/fpr.py" target="_blank" rel="noopener noreferrer">FPR</a></td>
+<td >56.6</td>
+<td >83.6</td>
+<td >81.4</td>
+<td >70.9</td>
+<td >99.5</td>
+<td >54.6</td>
+<td >66.9</td>
+<td >71.0</td>
+<td >46.4</td>
+<td >47.0</td>
+<td >35.4</td>
+<td >63.0</td>
+<td >30.9</td>
 </tr>
 
 <tr>
