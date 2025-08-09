@@ -432,6 +432,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/html/2503.15404" target="_blank" rel="noopener noreferrer">FPR (Ren et al., 2025)</a></td>
+<td ><sub>Refining attention maps and token embeddings of Vision Transformers from the forward propagation. </sub></td>
+</tr>
+
+<tr>
 <th rowspan="8"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1611.02770" target="_blank" rel="noopener noreferrer">Ens (Liu et al., 2017)</a></td>
 <td ><sub>Generate the adversarial examplesusing multiple models</sub></td>
@@ -1863,6 +1868,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >34.3</td>
 <td >72.7</td>
 <td >23.0</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/fpr.py" target="_blank" rel="noopener noreferrer">FPR</a></td>
+<td >56.6</td>
+<td >83.6</td>
+<td >81.4</td>
+<td >70.9</td>
+<td >99.5</td>
+<td >54.6</td>
+<td >66.9</td>
+<td >71.0</td>
+<td >46.4</td>
+<td >47.0</td>
+<td >35.4</td>
+<td >63.0</td>
+<td >30.9</td>
 </tr>
 
 <tr>

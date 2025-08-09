@@ -23,3 +23,5 @@
 - [Zhengwei Fang](https://github.com/jankinf) added the [ANDA](./transferattack/gradient/anda.py) method.
 
 - Guanyan Ou checked the [SASD_WS](./transferattack/model_related/sasd_ws.py) method.
+
+- [Yuchen Ren](https://github.com/RYC-98) added the [FPR](./transferattack/model_related/fpr.py) method.

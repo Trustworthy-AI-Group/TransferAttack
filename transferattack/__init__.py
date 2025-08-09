@@ -100,7 +100,8 @@ attack_zoo = {
     'metassa': ('.model_related.metassa', 'MetaSSA'),
     'vdc': ('.model_related.vdc', 'VDC'),
     'ma': ('.model_related.ma', 'MA'),
-    
+    'fpr': ('.model_related.fpr', 'FPR'),
+
     # ensemble
     'ens': ('.ensemble.ens', 'ENS'),
     'ghost': ('.model_related.ghost', 'GhostNetwork_MIFGSM'),
