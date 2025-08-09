@@ -431,10 +431,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td ><sub>Minimize KL divergence in the predictions between the source and the witness model. </sub></td>
 </tr>
 
+
 <tr>
-<td><a href="https://arxiv.org/html/2503.15404" target="_blank" rel="noopener noreferrer">FPR (Ren et al., 2025)</a></td>
-<td ><sub>Refining attention maps and token embeddings of Vision Transformers from the forward propagation. </sub></td>
+  <td><a href="https://arxiv.org/html/2503.15404" target="_blank" rel="noopener noreferrer">FPR (Ren et al., 2025)</a></td>
+  <td><sub>Refining attention maps and token embeddings of Vision Transformers from the forward propagation.</sub></td>
 </tr>
+
 
 <tr>
 <th rowspan="8"><sub><strong>Ensemble-based</strong></sub></th>
