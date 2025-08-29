@@ -32,7 +32,7 @@ class ATT(MIFGSM):
         epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1.0, lam=0.01, gamma=0.5, scale=0.4, offset=0.4
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/att/vit --attack=att --model vit_base_patch16_224 
+        python main.py --input_dir ./path/to/data --output_dir adv_data/att/vit --attack=att --model vit_base_patch16_224 --batchsize 1
         python main.py --input_dir ./path/to/data --output_dir adv_data/att/vit --eval
 
     """
@@ -290,4 +290,5 @@ def forward(self, data, label, **kwargs):
             momentum = self.get_momentum(grad, momentum)
             delta = self.update_delta(delta, data, momentum, self.alpha)
         
+
         return delta.detach()
