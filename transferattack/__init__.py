@@ -28,6 +28,7 @@ attack_zoo = {
     'rgmifgsm': ('.gradient.mifgsm_with_tricks', 'RGMIFGSM'),
     'dual_mifgsm': ('.gradient.mifgsm_with_tricks', 'DualMIFGSM'),
     'ens_mifgsm': ('.gradient.mifgsm_with_tricks', 'Ens_FGSM_MIFGSM'),
+    'fgsra': ('.gradient.fgsra', 'FGSRA'),
 
     # input transformation
     ## Untargeted
@@ -100,6 +101,7 @@ attack_zoo = {
     'metassa': ('.model_related.metassa', 'MetaSSA'),
     'vdc': ('.model_related.vdc', 'VDC'),
     'ma': ('.model_related.ma', 'MA'),
+    'att': ('.model_related.att', 'ATT'),
     'fpr': ('.model_related.fpr', 'FPR'),
 
     # ensemble
