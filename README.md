@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="24"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -171,6 +171,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://arxiv.org/abs/2211.11236" target="_blank" rel="noopener noreferrer">GI-FGSM (Wang et al., 2024)</a></td>
 <td ><sub>Use global momentum initialization to better stablize update direction.</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://dl.acm.org/doi/10.1145/3627673.3679858" target="_blank" rel="noopener noreferrer">FGSRA (Wang et al., 2024)</a></td>
+<td ><sub>Leverage frequency information and introduce similarity weights to assess neighborhood contribution.</sub></td>
 </tr>
 
 <tr>
@@ -336,7 +341,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="20"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="21"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -430,6 +435,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td><a href="https://arxiv.org/abs/2311.18495" target="_blank" rel="noopener noreferrer">MA (Ma et al., 2024)</a></td>
 <td ><sub>Minimize KL divergence in the predictions between the source and the witness model. </sub></td>
 </tr>
+
+<tr>
+<td><a href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/24f8dd1b8f154f1ee0d7a59e368eccf3-Abstract-Conference.html" target="_blank" rel="noopener noreferrer">ATT (Ming et al., 2024)</a></td>
+<td ><sub>Adaptively re-scale token gradient, patch out under semantic guidance and truncate token gradient.</sub></td>
+</tr>
+
 
 <tr>
   <td><a href="https://arxiv.org/html/2503.15404" target="_blank" rel="noopener noreferrer">FPR (Ren et al., 2025)</a></td>
@@ -610,7 +621,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="24"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >49.2</td>
 <td >54.6</td>
@@ -998,6 +1009,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >28.1</td>
 <td >61.7</td>
 <td >16.6</td>
+</tr>
+
+<td><a href="./transferattack/gradient/fgsra.py" target="_blank" rel="noopener noreferrer">FGSRA</a></td>
+<td >97.9</td>
+<td >89.7</td>
+<td >89.6</td>
+<td >86.2</td>
+<td >45.7</td>
+<td >67.8</td>
+<td >75.9</td>
+<td >75.9</td>
+<td >46.6</td>
+<td >72.5</td>
+<td >36.3</td>
+<td >77.4</td>
+<td >32.2</td>
 </tr>
 
 <tr>
@@ -1548,7 +1575,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="20"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="21"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >73.2</td>
@@ -1868,6 +1895,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >34.3</td>
 <td >72.7</td>
 <td >23.0</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/att.py" target="_blank" rel="noopener noreferrer">ATT</a></td>
+<td >61.1</td>
+<td >79.7</td>
+<td >76.4</td>
+<td >63.0</td>
+<td >100.0</td>
+<td >68.3</td>
+<td >75.0</td>
+<td >81.6</td>
+<td >45.2</td>
+<td >49.7</td>
+<td >36.1</td>
+<td >60.7</td>
+<td >33.4</td>
 </tr>
 
 <tr>
