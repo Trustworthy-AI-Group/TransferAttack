@@ -499,6 +499,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 </table>
 
+<tr>
+<td><a href="https://openreview.net/pdf?id=bPJo5uSkOJ" target="_blank" rel="noopener noreferrer">P2FA (Liu et al., 2025)</a></td>
+<td ><sub>Enhance transferability by directly perturbing important features multiple times in the feature space and then inverting them back to the pixel space</sub></td>
+</tr>
+
 ### Targeted Attacks
 
 <table  style="width:100%" border="1">
@@ -1545,6 +1550,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >33.0</td>
 <td >79.7</td>
 <td >26.0</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/advanced_objective/p2fa.py" target="_blank" rel="noopener noreferrer">P2FA</a></td>
+<td >100.0</td>
+<td >97.9</td>
+<td >97.6</td>
+<td >84.0</td>
+<td >43.7</td>
+<td >64.9</td>
+<td >86.0</td>
+<td >83.2</td>
+<td >43.9</td>
+<td >66.3</td>
+<td >32.2</td>
+<td >79.5</td>
+<td >22.2</td>
 </tr>
 
 <tr>
