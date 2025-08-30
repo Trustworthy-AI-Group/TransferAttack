@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="24"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -171,6 +171,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://arxiv.org/abs/2211.11236" target="_blank" rel="noopener noreferrer">GI-FGSM (Wang et al., 2024)</a></td>
 <td ><sub>Use global momentum initialization to better stablize update direction.</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://ieeexplore.ieee.org/document/11018126" target="_blank" rel="noopener noreferrer">GAA (Gan et al., 2025)</a></td>
+<td ><sub>Aggregate adversarial examples in the neighborhood with 
+  worst-aware loss and substitute loss to obtain a flatter local minimum.</sub></td>
 </tr>
 
 <tr>
