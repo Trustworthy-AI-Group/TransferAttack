@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="24"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -171,6 +171,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://arxiv.org/abs/2211.11236" target="_blank" rel="noopener noreferrer">GI-FGSM (Wang et al., 2024)</a></td>
 <td ><sub>Use global momentum initialization to better stablize update direction.</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/pdf/2412.18844" target="_blank" rel="noopener noreferrer">MUMODIG (Ren et al., 2024)</a></td>
+<td ><sub> Improve integrated gradients attacks by generating integration paths through multiple baseline samples and enforcing the monotonicity of each path.</sub></td>
 </tr>
 
 <tr>
@@ -610,7 +615,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="24"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >49.2</td>
 <td >54.6</td>
@@ -998,6 +1003,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >28.1</td>
 <td >61.7</td>
 <td >16.6</td>
+</tr>
+
+<td><a href="./transferattack/gradient/mumodig.py" target="_blank" rel="noopener noreferrer">MUMODIG</a></td>
+<td >98.6</td>
+<td >87.4</td>
+<td >85</td>
+<td >79.9</td>
+<td >45.4</td>
+<td >65.6</td>
+<td >75.8</td>
+<td >71.7</td>
+<td >43.4</td>
+<td >69.7</td>
+<td >31.7</td>
+<td >67</td>
+<td >27</td>
 </tr>
 
 <tr>

@@ -28,6 +28,7 @@ attack_zoo = {
     'rgmifgsm': ('.gradient.mifgsm_with_tricks', 'RGMIFGSM'),
     'dual_mifgsm': ('.gradient.mifgsm_with_tricks', 'DualMIFGSM'),
     'ens_mifgsm': ('.gradient.mifgsm_with_tricks', 'Ens_FGSM_MIFGSM'),
+    'mumodig': ('.gradient.mumodig','MUMODIG'),
 
     # input transformation
     ## Untargeted
