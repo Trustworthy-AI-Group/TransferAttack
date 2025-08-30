@@ -616,7 +616,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="24"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >49.2</td>
 <td >54.6</td>
@@ -1004,6 +1004,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >28.1</td>
 <td >61.7</td>
 <td >16.6</td>
+</tr>
+
+<td><a href="./transferattack/gradient/gaa.py" target="_blank" rel="noopener noreferrer">GAA</a></td>
+<td >95.5</td>
+<td >84.6</td>
+<td >82.5</td>
+<td >81.8</td>
+<td >43.3</td>
+<td >59.9</td>
+<td >70.7</td>
+<td >66.3</td>
+<td >49.3</td>
+<td >71.1</td>
+<td >43.5</td>
+<td >75.9</td>
+<td >40.9</td>
 </tr>
 
 <tr>
