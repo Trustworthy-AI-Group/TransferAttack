@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="24"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -171,6 +171,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://arxiv.org/abs/2211.11236" target="_blank" rel="noopener noreferrer">GI-FGSM (Wang et al., 2024)</a></td>
 <td ><sub>Use global momentum initialization to better stablize update direction.</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Guo_Boosting_Adversarial_Transferability_through_Augmentation_in_Hypothesis_Space_CVPR_2025_paper.pdf" target="_blank" rel="noopener noreferrer">OPS (Guo et al., 2025)</a></td>
+<td ><sub>Constructs a stochastic optimization problem by input transformation operators and random perturbations.</sub></td>
 </tr>
 
 <tr>
@@ -610,7 +615,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="23"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="24"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >49.2</td>
 <td >54.6</td>
@@ -998,6 +1003,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >28.1</td>
 <td >61.7</td>
 <td >16.6</td>
+</tr>
+
+<td><a href="./transferattack/gradient/ops.py" target="_blank" rel="noopener noreferrer">OPS</a></td>
+<td >99.5</td>
+<td >98.1</td>
+<td >97.8</td>
+<td >98.2</td>
+<td >88.8</td>
+<td >93.8</td>
+<td >96.7</td>
+<td >95.7</td>
+<td >57.8</td>
+<td >96.9</td>
+<td >64.6</td>
+<td >90.7</td>
+<td >83.5</td>
 </tr>
 
 <tr>
