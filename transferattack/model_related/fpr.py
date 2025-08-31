@@ -36,7 +36,7 @@ class FPR(MIFGSM):
     """
 
     def __init__(self, model_name='vit_base_patch16_224', epsilon=16/255, alpha=1.6/255, epoch=10, decay=1., targeted=False,  random_start=False, norm='linfty', loss='crossentropy', device=None, 
-                 attack='mda', **kwargs):
+                 attack='fpr', **kwargs):
         super().__init__(model_name, epsilon, alpha, epoch, decay, targeted, random_start, norm, loss, device, attack)
 
         self.model_name = model_name
