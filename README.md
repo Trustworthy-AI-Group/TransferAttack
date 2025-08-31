@@ -174,6 +174,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+<td><a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Guo_Boosting_Adversarial_Transferability_through_Augmentation_in_Hypothesis_Space_CVPR_2025_paper.pdf" target="_blank" rel="noopener noreferrer">OPS (Guo et al., 2025)</a></td>
+<td ><sub>Constructs a stochastic optimization problem by input transformation operators and random perturbations.</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://arxiv.org/pdf/2412.18844" target="_blank" rel="noopener noreferrer">MUMODIG (Ren et al., 2024)</a></td>
 <td ><sub> Improve integrated gradients attacks by generating integration paths through multiple baseline samples and enforcing the monotonicity of each path.</sub></td>
 </tr>
@@ -1025,6 +1030,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >28.1</td>
 <td >61.7</td>
 <td >16.6</td>
+</tr>
+
+<td><a href="./transferattack/gradient/ops.py" target="_blank" rel="noopener noreferrer">OPS</a></td>
+<td >99.5</td>
+<td >98.1</td>
+<td >97.8</td>
+<td >98.2</td>
+<td >88.8</td>
+<td >93.8</td>
+<td >96.7</td>
+<td >95.7</td>
+<td >57.8</td>
+<td >96.9</td>
+<td >64.6</td>
+<td >90.7</td>
+<td >83.5</td>
 </tr>
 
 <td><a href="./transferattack/gradient/mumodig.py" target="_blank" rel="noopener noreferrer">MUMODIG</a></td>

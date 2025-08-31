@@ -25,6 +25,7 @@ attack_zoo = {
     'mef': ('.gradient.mef', 'MEF'),
     'anda': ('.gradient.anda', 'ANDA'),
     'gifgsm': ('.gradient.gifgsm', 'GIFGSM'),
+    'ops': ('.gradient.ops', 'OPS'),
     'rgmifgsm': ('.gradient.mifgsm_with_tricks', 'RGMIFGSM'),
     'dual_mifgsm': ('.gradient.mifgsm_with_tricks', 'DualMIFGSM'),
     'ens_mifgsm': ('.gradient.mifgsm_with_tricks', 'Ens_FGSM_MIFGSM'),
