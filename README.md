@@ -174,6 +174,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+<td><a href="https://ieeexplore.ieee.org/document/11018126" target="_blank" rel="noopener noreferrer">GAA (Gan et al., 2025)</a></td>
+<td ><sub>Aggregate adversarial examples in the neighborhood with 
+  worst-aware loss and substitute loss to obtain a flatter local minimum.</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://dl.acm.org/doi/10.1145/3627673.3679858" target="_blank" rel="noopener noreferrer">FGSRA (Wang et al., 2024)</a></td>
 <td ><sub>Leverage frequency information and introduce similarity weights to assess neighborhood contribution.</sub></td>
 </tr>
@@ -1014,6 +1020,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >28.1</td>
 <td >61.7</td>
 <td >16.6</td>
+</tr>
+
+<td><a href="./transferattack/gradient/gaa.py" target="_blank" rel="noopener noreferrer">GAA</a></td>
+<td >95.5</td>
+<td >84.6</td>
+<td >82.5</td>
+<td >81.8</td>
+<td >43.3</td>
+<td >59.9</td>
+<td >70.7</td>
+<td >66.3</td>
+<td >49.3</td>
+<td >71.1</td>
+<td >43.5</td>
+<td >75.9</td>
+<td >40.9</td>
 </tr>
 
 <td><a href="./transferattack/gradient/fgsra.py" target="_blank" rel="noopener noreferrer">FGSRA</a></td>

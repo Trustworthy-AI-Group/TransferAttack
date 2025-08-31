@@ -28,6 +28,7 @@ attack_zoo = {
     'rgmifgsm': ('.gradient.mifgsm_with_tricks', 'RGMIFGSM'),
     'dual_mifgsm': ('.gradient.mifgsm_with_tricks', 'DualMIFGSM'),
     'ens_mifgsm': ('.gradient.mifgsm_with_tricks', 'Ens_FGSM_MIFGSM'),
+    'gaa': ('.gradient.gaa', 'GAA'),    
     'fgsra': ('.gradient.fgsra', 'FGSRA'),
 
     # input transformation
