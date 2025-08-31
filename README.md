@@ -180,6 +180,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+<td><a href="https://dl.acm.org/doi/10.1145/3627673.3679858" target="_blank" rel="noopener noreferrer">FGSRA (Wang et al., 2024)</a></td>
+<td ><sub>Leverage frequency information and introduce similarity weights to assess neighborhood contribution.</sub></td>
+</tr>
+
+<tr>
 <th rowspan="17"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
@@ -266,7 +271,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="15"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="16"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
 <td ><sub>Maximize the difference of feature maps between benign sample and adversarial example and smooth the perturbation </sub></td>
 </tr>
@@ -342,7 +347,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="20"><sub><strong>Model-related</strong></sub></th>
+<td><a href="https://openreview.net/pdf?id=bPJo5uSkOJ" target="_blank" rel="noopener noreferrer">P2FA (Liu et al., 2025)</a></td>
+<td ><sub>Enhance transferability by directly perturbing important features multiple times in the feature space and then inverting them back to the pixel space</sub></td>
+</tr>
+
+<tr>
+<th rowspan="21"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -436,6 +446,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td><a href="https://arxiv.org/abs/2311.18495" target="_blank" rel="noopener noreferrer">MA (Ma et al., 2024)</a></td>
 <td ><sub>Minimize KL divergence in the predictions between the source and the witness model. </sub></td>
 </tr>
+
+<tr>
+<td><a href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/24f8dd1b8f154f1ee0d7a59e368eccf3-Abstract-Conference.html" target="_blank" rel="noopener noreferrer">ATT (Ming et al., 2024)</a></td>
+<td ><sub>Adaptively re-scale token gradient, patch out under semantic guidance and truncate token gradient.</sub></td>
+</tr>
+
 
 <tr>
   <td><a href="https://arxiv.org/html/2503.15404" target="_blank" rel="noopener noreferrer">FPR (Ren et al., 2025)</a></td>
@@ -1022,6 +1038,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >40.9</td>
 </tr>
 
+<td><a href="./transferattack/gradient/fgsra.py" target="_blank" rel="noopener noreferrer">FGSRA</a></td>
+<td >97.9</td>
+<td >89.7</td>
+<td >89.6</td>
+<td >86.2</td>
+<td >45.7</td>
+<td >67.8</td>
+<td >75.9</td>
+<td >75.9</td>
+<td >46.6</td>
+<td >72.5</td>
+<td >36.3</td>
+<td >77.4</td>
+<td >32.2</td>
+</tr>
+
 <tr>
 <th rowspan="17"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
@@ -1315,7 +1347,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="15"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="16"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/tap.py" target="_blank" rel="noopener noreferrer">TAP</a></td>
 <td >99.9</td>
 <td >93.4</td>
@@ -1570,7 +1602,24 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="20"><sub><strong>Model-related</strong></sub></th>
+<td><a href="./transferattack/advanced_objective/p2fa.py" target="_blank" rel="noopener noreferrer">P2FA</a></td>
+<td >100.0</td>
+<td >97.9</td>
+<td >97.6</td>
+<td >84.0</td>
+<td >43.7</td>
+<td >64.9</td>
+<td >86.0</td>
+<td >83.2</td>
+<td >43.9</td>
+<td >66.3</td>
+<td >32.2</td>
+<td >79.5</td>
+<td >22.2</td>
+</tr>
+
+<tr>
+<th rowspan="21"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >73.2</td>
@@ -1890,6 +1939,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >34.3</td>
 <td >72.7</td>
 <td >23.0</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/att.py" target="_blank" rel="noopener noreferrer">ATT</a></td>
+<td >61.1</td>
+<td >79.7</td>
+<td >76.4</td>
+<td >63.0</td>
+<td >100.0</td>
+<td >68.3</td>
+<td >75.0</td>
+<td >81.6</td>
+<td >45.2</td>
+<td >49.7</td>
+<td >36.1</td>
+<td >60.7</td>
+<td >33.4</td>
 </tr>
 
 <tr>
