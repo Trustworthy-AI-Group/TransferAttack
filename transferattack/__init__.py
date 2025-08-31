@@ -29,6 +29,8 @@ attack_zoo = {
     'dual_mifgsm': ('.gradient.mifgsm_with_tricks', 'DualMIFGSM'),
     'ens_mifgsm': ('.gradient.mifgsm_with_tricks', 'Ens_FGSM_MIFGSM'),
     'mumodig': ('.gradient.mumodig','MUMODIG'),
+    'gaa': ('.gradient.gaa', 'GAA'),    
+    'fgsra': ('.gradient.fgsra', 'FGSRA'),
 
     # input transformation
     ## Untargeted
@@ -73,6 +75,7 @@ attack_zoo = {
     'danaa': ('.advanced_objective.danaa', 'DANAA'),
     'ilpd': ('.advanced_objective.ilpd', 'ILPD'),
     'bfa': ('.advanced_objective.bfa', 'BFA'),
+    'p2fa': ('.advanced_objective.p2fa', 'P2FA'),
     ## Targeted
     'aa': ('.advanced_objective.aa', 'AA'),
     'potrip': ('.advanced_objective.potrip', 'POTRIP'),
@@ -101,6 +104,7 @@ attack_zoo = {
     'metassa': ('.model_related.metassa', 'MetaSSA'),
     'vdc': ('.model_related.vdc', 'VDC'),
     'ma': ('.model_related.ma', 'MA'),
+    'att': ('.model_related.att', 'ATT'),
     'fpr': ('.model_related.fpr', 'FPR'),
 
     # ensemble
