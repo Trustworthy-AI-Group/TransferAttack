@@ -174,6 +174,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/pdf/2412.18844" target="_blank" rel="noopener noreferrer">MUMODIG (Ren et al., 2024)</a></td>
+<td ><sub> Improve integrated gradients attacks by generating integration paths through multiple baseline samples and enforcing the monotonicity of each path.</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://ieeexplore.ieee.org/document/11018126" target="_blank" rel="noopener noreferrer">GAA (Gan et al., 2025)</a></td>
 <td ><sub>Aggregate adversarial examples in the neighborhood with 
   worst-aware loss and substitute loss to obtain a flatter local minimum.</sub></td>
@@ -1020,6 +1025,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >28.1</td>
 <td >61.7</td>
 <td >16.6</td>
+</tr>
+
+<td><a href="./transferattack/gradient/mumodig.py" target="_blank" rel="noopener noreferrer">MUMODIG</a></td>
+<td >98.6</td>
+<td >87.4</td>
+<td >85</td>
+<td >79.9</td>
+<td >45.4</td>
+<td >65.6</td>
+<td >75.8</td>
+<td >71.7</td>
+<td >43.4</td>
+<td >69.7</td>
+<td >31.7</td>
+<td >67</td>
+<td >27</td>
 </tr>
 
 <td><a href="./transferattack/gradient/gaa.py" target="_blank" rel="noopener noreferrer">GAA</a></td>
