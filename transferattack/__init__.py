@@ -73,6 +73,7 @@ attack_zoo = {
     'danaa': ('.advanced_objective.danaa', 'DANAA'),
     'ilpd': ('.advanced_objective.ilpd', 'ILPD'),
     'bfa': ('.advanced_objective.bfa', 'BFA'),
+    'p2fa': ('.advanced_objective.p2fa', 'P2FA'),
     ## Targeted
     'aa': ('.advanced_objective.aa', 'AA'),
     'potrip': ('.advanced_objective.potrip', 'POTRIP'),
