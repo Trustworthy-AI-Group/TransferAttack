@@ -25,7 +25,6 @@ attack_zoo = {
     'mef': ('.gradient.mef', 'MEF'),
     'anda': ('.gradient.anda', 'ANDA'),
     'gifgsm': ('.gradient.gifgsm', 'GIFGSM'),
-    'ops': ('.gradient.ops', 'OPS'),
     'rgmifgsm': ('.gradient.mifgsm_with_tricks', 'RGMIFGSM'),
     'dual_mifgsm': ('.gradient.mifgsm_with_tricks', 'DualMIFGSM'),
     'ens_mifgsm': ('.gradient.mifgsm_with_tricks', 'Ens_FGSM_MIFGSM'),
@@ -52,6 +51,7 @@ attack_zoo = {
     'decowa': ('.input_transformation.decowa', 'DeCowA'),
     'l2t': ('.input_transformation.l2t', 'L2T'),
     'bsr': ('.input_transformation.bsr', 'BSR'),
+    'ops': ('.gradient.ops', 'OPS'),
     ## Targeted
     'odi': ('.input_transformation.odi.odi', 'ODI'),
     'su': ('.input_transformation.su', 'SU'),
