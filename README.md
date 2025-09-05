@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="24"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="26"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -174,12 +174,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<td><a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Guo_Boosting_Adversarial_Transferability_through_Augmentation_in_Hypothesis_Space_CVPR_2025_paper.pdf" target="_blank" rel="noopener noreferrer">OPS (Guo et al., 2025)</a></td>
-<td ><sub>Constructs a stochastic optimization problem by input transformation operators and random perturbations.</sub></td>
+<td><a href="https://dl.acm.org/doi/10.1145/3627673.3679858" target="_blank" rel="noopener noreferrer">FGSRA (Wang et al., 2024)</a></td>
+<td ><sub>Leverage frequency information and introduce similarity weights to assess neighborhood contribution.</sub></td>
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org/pdf/2412.18844" target="_blank" rel="noopener noreferrer">MUMODIG (Ren et al., 2024)</a></td>
+<td><a href="https://arxiv.org/pdf/2412.18844" target="_blank" rel="noopener noreferrer">MUMODIG (Ren et al., 2025)</a></td>
 <td ><sub> Improve integrated gradients attacks by generating integration paths through multiple baseline samples and enforcing the monotonicity of each path.</sub></td>
 </tr>
 
@@ -190,12 +190,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<td><a href="https://dl.acm.org/doi/10.1145/3627673.3679858" target="_blank" rel="noopener noreferrer">FGSRA (Wang et al., 2024)</a></td>
-<td ><sub>Leverage frequency information and introduce similarity weights to assess neighborhood contribution.</sub></td>
-</tr>
-
-<tr>
-<th rowspan="17"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="18"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -278,6 +273,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://arxiv.org/abs/2308.10299" target="_blank" rel="noopener noreferrer">BSR (Wang et al., 2024)</a></td>
 <td ><sub>Randomly shuffles and rotates the image blocks</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Guo_Boosting_Adversarial_Transferability_through_Augmentation_in_Hypothesis_Space_CVPR_2025_paper.pdf" target="_blank" rel="noopener noreferrer">OPS (Guo et al., 2025)</a></td>
+<td ><sub>Constructs a stochastic optimization problem by input transformation operators and random perturbations.</sub></td>
 </tr>
 
 <tr>
@@ -642,7 +642,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="24"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="26"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >49.2</td>
 <td >54.6</td>
@@ -1032,20 +1032,21 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >16.6</td>
 </tr>
 
-<td><a href="./transferattack/gradient/ops.py" target="_blank" rel="noopener noreferrer">OPS</a></td>
-<td >99.5</td>
-<td >98.1</td>
-<td >97.8</td>
-<td >98.2</td>
-<td >88.8</td>
-<td >93.8</td>
-<td >96.7</td>
-<td >95.7</td>
-<td >57.8</td>
-<td >96.9</td>
-<td >64.6</td>
-<td >90.7</td>
-<td >83.5</td>
+
+<td><a href="./transferattack/gradient/fgsra.py" target="_blank" rel="noopener noreferrer">FGSRA</a></td>
+<td >97.9</td>
+<td >89.7</td>
+<td >89.6</td>
+<td >86.2</td>
+<td >45.7</td>
+<td >67.8</td>
+<td >75.9</td>
+<td >75.9</td>
+<td >46.6</td>
+<td >72.5</td>
+<td >36.3</td>
+<td >77.4</td>
+<td >32.2</td>
 </tr>
 
 <td><a href="./transferattack/gradient/mumodig.py" target="_blank" rel="noopener noreferrer">MUMODIG</a></td>
@@ -1080,24 +1081,8 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >40.9</td>
 </tr>
 
-<td><a href="./transferattack/gradient/fgsra.py" target="_blank" rel="noopener noreferrer">FGSRA</a></td>
-<td >97.9</td>
-<td >89.7</td>
-<td >89.6</td>
-<td >86.2</td>
-<td >45.7</td>
-<td >67.8</td>
-<td >75.9</td>
-<td >75.9</td>
-<td >46.6</td>
-<td >72.5</td>
-<td >36.3</td>
-<td >77.4</td>
-<td >32.2</td>
-</tr>
-
 <tr>
-<th rowspan="17"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="18"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >98.7</td>
 <td >71.0</td>
@@ -1386,6 +1371,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >33.2</td>
 <td >76.3</td>
 <td >32.4</td>
+</tr>
+
+
+<td><a href="./transferattack/input_transformation/ops.py" target="_blank" rel="noopener noreferrer">OPS</a></td>
+<td >99.5</td>
+<td >98.1</td>
+<td >97.8</td>
+<td >98.2</td>
+<td >88.8</td>
+<td >93.8</td>
+<td >96.7</td>
+<td >95.7</td>
+<td >57.8</td>
+<td >96.9</td>
+<td >64.6</td>
+<td >90.7</td>
+<td >83.5</td>
 </tr>
 
 <tr>
@@ -2287,35 +2289,35 @@ Class Number: Class Name
 </tr>
 
 <td><a href="./transferattack/input_transformation/su.py" target="_blank" rel="noopener noreferrer">SU</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >100.0</td>
+<td >5.4</td>
+<td >7.1</td>
+<td >2.8</td>
+<td >0.1</td>
+<td >0.8</td>
+<td >12.0</td>
+<td >3.0</td>
+<td >0.1</td>
+<td >4.5</td>
+<td >0.0</td>
+<td >0.0</td>
+<td >0.0</td>
 </tr>
 
 <td><a href="./transferattack/input_transformation/idaa.py" target="_blank" rel="noopener noreferrer">IDAA </a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >71.7</td>
+<td >5.0</td>
+<td >4.8</td>
+<td >2.1</td>
+<td >0.3</td>
+<td >2.1</td>
+<td >5.0</td>
+<td >3.6</td>
+<td >0.1</td>
+<td >0.1</td>
+<td >0.0</td>
+<td >0.2</td>
+<td >0.0</td>
 </tr>
 
 
@@ -2337,83 +2339,83 @@ Class Number: Class Name
 </tr>
 
 <td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >99.8</td>
+<td >4.5</td>
+<td >5.6</td>
+<td >6.1</td>
+<td >0.9</td>
+<td >4.1</td>
+<td >10.8</td>
+<td >4.2</td>
+<td >0.0</td>
+<td >6.0</td>
+<td >0.0</td>
+<td >0.0</td>
+<td >0.0</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/logit.py" target="_blank" rel="noopener noreferrer">Logit</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >99.8</td>
+<td >2.9</td>
+<td >2.5</td>
+<td >1.8</td>
+<td >0.6</td>
+<td >2.2</td>
+<td >8.6</td>
+<td >2.5</td>
+<td >0.0</td>
+<td >3.3</td>
+<td >0.0</td>
+<td >0.0</td>
+<td >0.0</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/logit_margin.py" target="_blank" rel="noopener noreferrer">Logit-Margin</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >99.9</td>
+<td >3.1</td>
+<td >2.8</td>
+<td >1.7</td>
+<td >0.2</td>
+<td >2.5</td>
+<td >7.7</td>
+<td >3.4</td>
+<td >0.1</td>
+<td >2.3</td>
+<td >0.0</td>
+<td >0.1</td>
+<td >0.0</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/cfm.py" target="_blank" rel="noopener noreferrer">CFM</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >99.1</td>
+<td >54.2</td>
+<td >62.9</td>
+<td >46.9</td>
+<td >21.6</td>
+<td >38.1</td>
+<td >63.7</td>
+<td >46.0</td>
+<td >0.2</td>
+<td >54.2</td>
+<td >0.0</td>
+<td >0.5</td>
+<td >0.8</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/fft.py" target="_blank" rel="noopener noreferrer">FFT</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >98.7</td>
+<td >8.5</td>
+<td >9.4</td>
+<td >2.4</td>
+<td >0.5</td>
+<td >4.9</td>
+<td >14.4</td>
+<td >7.5</td>
+<td >0.1</td>
+<td >5.6</td>
+<td >0.0</td>
+<td >0.0</td>
+<td >0.0</td>
 </tr>
 
 <th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
@@ -2451,19 +2453,19 @@ Class Number: Class Name
 
 <th rowspan="1"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/sasd_ws.py" target="_blank" rel="noopener noreferrer">SASD_WS</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >90.5</td>
+<td >82.2</td>
+<td >78.9</td>
+<td >66.8</td>
+<td >18.3</td>
+<td >27.2</td>
+<td >64.5</td>
+<td >41.8</td>
+<td >0.2</td>
+<td >76.3</td>
+<td >0.0</td>
+<td >0.9</td>
+<td >0.7</td>
 </tr>
 </table>
 
