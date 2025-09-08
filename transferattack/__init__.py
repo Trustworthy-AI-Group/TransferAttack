@@ -107,6 +107,8 @@ attack_zoo = {
     'ma': ('.model_related.ma', 'MA'),
     'att': ('.model_related.att', 'ATT'),
     'fpr': ('.model_related.fpr', 'FPR'),
+    'awt': ('.model_related.awt', 'AWT'),
+    'faug': ('.model_related.faug', 'FAUG'),
 
     # ensemble
     'ens': ('.ensemble.ens', 'ENS'),
