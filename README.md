@@ -362,7 +362,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="21"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="22"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -466,6 +466,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
   <td><a href="https://arxiv.org/html/2503.15404" target="_blank" rel="noopener noreferrer">FPR (Ren et al., 2025)</a></td>
   <td><sub>Refining attention maps and token embeddings of Vision Transformers from the forward propagation.</sub></td>
+</tr>
+
+<tr>
+  <td><a href="https://ieeexplore.ieee.org/document/11018095" target="_blank" rel="noopener noreferrer">ANA (Chen et al., 2025)</a></td>
+  <td><sub>Using masking operations and a lightweight alignment network to make surrogate models focus on critical regions of images, thereby generating adversarial examples with much higher transferability.</sub></td>
 </tr>
 
 <tr>
@@ -1663,7 +1668,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="21"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="22"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >73.2</td>
@@ -2017,6 +2022,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >35.4</td>
 <td >63.0</td>
 <td >30.9</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/ana.py" target="_blank" rel="noopener noreferrer">ANA</a></td>
+<td >78.5</td>
+<td >81.2</td>
+<td >76.4</td>
+<td >60.2</td>
+<td >22.3</td>
+<td >30.1</td>
+<td >41.3</td>
+<td >37.9</td>
+<td >42.6</td>
+<td >43.5</td>
+<td >29.9</td>
+<td >64.9</td>
+<td >16.3</td>
 </tr>
 
 <tr>
