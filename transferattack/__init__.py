@@ -126,6 +126,7 @@ attack_zoo = {
     'ltp': ('.generation.ltp', 'LTP'),
     'ada': ('.generation.ada', 'ADA'),
     'ge_advgan': ('.generation.ge_advgan', 'GE_ADVGAN'),
+    'diffattack': ('.generation.diffattack', 'DiffAttack'),
     ## Targeted
     'ttp': ('.generation.ttp', 'TTP'),
     'm3d': ('.generation.m3d', 'M3D'),
