@@ -2162,7 +2162,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="4"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="5"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
 <td >97.1</td>
 <td >99.2</td>
