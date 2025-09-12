@@ -115,6 +115,7 @@ attack_zoo = {
     'smer': ('.ensemble.smer', 'SMER'),
     ## Targeted
     'sasd_ws': ('.ensemble.sasd_ws', 'SASD_WS'),
+    'rfcoa' : ('.ensemble.rfcoa.rfcoa', 'RFCoA'),
     
     # generation
     ## Untargeted
