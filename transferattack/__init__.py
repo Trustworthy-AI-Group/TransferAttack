@@ -55,6 +55,7 @@ attack_zoo = {
     'idaa': ('.input_transformation.idaa', 'IDAA'),
     'ssm_p': ('.input_transformation.ssm_with_tricks', 'SSA_P'),
     'ssm_h': ('.input_transformation.ssm_with_tricks', 'SSM_H'),
+    'everywhere': ('.input_transformation.everywhere', 'EverywhereAttack'),
     
     # advanced_objective
     ## Untargeted
