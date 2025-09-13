@@ -30,7 +30,8 @@ attack_zoo = {
     'ens_mifgsm': ('.gradient.mifgsm_with_tricks', 'Ens_FGSM_MIFGSM'),
     'fgsra': ('.gradient.fgsra', 'FGSRA'),
     'mumodig': ('.gradient.mumodig','MUMODIG'),
-    'gaa': ('.gradient.gaa', 'GAA'),    
+    'gaa': ('.gradient.gaa', 'GAA'),  
+    'foolmix': ('.gradient.foolmix', 'Foolmix'),  
     
     # input transformation
     ## Untargeted
