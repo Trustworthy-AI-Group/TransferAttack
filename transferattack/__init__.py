@@ -109,6 +109,7 @@ attack_zoo = {
     'fpr': ('.model_related.fpr', 'FPR'),
     'awt': ('.model_related.awt', 'AWT'),
     'faug': ('.model_related.faug', 'FAUG'),
+    'ana': ('.model_related.ana', 'ANA'),
 
     # ensemble
     'ens': ('.ensemble.ens', 'ENS'),
@@ -128,6 +129,7 @@ attack_zoo = {
     'ltp': ('.generation.ltp', 'LTP'),
     'ada': ('.generation.ada', 'ADA'),
     'ge_advgan': ('.generation.ge_advgan', 'GE_ADVGAN'),
+    'diffattack': ('.generation.diffattack', 'DiffAttack'),
     ## Targeted
     'ttp': ('.generation.ttp', 'TTP'),
     'm3d': ('.generation.m3d', 'M3D'),

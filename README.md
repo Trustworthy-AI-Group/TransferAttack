@@ -362,7 +362,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="23"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="24"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -479,6 +479,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+  <td><a href="https://ieeexplore.ieee.org/document/11018095" target="_blank" rel="noopener noreferrer">ANA (Chen et al., 2025)</a></td>
+  <td><sub>Using masking operations and a lightweight alignment network to make surrogate models focus on critical regions of images, thereby generating adversarial examples with much higher transferability.</sub></td>
+</tr>
+
+<tr>
 <th rowspan="8"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1611.02770" target="_blank" rel="noopener noreferrer">Ens (Liu et al., 2017)</a></td>
 <td ><sub>Generate the adversarial examplesusing multiple models</sub></td>
@@ -520,7 +525,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="4"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="5"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1905.11736" target="_blank" rel="noopener noreferrer">CDTP (Naseer et al., 2019)</a></td>
 <td ><sub>Train a generative model on datasets from different domains to learn domain-invariant perturbations</sub></td>
 </tr>
@@ -538,6 +543,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://arxiv.org/pdf/2401.06031" target="_blank" rel="noopener noreferrer">GE-ADVGAN (Zhu et al., 2024)</a></td>
 <td ><sub> Enhance the transferability of adversarial samples by incorporating gradient editing mechanisms and frequency domain exploration into the generative model's training process.</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://ieeexplore.ieee.org/abstract/document/10716799" target="_blank" rel="noopener noreferrer">DiffAttack (Chen et al., 2024)</a></td>
+<td ><sub> An unrestricted attack based on diffusion models that can achieve both good transferability and imperceptibility.</sub></td>
 </tr>
 </table>
 
@@ -1673,7 +1683,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="23"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="24"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >73.2</td>
@@ -2064,6 +2074,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
+<td><a href="./transferattack/model_related/ana.py" target="_blank" rel="noopener noreferrer">ANA</a></td>
+<td >78.5</td>
+<td >81.2</td>
+<td >76.4</td>
+<td >60.2</td>
+<td >22.3</td>
+<td >30.1</td>
+<td >41.3</td>
+<td >37.9</td>
+<td >42.6</td>
+<td >43.5</td>
+<td >29.9</td>
+<td >64.9</td>
+<td >16.3</td>
+</tr>
+
+<tr>
 <th rowspan="8"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/ens.py" target="_blank" rel="noopener noreferrer">ENS</a></td>
 <td >99.4</td>
@@ -2201,7 +2228,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="4"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="5"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
 <td >97.1</td>
 <td >99.2</td>
@@ -2267,6 +2294,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td ></td>
 <td ></td>
 <td ></td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/generation/diffattack.py" target="_blank" rel="noopener noreferrer">DiffAttack</a></td>
+<td >92.3</td>
+<td >51.3</td>
+<td >51.3</td>
+<td >47.1</td>
+<td >30.7</td>
+<td >44.3</td>
+<td >44.5</td>
+<td >47.1</td>
+<td >45.7</td>
+<td >39.0</td>
+<td >39.7</td>
+<td >59.2</td>
+<td >34.3</td>
 </tr>
 
 </table>
