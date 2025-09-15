@@ -367,7 +367,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="22"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="24"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -471,6 +471,16 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
   <td><a href="https://arxiv.org/html/2503.15404" target="_blank" rel="noopener noreferrer">FPR (Ren et al., 2025)</a></td>
   <td><sub>Refining attention maps and token embeddings of Vision Transformers from the forward propagation.</sub></td>
+</tr>
+
+<tr>
+  <td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/32203/34358" target="_blank" rel="noopener noreferrer">AWT (Chen et al., 2025)</a></td>
+  <td><sub>Adaptively re-scale token gradient, tune surrogate model weights without extra data and flatten local maxima to boost transferability.</sub></td>
+</tr>
+
+<tr>
+  <td><a href="https://ieeexplore.ieee.org/document/10993300" target="_blank" rel="noopener noreferrer">FAUG (Wang et al., 2025)</a></td>
+  <td><sub>Inject random noise into intermediate features, diversify attack gradients and mitigate model-specific overfitting to amplify transferability.</sub></td>
 </tr>
 
 <tr>
@@ -1694,7 +1704,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="22"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="24"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >73.2</td>
@@ -2048,6 +2058,40 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >35.4</td>
 <td >63.0</td>
 <td >30.9</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/awt.py" target="_blank" rel="noopener noreferrer">AWT</a></td>
+<td >98.6</td>
+<td >91.5</td>
+<td >90.4</td>
+<td >86.5</td>
+<td >60.0</td>
+<td >75.7</td>
+<td >81.0</td>
+<td >81.3</td>
+<td >50.5</td>
+<td >77.4</td>
+<td >44.9</td>
+<td >80.5</td>
+<td >49.2</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/faug.py" target="_blank" rel="noopener noreferrer">FAUG</a></td>
+<td >95.1</td>
+<td >69.5</td>
+<td >66.4</td>
+<td >56.5</td>
+<td >26.1</td>
+<td >38.9</td>
+<td >47.6</td>
+<td >45.6</td>
+<td >42.1</td>
+<td >38.2</td>
+<td >30.2</td>
+<td >62.8</td>
+<td >21.0</td>
 </tr>
 
 <tr>
