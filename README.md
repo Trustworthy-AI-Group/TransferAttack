@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="26"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="27"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -188,6 +188,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td ><sub>Aggregate adversarial examples in the neighborhood with 
   worst-aware loss and substitute loss to obtain a flatter local minimum.</sub></td>
 </tr>
+
+<tr>
+<td><a href="https://ieeexplore.ieee.org/abstract/document/10508615" target="_blank" rel="noopener noreferrer">Foolmix (Li et al., 2025)</a></td>
+<td ><sub>Strengthen the transferability of adversarial examples by dual-blending and direction update strategy.</sub></td>
+</tr
 
 <tr>
 <th rowspan="18"><sub><strong>Input transformation-based</strong></sub></th>
@@ -652,7 +657,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="26"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="27"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >49.2</td>
 <td >54.6</td>
@@ -1089,6 +1094,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >43.5</td>
 <td >75.9</td>
 <td >40.9</td>
+</tr>
+
+<td><a href="./transferattack/gradient/foolmix.py" target="_blank" rel="noopener noreferrer">Foolmix</a></td>
+<td >99.1</td>
+<td >74.2</td>
+<td >70.0</td>
+<td >61.7</td>
+<td >30.8</td>
+<td >43.6</td>
+<td >55.0</td>
+<td >51.8</td>
+<td >42.0</td>
+<td >46.3</td>
+<td >30.0</td>
+<td >62.9</td>
+<td >22.5</td>
 </tr>
 
 <tr>
