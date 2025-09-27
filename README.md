@@ -2118,19 +2118,19 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr id="ll2s">
 <td><a href="./transferattack/model_related/ll2s.py" target="_blank" rel="noopener noreferrer">LL2S</a></td>
-<td >73.0</td>
-<td >91.9</td>
-<td >92.8</td>
-<td >78.6</td>
-<td >98.9</td>
-<td >72.4</td>
-<td >79.3</td>
+<td >76.8</td>
+<td >90.1</td>
 <td >91.3</td>
-<td >44.9</td>
-<td >68.2</td>
-<td >39.1</td>
-<td >70.0</td>
-<td > </td>
+<td >79.1</td>
+<td >99.3</td>
+<td >80.6</td>
+<td >84.1</td>
+<td >92.7</td>
+<td >44.5</td>
+<td >70.7</td>
+<td >40.8</td>
+<td >75.2</td>
+<td >57.4</td>
 </tr>
 
 <tr>

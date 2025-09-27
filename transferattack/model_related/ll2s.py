@@ -421,6 +421,12 @@ class LL2S(Attack):
     Official recommended arguments:
         epsilon=16/255, alpha=1.6/255, epoch=10, decay=1
 
+    Robust-token usage note:
+    - `robust_tokens_type="global"` uses precomputed tokens (shape: 400x768) for faster attacks.
+    - Users may provide their own robust tokens of shape (num_tokens, token_dim).
+    - Our global tokens were produced by ensembling dynamic robust tokens learned over a large image set.
+      Download: https://drive.google.com/file/d/1PuWk-0NDH8-klgTaToqlUPK8oqK_yvxh/view?usp=drive_link
+
     Example usage:
         python main.py --input_dir ./path/to/data --output_dir adv_data/l2t/vit_base_patch16_224 --attack ll2s --model=vit_base_patch16_224 --batchsize 1
         python main.py --input_dir ./path/to/data --output_dir adv_data/l2t/vit_base_patch16_224 --eval
