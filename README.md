@@ -1133,7 +1133,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="18"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="19"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >98.7</td>
 <td >71.0</td>
