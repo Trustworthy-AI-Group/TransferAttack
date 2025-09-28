@@ -195,7 +195,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr
 
 <tr>
-<th rowspan="18"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="19"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -281,12 +281,17 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+<td><a href="https://ieeexplore.ieee.org/document/10602524" target="_blank" rel="noopener noreferrer">MFI (Qian et al., 2024)</a></td>
+<td ><sub>Replace high frequency components with image from other categories</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Guo_Boosting_Adversarial_Transferability_through_Augmentation_in_Hypothesis_Space_CVPR_2025_paper.pdf" target="_blank" rel="noopener noreferrer">OPS (Guo et al., 2025)</a></td>
 <td ><sub>Constructs a stochastic optimization problem by input transformation operators and random perturbations.</sub></td>
 </tr>
 
 <tr>
-<th rowspan="16"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="17"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
 <td ><sub>Maximize the difference of feature maps between benign sample and adversarial example and smooth the perturbation </sub></td>
 </tr>
@@ -364,6 +369,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://openreview.net/pdf?id=bPJo5uSkOJ" target="_blank" rel="noopener noreferrer">P2FA (Liu et al., 2025)</a></td>
 <td ><sub>Enhance transferability by directly perturbing important features multiple times in the feature space and then inverting them back to the pixel space</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://ieeexplore.ieee.org/document/10833658" target="_blank" rel="noopener noreferrer">MFAA (Zheng et al., 2025)</a></td>
+<td ><sub>Fuse multi-layer feature gradients into ensemble attention maps to disrupt category-relevant features and boost adversarial transferability</sub></td>
 </tr>
 
 <tr>
@@ -1414,6 +1424,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >32.4</td>
 </tr>
 
+<tr>
+<td><a href="./transferattack/input_transformation/mfi.py" target="_blank" rel="noopener noreferrer">MFI</a></td>
+<td >95.2</td>
+<td >84.6</td>
+<td >83.3</td>
+<td >83.3</td>
+<td >45.0</td>
+<td >62.2</td>
+<td >72.4</td>
+<td >68.4</td>
+<td >49.40</td>
+<td >74.90</td>
+<td >44.70</td>
+<td >72.1</td>
+<td >46.5</td>
+</tr>
 
 <td><a href="./transferattack/input_transformation/ops.py" target="_blank" rel="noopener noreferrer">OPS</a></td>
 <td >99.5</td>
@@ -1432,7 +1458,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="16"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="17"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/tap.py" target="_blank" rel="noopener noreferrer">TAP</a></td>
 <td >99.9</td>
 <td >93.4</td>
@@ -1701,6 +1727,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >32.2</td>
 <td >79.5</td>
 <td >22.2</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/advanced_objective/mfaa.py" target="_blank" rel="noopener noreferrer">MFAA</a></td>
+<td >95.2</td>
+<td >86.5</td>
+<td >83.5</td>
+<td >72.2</td>
+<td >24.4</td>
+<td >42.9</td>
+<td >59.6</td>
+<td >56.7</td>
+<td >42.90</td>
+<td >48.10</td>
+<td >30.60</td>
+<td >51.5</td>
+<td >17.9</td>
 </tr>
 
 <tr>
