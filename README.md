@@ -372,7 +372,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="28"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="26"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
