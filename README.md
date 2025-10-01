@@ -682,7 +682,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="27"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="28"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >49.2</td>
 <td >54.6</td>
@@ -1135,6 +1135,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >30.0</td>
 <td >62.9</td>
 <td >22.5</td>
+</tr>
+
+<td><a href="./transferattack/gradient/adamsi_fgm.py" target="_blank" rel="noopener noreferrer">AdaMSI_FGM</a></td>
+<td >100.0</td>
+<td >64.6</td>
+<td >58.5</td>
+<td >39.7</td>
+<td >15.1</td>
+<td >24.9</td>
+<td >30.0</td>
+<td >31.0</td>
+<td >40.6</td>
+<td >15.7</td>
+<td >27.5</td>
+<td >58.0</td>
+<td >13.4</td>
 </tr>
 
 <tr>
@@ -1719,7 +1735,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="25"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="26"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >73.2</td>
@@ -2141,6 +2157,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >40.8</td>
 <td >75.2</td>
 <td >57.4</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/fdap.py" target="_blank" rel="noopener noreferrer">FDAP</a></td>
+<td >44.9</td>
+<td >78.9</td>
+<td >70.7</td>
+<td >53.6</td>
+<td >64.2</td>
+<td >48.2</td>
+<td >49.7</td>
+<td >59.0</td>
+<td >42.9</td>
+<td >30.1</td>
+<td >33.8</td>
+<td >48.9</td>
+<td >28.8</td>
 </tr>
 
 <tr>
