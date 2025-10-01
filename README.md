@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="27"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="28"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -192,7 +192,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://ieeexplore.ieee.org/abstract/document/10508615" target="_blank" rel="noopener noreferrer">Foolmix (Li et al., 2025)</a></td>
 <td ><sub>Strengthen the transferability of adversarial examples by dual-blending and direction update strategy.</sub></td>
-</tr
+</tr>
+
+<tr>
+<td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/29323" target="_blank" rel="noopener noreferrer">AdaMSI-FGM (Long et al., 2024)</a></td>
+<td ><sub>Guarantees convergence by incorporating an innovative, non-monotonic adaptive momentum parameter and replacing the problematic sign operation with an adaptive step-size scheme.</sub></td>
+</tr>
 
 <tr>
 <th rowspan="18"><sub><strong>Input transformation-based</strong></sub></th>
@@ -367,7 +372,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="25"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="28"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -491,6 +496,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
   <td><a href="https://arxiv.org/abs/2504.10804" target="_blank" rel="noopener noreferrer">LL2S (Liu et al., 2025)</a></td>
   <td><sub>Exploits ViTs redundancy with attention sparsity, head permutation, clean-token regularization, ghost MoE, and robust-token learning, coordinated by online learning to improve transferability.</sub></td>
+</tr>
+
+<tr>
+  <td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/28365" target="_blank" rel="noopener noreferrer">FDAP (Gao et al., 2024)</a></td>
+  <td><sub>Crafts perturbations to minimize the feature diversity in the middle layers of a Vision Transformer, thereby accelerating its natural tendency towards feature collapse.</sub></td>
 </tr>
 
 <tr>
