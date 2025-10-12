@@ -367,7 +367,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="22"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="25"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -474,8 +474,23 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+  <td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/32203/34358" target="_blank" rel="noopener noreferrer">AWT (Chen et al., 2025)</a></td>
+  <td><sub>Adaptively re-scale token gradient, tune surrogate model weights without extra data and flatten local maxima to boost transferability.</sub></td>
+</tr>
+
+<tr>
+  <td><a href="https://ieeexplore.ieee.org/document/10993300" target="_blank" rel="noopener noreferrer">FAUG (Wang et al., 2025)</a></td>
+  <td><sub>Inject random noise into intermediate features, diversify attack gradients and mitigate model-specific overfitting to amplify transferability.</sub></td>
+</tr>
+
+<tr>
   <td><a href="https://ieeexplore.ieee.org/document/11018095" target="_blank" rel="noopener noreferrer">ANA (Chen et al., 2025)</a></td>
   <td><sub>Using masking operations and a lightweight alignment network to make surrogate models focus on critical regions of images, thereby generating adversarial examples with much higher transferability.</sub></td>
+</tr>
+
+<tr>
+  <td><a href="https://arxiv.org/abs/2504.10804" target="_blank" rel="noopener noreferrer">LL2S (Liu et al., 2025)</a></td>
+  <td><sub>Exploits ViTs redundancy with attention sparsity, head permutation, clean-token regularization, ghost MoE, and robust-token learning, coordinated by online learning to improve transferability.</sub></td>
 </tr>
 
 <tr>
@@ -630,7 +645,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 ## Evaluation
 
 ### Untargeted Attack
-**Note**: We adopt $\epsilon=16/255$ with the number of iterations $T=10$. The base attack for other types of attack is [MI-FGSM](https://arxiv.org/abs/1710.06081). The defaut surrogate model is ResNet-50. For [YAILA](#yaila), we adopt ResNet-50 as the surrogate model. For [PNA-PatchOUt](#pna), [SAPR](#sapr), [TGR](#tgr), [VDC](#vdc), we adopt ViT as the surrogate model. For [Ensemble](#ensemble) attacks, we use four CNNs(ResNet-50](https://arxiv.org/abs/1512.03385), [VGG-16](https://arxiv.org/abs/2011.12960), [MobileNet-V2](https://arxiv.org/abs/1801.04381), [Inception-V3](https://arxiv.org/abs/1512.00567)) as the ensemble model.
+**Note**: We adopt $\epsilon=16/255$ with the number of iterations $T=10$. The base attack for other types of attack is [MI-FGSM](https://arxiv.org/abs/1710.06081). The defaut surrogate model is ResNet-50. For [YAILA](#yaila), we adopt ResNet-50 as the surrogate model. For [PNA-PatchOUt](#pna), [SAPR](#sapr), [TGR](#tgr), [VDC](#vdc), and [LL2S](#ll2s), we adopt ViT as the surrogate model. For [Ensemble](#ensemble) attacks, we use four CNNs(ResNet-50](https://arxiv.org/abs/1512.03385), [VGG-16](https://arxiv.org/abs/2011.12960), [MobileNet-V2](https://arxiv.org/abs/1801.04381), [Inception-V3](https://arxiv.org/abs/1512.00567)) as the ensemble model.
 
 <table  style="width:100%" border="1">
 <thead>
@@ -1694,7 +1709,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="22"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="25"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >73.2</td>
@@ -2051,6 +2066,40 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
+<td><a href="./transferattack/model_related/awt.py" target="_blank" rel="noopener noreferrer">AWT</a></td>
+<td >98.6</td>
+<td >91.5</td>
+<td >90.4</td>
+<td >86.5</td>
+<td >60.0</td>
+<td >75.7</td>
+<td >81.0</td>
+<td >81.3</td>
+<td >50.5</td>
+<td >77.4</td>
+<td >44.9</td>
+<td >80.5</td>
+<td >49.2</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/faug.py" target="_blank" rel="noopener noreferrer">FAUG</a></td>
+<td >95.1</td>
+<td >69.5</td>
+<td >66.4</td>
+<td >56.5</td>
+<td >26.1</td>
+<td >38.9</td>
+<td >47.6</td>
+<td >45.6</td>
+<td >42.1</td>
+<td >38.2</td>
+<td >30.2</td>
+<td >62.8</td>
+<td >21.0</td>
+</tr>
+
+<tr>
 <td><a href="./transferattack/model_related/ana.py" target="_blank" rel="noopener noreferrer">ANA</a></td>
 <td >78.5</td>
 <td >81.2</td>
@@ -2065,6 +2114,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >29.9</td>
 <td >64.9</td>
 <td >16.3</td>
+</tr>
+
+<tr id="ll2s">
+<td><a href="./transferattack/model_related/ll2s.py" target="_blank" rel="noopener noreferrer">LL2S</a></td>
+<td >76.8</td>
+<td >90.1</td>
+<td >91.3</td>
+<td >79.1</td>
+<td >99.3</td>
+<td >80.6</td>
+<td >84.1</td>
+<td >92.7</td>
+<td >44.5</td>
+<td >70.7</td>
+<td >40.8</td>
+<td >75.2</td>
+<td >57.4</td>
 </tr>
 
 <tr>
