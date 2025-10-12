@@ -561,7 +561,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<td><a href="https://ieeexplore.ieee.org/abstract/document/10552305" target="_blank" rel="noopener noreferrer">FBP (Wang et al., 2024)</a></td>
+<td><a href="https://ieeexplore.ieee.org/abstract/document/10552305" target="_blank" rel="noopener noreferrer">FAP (Wang et al., 2024)</a></td>
 <td ><sub> A frequency-aware adversarial perturbation method that focuses optimization on the most critical, model-agnostic frequencies to enhance transferability.</sub></td>
 </tr>
 
@@ -2362,7 +2362,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >34.3</td>
 </tr>
 
-<td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">FBP</a></td>
+<td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">FAP</a></td>
 <td >87.0</td>
 <td >68.4</td>
 <td >63.5</td>
