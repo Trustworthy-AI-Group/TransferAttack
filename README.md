@@ -535,7 +535,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="5"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="6"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1905.11736" target="_blank" rel="noopener noreferrer">CDTP (Naseer et al., 2019)</a></td>
 <td ><sub>Train a generative model on datasets from different domains to learn domain-invariant perturbations</sub></td>
 </tr>
@@ -559,6 +559,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td><a href="https://ieeexplore.ieee.org/abstract/document/10716799" target="_blank" rel="noopener noreferrer">DiffAttack (Chen et al., 2024)</a></td>
 <td ><sub> An unrestricted attack based on diffusion models that can achieve both good transferability and imperceptibility.</sub></td>
 </tr>
+
+<tr>
+<td><a href="https://ieeexplore.ieee.org/abstract/document/10552305" target="_blank" rel="noopener noreferrer">FBP (Wang et al., 2024)</a></td>
+<td ><sub> A frequency-aware adversarial perturbation method that focuses optimization on the most critical, model-agnostic frequencies to enhance transferability.</sub></td>
+</tr>
+
 </table>
 
 ### Targeted Attacks
@@ -2271,7 +2277,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="5"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="6"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
 <td >97.1</td>
 <td >99.2</td>
@@ -2354,6 +2360,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >39.7</td>
 <td >59.2</td>
 <td >34.3</td>
+</tr>
+
+<td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">FBP</a></td>
+<td >87.0</td>
+<td >68.4</td>
+<td >63.5</td>
+<td >46.4</td>
+<td >16.0</td>
+<td >26.6</td>
+<td >32.4</td>
+<td >32.6</td>
+<td >41.8</td>
+<td >25.4</td>
+<td >28.6</td>
+<td >66.9</td>
+<td >21.4</td>
 </tr>
 
 </table>
