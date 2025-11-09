@@ -377,7 +377,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="24"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="25"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -477,6 +477,10 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td ><sub>Adaptively re-scale token gradient, patch out under semantic guidance and truncate token gradient.</sub></td>
 </tr>
 
+<tr>
+<td><a href="https://arxiv.org/pdf/2305.05875" target="_blank" rel="noopener noreferrer">QAA (Yang et al., 2024)</a></td>
+<td ><sub>Simulate quantization effects with virtual layers and stochastic rounding, aligning gradients across models with different quantization levels.</sub></td>
+</tr>
 
 <tr>
   <td><a href="https://arxiv.org/html/2503.15404" target="_blank" rel="noopener noreferrer">FPR (Ren et al., 2025)</a></td>
@@ -1747,7 +1751,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="24"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="25"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >73.2</td>
@@ -2084,6 +2088,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >36.1</td>
 <td >60.7</td>
 <td >33.4</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/qaa.py" target="_blank" rel="noopener noreferrer">QAA</a></td>
+<td >76.3</td>
+<td >90.7</td>
+<td >87.7</td>
+<td >72.9</td>
+<td >18.1</td>
+<td >28.0</td>
+<td >42.6</td>
+<td >39.8</td>
+<td >43.4</td>
+<td >31.6</td>
+<td >30.2</td>
+<td >27.7</td>
+<td >19.0</td>
 </tr>
 
 <tr>
