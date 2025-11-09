@@ -264,6 +264,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td ><sub>Randomly shuffles and rotates the image blocks</sub></td>
 </tr>
 
+
 <tr>
 <th rowspan="15"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
@@ -516,7 +517,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="3"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/pdf/2203.09123" target="_blank" rel="noopener noreferrer">ODI (Byun et al., 2022)</a></td>
 <td ><sub>Diverse inputs based on 3D objects</sub></td>
 </tr>
@@ -529,6 +530,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://arxiv.org/pdf/2401.13205" target="_blank" rel="noopener noreferrer">IDAA (Liu et al., 2024)</a></td>
 <td ><sub>Design local mixup to randomly mix a group of transformed adversarial images, strengthening the input diversity</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2501.00707" target="_blank" rel="noopener noreferrer">EverywhereAttack (Zeng et al., 2025)</a></td>
+<td ><sub>Dividing an image into multiple small local regions.</sub></td>
 </tr>
 
 <tr>
@@ -572,6 +578,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td><a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Zhao_Minimizing_Maximum_Model_Discrepancy_for_Transferable_Black-Box_Targeted_Attacks_CVPR_2023_paper.pdf" target="_blank" rel="noopener noreferrer">M3D (Zhao et al., 2023)</a></td>
 <td ><sub></sub></td>
 </tr>
+
 
 <tr>
 <th rowspan="1"><sub><strong>Ensemble-based</strong></sub></th>
@@ -2160,7 +2167,7 @@ Class Number: Class Name
 </thead>
 
 
-<th rowspan="3"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/odi/odi.py" target="_blank" rel="noopener noreferrer">ODI</a></td>
 <td ></td>
 <td ></td>
@@ -2207,6 +2214,22 @@ Class Number: Class Name
 <td ></td>
 <td ></td>
 <td ></td>
+</tr>
+
+<td><a href="./transferattack/input_transformation/everywhere.py" target="_blank" rel="noopener noreferrer">EverywhereAttack </a></td>
+<td >99.8</td>
+<td >64.2</td>
+<td >72.7</td>
+<td >44.5</td>
+<td >23</td>
+<td >46</td>
+<td >72.6</td>
+<td >54.7</td>
+<td >0.2</td>
+<td >56.3</td>
+<td >0</td>
+<td >2.1</td>
+<td >0.2</td>
 </tr>
 
 
