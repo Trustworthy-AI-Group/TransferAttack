@@ -130,8 +130,8 @@ class DSVA(MIFGSM):
     TransferAttack framework provides an alternative download link: https://huggingface.co/NexusBohanLiu/dSVA/blob/main/model.pth 
     
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/dsva/generation --attack dsva 
-        python main.py --input_dir ./path/to/data --output_dir adv_data/dsva/generation --eval
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dsva/generation --attack dsva  
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dsva/generation --eval 
     
     Arguments:
         model_name (str): the name of the model.
@@ -145,44 +145,20 @@ class DSVA(MIFGSM):
         
     def load_Gmodel(self):
         netG = GeneratorResnet()
-        
-        model_path = 'your/model/path.here'
-        
-        if not os.path.exists(model_path):
-            print(f'Model does not exist here==>: {model_path}')
-            print('Please make sure that:')
-            print('1. The path is right;')
-            print('2. The file has been downloaded;')
-            print('3. You have permission to read the file.')
-            return None
-        
+        model_path = './path/to/checkpoints/model.pth'        
         try:
             state_dict = torch.load(model_path, map_location=self.device)
-            if 'state_dict' in state_dict:
-                state_dict = state_dict['state_dict']
-            elif 'model' in state_dict:
-                state_dict = state_dict['model']
-                
             model_state = netG.state_dict()
             filtered_state_dict = {}
-            
             for k, v in state_dict.items():
                 if k in model_state and model_state[k].shape == v.shape:
                     filtered_state_dict[k] = v
-                else:
-                    print(f"Unmatched parameters passed: {k}")
-                    
-            if len(filtered_state_dict) == 0:
-                print("No matched parameters, model structure might be different.")
-                return None
-                
-            netG.load_state_dict(filtered_state_dict)
-            print(f"Load model successfully {len(filtered_state_dict)} / {len(model_state)} parameters")
-            
+            netG.load_state_dict(filtered_state_dict)  
         except Exception as e:
-            print(f'Error occurs when loading the model: {e}')
-            return None
-        
+            print("No pre-trained generator model found, \
+                please visit https://huggingface.co/NexusBohanLiu/dSVA/blob/main/model.pth \
+                to download model, and put it under './path/to/checkpoints/'. ")
+            return None        
         netG.to(self.device)
         netG.eval()
         return netG
@@ -197,4 +173,3 @@ class DSVA(MIFGSM):
         return perturbations
     
     
-
