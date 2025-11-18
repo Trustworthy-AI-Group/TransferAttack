@@ -129,6 +129,10 @@ class DSVA(MIFGSM):
     Official Link: https://github.com/spencerwooo/dSVA
     TransferAttack framework provides an alternative download link: https://huggingface.co/NexusBohanLiu/dSVA/blob/main/model.pth 
     
+    Example script:
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dsva/generation --attack dsva 
+        python main.py --input_dir ./path/to/data --output_dir adv_data/dsva/generation --eval
+    
     Arguments:
         model_name (str): the name of the model.
         epsilon (float): the perturbation budget.
@@ -144,7 +148,6 @@ class DSVA(MIFGSM):
         
         model_path = 'your/model/path.here'
         
-        # 检查文件是否存在
         if not os.path.exists(model_path):
             print(f'Model does not exist here==>: {model_path}')
             print('Please make sure that:')
@@ -194,3 +197,4 @@ class DSVA(MIFGSM):
         return perturbations
     
     
+
