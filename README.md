@@ -535,7 +535,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="5"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="6"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1905.11736" target="_blank" rel="noopener noreferrer">CDTP (Naseer et al., 2019)</a></td>
 <td ><sub>Train a generative model on datasets from different domains to learn domain-invariant perturbations</sub></td>
 </tr>
@@ -558,6 +558,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://ieeexplore.ieee.org/abstract/document/10716799" target="_blank" rel="noopener noreferrer">DiffAttack (Chen et al., 2024)</a></td>
 <td ><sub> An unrestricted attack based on diffusion models that can achieve both good transferability and imperceptibility.</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2506.21046" target="_blank" rel="noopener noreferrer">DSVA (Wu et al., 2025)</a></td>
+<td ><sub> A generative framework that exploits global features using DINO and local features using MAE to boost transferability.</sub></td>
 </tr>
 </table>
 
@@ -2271,7 +2276,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="5"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="6"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
 <td >97.1</td>
 <td >99.2</td>
@@ -2356,6 +2361,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >34.3</td>
 </tr>
 
+<tr>
+<td><a href="./transferattack/generation/dsva.py" target="_blank" rel="noopener noreferrer">DSVA</a></td>
+<td >68.0</td>
+<td >90.3</td>
+<td >90.5</td>
+<td >89.3</td>
+<td >56.3</td>
+<td >36.5</td>
+<td >66.1</td>
+<td >53.1</td>
+<td >42.5</td>
+<td >72.7</td>
+<td >33.2</td>
+<td >15.3</td>
+<td >46.9</td>
+</tr>
 </table>
 
 ### Targeted Attack
