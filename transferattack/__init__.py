@@ -135,6 +135,7 @@ attack_zoo = {
     ## Targeted
     'ttp': ('.generation.ttp', 'TTP'),
     'm3d': ('.generation.m3d', 'M3D'),
+    'aim': ('.generation.aim', 'AIM'),
     
 }
 
