@@ -25,3 +25,5 @@
 - Guanyan Ou checked the [SASD_WS](./transferattack/model_related/sasd_ws.py) method.
 
 - [Yuchen Ren](https://github.com/RYC-98) added the [FPR](./transferattack/model_related/fpr.py) method.
+
+- [Jianqi Chen](https://github.com/WindVChen) added the [DiffAttack](./transferattack/generation/diffattack.py) method.

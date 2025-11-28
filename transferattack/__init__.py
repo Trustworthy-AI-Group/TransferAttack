@@ -28,8 +28,11 @@ attack_zoo = {
     'rgmifgsm': ('.gradient.mifgsm_with_tricks', 'RGMIFGSM'),
     'dual_mifgsm': ('.gradient.mifgsm_with_tricks', 'DualMIFGSM'),
     'ens_mifgsm': ('.gradient.mifgsm_with_tricks', 'Ens_FGSM_MIFGSM'),
+    'fgsra': ('.gradient.fgsra', 'FGSRA'),
     'mumodig': ('.gradient.mumodig','MUMODIG'),
-
+    'gaa': ('.gradient.gaa', 'GAA'),  
+    'foolmix': ('.gradient.foolmix', 'Foolmix'),  
+    
     # input transformation
     ## Untargeted
     'dim': ('.input_transformation.dim', 'DIM'),
@@ -49,6 +52,7 @@ attack_zoo = {
     'decowa': ('.input_transformation.decowa', 'DeCowA'),
     'l2t': ('.input_transformation.l2t', 'L2T'),
     'bsr': ('.input_transformation.bsr', 'BSR'),
+    'ops': ('.input_transformation.ops', 'OPS'),
     ## Targeted
     'odi': ('.input_transformation.odi.odi', 'ODI'),
     'su': ('.input_transformation.su', 'SU'),
@@ -74,6 +78,7 @@ attack_zoo = {
     'danaa': ('.advanced_objective.danaa', 'DANAA'),
     'ilpd': ('.advanced_objective.ilpd', 'ILPD'),
     'bfa': ('.advanced_objective.bfa', 'BFA'),
+    'p2fa': ('.advanced_objective.p2fa', 'P2FA'),
     ## Targeted
     'aa': ('.advanced_objective.aa', 'AA'),
     'potrip': ('.advanced_objective.potrip', 'POTRIP'),
@@ -102,7 +107,12 @@ attack_zoo = {
     'metassa': ('.model_related.metassa', 'MetaSSA'),
     'vdc': ('.model_related.vdc', 'VDC'),
     'ma': ('.model_related.ma', 'MA'),
+    'att': ('.model_related.att', 'ATT'),
     'fpr': ('.model_related.fpr', 'FPR'),
+    'awt': ('.model_related.awt', 'AWT'),
+    'faug': ('.model_related.faug', 'FAUG'),
+    'ana': ('.model_related.ana', 'ANA'),
+    'll2s': ('.model_related.ll2s', "LL2S"),
 
     # ensemble
     'ens': ('.ensemble.ens', 'ENS'),
@@ -122,6 +132,7 @@ attack_zoo = {
     'ltp': ('.generation.ltp', 'LTP'),
     'ada': ('.generation.ada', 'ADA'),
     'ge_advgan': ('.generation.ge_advgan', 'GE_ADVGAN'),
+    'diffattack': ('.generation.diffattack', 'DiffAttack'),
     ## Targeted
     'ttp': ('.generation.ttp', 'TTP'),
     'm3d': ('.generation.m3d', 'M3D'),
