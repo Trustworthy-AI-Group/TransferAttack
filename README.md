@@ -574,9 +574,13 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="1"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="2"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Wu_Improving_Transferable_Targeted_Adversarial_Attacks_with_Model_Self-Enhancement_CVPR_2024_paper.pdf" target="_blank" rel="noopener noreferrer">SASD_WS (Wu et al., 2024)</a></td>
 <td ><sub>Incorporate Sharpness-Aware Self-Distillation (SASD) and Weight Scaling (WS) to promote the source model's generalization capability.</sub></td>
+</tr>
+
+<td><a href="https://arxiv.org/abs/2412.16958" target="_blank" rel="noopener noreferrer">RFCoA (Wang et al., 2024)</a></td>
+<td ><sub>Optimize the robust adversarial features over multiple classifiers, which are fused with those of clean samples and decoded back into the image space.</sub></td>
 </tr>
 </table>
 
@@ -2340,7 +2344,7 @@ Class Number: Class Name
 <td ></td>
 </tr>
 
-<th rowspan="1"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="2"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/sasd_ws.py" target="_blank" rel="noopener noreferrer">SASD_WS</a></td>
 <td ></td>
 <td ></td>
@@ -2355,6 +2359,22 @@ Class Number: Class Name
 <td ></td>
 <td ></td>
 <td ></td>
+</tr>
+
+<td><a href="./transferattack/ensemble/rfcoa/rfcoa.py" target="_blank" rel="noopener noreferrer">RFCoA</a></td>
+<td >99.5</td>
+<td >98.4</td>
+<td >5.9</td>
+<td >98.8</td>
+<td >0.7</td>
+<td >3.3</td>
+<td >10.6</td>
+<td >5.1</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0.1</td>
+<td >0</td>
 </tr>
 </table>
 
