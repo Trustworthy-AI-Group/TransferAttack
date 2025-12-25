@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="27"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="28"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -192,7 +192,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://ieeexplore.ieee.org/abstract/document/10508615" target="_blank" rel="noopener noreferrer">Foolmix (Li et al., 2025)</a></td>
 <td ><sub>Strengthen the transferability of adversarial examples by dual-blending and direction update strategy.</sub></td>
-</tr
+</tr>
+
+<tr>
+<td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/29323" target="_blank" rel="noopener noreferrer">AdaMSI-FGM (Long et al., 2024)</a></td>
+<td ><sub>Guarantees convergence by incorporating an innovative, non-monotonic adaptive momentum parameter and replacing the problematic sign operation with an adaptive step-size scheme.</sub></td>
+</tr>
 
 <tr>
 <th rowspan="18"><sub><strong>Input transformation-based</strong></sub></th>
@@ -367,7 +372,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="25"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="26"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -491,6 +496,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
   <td><a href="https://arxiv.org/abs/2504.10804" target="_blank" rel="noopener noreferrer">LL2S (Liu et al., 2025)</a></td>
   <td><sub>Exploits ViTs redundancy with attention sparsity, head permutation, clean-token regularization, ghost MoE, and robust-token learning, coordinated by online learning to improve transferability.</sub></td>
+</tr>
+
+<tr>
+  <td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/28365" target="_blank" rel="noopener noreferrer">FDAP (Gao et al., 2024)</a></td>
+  <td><sub>Crafts perturbations to minimize the feature diversity in the middle layers of a Vision Transformer, thereby accelerating its natural tendency towards feature collapse.</sub></td>
 </tr>
 
 <tr>
@@ -677,7 +687,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="27"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="28"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >49.2</td>
 <td >54.6</td>
@@ -1130,6 +1140,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >30.0</td>
 <td >62.9</td>
 <td >22.5</td>
+</tr>
+
+<td><a href="./transferattack/gradient/adamsi_fgm.py" target="_blank" rel="noopener noreferrer">AdaMSI_FGM</a></td>
+<td >100.0</td>
+<td >64.6</td>
+<td >58.5</td>
+<td >39.7</td>
+<td >15.1</td>
+<td >24.9</td>
+<td >30.0</td>
+<td >31.0</td>
+<td >40.6</td>
+<td >15.7</td>
+<td >27.5</td>
+<td >58.0</td>
+<td >13.4</td>
 </tr>
 
 <tr>
@@ -1714,7 +1740,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="25"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="26"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >73.2</td>
@@ -2136,6 +2162,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >40.8</td>
 <td >75.2</td>
 <td >57.4</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/fdap.py" target="_blank" rel="noopener noreferrer">FDAP</a></td>
+<td >44.9</td>
+<td >78.9</td>
+<td >70.7</td>
+<td >53.6</td>
+<td >64.2</td>
+<td >48.2</td>
+<td >49.7</td>
+<td >59.0</td>
+<td >42.9</td>
+<td >30.1</td>
+<td >33.8</td>
+<td >48.9</td>
+<td >28.8</td>
 </tr>
 
 <tr>
