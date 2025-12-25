@@ -85,6 +85,7 @@ attack_zoo = {
     'logit_margin': ('.advanced_objective.logit_margin', 'Logit_Margin'),
     'cfm': ('.advanced_objective.cfm', 'CFM'),
     'fft': ('.advanced_objective.fft', 'FFT'),
+    'ftm': ('.advanced_objective.ftm', 'FTM'),
     
     # model_related
     'sgm': ('.model_related.sgm', 'SGM'),

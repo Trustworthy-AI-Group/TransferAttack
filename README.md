@@ -589,7 +589,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="7"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Inkawhich_Feature_Space_Perturbations_Yield_More_Transferable_Adversarial_Examples_CVPR_2019_paper.pdf" target="_blank" rel="noopener noreferrer">AA (Inkawhich et al., 2019)</a></td>
 <td ><sub>Minimize the similarity of feature difference between the original adversarial example and target benign sample </sub></td>
 </tr>
@@ -617,6 +617,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://arxiv.org/abs/2401.02727" target="_blank" rel="noopener noreferrer">FFT (Zeng et al., 2024)</a></td>
 <td ><sub>Fine-tuning a crafted adversarial example in the feature space</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2411.15553" target="_blank" rel="noopener noreferrer">FTM (Liang et al., 2025)</a></td>
+<td ><sub>Introduces learnable feature perturbations and employs an efficient stochastic update strategy for optimization</sub></td>
 </tr>
 
 <tr>
@@ -2452,7 +2457,7 @@ Class Number: Class Name
 </tr>
 
 
-<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="7"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/aa.py" target="_blank" rel="noopener noreferrer">AA</a></td>
 <td ></td>
 <td ></td>
@@ -2547,6 +2552,22 @@ Class Number: Class Name
 <td >0.0</td>
 <td >0.0</td>
 <td >0.0</td>
+</tr>
+
+<td><a href="./transferattack/advanced_objective/ftm.py" target="_blank" rel="noopener noreferrer">FTM</a></td>
+<td >98.8</td>
+<td >54.4</td>
+<td >63.6</td>
+<td >45.2</td>
+<td >20.5</td>
+<td >39.6</td>
+<td >68.4</td>
+<td >48.7</td>
+<td >0.2</td>
+<td >53.5</td>
+<td >0.0</td>
+<td >0.0</td>
+<td >0.4</td>
 </tr>
 
 <th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
