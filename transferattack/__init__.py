@@ -32,6 +32,7 @@ attack_zoo = {
     'mumodig': ('.gradient.mumodig','MUMODIG'),
     'gaa': ('.gradient.gaa', 'GAA'),  
     'foolmix': ('.gradient.foolmix', 'Foolmix'),  
+    'adamsi_fgm': ('.gradient.adamsi_fgm', 'AdaMSI_FGM'),  
     
     # input transformation
     ## Untargeted
@@ -87,6 +88,7 @@ attack_zoo = {
     'logit_margin': ('.advanced_objective.logit_margin', 'Logit_Margin'),
     'cfm': ('.advanced_objective.cfm', 'CFM'),
     'fft': ('.advanced_objective.fft', 'FFT'),
+    'ftm': ('.advanced_objective.ftm', 'FTM'),
     
     # model_related
     'sgm': ('.model_related.sgm', 'SGM'),
@@ -115,6 +117,8 @@ attack_zoo = {
     'faug': ('.model_related.faug', 'FAUG'),
     'ana': ('.model_related.ana', 'ANA'),
     'll2s': ('.model_related.ll2s', "LL2S"),
+    'fdap': ('.model_related.fdap', "FDAP"),
+    'ma': ('.model_related.ma', "MA"),
 
     # ensemble
     'ens': ('.ensemble.ens', 'ENS'),
@@ -135,6 +139,7 @@ attack_zoo = {
     'ada': ('.generation.ada', 'ADA'),
     'ge_advgan': ('.generation.ge_advgan', 'GE_ADVGAN'),
     'diffattack': ('.generation.diffattack', 'DiffAttack'),
+    'fap': ('.generation.fap', 'FAP'),
     ## Targeted
     'ttp': ('.generation.ttp', 'TTP'),
     'm3d': ('.generation.m3d', 'M3D'),
