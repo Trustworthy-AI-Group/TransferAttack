@@ -585,6 +585,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/abs/2506.21046" target="_blank" rel="noopener noreferrer">DSVA (Wu et al., 2025)</a></td>
+<td ><sub> A generative framework that exploits global features using DINO and local features using MAE to boost transferability.</sub></td>
+</tr>
+  
+<tr>
 <td><a href="https://ieeexplore.ieee.org/abstract/document/10552305" target="_blank" rel="noopener noreferrer">FAP (Wang et al., 2024)</a></td>
 <td ><sub> A frequency-aware adversarial perturbation method that focuses optimization on the most critical, model-agnostic frequencies to enhance transferability.</sub></td>
 </tr>
@@ -2252,7 +2257,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="8"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="9"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/ens.py" target="_blank" rel="noopener noreferrer">ENS</a></td>
 <td >99.4</td>
 <td >100.0</td>
@@ -2474,6 +2479,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >34.3</td>
 </tr>
 
+<tr>
+<td><a href="./transferattack/generation/dsva.py" target="_blank" rel="noopener noreferrer">DSVA</a></td>
+<td >68.0</td>
+<td >90.3</td>
+<td >90.5</td>
+<td >89.3</td>
+<td >56.3</td>
+<td >36.5</td>
+<td >66.1</td>
+<td >53.1</td>
+<td >42.5</td>
+<td >72.7</td>
+<td >33.2</td>
+<td >15.3</td>
+<td >46.9</td>
+</tr>
 <td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">FAP</a></td>
 <td >87.0</td>
 <td >68.4</td>
