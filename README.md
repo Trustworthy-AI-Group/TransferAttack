@@ -655,6 +655,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+<th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2411.15553" target="_blank" rel="noopener noreferrer">FTM (Liang et al., 2025)</a></td>
 <td ><sub>Introduces learnable feature perturbations and employs an efficient stochastic update strategy for optimization</sub></td>
 </tr>
@@ -668,6 +669,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Zhao_Minimizing_Maximum_Model_Discrepancy_for_Transferable_Black-Box_Targeted_Attacks_CVPR_2023_paper.pdf" target="_blank" rel="noopener noreferrer">M3D (Zhao et al., 2023)</a></td>
 <td ><sub></sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2501.01106" target="_blank" rel="noopener noreferrer">AIM (Li et al., 2025)</a></td>
+<td ><sub>Introduce a Semantic Injection Module (SIM) into the generator, which utilizes the semantics contained in an additional guiding image.</sub></td>
 </tr>
 
 <tr>
@@ -2704,6 +2710,7 @@ Class Number: Class Name
 <td >0.0</td>
 </tr>
 
+<th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/ftm.py" target="_blank" rel="noopener noreferrer">FTM</a></td>
 <td >98.8</td>
 <td >54.4</td>
@@ -2751,6 +2758,22 @@ Class Number: Class Name
 <td ></td>
 <td ></td>
 <td ></td>
+</tr>
+
+<td><a href="./transferattack/generation/aim.py" target="_blank" rel="noopener noreferrer">AIM</a></td>
+<td >69.4</td>
+<td >51.6</td>
+<td >43.3</td>
+<td >15.7</td>
+<td >12.2</td>
+<td >12.8</td>
+<td >40.4</td>
+<td >24.6</td>
+<td >0.1</td>
+<td >30.3</td>
+<td >0.2</td>
+<td >0.4</td>
+<td >0.7</td>
 </tr>
 
 <th rowspan="1"><sub><strong>Ensemble-based</strong></sub></th>
