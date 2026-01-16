@@ -53,6 +53,7 @@ attack_zoo = {
     'decowa': ('.input_transformation.decowa', 'DeCowA'),
     'l2t': ('.input_transformation.l2t', 'L2T'),
     'bsr': ('.input_transformation.bsr', 'BSR'),
+    'mfi': ('.input_transformation.mfi', 'MFI'),
     'ops': ('.input_transformation.ops', 'OPS'),
     ## Targeted
     'odi': ('.input_transformation.odi.odi', 'ODI'),
@@ -79,6 +80,7 @@ attack_zoo = {
     'ilpd': ('.advanced_objective.ilpd', 'ILPD'),
     'bfa': ('.advanced_objective.bfa', 'BFA'),
     'p2fa': ('.advanced_objective.p2fa', 'P2FA'),
+    'mfaa': ('.advanced_objective.mfaa', 'MFAA'),
     ## Targeted
     'aa': ('.advanced_objective.aa', 'AA'),
     'potrip': ('.advanced_objective.potrip', 'POTRIP'),
@@ -109,6 +111,7 @@ attack_zoo = {
     'vdc': ('.model_related.vdc', 'VDC'),
     'ma': ('.model_related.ma', 'MA'),
     'att': ('.model_related.att', 'ATT'),
+    'qaa': ('.model_related.qaa', 'QAA'),
     'fpr': ('.model_related.fpr', 'FPR'),
     'awt': ('.model_related.awt', 'AWT'),
     'faug': ('.model_related.faug', 'FAUG'),
