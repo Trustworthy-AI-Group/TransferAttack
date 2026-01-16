@@ -494,6 +494,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+  <td><a href="https://arxiv.org/pdf/2403.07942" target="_blank" rel="noopener noreferrer">FDAP (Gao et al., 2024)</a></td>
+  <td><sub>Crafts perturbations to minimize the feature diversity in the middle layers of a Vision Transformer, thereby accelerating its natural tendency towards feature collapse.</sub></td>
+</tr>
+
+<tr>
   <td><a href="https://arxiv.org/html/2503.15404" target="_blank" rel="noopener noreferrer">FPR (Ren et al., 2025)</a></td>
   <td><sub>Refining attention maps and token embeddings of Vision Transformers from the forward propagation.</sub></td>
 </tr>
@@ -516,11 +521,6 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
   <td><a href="https://arxiv.org/abs/2504.10804" target="_blank" rel="noopener noreferrer">LL2S (Liu et al., 2025)</a></td>
   <td><sub>Exploits ViTs redundancy with attention sparsity, head permutation, clean-token regularization, ghost MoE, and robust-token learning, coordinated by online learning to improve transferability.</sub></td>
-</tr>
-
-<tr>
-  <td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/28365" target="_blank" rel="noopener noreferrer">FDAP (Gao et al., 2024)</a></td>
-  <td><sub>Crafts perturbations to minimize the feature diversity in the middle layers of a Vision Transformer, thereby accelerating its natural tendency towards feature collapse.</sub></td>
 </tr>
 
 <tr>
@@ -2175,6 +2175,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
+<td><a href="./transferattack/model_related/fdap.py" target="_blank" rel="noopener noreferrer">FDAP</a></td>
+<td >44.9</td>
+<td >78.9</td>
+<td >70.7</td>
+<td >53.6</td>
+<td >64.2</td>
+<td >48.2</td>
+<td >49.7</td>
+<td >59.0</td>
+<td >42.9</td>
+<td >30.1</td>
+<td >33.8</td>
+<td >48.9</td>
+<td >28.8</td>
+</tr>
+
+<tr>
 <td><a href="./transferattack/model_related/qaa.py" target="_blank" rel="noopener noreferrer">QAA</a></td>
 <td >76.3</td>
 <td >90.7</td>
@@ -2274,23 +2291,6 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >40.8</td>
 <td >75.2</td>
 <td >57.4</td>
-</tr>
-
-<tr>
-<td><a href="./transferattack/model_related/fdap.py" target="_blank" rel="noopener noreferrer">FDAP</a></td>
-<td >44.9</td>
-<td >78.9</td>
-<td >70.7</td>
-<td >53.6</td>
-<td >64.2</td>
-<td >48.2</td>
-<td >49.7</td>
-<td >59.0</td>
-<td >42.9</td>
-<td >30.1</td>
-<td >33.8</td>
-<td >48.9</td>
-<td >28.8</td>
 </tr>
 
 <tr>
