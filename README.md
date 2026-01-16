@@ -174,6 +174,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/pdf/2412.18844" target="_blank" rel="noopener noreferrer">MUMODIG (Ren et al., 2024)</a></td>
+<td ><sub> Improve integrated gradients attacks by generating integration paths through multiple baseline samples and enforcing the monotonicity of each path.</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://dl.acm.org/doi/10.1145/3627673.3679858" target="_blank" rel="noopener noreferrer">FGSRA (Wang et al., 2024)</a></td>
 <td ><sub>Leverage frequency information and introduce similarity weights to assess neighborhood contribution.</sub></td>
 </tr>
@@ -284,6 +289,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td><a href="https://arxiv.org/abs/2308.10299" target="_blank" rel="noopener noreferrer">BSR (Wang et al., 2024)</a></td>
 <td ><sub>Randomly shuffles and rotates the image blocks</sub></td>
 </tr>
+
 
 <tr>
 <td><a href="https://ieeexplore.ieee.org/document/10602524" target="_blank" rel="noopener noreferrer">MFI (Qian et al., 2024)</a></td>
@@ -608,7 +614,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="3"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/pdf/2203.09123" target="_blank" rel="noopener noreferrer">ODI (Byun et al., 2022)</a></td>
 <td ><sub>Diverse inputs based on 3D objects</sub></td>
 </tr>
@@ -624,6 +630,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/abs/2501.00707" target="_blank" rel="noopener noreferrer">EverywhereAttack (Zeng et al., 2025)</a></td>
+<td ><sub>Dividing an image into multiple small local regions.</sub></td>
+</tr>
+
+<tr>
+<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
 <th rowspan="7"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Inkawhich_Feature_Space_Perturbations_Yield_More_Transferable_Adversarial_Examples_CVPR_2019_paper.pdf" target="_blank" rel="noopener noreferrer">AA (Inkawhich et al., 2019)</a></td>
 <td ><sub>Minimize the similarity of feature difference between the original adversarial example and target benign sample </sub></td>
@@ -670,6 +682,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td><a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Zhao_Minimizing_Maximum_Model_Discrepancy_for_Transferable_Black-Box_Targeted_Attacks_CVPR_2023_paper.pdf" target="_blank" rel="noopener noreferrer">M3D (Zhao et al., 2023)</a></td>
 <td ><sub></sub></td>
 </tr>
+
 
 <tr>
 <th rowspan="2"><sub><strong>Ensemble-based</strong></sub></th>
@@ -1111,6 +1124,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >28.1</td>
 <td >61.7</td>
 <td >16.6</td>
+</tr>
+
+<td><a href="./transferattack/gradient/mumodig.py" target="_blank" rel="noopener noreferrer">MUMODIG</a></td>
+<td >98.6</td>
+<td >87.4</td>
+<td >85</td>
+<td >79.9</td>
+<td >45.4</td>
+<td >65.6</td>
+<td >75.8</td>
+<td >71.7</td>
+<td >43.4</td>
+<td >69.7</td>
+<td >31.7</td>
+<td >67</td>
+<td >27</td>
 </tr>
 
 
@@ -2568,7 +2597,7 @@ Class Number: Class Name
 </thead>
 
 
-<th rowspan="3"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="4"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/odi/odi.py" target="_blank" rel="noopener noreferrer">ODI</a></td>
 <td ></td>
 <td ></td>
@@ -2615,6 +2644,22 @@ Class Number: Class Name
 <td >0.0</td>
 <td >0.2</td>
 <td >0.0</td>
+</tr>
+
+<td><a href="./transferattack/input_transformation/everywhere.py" target="_blank" rel="noopener noreferrer">EverywhereAttack </a></td>
+<td >99.8</td>
+<td >64.2</td>
+<td >72.7</td>
+<td >44.5</td>
+<td >23</td>
+<td >46</td>
+<td >72.6</td>
+<td >54.7</td>
+<td >0.2</td>
+<td >56.3</td>
+<td >0</td>
+<td >2.1</td>
+<td >0.2</td>
 </tr>
 
 
