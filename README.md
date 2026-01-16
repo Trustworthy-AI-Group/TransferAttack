@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="28"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="29"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -565,7 +565,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="6"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="7"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1905.11736" target="_blank" rel="noopener noreferrer">CDTP (Naseer et al., 2019)</a></td>
 <td ><sub>Train a generative model on datasets from different domains to learn domain-invariant perturbations</sub></td>
 </tr>
@@ -636,7 +636,6 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 
 <tr>
 <th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
-<th rowspan="7"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Inkawhich_Feature_Space_Perturbations_Yield_More_Transferable_Adversarial_Examples_CVPR_2019_paper.pdf" target="_blank" rel="noopener noreferrer">AA (Inkawhich et al., 2019)</a></td>
 <td ><sub>Minimize the similarity of feature difference between the original adversarial example and target benign sample </sub></td>
 </tr>
@@ -673,7 +672,6 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://arxiv.org/pdf/2103.14641" target="_blank" rel="noopener noreferrer">TTP (Naseer et al., 2021)</a></td>
 <td ><sub>Train a generative model to generate adversarial examples, of which both the global distribution and local neighborhood structure in the latent feature space are matched with the target class.</sub></td>
 </tr>
@@ -685,13 +683,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 
 
 <tr>
-<th rowspan="2"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="3"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2501.01106" target="_blank" rel="noopener noreferrer">AIM (Li et al., 2025)</a></td>
 <td ><sub>Introduce a Semantic Injection Module (SIM) into the generator, which utilizes the semantics contained in an additional guiding image.</sub></td>
 </tr>
 
 <tr>
-<th rowspan="1"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Wu_Improving_Transferable_Targeted_Adversarial_Attacks_with_Model_Self-Enhancement_CVPR_2024_paper.pdf" target="_blank" rel="noopener noreferrer">SASD_WS (Wu et al., 2024)</a></td>
 <td ><sub>Incorporate Sharpness-Aware Self-Distillation (SASD) and Weight Scaling (WS) to promote the source model's generalization capability.</sub></td>
 </tr>
@@ -736,7 +733,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="28"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="29"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >49.2</td>
 <td >54.6</td>
@@ -2297,7 +2294,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="9"><sub><strong>Ensemble-based</strong></sub></th>
+<th rowspan="8"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/ens.py" target="_blank" rel="noopener noreferrer">ENS</a></td>
 <td >99.4</td>
 <td >100.0</td>
@@ -2433,8 +2430,9 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >17.4</td>
 </tr>
 
+
 <tr>
-<th rowspan="6"><sub><strong>Generation-based</strong></sub></th>
+<th rowspan="7"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">CDTP</a></td>
 <td >97.1</td>
 <td >99.2</td>
@@ -2451,7 +2449,9 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >32.5</td>
 </tr>
 
-<tr id="ltp">
+
+
+<tr>
 <td><a href="./transferattack/generation/ltp.py" target="_blank" rel="noopener noreferrer">LTP</a></td>
 <td >99.6</td>
 <td >99.8</td>
@@ -2535,7 +2535,9 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >15.3</td>
 <td >46.9</td>
 </tr>
-<td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">FAP</a></td>
+
+<tr>
+<td><a href="./transferattack/generation/fap.py" target="_blank" rel="noopener noreferrer">FAP</a></td>
 <td >87.0</td>
 <td >68.4</td>
 <td >63.5</td>
@@ -2760,7 +2762,7 @@ Class Number: Class Name
 <td >0.0</td>
 </tr>
 
-<th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
+<tr>
 <td><a href="./transferattack/advanced_objective/ftm.py" target="_blank" rel="noopener noreferrer">FTM</a></td>
 <td >98.8</td>
 <td >54.4</td>
@@ -2777,7 +2779,8 @@ Class Number: Class Name
 <td >0.4</td>
 </tr>
 
-<th rowspan="2"><sub><strong>Generation-based</strong></sub></th>
+<tr>
+<th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/ttp.py" target="_blank" rel="noopener noreferrer">TTP</a></td>
 <td ></td>
 <td ></td>
@@ -2810,7 +2813,7 @@ Class Number: Class Name
 <td ></td>
 </tr>
 
-<th rowspan="3"><sub><strong>Ensemble-based</strong></sub></th>
+<tr>
 <td><a href="./transferattack/generation/aim.py" target="_blank" rel="noopener noreferrer">AIM</a></td>
 <td >69.4</td>
 <td >51.6</td>
@@ -2827,7 +2830,8 @@ Class Number: Class Name
 <td >0.7</td>
 </tr>
 
-<th rowspan="1"><sub><strong>Ensemble-based</strong></sub></th>
+<tr>
+<th rowspan="2"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/sasd_ws.py" target="_blank" rel="noopener noreferrer">SASD_WS</a></td>
 <td >90.5</td>
 <td >82.2</td>
