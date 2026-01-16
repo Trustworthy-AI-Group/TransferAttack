@@ -58,7 +58,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="27"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="28"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -192,10 +192,15 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://ieeexplore.ieee.org/abstract/document/10508615" target="_blank" rel="noopener noreferrer">Foolmix (Li et al., 2025)</a></td>
 <td ><sub>Strengthen the transferability of adversarial examples by dual-blending and direction update strategy.</sub></td>
-</tr
+</tr>
 
 <tr>
-<th rowspan="18"><sub><strong>Input transformation-based</strong></sub></th>
+<td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/29323" target="_blank" rel="noopener noreferrer">AdaMSI-FGM (Long et al., 2024)</a></td>
+<td ><sub>Guarantees convergence by incorporating an innovative, non-monotonic adaptive momentum parameter and replacing the problematic sign operation with an adaptive step-size scheme.</sub></td>
+</tr>
+
+<tr>
+<th rowspan="19"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -281,12 +286,17 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+<td><a href="https://ieeexplore.ieee.org/document/10602524" target="_blank" rel="noopener noreferrer">MFI (Qian et al., 2024)</a></td>
+<td ><sub>Replace high frequency components with image from other categories</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Guo_Boosting_Adversarial_Transferability_through_Augmentation_in_Hypothesis_Space_CVPR_2025_paper.pdf" target="_blank" rel="noopener noreferrer">OPS (Guo et al., 2025)</a></td>
 <td ><sub>Constructs a stochastic optimization problem by input transformation operators and random perturbations.</sub></td>
 </tr>
 
 <tr>
-<th rowspan="16"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="17"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://doi.org/10.1007/978-3-030-01264-9_28" target="_blank" rel="noopener noreferrer">TAP (Zhou et al., 2018)</a></td>
 <td ><sub>Maximize the difference of feature maps between benign sample and adversarial example and smooth the perturbation </sub></td>
 </tr>
@@ -367,7 +377,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="25"><sub><strong>Model-related</strong></sub></th>
+<td><a href="https://ieeexplore.ieee.org/document/10833658" target="_blank" rel="noopener noreferrer">MFAA (Zheng et al., 2025)</a></td>
+<td ><sub>Fuse multi-layer feature gradients into ensemble attention maps to disrupt category-relevant features and boost adversarial transferability</sub></td>
+</tr>
+
+<tr>
+<th rowspan="27"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -467,6 +482,10 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td ><sub>Adaptively re-scale token gradient, patch out under semantic guidance and truncate token gradient.</sub></td>
 </tr>
 
+<tr>
+<td><a href="https://arxiv.org/pdf/2305.05875" target="_blank" rel="noopener noreferrer">QAA (Yang et al., 2024)</a></td>
+<td ><sub>Simulate quantization effects with virtual layers and stochastic rounding, aligning gradients across models with different quantization levels.</sub></td>
+</tr>
 
 <tr>
   <td><a href="https://arxiv.org/html/2503.15404" target="_blank" rel="noopener noreferrer">FPR (Ren et al., 2025)</a></td>
@@ -491,6 +510,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
   <td><a href="https://arxiv.org/abs/2504.10804" target="_blank" rel="noopener noreferrer">LL2S (Liu et al., 2025)</a></td>
   <td><sub>Exploits ViTs redundancy with attention sparsity, head permutation, clean-token regularization, ghost MoE, and robust-token learning, coordinated by online learning to improve transferability.</sub></td>
+</tr>
+
+<tr>
+  <td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/28365" target="_blank" rel="noopener noreferrer">FDAP (Gao et al., 2024)</a></td>
+  <td><sub>Crafts perturbations to minimize the feature diversity in the middle layers of a Vision Transformer, thereby accelerating its natural tendency towards feature collapse.</sub></td>
 </tr>
 
 <tr>
@@ -564,6 +588,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td><a href="https://arxiv.org/abs/2506.21046" target="_blank" rel="noopener noreferrer">DSVA (Wu et al., 2025)</a></td>
 <td ><sub> A generative framework that exploits global features using DINO and local features using MAE to boost transferability.</sub></td>
 </tr>
+  
+<tr>
+<td><a href="https://ieeexplore.ieee.org/abstract/document/10552305" target="_blank" rel="noopener noreferrer">FAP (Wang et al., 2024)</a></td>
+<td ><sub> A frequency-aware adversarial perturbation method that focuses optimization on the most critical, model-agnostic frequencies to enhance transferability.</sub></td>
+</tr>
+
 </table>
 
 ### Targeted Attacks
@@ -594,7 +624,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="7"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Inkawhich_Feature_Space_Perturbations_Yield_More_Transferable_Adversarial_Examples_CVPR_2019_paper.pdf" target="_blank" rel="noopener noreferrer">AA (Inkawhich et al., 2019)</a></td>
 <td ><sub>Minimize the similarity of feature difference between the original adversarial example and target benign sample </sub></td>
 </tr>
@@ -622,6 +652,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://arxiv.org/abs/2401.02727" target="_blank" rel="noopener noreferrer">FFT (Zeng et al., 2024)</a></td>
 <td ><sub>Fine-tuning a crafted adversarial example in the feature space</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2411.15553" target="_blank" rel="noopener noreferrer">FTM (Liang et al., 2025)</a></td>
+<td ><sub>Introduces learnable feature perturbations and employs an efficient stochastic update strategy for optimization</sub></td>
 </tr>
 
 <tr>
@@ -677,7 +712,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </thead>
 
 <tr>
-<th rowspan="27"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="28"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="./transferattack/gradient/fgsm.py" target="_blank" rel="noopener noreferrer">FGSM</a></td>
 <td >49.2</td>
 <td >54.6</td>
@@ -1132,8 +1167,24 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >22.5</td>
 </tr>
 
+<td><a href="./transferattack/gradient/adamsi_fgm.py" target="_blank" rel="noopener noreferrer">AdaMSI_FGM</a></td>
+<td >100.0</td>
+<td >64.6</td>
+<td >58.5</td>
+<td >39.7</td>
+<td >15.1</td>
+<td >24.9</td>
+<td >30.0</td>
+<td >31.0</td>
+<td >40.6</td>
+<td >15.7</td>
+<td >27.5</td>
+<td >58.0</td>
+<td >13.4</td>
+</tr>
+
 <tr>
-<th rowspan="18"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="19"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >98.7</td>
 <td >71.0</td>
@@ -1424,6 +1475,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >32.4</td>
 </tr>
 
+<tr>
+<td><a href="./transferattack/input_transformation/mfi.py" target="_blank" rel="noopener noreferrer">MFI</a></td>
+<td >95.2</td>
+<td >84.6</td>
+<td >83.3</td>
+<td >83.3</td>
+<td >45.0</td>
+<td >62.2</td>
+<td >72.4</td>
+<td >68.4</td>
+<td >49.40</td>
+<td >74.90</td>
+<td >44.70</td>
+<td >72.1</td>
+<td >46.5</td>
+</tr>
 
 <td><a href="./transferattack/input_transformation/ops.py" target="_blank" rel="noopener noreferrer">OPS</a></td>
 <td >99.5</td>
@@ -1442,7 +1509,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="16"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="17"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/tap.py" target="_blank" rel="noopener noreferrer">TAP</a></td>
 <td >99.9</td>
 <td >93.4</td>
@@ -1714,7 +1781,24 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="25"><sub><strong>Model-related</strong></sub></th>
+<td><a href="./transferattack/advanced_objective/mfaa.py" target="_blank" rel="noopener noreferrer">MFAA</a></td>
+<td >95.2</td>
+<td >86.5</td>
+<td >83.5</td>
+<td >72.2</td>
+<td >24.4</td>
+<td >42.9</td>
+<td >59.6</td>
+<td >56.7</td>
+<td >42.90</td>
+<td >48.10</td>
+<td >30.60</td>
+<td >51.5</td>
+<td >17.9</td>
+</tr>
+
+<tr>
+<th rowspan="27"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >73.2</td>
@@ -2054,6 +2138,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
+<td><a href="./transferattack/model_related/qaa.py" target="_blank" rel="noopener noreferrer">QAA</a></td>
+<td >76.3</td>
+<td >90.7</td>
+<td >87.7</td>
+<td >72.9</td>
+<td >18.1</td>
+<td >28.0</td>
+<td >42.6</td>
+<td >39.8</td>
+<td >43.4</td>
+<td >31.6</td>
+<td >30.2</td>
+<td >27.7</td>
+<td >19.0</td>
+</tr>
+
+<tr>
 <td><a href="./transferattack/model_related/fpr.py" target="_blank" rel="noopener noreferrer">FPR</a></td>
 <td >56.6</td>
 <td >83.6</td>
@@ -2139,7 +2240,24 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="8"><sub><strong>Ensemble-based</strong></sub></th>
+<td><a href="./transferattack/model_related/fdap.py" target="_blank" rel="noopener noreferrer">FDAP</a></td>
+<td >44.9</td>
+<td >78.9</td>
+<td >70.7</td>
+<td >53.6</td>
+<td >64.2</td>
+<td >48.2</td>
+<td >49.7</td>
+<td >59.0</td>
+<td >42.9</td>
+<td >30.1</td>
+<td >33.8</td>
+<td >48.9</td>
+<td >28.8</td>
+</tr>
+
+<tr>
+<th rowspan="9"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="./transferattack/ensemble/ens.py" target="_blank" rel="noopener noreferrer">ENS</a></td>
 <td >99.4</td>
 <td >100.0</td>
@@ -2377,6 +2495,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >15.3</td>
 <td >46.9</td>
 </tr>
+<td><a href="./transferattack/generation/cdtp.py" target="_blank" rel="noopener noreferrer">FAP</a></td>
+<td >87.0</td>
+<td >68.4</td>
+<td >63.5</td>
+<td >46.4</td>
+<td >16.0</td>
+<td >26.6</td>
+<td >32.4</td>
+<td >32.6</td>
+<td >41.8</td>
+<td >25.4</td>
+<td >28.6</td>
+<td >66.9</td>
+<td >21.4</td>
+</tr>
+
 </table>
 
 ### Targeted Attack
@@ -2473,7 +2607,7 @@ Class Number: Class Name
 </tr>
 
 
-<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="7"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/aa.py" target="_blank" rel="noopener noreferrer">AA</a></td>
 <td ></td>
 <td ></td>
@@ -2568,6 +2702,22 @@ Class Number: Class Name
 <td >0.0</td>
 <td >0.0</td>
 <td >0.0</td>
+</tr>
+
+<td><a href="./transferattack/advanced_objective/ftm.py" target="_blank" rel="noopener noreferrer">FTM</a></td>
+<td >98.8</td>
+<td >54.4</td>
+<td >63.6</td>
+<td >45.2</td>
+<td >20.5</td>
+<td >39.6</td>
+<td >68.4</td>
+<td >48.7</td>
+<td >0.2</td>
+<td >53.5</td>
+<td >0.0</td>
+<td >0.0</td>
+<td >0.4</td>
 </tr>
 
 <th rowspan="2"><sub><strong>Generation-based</strong></sub></th>

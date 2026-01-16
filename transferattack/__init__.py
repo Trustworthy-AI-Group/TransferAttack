@@ -32,6 +32,7 @@ attack_zoo = {
     'mumodig': ('.gradient.mumodig','MUMODIG'),
     'gaa': ('.gradient.gaa', 'GAA'),  
     'foolmix': ('.gradient.foolmix', 'Foolmix'),  
+    'adamsi_fgm': ('.gradient.adamsi_fgm', 'AdaMSI_FGM'),  
     
     # input transformation
     ## Untargeted
@@ -52,6 +53,7 @@ attack_zoo = {
     'decowa': ('.input_transformation.decowa', 'DeCowA'),
     'l2t': ('.input_transformation.l2t', 'L2T'),
     'bsr': ('.input_transformation.bsr', 'BSR'),
+    'mfi': ('.input_transformation.mfi', 'MFI'),
     'ops': ('.input_transformation.ops', 'OPS'),
     ## Targeted
     'odi': ('.input_transformation.odi.odi', 'ODI'),
@@ -78,6 +80,7 @@ attack_zoo = {
     'ilpd': ('.advanced_objective.ilpd', 'ILPD'),
     'bfa': ('.advanced_objective.bfa', 'BFA'),
     'p2fa': ('.advanced_objective.p2fa', 'P2FA'),
+    'mfaa': ('.advanced_objective.mfaa', 'MFAA'),
     ## Targeted
     'aa': ('.advanced_objective.aa', 'AA'),
     'potrip': ('.advanced_objective.potrip', 'POTRIP'),
@@ -85,6 +88,7 @@ attack_zoo = {
     'logit_margin': ('.advanced_objective.logit_margin', 'Logit_Margin'),
     'cfm': ('.advanced_objective.cfm', 'CFM'),
     'fft': ('.advanced_objective.fft', 'FFT'),
+    'ftm': ('.advanced_objective.ftm', 'FTM'),
     
     # model_related
     'sgm': ('.model_related.sgm', 'SGM'),
@@ -107,11 +111,14 @@ attack_zoo = {
     'vdc': ('.model_related.vdc', 'VDC'),
     'ma': ('.model_related.ma', 'MA'),
     'att': ('.model_related.att', 'ATT'),
+    'qaa': ('.model_related.qaa', 'QAA'),
     'fpr': ('.model_related.fpr', 'FPR'),
     'awt': ('.model_related.awt', 'AWT'),
     'faug': ('.model_related.faug', 'FAUG'),
     'ana': ('.model_related.ana', 'ANA'),
     'll2s': ('.model_related.ll2s', "LL2S"),
+    'fdap': ('.model_related.fdap', "FDAP"),
+    'ma': ('.model_related.ma', "MA"),
 
     # ensemble
     'ens': ('.ensemble.ens', 'ENS'),
@@ -133,6 +140,7 @@ attack_zoo = {
     'ge_advgan': ('.generation.ge_advgan', 'GE_ADVGAN'),
     'diffattack': ('.generation.diffattack', 'DiffAttack'),
     'dsva': ('.generation.dsva', 'DSVA'),
+    'fap': ('.generation.fap', 'FAP'),
     ## Targeted
     'ttp': ('.generation.ttp', 'TTP'),
     'm3d': ('.generation.m3d', 'M3D'),
