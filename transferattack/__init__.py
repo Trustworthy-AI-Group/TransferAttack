@@ -61,6 +61,7 @@ attack_zoo = {
     'idaa': ('.input_transformation.idaa', 'IDAA'),
     'ssm_p': ('.input_transformation.ssm_with_tricks', 'SSA_P'),
     'ssm_h': ('.input_transformation.ssm_with_tricks', 'SSM_H'),
+    'everywhere': ('.input_transformation.everywhere', 'EverywhereAttack'),
     
     # advanced_objective
     ## Untargeted
@@ -131,6 +132,7 @@ attack_zoo = {
     'smer': ('.ensemble.smer', 'SMER'),
     ## Targeted
     'sasd_ws': ('.ensemble.sasd_ws', 'SASD_WS'),
+    'rfcoa' : ('.ensemble.rfcoa.rfcoa', 'RFCoA'),
     
     # generation
     ## Untargeted

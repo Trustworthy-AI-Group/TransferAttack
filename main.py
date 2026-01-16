@@ -58,7 +58,7 @@ def main():
             for p in model.parameters():
                 p.requires_grad = False
                 
-            if args.attack in ['ttp', 'm3d']: 
+            if args.attack in ['ttp', 'm3d', 'rfcoa']: 
                 asr = 0
                 for idx, target_class in enumerate(generation_target_classes):
                     new_output_dir = os.path.join(args.output_dir, str(target_class))
