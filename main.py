@@ -41,7 +41,7 @@ def main():
         attacker = transferattack.load_attack_class(args.attack)(model_name=args.model, targeted=args.targeted)
 
         for batch_idx, [images, labels, filenames] in tqdm.tqdm(enumerate(dataloader)):
-            if args.attack in ['ttp', 'm3d']: 
+            if args.attack in ['ttp', 'm3d', 'rfcoa', 'aim']: 
                 for idx, target_class in enumerate(generation_target_classes):
                     perturbations = attacker(images, labels, idx)
                     new_output_dir = os.path.join(args.output_dir, str(target_class))
@@ -58,7 +58,7 @@ def main():
             for p in model.parameters():
                 p.requires_grad = False
                 
-            if args.attack in ['ttp', 'm3d']: 
+            if args.attack in ['ttp', 'm3d', 'rfcoa']: 
                 asr = 0
                 for idx, target_class in enumerate(generation_target_classes):
                     new_output_dir = os.path.join(args.output_dir, str(target_class))
