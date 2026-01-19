@@ -24,8 +24,8 @@ class LOGIT(Attack):
         epsilon=16/255, alpha=2.0/255, epoch=300, decay=1.0
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/logit/resnet18_targeted --attack logit --model=resnet18 --targeted
-        python main.py --input_dir ./path/to/data --output_dir adv_data/logit/resnet18_targeted --eval --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/logit/resnet50_targeted --attack logit --model=resnet50 --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/logit/resnet50_targeted --eval --targeted
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=300, decay=1.0, resize_rate=1.1, kernel_size=5, targeted=True, 
@@ -67,6 +67,9 @@ class LOGIT(Attack):
         """
         Random transform the input images
         """
+        if torch.rand(1) > 0.7:
+            return x 
+        
         img_size = x.shape[-1]
         img_resize = int(img_size * self.resize_rate)
 
@@ -96,10 +99,11 @@ class LOGIT(Attack):
         return grad
 
     def get_loss(self, logits, data, label):
-        loss = 0
-        for batch_i in range(data.shape[0]):
-            loss += logits[batch_i][label[batch_i]]
-        return loss
+        loss = logits.gather(1, label.unsqueeze(1)).squeeze(1).sum()
+        return loss if self.targeted else -loss
+    
+    def get_momentum(self, grad, momentum, **kwargs):
+        return grad + self.decay * momentum
         
     def forward(self, data, label, **kwargs):
         """
