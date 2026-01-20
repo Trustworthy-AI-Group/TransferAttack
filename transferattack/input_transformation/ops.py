@@ -25,13 +25,13 @@ class OPS(Attack):
         device (torch.device): the device for data. If it is None, the device would be same as model
 
     Official arguments:
-        epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1.0, beta=2., num_sample_neighbor=10, num_sample_operator=20, sample_levels = range(2, 5), sample_ratios = np.arange(0., 1.5, 0.25) + 0.25
+        epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1.0, beta=2., num_sample_neighbor=30, num_sample_operator=30, sample_levels = range(2, 5), sample_ratios = np.arange(0., 1.5, 0.25) + 0.25
     Example script:
         python main.py --input_dir ./path/to/data --output_dir adv_data/ops/resnet50 --attack=ops --model resnet50
         python main.py --input_dir ./path/to/data --output_dir adv_data/ops/resnet50 --eval
     '''
     
-    def __init__(self, model_name, epsilon=16/255, beta=2., epoch=10, num_sample_neighbor=10, num_sample_operator=20, sample_levels = range(2, 5), sample_ratios = np.arange(0., 1.5, 0.25) + 0.25, decay=1., 
+    def __init__(self, model_name, epsilon=16/255, beta=2., epoch=10, num_sample_neighbor=30, num_sample_operator=30, sample_levels = range(2, 5), sample_ratios = np.arange(0., 1.5, 0.25) + 0.25, decay=1., 
                  targeted=False, random_start=False, norm='linfty', loss='crossentropy', device=None, attack='OPS', **kwargs):
         super().__init__(attack, model_name, epsilon, targeted, random_start, norm, loss, device)
         self.alpha = epsilon / epoch
