@@ -6,10 +6,10 @@ import torch.nn.functional as F
 import scipy.stats as st
 
 from torch.nn.modules.module import Module
-
+from ..input_transformation.su import SU
 mid_outputs = None
 
-class FFT(Attack):
+class FFT(SU):
     """
     FFT (Feature space fine-tuning)
     'Enhancing Targeted Transferability via Feature Space Fine-tuning (ICASSP 2024)'(https://arxiv.org/abs/2401.02727)
@@ -35,8 +35,8 @@ class FFT(Attack):
         beta_combine=0.2, epoch_ft=10, alpha_ft = alpha/2
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/fft/resnet18_targeted --attack fft --model=resnet18 --targeted
-        python main.py --input_dir ./path/to/data --output_dir adv_data/fft/resnet18_targeted --eval --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/fft/resnet50_targeted --attack fft --model=resnet50 --targeted --GPU_ID 3 --epoch=300
+        python main.py --input_dir ./path/to/data --output_dir adv_data/fft/resnet50_targeted --eval --targeted
 
     NOTE:
         1). FFT is only useful for TARGETED attack. It does not make sense to try to boost untargeted attack with it.
@@ -46,7 +46,7 @@ class FFT(Attack):
     def __init__(self, model_name, epsilon=16 / 255, alpha=2.0 / 255, random=False, epoch=300, decay=1., coeff=1.0, 
                  drop_rate=0.3, num_ens=30, beta_combine=0.2, epoch_ft=10, targeted=False, random_start=False, norm='linfty', 
                  loss='crossentropy', device=None, attack='FFT', loss_base='logit_margin', **kwargs):
-        super().__init__(attack, model_name, epsilon, targeted, random_start, norm, loss, device)
+        super().__init__(model_name, epsilon, alpha, epoch, decay, coef=0.001, scale=(0.1, 0.0), depth=3, targeted=True, random_start=False, norm=norm, loss=loss, device=device)
         self.alpha = alpha
         self.epoch = epoch
         self.decay = decay

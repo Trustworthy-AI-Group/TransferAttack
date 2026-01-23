@@ -1,15 +1,11 @@
 import torch
 import torch.nn.functional as F
-
 from ...utils import *
 from ...gradient.mifgsm import MIFGSM
-
 import scipy.stats as st
 import numpy as np
-
 import os
 import math
-
 
 class ODI(MIFGSM):
     """
@@ -34,8 +30,8 @@ class ODI(MIFGSM):
         epsilon=16/255, alpha=2/255, epoch=300, decay=1., kernel_type='gaussian', kernel_size=15
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/odi/resnet18_targeted --attack odi --model=resnet18 --targeted
-        python main.py --input_dir ./path/to/data --output_dir adv_data/odi/resnet18_targeted --eval --targeted
+        python main.py --input_dir ./path/to/data --output_dir adv_data/odi/resnet50_targeted --attack odi --model=resnet50 --targeted --epoch 300 --GPU_ID 0 --batchsize 1
+        python main.py --input_dir ./path/to/data --output_dir adv_data/odi/resnet50_targeted --eval --targeted
     """
 
     def __init__(self, model_name, epsilon=16/255, alpha=2/255, epoch=300, decay=1., kernel_type='gaussian', kernel_size=5, targeted=False,
@@ -44,8 +40,8 @@ class ODI(MIFGSM):
         self.kernel = self.generate_kernel(kernel_type, kernel_size)
         self.config_idx = 101
         self.count = 0
-        # self.renderer= Render3D(config_idx=self.config_idx,count=self.count)
-        self.prob = 0.7
+        self.prob = 1.0
+        self.resize_rate = 1.1
 
     def generate_kernel(self, kernel_type, kernel_size, nsig=3):
         """
@@ -78,14 +74,8 @@ class ODI(MIFGSM):
         Overridden for TIM attack.
         """
         grad = torch.autograd.grad(loss, delta, retain_graph=False, create_graph=False)[0]
-        grad = F.conv2d(grad, self.kernel, stride=1, padding='same', groups=3)
+        grad = F.conv2d(grad, self.kernel, stride=1, bias=None, padding=((5-1)//2,(5-1)//2), groups=3)
         return grad
-
-    def get_loss(self, logits, label):
-        real = logits.gather(1,label.unsqueeze(1)).squeeze(1)
-        logit_dists = ( -1 * real)
-        loss = logit_dists.sum()
-        return -loss
 
     def transform(self, data, renderer,**kwargs):
         c = np.random.rand(1)
@@ -97,6 +87,68 @@ class ODI(MIFGSM):
         else:
             return  data
 
+    def DI(self, x, **kwargs):
+        """
+        Random transform the input images
+        """
+        # do not transform the input image
+        if torch.rand(1) > 1.0:
+            return x
+        
+        img_size = x.shape[-1]
+        img_resize = int(img_size * self.resize_rate)
+
+        # resize the input image to random size
+        rnd = torch.randint(low=min(img_size, img_resize), high=max(img_size, img_resize), size=(1,), dtype=torch.int32)
+        rescaled = F.interpolate(x, size=[rnd, rnd], mode='bilinear', align_corners=False)
+
+        # randomly add padding
+        h_rem = img_resize - rnd
+        w_rem = img_resize - rnd
+        pad_top = torch.randint(low=0, high=h_rem.item(), size=(1,), dtype=torch.int32)
+        pad_bottom = h_rem - pad_top
+        pad_left = torch.randint(low=0, high=w_rem.item(), size=(1,), dtype=torch.int32)
+        pad_right = w_rem - pad_left
+
+        padded = F.pad(rescaled, [pad_left.item(), pad_right.item(), pad_top.item(), pad_bottom.item()], value=0)
+
+        # resize the image back to img_size
+        return F.interpolate(padded, size=[img_size, img_size], mode='bilinear', align_corners=False)
+    
+    def generate_kernel(self, kernel_type, kernel_size, nsig=3):
+        """
+        Generate the gaussian/uniform/linear kernel
+
+        Arguments:
+            kernel_type (str): the method for initilizing the kernel
+            kernel_size (int): the size of kernel
+        """
+        if kernel_type.lower() == 'gaussian':
+            x = np.linspace(-nsig, nsig, kernel_size)
+            kern1d = st.norm.pdf(x)
+            kernel_raw = np.outer(kern1d, kern1d)
+            kernel = kernel_raw / kernel_raw.sum()
+        elif kernel_type.lower() == 'uniform':
+            kernel = np.ones((kernel_size, kernel_size)) / (kernel_size ** 2)
+        elif kernel_type.lower() == 'linear':
+            kern1d = 1 - np.abs(np.linspace((-kernel_size+1)//2, (kernel_size-1)//2, kernel_size)/(kernel_size**2))
+            kernel_raw = np.outer(kern1d, kern1d)
+            kernel = kernel_raw / kernel_raw.sum()
+        else:
+            raise Exception("Unspported kernel type {}".format(kernel_type))
+        
+        stack_kernel = np.stack([kernel, kernel, kernel])
+        stack_kernel = np.expand_dims(stack_kernel, 1)
+        return torch.from_numpy(stack_kernel.astype(np.float32)).to(self.device)
+
+    def get_grad(self, loss, delta, **kwargs):
+        """
+        Overridden for TIM attack.
+        """
+        grad = torch.autograd.grad(loss, delta, retain_graph=False, create_graph=False)[0]
+        grad = F.conv2d(grad, self.kernel, stride=1, padding='same', groups=3)
+        return grad
+        
     def forward(self, data, label, **kwargs):
         """
         The general attack procedure
@@ -111,17 +163,20 @@ class ODI(MIFGSM):
         data = data.clone().detach().to(self.device)
         label = label.clone().detach().to(self.device)
 
+        loss_fn=LogitLoss(label)
+
         # Initialize adversarial perturbation
         delta = self.init_delta(data)
 
         momentum = 0
         renderer = Render3D(config_idx=self.config_idx, count=self.count, device=self.device)
+        print(data.shape, self.decay)
         for _ in range(self.epoch):
             # Obtain the output
             logits = self.get_logits(self.transform(data+delta, renderer))
 
             # Calculate the loss
-            loss = self.get_loss(logits, label)
+            loss = loss_fn(logits)
 
             # Calculate the gradients
             grad = self.get_grad(loss, delta)
@@ -131,9 +186,20 @@ class ODI(MIFGSM):
 
             # Update adversarial perturbation
             delta = self.update_delta(delta, data, momentum, self.alpha)
-
         # torch.cuda.empty_cache()
         return delta.detach()
+
+class LogitLoss(nn.Module):
+    def __init__(self, labels):
+        super(LogitLoss, self).__init__()
+        self.labels=labels
+        self.labels.requires_grad = False
+
+    def forward(self, logits):
+        real = logits.gather(1,self.labels.unsqueeze(1)).squeeze(1)
+        logit_dists = ( -1 * real)
+        loss = logit_dists.sum()
+        return -loss
 
 
 exp_configuration={
@@ -379,7 +445,6 @@ class Render3D(object):
             converted_img=cv2.cvtColor(result_img_npy, cv2.COLOR_BGR2RGB)
             cv2.imshow('Video', converted_img) #[0, ..., :3]
             key=cv2.waitKey(1) & 0xFF
-
         return result_img
     
     def compute_rotation(self, angles, device):
