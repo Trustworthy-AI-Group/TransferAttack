@@ -2601,50 +2601,50 @@ Class Number: Class Name
 
 <th rowspan="4"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/odi/odi.py" target="_blank" rel="noopener noreferrer">ODI</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >98.8</td>
+<td >21.3</td>
+<td >23.9</td>
+<td >28.9</td>
+<td >5.4</td>
+<td >16.7</td>
+<td >40.2</td>
+<td >16.9</td>
+<td >0.0</td>
+<td >31.6</td>
+<td >0.1</td>
+<td >0.0</td>
+<td >0.3</td>
 </tr>
 
 <td><a href="./transferattack/input_transformation/su.py" target="_blank" rel="noopener noreferrer">SU</a></td>
 <td >100.0</td>
-<td >5.4</td>
-<td >7.1</td>
+<td >6.2</td>
+<td >7.0</td>
 <td >2.8</td>
-<td >0.1</td>
-<td >0.8</td>
-<td >12.0</td>
-<td >3.0</td>
-<td >0.1</td>
-<td >4.5</td>
+<td >0.9</td>
+<td >2.7</td>
+<td >13.6</td>
+<td >4.3</td>
+<td >0.0</td>
+<td >3.4</td>
 <td >0.0</td>
 <td >0.0</td>
 <td >0.0</td>
 </tr>
 
 <td><a href="./transferattack/input_transformation/idaa.py" target="_blank" rel="noopener noreferrer">IDAA </a></td>
-<td >71.7</td>
-<td >5.0</td>
-<td >4.8</td>
+<td >34.3</td>
+<td >19.4</td>
+<td >18.8</td>
+<td >12.6</td>
 <td >2.1</td>
-<td >0.3</td>
-<td >2.1</td>
-<td >5.0</td>
-<td >3.6</td>
-<td >0.1</td>
+<td >4.5</td>
+<td >14.0</td>
+<td >7.8</td>
 <td >0.1</td>
 <td >0.0</td>
-<td >0.2</td>
+<td >0.1</td>
+<td >0.0</td>
 <td >0.0</td>
 </tr>
 
@@ -2683,50 +2683,50 @@ Class Number: Class Name
 </tr>
 
 <td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
-<td >99.8</td>
-<td >4.5</td>
-<td >5.6</td>
-<td >6.1</td>
-<td >0.9</td>
-<td >4.1</td>
-<td >10.8</td>
-<td >4.2</td>
-<td >0.0</td>
-<td >6.0</td>
+<td >100.0</td>
+<td >5.0</td>
+<td >7.4</td>
+<td >7.7</td>
+<td >0.8</td>
+<td >5.2</td>
+<td >13.9</td>
+<td >5.0</td>
+<td >0.1</td>
+<td >5.9</td>
 <td >0.0</td>
 <td >0.0</td>
 <td >0.0</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/logit.py" target="_blank" rel="noopener noreferrer">Logit</a></td>
-<td >99.8</td>
-<td >2.9</td>
-<td >2.5</td>
-<td >1.8</td>
-<td >0.6</td>
-<td >2.2</td>
-<td >8.6</td>
-<td >2.5</td>
+<td >57.2</td>
+<td >22.8</td>
+<td >16.7</td>
+<td >19.4</td>
+<td >2.4</td>
+<td >5.5</td>
+<td >24.7</td>
+<td >10.5</td>
+<td >0.1</td>
+<td >32.6</td>
 <td >0.0</td>
-<td >3.3</td>
 <td >0.0</td>
-<td >0.0</td>
-<td >0.0</td>
+<td >0.1</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/logit_margin.py" target="_blank" rel="noopener noreferrer">Logit-Margin</a></td>
-<td >99.9</td>
-<td >3.1</td>
-<td >2.8</td>
-<td >1.7</td>
-<td >0.2</td>
-<td >2.5</td>
-<td >7.7</td>
-<td >3.4</td>
+<td >56.5</td>
+<td >21.9</td>
+<td >17.1</td>
+<td >20.9</td>
+<td >1.6</td>
+<td >6.0</td>
+<td >24.3</td>
+<td >8.8</td>
 <td >0.1</td>
-<td >2.3</td>
+<td >30.8</td>
 <td >0.0</td>
-<td >0.1</td>
+<td >0.0</td>
 <td >0.0</td>
 </tr>
 
@@ -2747,16 +2747,16 @@ Class Number: Class Name
 </tr>
 
 <td><a href="./transferattack/advanced_objective/fft.py" target="_blank" rel="noopener noreferrer">FFT</a></td>
-<td >98.7</td>
-<td >8.5</td>
-<td >9.4</td>
-<td >2.4</td>
-<td >0.5</td>
-<td >4.9</td>
-<td >14.4</td>
-<td >7.5</td>
+<td >97.3</td>
+<td >11.5</td>
+<td >14.3</td>
+<td >6.3</td>
+<td >1.9</td>
+<td >3.8</td>
+<td >19.1</td>
+<td >7.4</td>
 <td >0.1</td>
-<td >5.6</td>
+<td >11.1</td>
 <td >0.0</td>
 <td >0.0</td>
 <td >0.0</td>
