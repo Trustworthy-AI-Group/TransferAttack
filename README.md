@@ -1522,9 +1522,9 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >62.2</td>
 <td >72.4</td>
 <td >68.4</td>
-<td >49.40</td>
-<td >74.90</td>
-<td >44.70</td>
+<td >49.4</td>
+<td >74.9</td>
+<td >44.7</td>
 <td >72.1</td>
 <td >46.5</td>
 </tr>
@@ -2665,23 +2665,7 @@ Class Number: Class Name
 </tr>
 
 
-<th rowspan="7"><sub><strong>Advanced objective</strong></sub></th>
-<td><a href="./transferattack/advanced_objective/aa.py" target="_blank" rel="noopener noreferrer">AA</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-</tr>
-
+<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
 <td >100.0</td>
 <td >5.0</td>
@@ -2782,35 +2766,35 @@ Class Number: Class Name
 <tr>
 <th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/ttp.py" target="_blank" rel="noopener noreferrer">TTP</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >71.1</td>
+<td >71.8</td>
+<td >52.4</td>
+<td >32.8</td>
+<td >8.0</td>
+<td >12.6</td>
+<td >47.8</td>
+<td >30.5</td>
+<td >0.2</td>
+<td >57.8</td>
+<td >0.3</td>
+<td >1.8</td>
+<td >1.5</td>
 </tr>
 
 <td><a href="./transferattack/generation/m3d.py" target="_blank" rel="noopener noreferrer">M3D</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >88.5</td>
+<td >89.2</td>
+<td >79.8</td>
+<td >59.0</td>
+<td >32.5</td>
+<td >35.8</td>
+<td >76.4</td>
+<td >60.5</td>
+<td >0.2</td>
+<td >80.2</td>
+<td >0.4</td>
+<td >3.5</td>
+<td >1.7</td>
 </tr>
 
 <tr>
