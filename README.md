@@ -2487,19 +2487,19 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr>
 <td><a href="./transferattack/generation/ge_advgan.py" target="_blank" rel="noopener noreferrer">GE-ADVGAN</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >68.1</td>
+<td >90.1</td>
+<td >90.3</td>
+<td >79.8</td>
+<td >18.1</td>
+<td >12.1</td>
+<td >37.8</td>
+<td >27.0</td>
+<td >41.2</td>
+<td >73.5</td>
+<td >36.0</td>
+<td >59.8</td>
+<td >45.3</td>
 </tr>
 
 <tr>
