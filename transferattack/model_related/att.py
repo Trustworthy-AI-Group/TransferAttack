@@ -29,10 +29,11 @@ class ATT(MIFGSM):
         offset (float): the offset factor.
 
     Official arguments:
-        epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1.0, lam=0.01, gamma=0.5, scale=0.4, offset=0.4
+        epsilon=16/255, alpha=epsilon/epoch=1.6/255, epoch=10, decay=1.0, lam=0.01, gamma=0.5, scale=0.4, offset=0.4,
+        sample_num_batches=130, weaken_factor(Attention)=0.45, weaken_factor(QKV)=0.7, weaken_factor(MLP)=0.65
 
     Example script:
-        python main.py --input_dir ./path/to/data --output_dir adv_data/att/vit --attack=att --model vit_base_patch16_224 --batchsize 1
+        python main.py --input_dir ./path/to/data --output_dir adv_data/att/vit --attack=att --model vit_base_patch16_224
         python main.py --input_dir ./path/to/data --output_dir adv_data/att/vit --eval
 
     """
@@ -80,7 +81,7 @@ class ATT(MIFGSM):
         self.offset = 0.4 
     
         def attn_ATT(module, grad_in, grad_out):
-            mask = torch.ones_like(grad_in[0]) * self.gamma
+            mask = torch.ones_like(grad_in[0]) * self.truncate_layers[self.back_attn] * self.weaken_factor[0]
             out_grad = mask * grad_in[0][:]
             if self.var_A != 0:
                 GPF_ = (self.gamma + self.lam * (1 - torch.sqrt(torch.var(out_grad) / self.var_A))).clamp(0, 1)
@@ -292,3 +293,4 @@ def forward(self, data, label, **kwargs):
         
 
         return delta.detach()
+
