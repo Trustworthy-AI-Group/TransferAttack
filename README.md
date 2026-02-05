@@ -678,7 +678,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 
 <tr>
 <td><a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Zhao_Minimizing_Maximum_Model_Discrepancy_for_Transferable_Black-Box_Targeted_Attacks_CVPR_2023_paper.pdf" target="_blank" rel="noopener noreferrer">M3D (Zhao et al., 2023)</a></td>
-<td ><sub></sub></td>
+<td ><sub>Train a generator with two discriminators to jointly minimize classification loss and inter-discriminator discrepancy.</sub></td>
 </tr>
 
 
