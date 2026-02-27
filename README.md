@@ -9,7 +9,7 @@
 
 TransferAttack is a pytorch framework to boost the adversarial transferability for image classification.
 
-[Devling into Adversarial Transferability on Image Classification: A Review, Benchmark and Evaluation](./README.md) will be released soon.
+[Devling into Adversarial Transferability on Image Classification: Review, Benchmark, and Evaluation](https://arxiv.org/abs/2602.23117).
 
 
 ![Overview](./figs/overview.png)
@@ -23,6 +23,18 @@ There are a lot of reasons for TransferAttack, such as:
 + **A benchmark for evaluating new transfer-based attacks**: TransferAttack categorizes existing transfer-based attacks into several types and fairly evaluates various transfer-based attacks under the same setting.
 + **Evaluate the robustness of deep models**: TransferAttack provides a plug-and-play interface to verify the robustness of models, such as CNNs and ViTs.
 + **A summary of transfer-based attacks**: TransferAttack reviews numerous transfer-based attacks, making it easy to get the whole picture of transfer-based attacks for practitioners.
+
+
+## Citation
+If our paper or this code is useful for your research, please cite our paper:
+```
+@article{wang2025attention,
+     title={{Devling into Adversarial Transferability on Image Classification: Review, Benchmark, and Evaluation}},
+     author={Xiaosen Wang and Zhijin Ge and Bohan Liu and Zheng Fang and Fengfan Zhou and Ruixuan Zhang and Shaokang Wang and Yuyang Luo},
+     journal={arXiv preprint arXiv:2602.23117},
+     year={2026}
+}
+```
 
 ## Requirements
 + Python >= 3.6
