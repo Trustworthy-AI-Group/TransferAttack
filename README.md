@@ -1530,19 +1530,19 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <td><a href="./transferattack/input_transformation/ops.py" target="_blank" rel="noopener noreferrer">OPS</a></td>
-<td >99.5</td>
+<td >99.8</td>
+<td >98.8</td>
+<td >98.6</td>
+<td >98.7</td>
+<td >90.6</td>
+<td >95.3</td>
+<td >97.1</td>
+<td >96.3</td>
+<td >60.9</td>
 <td >98.1</td>
-<td >97.8</td>
-<td >98.2</td>
-<td >88.8</td>
-<td >93.8</td>
-<td >96.7</td>
-<td >95.7</td>
-<td >57.8</td>
-<td >96.9</td>
-<td >64.6</td>
-<td >90.7</td>
-<td >83.5</td>
+<td >69.4</td>
+<td >92.5</td>
+<td >88.9</td>
 </tr>
 
 <tr>
