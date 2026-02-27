@@ -28,7 +28,7 @@ There are a lot of reasons for TransferAttack, such as:
 ## Citation
 If our paper or this code is useful for your research, please cite our paper:
 ```
-@article{wang2025attention,
+@article{wang2026devling,
      title={{Devling into Adversarial Transferability on Image Classification: Review, Benchmark, and Evaluation}},
      author={Xiaosen Wang and Zhijin Ge and Bohan Liu and Zheng Fang and Fengfan Zhou and Ruixuan Zhang and Shaokang Wang and Yuyang Luo},
      journal={arXiv preprint arXiv:2602.23117},
