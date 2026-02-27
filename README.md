@@ -9,7 +9,7 @@
 
 TransferAttack is a pytorch framework to boost the adversarial transferability for image classification.
 
-[Devling into Adversarial Transferability on Image Classification: A Review, Benchmark and Evaluation](./README.md) will be released soon.
+[Devling into Adversarial Transferability on Image Classification: Review, Benchmark, and Evaluation](https://arxiv.org/abs/2602.23117).
 
 
 ![Overview](./figs/overview.png)
@@ -23,6 +23,18 @@ There are a lot of reasons for TransferAttack, such as:
 + **A benchmark for evaluating new transfer-based attacks**: TransferAttack categorizes existing transfer-based attacks into several types and fairly evaluates various transfer-based attacks under the same setting.
 + **Evaluate the robustness of deep models**: TransferAttack provides a plug-and-play interface to verify the robustness of models, such as CNNs and ViTs.
 + **A summary of transfer-based attacks**: TransferAttack reviews numerous transfer-based attacks, making it easy to get the whole picture of transfer-based attacks for practitioners.
+
+
+## Citation
+If our paper or this code is useful for your research, please cite our paper:
+```
+@article{wang2026devling,
+     title={{Devling into Adversarial Transferability on Image Classification: Review, Benchmark, and Evaluation}},
+     author={Xiaosen Wang and Zhijin Ge and Bohan Liu and Zheng Fang and Fengfan Zhou and Ruixuan Zhang and Shaokang Wang and Yuyang Luo},
+     journal={arXiv preprint arXiv:2602.23117},
+     year={2026}
+}
+```
 
 ## Requirements
 + Python >= 3.6
@@ -494,6 +506,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+  <td><a href="https://arxiv.org/pdf/2403.07942" target="_blank" rel="noopener noreferrer">FDAP (Gao et al., 2024)</a></td>
+  <td><sub>Crafts perturbations to minimize the feature diversity in the middle layers of a Vision Transformer, thereby accelerating its natural tendency towards feature collapse.</sub></td>
+</tr>
+
+<tr>
   <td><a href="https://arxiv.org/html/2503.15404" target="_blank" rel="noopener noreferrer">FPR (Ren et al., 2025)</a></td>
   <td><sub>Refining attention maps and token embeddings of Vision Transformers from the forward propagation.</sub></td>
 </tr>
@@ -516,11 +533,6 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
   <td><a href="https://arxiv.org/abs/2504.10804" target="_blank" rel="noopener noreferrer">LL2S (Liu et al., 2025)</a></td>
   <td><sub>Exploits ViTs redundancy with attention sparsity, head permutation, clean-token regularization, ghost MoE, and robust-token learning, coordinated by online learning to improve transferability.</sub></td>
-</tr>
-
-<tr>
-  <td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/28365" target="_blank" rel="noopener noreferrer">FDAP (Gao et al., 2024)</a></td>
-  <td><sub>Crafts perturbations to minimize the feature diversity in the middle layers of a Vision Transformer, thereby accelerating its natural tendency towards feature collapse.</sub></td>
 </tr>
 
 <tr>
@@ -678,7 +690,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 
 <tr>
 <td><a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Zhao_Minimizing_Maximum_Model_Discrepancy_for_Transferable_Black-Box_Targeted_Attacks_CVPR_2023_paper.pdf" target="_blank" rel="noopener noreferrer">M3D (Zhao et al., 2023)</a></td>
-<td ><sub></sub></td>
+<td ><sub>Train a generator with two discriminators to jointly minimize classification loss and inter-discriminator discrepancy.</sub></td>
 </tr>
 
 
@@ -1522,27 +1534,27 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >62.2</td>
 <td >72.4</td>
 <td >68.4</td>
-<td >49.40</td>
-<td >74.90</td>
-<td >44.70</td>
+<td >49.4</td>
+<td >74.9</td>
+<td >44.7</td>
 <td >72.1</td>
 <td >46.5</td>
 </tr>
 
 <td><a href="./transferattack/input_transformation/ops.py" target="_blank" rel="noopener noreferrer">OPS</a></td>
-<td >99.5</td>
+<td >99.8</td>
+<td >98.8</td>
+<td >98.6</td>
+<td >98.7</td>
+<td >90.6</td>
+<td >95.3</td>
+<td >97.1</td>
+<td >96.3</td>
+<td >60.9</td>
 <td >98.1</td>
-<td >97.8</td>
-<td >98.2</td>
-<td >88.8</td>
-<td >93.8</td>
-<td >96.7</td>
-<td >95.7</td>
-<td >57.8</td>
-<td >96.9</td>
-<td >64.6</td>
-<td >90.7</td>
-<td >83.5</td>
+<td >69.4</td>
+<td >92.5</td>
+<td >88.9</td>
 </tr>
 
 <tr>
@@ -2175,6 +2187,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
+<td><a href="./transferattack/model_related/fdap.py" target="_blank" rel="noopener noreferrer">FDAP</a></td>
+<td >44.9</td>
+<td >78.9</td>
+<td >70.7</td>
+<td >53.6</td>
+<td >64.2</td>
+<td >48.2</td>
+<td >49.7</td>
+<td >59.0</td>
+<td >42.9</td>
+<td >30.1</td>
+<td >33.8</td>
+<td >48.9</td>
+<td >28.8</td>
+</tr>
+
+<tr>
 <td><a href="./transferattack/model_related/qaa.py" target="_blank" rel="noopener noreferrer">QAA</a></td>
 <td >76.3</td>
 <td >90.7</td>
@@ -2274,23 +2303,6 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >40.8</td>
 <td >75.2</td>
 <td >57.4</td>
-</tr>
-
-<tr>
-<td><a href="./transferattack/model_related/fdap.py" target="_blank" rel="noopener noreferrer">FDAP</a></td>
-<td >44.9</td>
-<td >78.9</td>
-<td >70.7</td>
-<td >53.6</td>
-<td >64.2</td>
-<td >48.2</td>
-<td >49.7</td>
-<td >59.0</td>
-<td >42.9</td>
-<td >30.1</td>
-<td >33.8</td>
-<td >48.9</td>
-<td >28.8</td>
 </tr>
 
 <tr>
@@ -2487,19 +2499,19 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr>
 <td><a href="./transferattack/generation/ge_advgan.py" target="_blank" rel="noopener noreferrer">GE-ADVGAN</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >68.1</td>
+<td >90.1</td>
+<td >90.3</td>
+<td >79.8</td>
+<td >18.1</td>
+<td >12.1</td>
+<td >37.8</td>
+<td >27.0</td>
+<td >41.2</td>
+<td >73.5</td>
+<td >36.0</td>
+<td >59.8</td>
+<td >45.3</td>
 </tr>
 
 <tr>
@@ -2601,50 +2613,50 @@ Class Number: Class Name
 
 <th rowspan="4"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/odi/odi.py" target="_blank" rel="noopener noreferrer">ODI</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >98.8</td>
+<td >21.3</td>
+<td >23.9</td>
+<td >28.9</td>
+<td >5.4</td>
+<td >16.7</td>
+<td >40.2</td>
+<td >16.9</td>
+<td >0.0</td>
+<td >31.6</td>
+<td >0.1</td>
+<td >0.0</td>
+<td >0.3</td>
 </tr>
 
 <td><a href="./transferattack/input_transformation/su.py" target="_blank" rel="noopener noreferrer">SU</a></td>
 <td >100.0</td>
-<td >5.4</td>
-<td >7.1</td>
+<td >6.2</td>
+<td >7.0</td>
 <td >2.8</td>
-<td >0.1</td>
-<td >0.8</td>
-<td >12.0</td>
-<td >3.0</td>
-<td >0.1</td>
-<td >4.5</td>
+<td >0.9</td>
+<td >2.7</td>
+<td >13.6</td>
+<td >4.3</td>
+<td >0.0</td>
+<td >3.4</td>
 <td >0.0</td>
 <td >0.0</td>
 <td >0.0</td>
 </tr>
 
 <td><a href="./transferattack/input_transformation/idaa.py" target="_blank" rel="noopener noreferrer">IDAA </a></td>
-<td >71.7</td>
-<td >5.0</td>
-<td >4.8</td>
+<td >34.3</td>
+<td >19.4</td>
+<td >18.8</td>
+<td >12.6</td>
 <td >2.1</td>
-<td >0.3</td>
-<td >2.1</td>
-<td >5.0</td>
-<td >3.6</td>
-<td >0.1</td>
+<td >4.5</td>
+<td >14.0</td>
+<td >7.8</td>
 <td >0.1</td>
 <td >0.0</td>
-<td >0.2</td>
+<td >0.1</td>
+<td >0.0</td>
 <td >0.0</td>
 </tr>
 
@@ -2665,68 +2677,52 @@ Class Number: Class Name
 </tr>
 
 
-<th rowspan="7"><sub><strong>Advanced objective</strong></sub></th>
-<td><a href="./transferattack/advanced_objective/aa.py" target="_blank" rel="noopener noreferrer">AA</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-</tr>
-
+<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
-<td >99.8</td>
-<td >4.5</td>
-<td >5.6</td>
-<td >6.1</td>
-<td >0.9</td>
-<td >4.1</td>
-<td >10.8</td>
-<td >4.2</td>
-<td >0.0</td>
-<td >6.0</td>
+<td >100.0</td>
+<td >5.0</td>
+<td >7.4</td>
+<td >7.7</td>
+<td >0.8</td>
+<td >5.2</td>
+<td >13.9</td>
+<td >5.0</td>
+<td >0.1</td>
+<td >5.9</td>
 <td >0.0</td>
 <td >0.0</td>
 <td >0.0</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/logit.py" target="_blank" rel="noopener noreferrer">Logit</a></td>
-<td >99.8</td>
-<td >2.9</td>
-<td >2.5</td>
-<td >1.8</td>
-<td >0.6</td>
-<td >2.2</td>
-<td >8.6</td>
-<td >2.5</td>
+<td >57.2</td>
+<td >22.8</td>
+<td >16.7</td>
+<td >19.4</td>
+<td >2.4</td>
+<td >5.5</td>
+<td >24.7</td>
+<td >10.5</td>
+<td >0.1</td>
+<td >32.6</td>
 <td >0.0</td>
-<td >3.3</td>
 <td >0.0</td>
-<td >0.0</td>
-<td >0.0</td>
+<td >0.1</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/logit_margin.py" target="_blank" rel="noopener noreferrer">Logit-Margin</a></td>
-<td >99.9</td>
-<td >3.1</td>
-<td >2.8</td>
-<td >1.7</td>
-<td >0.2</td>
-<td >2.5</td>
-<td >7.7</td>
-<td >3.4</td>
+<td >56.5</td>
+<td >21.9</td>
+<td >17.1</td>
+<td >20.9</td>
+<td >1.6</td>
+<td >6.0</td>
+<td >24.3</td>
+<td >8.8</td>
 <td >0.1</td>
-<td >2.3</td>
+<td >30.8</td>
 <td >0.0</td>
-<td >0.1</td>
+<td >0.0</td>
 <td >0.0</td>
 </tr>
 
@@ -2747,16 +2743,16 @@ Class Number: Class Name
 </tr>
 
 <td><a href="./transferattack/advanced_objective/fft.py" target="_blank" rel="noopener noreferrer">FFT</a></td>
-<td >98.7</td>
-<td >8.5</td>
-<td >9.4</td>
-<td >2.4</td>
-<td >0.5</td>
-<td >4.9</td>
-<td >14.4</td>
-<td >7.5</td>
+<td >97.3</td>
+<td >11.5</td>
+<td >14.3</td>
+<td >6.3</td>
+<td >1.9</td>
+<td >3.8</td>
+<td >19.1</td>
+<td >7.4</td>
 <td >0.1</td>
-<td >5.6</td>
+<td >11.1</td>
 <td >0.0</td>
 <td >0.0</td>
 <td >0.0</td>
@@ -2782,35 +2778,35 @@ Class Number: Class Name
 <tr>
 <th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/ttp.py" target="_blank" rel="noopener noreferrer">TTP</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >71.1</td>
+<td >71.8</td>
+<td >52.4</td>
+<td >32.8</td>
+<td >8.0</td>
+<td >12.6</td>
+<td >47.8</td>
+<td >30.5</td>
+<td >0.2</td>
+<td >57.8</td>
+<td >0.3</td>
+<td >1.8</td>
+<td >1.5</td>
 </tr>
 
 <td><a href="./transferattack/generation/m3d.py" target="_blank" rel="noopener noreferrer">M3D</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >88.5</td>
+<td >89.2</td>
+<td >79.8</td>
+<td >59.0</td>
+<td >32.5</td>
+<td >35.8</td>
+<td >76.4</td>
+<td >60.5</td>
+<td >0.2</td>
+<td >80.2</td>
+<td >0.4</td>
+<td >3.5</td>
+<td >1.7</td>
 </tr>
 
 <tr>
