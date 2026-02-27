@@ -70,7 +70,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="29"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="28"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -185,15 +185,17 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td ><sub>Use global momentum initialization to better stablize update direction.</sub></td>
 </tr>
 
-<tr>
-<td><a href="https://arxiv.org/pdf/2412.18844" target="_blank" rel="noopener noreferrer">MUMODIG (Ren et al., 2024)</a></td>
-<td ><sub> Improve integrated gradients attacks by generating integration paths through multiple baseline samples and enforcing the monotonicity of each path.</sub></td>
-</tr>
 
 <tr>
 <td><a href="https://dl.acm.org/doi/10.1145/3627673.3679858" target="_blank" rel="noopener noreferrer">FGSRA (Wang et al., 2024)</a></td>
 <td ><sub>Leverage frequency information and introduce similarity weights to assess neighborhood contribution.</sub></td>
 </tr>
+
+<tr>
+<td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/29323" target="_blank" rel="noopener noreferrer">AdaMSI-FGM (Long et al., 2024)</a></td>
+<td ><sub>Guarantees convergence by incorporating an innovative, non-monotonic adaptive momentum parameter and replacing the problematic sign operation with an adaptive step-size scheme.</sub></td>
+</tr>
+
 
 <tr>
 <td><a href="https://arxiv.org/pdf/2412.18844" target="_blank" rel="noopener noreferrer">MUMODIG (Ren et al., 2025)</a></td>
@@ -211,10 +213,6 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td ><sub>Strengthen the transferability of adversarial examples by dual-blending and direction update strategy.</sub></td>
 </tr>
 
-<tr>
-<td><a href="https://ojs.aaai.org/index.php/AAAI/article/view/29323" target="_blank" rel="noopener noreferrer">AdaMSI-FGM (Long et al., 2024)</a></td>
-<td ><sub>Guarantees convergence by incorporating an innovative, non-monotonic adaptive momentum parameter and replacing the problematic sign operation with an adaptive step-size scheme.</sub></td>
-</tr>
 
 <tr>
 <th rowspan="19"><sub><strong>Input transformation-based</strong></sub></th>
@@ -603,13 +601,13 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<td><a href="https://arxiv.org/abs/2506.21046" target="_blank" rel="noopener noreferrer">DSVA (Wu et al., 2025)</a></td>
-<td ><sub> A generative framework that exploits global features using DINO and local features using MAE to boost transferability.</sub></td>
-</tr>
-  
-<tr>
 <td><a href="https://ieeexplore.ieee.org/abstract/document/10552305" target="_blank" rel="noopener noreferrer">FAP (Wang et al., 2024)</a></td>
 <td ><sub> A frequency-aware adversarial perturbation method that focuses optimization on the most critical, model-agnostic frequencies to enhance transferability.</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2506.21046" target="_blank" rel="noopener noreferrer">DSVA (Wu et al., 2025)</a></td>
+<td ><sub> A generative framework that exploits global features using DINO and local features using MAE to boost transferability.</sub></td>
 </tr>
 
 </table>
@@ -647,7 +645,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
+<th rowspan="7"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Inkawhich_Feature_Space_Perturbations_Yield_More_Transferable_Adversarial_Examples_CVPR_2019_paper.pdf" target="_blank" rel="noopener noreferrer">AA (Inkawhich et al., 2019)</a></td>
 <td ><sub>Minimize the similarity of feature difference between the original adversarial example and target benign sample </sub></td>
 </tr>
@@ -678,12 +676,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2411.15553" target="_blank" rel="noopener noreferrer">FTM (Liang et al., 2025)</a></td>
 <td ><sub>Introduces learnable feature perturbations and employs an efficient stochastic update strategy for optimization</sub></td>
 </tr>
 
 <tr>
+<th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="https://arxiv.org/pdf/2103.14641" target="_blank" rel="noopener noreferrer">TTP (Naseer et al., 2021)</a></td>
 <td ><sub>Train a generative model to generate adversarial examples, of which both the global distribution and local neighborhood structure in the latent feature space are matched with the target class.</sub></td>
 </tr>
@@ -693,18 +691,18 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <td ><sub>Train a generator with two discriminators to jointly minimize classification loss and inter-discriminator discrepancy.</sub></td>
 </tr>
 
-
 <tr>
-<th rowspan="3"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2501.01106" target="_blank" rel="noopener noreferrer">AIM (Li et al., 2025)</a></td>
 <td ><sub>Introduce a Semantic Injection Module (SIM) into the generator, which utilizes the semantics contained in an additional guiding image.</sub></td>
 </tr>
 
 <tr>
+<th rowspan="2"><sub><strong>Ensemble-based</strong></sub></th>
 <td><a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Wu_Improving_Transferable_Targeted_Adversarial_Attacks_with_Model_Self-Enhancement_CVPR_2024_paper.pdf" target="_blank" rel="noopener noreferrer">SASD_WS (Wu et al., 2024)</a></td>
 <td ><sub>Incorporate Sharpness-Aware Self-Distillation (SASD) and Weight Scaling (WS) to promote the source model's generalization capability.</sub></td>
 </tr>
 
+<tr>
 <td><a href="https://arxiv.org/abs/2412.16958" target="_blank" rel="noopener noreferrer">RFCoA (Wang et al., 2024)</a></td>
 <td ><sub>Optimize the robust adversarial features over multiple classifiers, which are fused with those of clean samples and decoded back into the image space.</sub></td>
 </tr>
