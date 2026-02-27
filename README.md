@@ -678,7 +678,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 
 <tr>
 <td><a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Zhao_Minimizing_Maximum_Model_Discrepancy_for_Transferable_Black-Box_Targeted_Attacks_CVPR_2023_paper.pdf" target="_blank" rel="noopener noreferrer">M3D (Zhao et al., 2023)</a></td>
-<td ><sub></sub></td>
+<td ><sub>Train a generator with two discriminators to jointly minimize classification loss and inter-discriminator discrepancy.</sub></td>
 </tr>
 
 
@@ -1522,9 +1522,9 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >62.2</td>
 <td >72.4</td>
 <td >68.4</td>
-<td >49.40</td>
-<td >74.90</td>
-<td >44.70</td>
+<td >49.4</td>
+<td >74.9</td>
+<td >44.7</td>
 <td >72.1</td>
 <td >46.5</td>
 </tr>
@@ -2487,19 +2487,19 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 
 <tr>
 <td><a href="./transferattack/generation/ge_advgan.py" target="_blank" rel="noopener noreferrer">GE-ADVGAN</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >68.1</td>
+<td >90.1</td>
+<td >90.3</td>
+<td >79.8</td>
+<td >18.1</td>
+<td >12.1</td>
+<td >37.8</td>
+<td >27.0</td>
+<td >41.2</td>
+<td >73.5</td>
+<td >36.0</td>
+<td >59.8</td>
+<td >45.3</td>
 </tr>
 
 <tr>
@@ -2601,50 +2601,50 @@ Class Number: Class Name
 
 <th rowspan="4"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/odi/odi.py" target="_blank" rel="noopener noreferrer">ODI</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >98.8</td>
+<td >21.3</td>
+<td >23.9</td>
+<td >28.9</td>
+<td >5.4</td>
+<td >16.7</td>
+<td >40.2</td>
+<td >16.9</td>
+<td >0.0</td>
+<td >31.6</td>
+<td >0.1</td>
+<td >0.0</td>
+<td >0.3</td>
 </tr>
 
 <td><a href="./transferattack/input_transformation/su.py" target="_blank" rel="noopener noreferrer">SU</a></td>
 <td >100.0</td>
-<td >5.4</td>
-<td >7.1</td>
+<td >6.2</td>
+<td >7.0</td>
 <td >2.8</td>
-<td >0.1</td>
-<td >0.8</td>
-<td >12.0</td>
-<td >3.0</td>
-<td >0.1</td>
-<td >4.5</td>
+<td >0.9</td>
+<td >2.7</td>
+<td >13.6</td>
+<td >4.3</td>
+<td >0.0</td>
+<td >3.4</td>
 <td >0.0</td>
 <td >0.0</td>
 <td >0.0</td>
 </tr>
 
 <td><a href="./transferattack/input_transformation/idaa.py" target="_blank" rel="noopener noreferrer">IDAA </a></td>
-<td >71.7</td>
-<td >5.0</td>
-<td >4.8</td>
+<td >34.3</td>
+<td >19.4</td>
+<td >18.8</td>
+<td >12.6</td>
 <td >2.1</td>
-<td >0.3</td>
-<td >2.1</td>
-<td >5.0</td>
-<td >3.6</td>
-<td >0.1</td>
+<td >4.5</td>
+<td >14.0</td>
+<td >7.8</td>
 <td >0.1</td>
 <td >0.0</td>
-<td >0.2</td>
+<td >0.1</td>
+<td >0.0</td>
 <td >0.0</td>
 </tr>
 
@@ -2665,68 +2665,52 @@ Class Number: Class Name
 </tr>
 
 
-<th rowspan="7"><sub><strong>Advanced objective</strong></sub></th>
-<td><a href="./transferattack/advanced_objective/aa.py" target="_blank" rel="noopener noreferrer">AA</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-</tr>
-
+<th rowspan="6"><sub><strong>Advanced objective</strong></sub></th>
 <td><a href="./transferattack/advanced_objective/potrip.py" target="_blank" rel="noopener noreferrer">PoTrip</a></td>
-<td >99.8</td>
-<td >4.5</td>
-<td >5.6</td>
-<td >6.1</td>
-<td >0.9</td>
-<td >4.1</td>
-<td >10.8</td>
-<td >4.2</td>
-<td >0.0</td>
-<td >6.0</td>
+<td >100.0</td>
+<td >5.0</td>
+<td >7.4</td>
+<td >7.7</td>
+<td >0.8</td>
+<td >5.2</td>
+<td >13.9</td>
+<td >5.0</td>
+<td >0.1</td>
+<td >5.9</td>
 <td >0.0</td>
 <td >0.0</td>
 <td >0.0</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/logit.py" target="_blank" rel="noopener noreferrer">Logit</a></td>
-<td >99.8</td>
-<td >2.9</td>
-<td >2.5</td>
-<td >1.8</td>
-<td >0.6</td>
-<td >2.2</td>
-<td >8.6</td>
-<td >2.5</td>
+<td >57.2</td>
+<td >22.8</td>
+<td >16.7</td>
+<td >19.4</td>
+<td >2.4</td>
+<td >5.5</td>
+<td >24.7</td>
+<td >10.5</td>
+<td >0.1</td>
+<td >32.6</td>
 <td >0.0</td>
-<td >3.3</td>
 <td >0.0</td>
-<td >0.0</td>
-<td >0.0</td>
+<td >0.1</td>
 </tr>
 
 <td><a href="./transferattack/advanced_objective/logit_margin.py" target="_blank" rel="noopener noreferrer">Logit-Margin</a></td>
-<td >99.9</td>
-<td >3.1</td>
-<td >2.8</td>
-<td >1.7</td>
-<td >0.2</td>
-<td >2.5</td>
-<td >7.7</td>
-<td >3.4</td>
+<td >56.5</td>
+<td >21.9</td>
+<td >17.1</td>
+<td >20.9</td>
+<td >1.6</td>
+<td >6.0</td>
+<td >24.3</td>
+<td >8.8</td>
 <td >0.1</td>
-<td >2.3</td>
+<td >30.8</td>
 <td >0.0</td>
-<td >0.1</td>
+<td >0.0</td>
 <td >0.0</td>
 </tr>
 
@@ -2747,16 +2731,16 @@ Class Number: Class Name
 </tr>
 
 <td><a href="./transferattack/advanced_objective/fft.py" target="_blank" rel="noopener noreferrer">FFT</a></td>
-<td >98.7</td>
-<td >8.5</td>
-<td >9.4</td>
-<td >2.4</td>
-<td >0.5</td>
-<td >4.9</td>
-<td >14.4</td>
-<td >7.5</td>
+<td >97.3</td>
+<td >11.5</td>
+<td >14.3</td>
+<td >6.3</td>
+<td >1.9</td>
+<td >3.8</td>
+<td >19.1</td>
+<td >7.4</td>
 <td >0.1</td>
-<td >5.6</td>
+<td >11.1</td>
 <td >0.0</td>
 <td >0.0</td>
 <td >0.0</td>
@@ -2782,35 +2766,35 @@ Class Number: Class Name
 <tr>
 <th rowspan="3"><sub><strong>Generation-based</strong></sub></th>
 <td><a href="./transferattack/generation/ttp.py" target="_blank" rel="noopener noreferrer">TTP</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >71.1</td>
+<td >71.8</td>
+<td >52.4</td>
+<td >32.8</td>
+<td >8.0</td>
+<td >12.6</td>
+<td >47.8</td>
+<td >30.5</td>
+<td >0.2</td>
+<td >57.8</td>
+<td >0.3</td>
+<td >1.8</td>
+<td >1.5</td>
 </tr>
 
 <td><a href="./transferattack/generation/m3d.py" target="_blank" rel="noopener noreferrer">M3D</a></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
-<td ></td>
+<td >88.5</td>
+<td >89.2</td>
+<td >79.8</td>
+<td >59.0</td>
+<td >32.5</td>
+<td >35.8</td>
+<td >76.4</td>
+<td >60.5</td>
+<td >0.2</td>
+<td >80.2</td>
+<td >0.4</td>
+<td >3.5</td>
+<td >1.7</td>
 </tr>
 
 <tr>
