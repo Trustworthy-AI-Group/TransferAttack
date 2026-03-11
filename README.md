@@ -805,6 +805,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >13.3</td>
 </tr>
 
+</tr>
+<td><a href="./transferattack/gradient/liboost.py" target="_blank" rel="noopener noreferrer">LI-Boost-MI</a></td>
+<td >99.9</td>
+<td >70.2</td>
+<td >64.4</td>
+<td >48.2</td>
+<td >20.0</td>
+<td >32.9</td>
+<td >45.5</td>
+<td >43.1</td>
+<td >40.8</td>
+<td >35.0</td>
+<td >29.2</td>
+<td >59.4</td>
+<td >23.9</td>
+</tr>
+
 <tr>
 <td><a href="./transferattack/gradient/nifgsm.py" target="_blank" rel="noopener noreferrer">NI-FGSM</a></td>
 <td >100.0</td>
@@ -1179,22 +1196,6 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >27</td>
 </tr>
 
-
-<td><a href="./transferattack/gradient/liboost.py" target="_blank" rel="noopener noreferrer">LI-Boost</a></td>
-<td >99.9</td>
-<td >70.2</td>
-<td >64.4</td>
-<td >48.2</td>
-<td >20.0</td>
-<td >32.9</td>
-<td >45.5</td>
-<td >43.1</td>
-<td >40.8</td>
-<td >35.0</td>
-<td >29.2</td>
-<td >59.4</td>
-<td >23.9</td>
-</tr>
 
 <td><a href="./transferattack/gradient/gaa.py" target="_blank" rel="noopener noreferrer">GAA</a></td>
 <td >95.5</td>
