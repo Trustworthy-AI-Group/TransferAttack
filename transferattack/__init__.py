@@ -56,6 +56,7 @@ attack_zoo = {
     'bsr': ('.input_transformation.bsr', 'BSR'),
     'mfi': ('.input_transformation.mfi', 'MFI'),
     'ops': ('.input_transformation.ops', 'OPS'),
+    'sid': ('.input_transformation.sid', 'SID'),
     ## Targeted
     'odi': ('.input_transformation.odi.odi', 'ODI'),
     'su': ('.input_transformation.su', 'SU'),
