@@ -32,7 +32,8 @@ attack_zoo = {
     'mumodig': ('.gradient.mumodig','MUMODIG'),
     'gaa': ('.gradient.gaa', 'GAA'),  
     'foolmix': ('.gradient.foolmix', 'Foolmix'),  
-    'adamsi_fgm': ('.gradient.adamsi_fgm', 'AdaMSI_FGM'),  
+    'adamsi_fgm': ('.gradient.adamsi_fgm', 'AdaMSI_FGM'), 
+    'liboost': ('.gradient.liboost', 'LIBoost'),
     
     # input transformation
     ## Untargeted
