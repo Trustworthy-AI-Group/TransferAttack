@@ -70,7 +70,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </thead>
 
 <tr>
-<th rowspan="28"><sub><strong>Gradient-based</strong></sub></th>
+<th rowspan="29"><sub><strong>Gradient-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener noreferrer">FGSM (Goodfellow et al., 2015)</a></td>
 <td ><sub>Add a small perturbation in the direction of gradient</sub></td>
 </tr>
@@ -203,6 +203,12 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
+<td><a href="https://arxiv.org/abs/2503.06140" target="_blank" rel="noopener noreferrer">LI-Boost (Liu et al., 2025)</a></td>
+<td ><sub> Optimize the adversarial perturbation using the gradient of adversarial examples with several sampled 
+  perturbations according to a logarithmic distribution, thus enhancing the local invariance.</sub></td>
+</tr>
+
+<tr>
 <td><a href="https://ieeexplore.ieee.org/document/11018126" target="_blank" rel="noopener noreferrer">GAA (Gan et al., 2025)</a></td>
 <td ><sub>Aggregate adversarial examples in the neighborhood with 
   worst-aware loss and substitute loss to obtain a flatter local minimum.</sub></td>
@@ -215,7 +221,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 
 
 <tr>
-<th rowspan="19"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="20"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="https://arxiv.org/abs/1803.06978" target="_blank" rel="noopener noreferrer">DIM (Xie et al., 2019)</a></td>
 <td ><sub>Random resize and add padding to the input sample</sub></td>
 </tr>
@@ -309,6 +315,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
 <td><a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Guo_Boosting_Adversarial_Transferability_through_Augmentation_in_Hypothesis_Space_CVPR_2025_paper.pdf" target="_blank" rel="noopener noreferrer">OPS (Guo et al., 2025)</a></td>
 <td ><sub>Constructs a stochastic optimization problem by input transformation operators and random perturbations.</sub></td>
+</tr>
+
+<tr>
+<td><a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Zhou_Leveraging_Spatial_Invariance_to_Boost_Adversarial_Transferability_ICCV_2025_paper.pdf" target="_blank" rel="noopener noreferrer">SID (Zhou et al., 2025)</a></td>
+<td ><sub>Fuse global image into localized blocks through linear or frequency domains, followed by multi-scale downsampling and random positioning.</sub></td>
 </tr>
 
 <tr>
@@ -1133,21 +1144,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >16.6</td>
 </tr>
 
-<td><a href="./transferattack/gradient/mumodig.py" target="_blank" rel="noopener noreferrer">MUMODIG</a></td>
-<td >98.6</td>
-<td >87.4</td>
-<td >85</td>
-<td >79.9</td>
-<td >45.4</td>
-<td >65.6</td>
-<td >75.8</td>
-<td >71.7</td>
-<td >43.4</td>
-<td >69.7</td>
-<td >31.7</td>
-<td >67</td>
-<td >27</td>
-</tr>
+
 
 
 <td><a href="./transferattack/gradient/fgsra.py" target="_blank" rel="noopener noreferrer">FGSRA</a></td>
@@ -1180,6 +1177,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >31.7</td>
 <td >67</td>
 <td >27</td>
+</tr>
+
+
+<td><a href="./transferattack/gradient/liboost.py" target="_blank" rel="noopener noreferrer">LI-Boost</a></td>
+<td >99.9</td>
+<td >70.2</td>
+<td >64.4</td>
+<td >48.2</td>
+<td >20.0</td>
+<td >32.9</td>
+<td >45.5</td>
+<td >43.1</td>
+<td >40.8</td>
+<td >35.0</td>
+<td >29.2</td>
+<td >59.4</td>
+<td >23.9</td>
 </tr>
 
 <td><a href="./transferattack/gradient/gaa.py" target="_blank" rel="noopener noreferrer">GAA</a></td>
@@ -1231,7 +1245,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="19"><sub><strong>Input transformation-based</strong></sub></th>
+<th rowspan="20"><sub><strong>Input transformation-based</strong></sub></th>
 <td><a href="./transferattack/input_transformation/dim.py" target="_blank" rel="noopener noreferrer">DIM</a></td>
 <td >98.7</td>
 <td >71.0</td>
@@ -1539,6 +1553,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >46.5</td>
 </tr>
 
+<tr>
 <td><a href="./transferattack/input_transformation/ops.py" target="_blank" rel="noopener noreferrer">OPS</a></td>
 <td >99.8</td>
 <td >98.8</td>
@@ -1553,6 +1568,22 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >69.4</td>
 <td >92.5</td>
 <td >88.9</td>
+</tr>
+
+<td><a href="./transferattack/input_transformation/sid.py" target="_blank" rel="noopener noreferrer">SID</a></td>
+<td >98.0</td>
+<td >94.4</td>
+<td >93.2</td>
+<td >91.7</td>
+<td >68.4</td>
+<td >84.5</td>
+<td >90.1</td>
+<td >87.4</td>
+<td >49.0</td>
+<td >90.0</td>
+<td >78.0</td>
+<td >42.4</td>
+<td >50.0</td>  
 </tr>
 
 <tr>
