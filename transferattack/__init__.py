@@ -140,6 +140,7 @@ attack_zoo = {
     ## Untargeted
     'cdtp': ('.generation.cdtp', 'CDTP'),
     'ltp': ('.generation.ltp', 'LTP'),
+    'nat': ('.generation.nat', 'NAT'),
     'ada': ('.generation.ada', 'ADA'),
     'ge_advgan': ('.generation.ge_advgan', 'GE_ADVGAN'),
     'diffattack': ('.generation.diffattack', 'DiffAttack'),

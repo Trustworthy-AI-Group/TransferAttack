@@ -23,6 +23,7 @@ def get_parser():
     parser.add_argument('--output_dir', default='./results', type=str, help='the path to store the adversarial patches')
     parser.add_argument('--targeted', action='store_true', help='targeted attack')
     parser.add_argument('--GPU_ID', default='0', type=str)
+    parser.add_argument('--nat_attacked_neuron', default=250, type=int, help='NAT attack: target neuron index (default: 250)')
     return parser.parse_args()
 
 
@@ -38,7 +39,13 @@ def main():
     if not args.eval:
         if args.ensemble or len(args.model.split(',')) > 1:
             args.model = args.model.split(',')
-        attacker = transferattack.load_attack_class(args.attack)(model_name=args.model, targeted=args.targeted)
+        
+        # Build kwargs for attack-specific parameters
+        attack_kwargs = {'model_name': args.model, 'targeted': args.targeted}
+        if args.attack == 'nat':
+            attack_kwargs['nat_attacked_neuron'] = args.nat_attacked_neuron
+        
+        attacker = transferattack.load_attack_class(args.attack)(**attack_kwargs)
 
         for batch_idx, [images, labels, filenames] in tqdm.tqdm(enumerate(dataloader)):
             if args.attack in ['ttp', 'm3d', 'rfcoa', 'aim']: 
