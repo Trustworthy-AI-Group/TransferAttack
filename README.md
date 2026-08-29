@@ -409,7 +409,7 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 </tr>
 
 <tr>
-<th rowspan="27"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="28"><sub><strong>Model-related</strong></sub></th>
 <td><a href="https://arxiv.org/abs/2002.05990" target="_blank" rel="noopener noreferrer">SGM (Wu et al., 2020)</a></td>
 <td ><sub>Utilize more gradients from the skip connections in the residual blocks</sub></td>
 </tr>
@@ -532,6 +532,11 @@ python main.py --input_dir ./path/to/data --output_dir adv_data/mifgsm/resnet50 
 <tr>
   <td><a href="https://ieeexplore.ieee.org/document/10993300" target="_blank" rel="noopener noreferrer">FAUG (Wang et al., 2025)</a></td>
   <td><sub>Inject random noise into intermediate features, diversify attack gradients and mitigate model-specific overfitting to amplify transferability.</sub></td>
+</tr>
+
+<tr>
+  <td><a href="https://arxiv.org/abs/2608.11815" target="_blank" rel="noopener noreferrer">BMAT (Liu et al., 2026)</a></td>
+  <td><sub>Learn an attack-trajectory seed by coupling perturbation generation and surrogate adaptation in a finite-step bilevel-minimax procedure.</sub></td>
 </tr>
 
 <tr>
@@ -1877,7 +1882,7 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 </tr>
 
 <tr>
-<th rowspan="27"><sub><strong>Model-related</strong></sub></th>
+<th rowspan="28"><sub><strong>Model-related</strong></sub></th>
 <td><a href="./transferattack/model_related/sgm.py" target="_blank" rel="noopener noreferrer">SGM</a></td>
 <td >100.0</td>
 <td >73.2</td>
@@ -2333,6 +2338,23 @@ The defense models can be downloaded from [Google Drive](https://drive.google.co
 <td >40.8</td>
 <td >75.2</td>
 <td >57.4</td>
+</tr>
+
+<tr>
+<td><a href="./transferattack/model_related/bmat.py" target="_blank" rel="noopener noreferrer">BMAT</a></td>
+<td >100.0</td>
+<td >95.2</td>
+<td >90.6</td>
+<td >81.5</td>
+<td >31.4</td>
+<td >49.0</td>
+<td >63.9</td>
+<td >61.8</td>
+<td >46.1</td>
+<td >64.3</td>
+<td >35.0</td>
+<td >82.0</td>
+<td >31.3</td>
 </tr>
 
 <tr>
