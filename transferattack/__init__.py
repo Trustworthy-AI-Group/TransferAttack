@@ -118,6 +118,7 @@ attack_zoo = {
     'fpr': ('.model_related.fpr', 'FPR'),
     'awt': ('.model_related.awt', 'AWT'),
     'faug': ('.model_related.faug', 'FAUG'),
+    'bmat': ('.model_related.bmat', 'BMAT'),
     'ana': ('.model_related.ana', 'ANA'),
     'll2s': ('.model_related.ll2s', "LL2S"),
     'fdap': ('.model_related.fdap', "FDAP"),
