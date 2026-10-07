@@ -1,0 +1,5 @@
+# Python bytecode generated during local runs.
+__pycache__/
+
+# Locally downloaded BMAT pseudo-surrogate checkpoints.
+checkpoints/
